@@ -1,8 +1,5 @@
 name: Trouver iOS CI
 on:
-  push:
-    branchs:
-    - main
   pull_request:
     branches:
     - develop
