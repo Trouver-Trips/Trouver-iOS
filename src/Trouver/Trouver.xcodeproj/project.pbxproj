@@ -1,0 +1,713 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		5F6E3209258E8F3500E70AE2 /* TrouverApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F6E3208258E8F3500E70AE2 /* TrouverApp.swift */; };
+		5F6E320D258E8F3600E70AE2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5F6E320C258E8F3600E70AE2 /* Assets.xcassets */; };
+		5F6E3210258E8F3600E70AE2 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5F6E320F258E8F3600E70AE2 /* Preview Assets.xcassets */; };
+		5F6E321B258E8F3700E70AE2 /* TrouverTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F6E321A258E8F3700E70AE2 /* TrouverTests.swift */; };
+		5F6E3226258E8F3700E70AE2 /* TrouverUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F6E3225258E8F3700E70AE2 /* TrouverUITests.swift */; };
+		5F6E3251258EFBAF00E70AE2 /* FeedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F6E3250258EFBAF00E70AE2 /* FeedView.swift */; };
+		E225E10ADBFB0F7FC14809AC /* libPods-Trouver.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B6B911197AEA61F3F7BEE5C1 /* libPods-Trouver.a */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		5F6E3217258E8F3700E70AE2 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 5F6E31FD258E8F3500E70AE2 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 5F6E3204258E8F3500E70AE2;
+			remoteInfo = Trouver;
+		};
+		5F6E3222258E8F3700E70AE2 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 5F6E31FD258E8F3500E70AE2 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 5F6E3204258E8F3500E70AE2;
+			remoteInfo = Trouver;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		5F6E3205258E8F3500E70AE2 /* Trouver.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Trouver.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		5F6E3208258E8F3500E70AE2 /* TrouverApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrouverApp.swift; sourceTree = "<group>"; };
+		5F6E320C258E8F3600E70AE2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		5F6E320F258E8F3600E70AE2 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		5F6E3211258E8F3600E70AE2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5F6E3216258E8F3700E70AE2 /* TrouverTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TrouverTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		5F6E321A258E8F3700E70AE2 /* TrouverTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrouverTests.swift; sourceTree = "<group>"; };
+		5F6E321C258E8F3700E70AE2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5F6E3221258E8F3700E70AE2 /* TrouverUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TrouverUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		5F6E3225258E8F3700E70AE2 /* TrouverUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrouverUITests.swift; sourceTree = "<group>"; };
+		5F6E3227258E8F3700E70AE2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5F6E3250258EFBAF00E70AE2 /* FeedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedView.swift; sourceTree = "<group>"; };
+		71BD6CA610CE895FADAAC13F /* Pods-Trouver.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Trouver.debug.xcconfig"; path = "Target Support Files/Pods-Trouver/Pods-Trouver.debug.xcconfig"; sourceTree = "<group>"; };
+		7B71277CB445BB058B333961 /* Pods-Trouver.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Trouver.release.xcconfig"; path = "Target Support Files/Pods-Trouver/Pods-Trouver.release.xcconfig"; sourceTree = "<group>"; };
+		B6B911197AEA61F3F7BEE5C1 /* libPods-Trouver.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Trouver.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		5F6E3202258E8F3500E70AE2 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E225E10ADBFB0F7FC14809AC /* libPods-Trouver.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5F6E3213258E8F3700E70AE2 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5F6E321E258E8F3700E70AE2 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		216997E27E27BD6DAC2D830C /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				B6B911197AEA61F3F7BEE5C1 /* libPods-Trouver.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		5F6E31FC258E8F3500E70AE2 = {
+			isa = PBXGroup;
+			children = (
+				5F6E3207258E8F3500E70AE2 /* Trouver */,
+				5F6E3219258E8F3700E70AE2 /* TrouverTests */,
+				5F6E3224258E8F3700E70AE2 /* TrouverUITests */,
+				5F6E3206258E8F3500E70AE2 /* Products */,
+				721C8B648AEA79B17D60B577 /* Pods */,
+				216997E27E27BD6DAC2D830C /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		5F6E3206258E8F3500E70AE2 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				5F6E3205258E8F3500E70AE2 /* Trouver.app */,
+				5F6E3216258E8F3700E70AE2 /* TrouverTests.xctest */,
+				5F6E3221258E8F3700E70AE2 /* TrouverUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		5F6E3207258E8F3500E70AE2 /* Trouver */ = {
+			isa = PBXGroup;
+			children = (
+				5F6E323D258EFB5600E70AE2 /* Assets */,
+				5F6E323C258EFB4300E70AE2 /* App */,
+				5F6E323A258EFB2F00E70AE2 /* Feed */,
+				5F6E3211258E8F3600E70AE2 /* Info.plist */,
+			);
+			path = Trouver;
+			sourceTree = "<group>";
+		};
+		5F6E320E258E8F3600E70AE2 /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				5F6E320F258E8F3600E70AE2 /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		5F6E3219258E8F3700E70AE2 /* TrouverTests */ = {
+			isa = PBXGroup;
+			children = (
+				5F6E321A258E8F3700E70AE2 /* TrouverTests.swift */,
+				5F6E321C258E8F3700E70AE2 /* Info.plist */,
+			);
+			path = TrouverTests;
+			sourceTree = "<group>";
+		};
+		5F6E3224258E8F3700E70AE2 /* TrouverUITests */ = {
+			isa = PBXGroup;
+			children = (
+				5F6E3225258E8F3700E70AE2 /* TrouverUITests.swift */,
+				5F6E3227258E8F3700E70AE2 /* Info.plist */,
+			);
+			path = TrouverUITests;
+			sourceTree = "<group>";
+		};
+		5F6E323A258EFB2F00E70AE2 /* Feed */ = {
+			isa = PBXGroup;
+			children = (
+				5F6E3241258EFB8300E70AE2 /* Networking */,
+				5F6E3240258EFB7D00E70AE2 /* Models */,
+				5F6E323F258EFB7700E70AE2 /* Views */,
+				5F6E323E258EFB7100E70AE2 /* ViewModels */,
+			);
+			path = Feed;
+			sourceTree = "<group>";
+		};
+		5F6E323C258EFB4300E70AE2 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				5F6E3208258E8F3500E70AE2 /* TrouverApp.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		5F6E323D258EFB5600E70AE2 /* Assets */ = {
+			isa = PBXGroup;
+			children = (
+				5F6E320C258E8F3600E70AE2 /* Assets.xcassets */,
+				5F6E320E258E8F3600E70AE2 /* Preview Content */,
+			);
+			path = Assets;
+			sourceTree = "<group>";
+		};
+		5F6E323E258EFB7100E70AE2 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		5F6E323F258EFB7700E70AE2 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				5F6E3250258EFBAF00E70AE2 /* FeedView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		5F6E3240258EFB7D00E70AE2 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		5F6E3241258EFB8300E70AE2 /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Networking;
+			sourceTree = "<group>";
+		};
+		721C8B648AEA79B17D60B577 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				71BD6CA610CE895FADAAC13F /* Pods-Trouver.debug.xcconfig */,
+				7B71277CB445BB058B333961 /* Pods-Trouver.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		5F6E3204258E8F3500E70AE2 /* Trouver */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5F6E322A258E8F3700E70AE2 /* Build configuration list for PBXNativeTarget "Trouver" */;
+			buildPhases = (
+				42AF7CFE232B697119F2DFF1 /* [CP] Check Pods Manifest.lock */,
+				5F6E3236258EFA4400E70AE2 /* SwiftLint */,
+				5F6E3201258E8F3500E70AE2 /* Sources */,
+				5F6E3202258E8F3500E70AE2 /* Frameworks */,
+				5F6E3203258E8F3500E70AE2 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Trouver;
+			productName = Trouver;
+			productReference = 5F6E3205258E8F3500E70AE2 /* Trouver.app */;
+			productType = "com.apple.product-type.application";
+		};
+		5F6E3215258E8F3700E70AE2 /* TrouverTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5F6E322D258E8F3700E70AE2 /* Build configuration list for PBXNativeTarget "TrouverTests" */;
+			buildPhases = (
+				5F6E3212258E8F3700E70AE2 /* Sources */,
+				5F6E3213258E8F3700E70AE2 /* Frameworks */,
+				5F6E3214258E8F3700E70AE2 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				5F6E3218258E8F3700E70AE2 /* PBXTargetDependency */,
+			);
+			name = TrouverTests;
+			productName = TrouverTests;
+			productReference = 5F6E3216258E8F3700E70AE2 /* TrouverTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		5F6E3220258E8F3700E70AE2 /* TrouverUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5F6E3230258E8F3700E70AE2 /* Build configuration list for PBXNativeTarget "TrouverUITests" */;
+			buildPhases = (
+				5F6E321D258E8F3700E70AE2 /* Sources */,
+				5F6E321E258E8F3700E70AE2 /* Frameworks */,
+				5F6E321F258E8F3700E70AE2 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				5F6E3223258E8F3700E70AE2 /* PBXTargetDependency */,
+			);
+			name = TrouverUITests;
+			productName = TrouverUITests;
+			productReference = 5F6E3221258E8F3700E70AE2 /* TrouverUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		5F6E31FD258E8F3500E70AE2 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1220;
+				LastUpgradeCheck = 1220;
+				TargetAttributes = {
+					5F6E3204258E8F3500E70AE2 = {
+						CreatedOnToolsVersion = 12.2;
+					};
+					5F6E3215258E8F3700E70AE2 = {
+						CreatedOnToolsVersion = 12.2;
+						TestTargetID = 5F6E3204258E8F3500E70AE2;
+					};
+					5F6E3220258E8F3700E70AE2 = {
+						CreatedOnToolsVersion = 12.2;
+						TestTargetID = 5F6E3204258E8F3500E70AE2;
+					};
+				};
+			};
+			buildConfigurationList = 5F6E3200258E8F3500E70AE2 /* Build configuration list for PBXProject "Trouver" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 5F6E31FC258E8F3500E70AE2;
+			productRefGroup = 5F6E3206258E8F3500E70AE2 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				5F6E3204258E8F3500E70AE2 /* Trouver */,
+				5F6E3215258E8F3700E70AE2 /* TrouverTests */,
+				5F6E3220258E8F3700E70AE2 /* TrouverUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		5F6E3203258E8F3500E70AE2 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5F6E3210258E8F3600E70AE2 /* Preview Assets.xcassets in Resources */,
+				5F6E320D258E8F3600E70AE2 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5F6E3214258E8F3700E70AE2 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5F6E321F258E8F3700E70AE2 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		42AF7CFE232B697119F2DFF1 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Trouver-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		5F6E3236258EFA4400E70AE2 /* SwiftLint */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = SwiftLint;
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\nif which swiftlint >/dev/null; then\n  swiftlint\nelse\n  echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		5F6E3201258E8F3500E70AE2 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5F6E3251258EFBAF00E70AE2 /* FeedView.swift in Sources */,
+				5F6E3209258E8F3500E70AE2 /* TrouverApp.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5F6E3212258E8F3700E70AE2 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5F6E321B258E8F3700E70AE2 /* TrouverTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5F6E321D258E8F3700E70AE2 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5F6E3226258E8F3700E70AE2 /* TrouverUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		5F6E3218258E8F3700E70AE2 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 5F6E3204258E8F3500E70AE2 /* Trouver */;
+			targetProxy = 5F6E3217258E8F3700E70AE2 /* PBXContainerItemProxy */;
+		};
+		5F6E3223258E8F3700E70AE2 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 5F6E3204258E8F3500E70AE2 /* Trouver */;
+			targetProxy = 5F6E3222258E8F3700E70AE2 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		5F6E3228258E8F3700E70AE2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.2;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		5F6E3229258E8F3700E70AE2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		5F6E322B258E8F3700E70AE2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 71BD6CA610CE895FADAAC13F /* Pods-Trouver.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_ASSET_PATHS = "\"Trouver/Assets/Preview Content\"";
+				DEVELOPMENT_TEAM = F5W4L78R3F;
+				ENABLE_PREVIEWS = YES;
+				INFOPLIST_FILE = Trouver/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.company.Trouver;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		5F6E322C258E8F3700E70AE2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7B71277CB445BB058B333961 /* Pods-Trouver.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_ASSET_PATHS = "\"Trouver/Assets/Preview Content\"";
+				DEVELOPMENT_TEAM = F5W4L78R3F;
+				ENABLE_PREVIEWS = YES;
+				INFOPLIST_FILE = Trouver/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.company.Trouver;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		5F6E322E258E8F3700E70AE2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = F5W4L78R3F;
+				INFOPLIST_FILE = TrouverTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.company.TrouverTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Trouver.app/Trouver";
+			};
+			name = Debug;
+		};
+		5F6E322F258E8F3700E70AE2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = F5W4L78R3F;
+				INFOPLIST_FILE = TrouverTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.company.TrouverTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Trouver.app/Trouver";
+			};
+			name = Release;
+		};
+		5F6E3231258E8F3700E70AE2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = F5W4L78R3F;
+				INFOPLIST_FILE = TrouverUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.company.TrouverUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = Trouver;
+			};
+			name = Debug;
+		};
+		5F6E3232258E8F3700E70AE2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = F5W4L78R3F;
+				INFOPLIST_FILE = TrouverUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.company.TrouverUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = Trouver;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		5F6E3200258E8F3500E70AE2 /* Build configuration list for PBXProject "Trouver" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5F6E3228258E8F3700E70AE2 /* Debug */,
+				5F6E3229258E8F3700E70AE2 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		5F6E322A258E8F3700E70AE2 /* Build configuration list for PBXNativeTarget "Trouver" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5F6E322B258E8F3700E70AE2 /* Debug */,
+				5F6E322C258E8F3700E70AE2 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		5F6E322D258E8F3700E70AE2 /* Build configuration list for PBXNativeTarget "TrouverTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5F6E322E258E8F3700E70AE2 /* Debug */,
+				5F6E322F258E8F3700E70AE2 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		5F6E3230258E8F3700E70AE2 /* Build configuration list for PBXNativeTarget "TrouverUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5F6E3231258E8F3700E70AE2 /* Debug */,
+				5F6E3232258E8F3700E70AE2 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 5F6E31FD258E8F3500E70AE2 /* Project object */;
+}
