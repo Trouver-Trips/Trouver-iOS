@@ -16,4 +16,4 @@ jobs:
       - name: Force Xcode 12.2
         run: sudo xcode-select -switch /Applications/Xcode_12.2.app
       - name: Testing iOS app
-        run: exec ./.github/scripts/test_app.sh
+        run: exec chmod +x ./.github/scripts/test_app.sh
