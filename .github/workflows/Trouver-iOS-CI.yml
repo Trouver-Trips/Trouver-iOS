@@ -17,4 +17,4 @@ jobs:
         run: sudo xcode-select -switch /Applications/Xcode_12.2.app
       - name: Testing iOS app
         run: chmod +x ./.github/scripts/test_app.sh \
-        exec ./.github/scripts/test_app.sh \
+          exec ./.github/scripts/test_app.sh \
