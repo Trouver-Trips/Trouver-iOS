@@ -12,6 +12,5 @@ Xcode 12.2
 
 ### Running
 1. Go to src/Trouver
-1. run pod install
 1. open Trouver.xcworkspace
 1. Run the Trouver scheme
