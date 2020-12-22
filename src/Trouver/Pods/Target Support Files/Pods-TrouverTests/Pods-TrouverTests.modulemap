@@ -1,0 +1,6 @@
+module Pods_TrouverTests {
+  umbrella header "Pods-TrouverTests-umbrella.h"
+
+  export *
+  module * { export * }
+}
