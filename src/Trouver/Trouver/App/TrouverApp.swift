@@ -11,7 +11,7 @@ import SwiftUI
 struct TrouverApp: App {
     var body: some Scene {
         WindowGroup {
-            FeedView()
+            FeedView(trailFeed: FeedViewModel())
         }
     }
 }

@@ -8,13 +8,19 @@
 import SwiftUI
 
 struct FeedView: View {
+    @ObservedObject var trailFeed: FeedViewModel
+
     var body: some View {
-        Text("Feed")
+        List {
+            ForEach(trailFeed.trails) { trail in
+                Text(trail.name)
+            }
+        }
     }
 }
 
 struct FeedViewPreviews: PreviewProvider {
     static var previews: some View {
-        FeedView()
+        FeedView(trailFeed: FeedViewModel())
     }
 }

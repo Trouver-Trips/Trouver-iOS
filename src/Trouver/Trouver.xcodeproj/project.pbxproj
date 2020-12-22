@@ -16,6 +16,13 @@
 		5F6E3251258EFBAF00E70AE2 /* FeedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F6E3250258EFBAF00E70AE2 /* FeedView.swift */; };
 		5F6E32652590186D00E70AE2 /* WebClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F6E32632590186D00E70AE2 /* WebClient.swift */; };
 		5F6E32662590186D00E70AE2 /* HttpWebClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F6E32642590186D00E70AE2 /* HttpWebClient.swift */; };
+		5F6E32B025927DA700E70AE2 /* Trail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F6E32AF25927DA700E70AE2 /* Trail.swift */; };
+		5F6E32B92592867C00E70AE2 /* TrailData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F6E32B82592867C00E70AE2 /* TrailData.swift */; };
+		5F6E32BE259287F300E70AE2 /* FeedViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F6E32BD259287F300E70AE2 /* FeedViewModel.swift */; };
+		5F6E32C4259288DB00E70AE2 /* TrailInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F6E32C3259288DB00E70AE2 /* TrailInfo.swift */; };
+		5F6E32C92592894400E70AE2 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F6E32C82592894400E70AE2 /* NetworkService.swift */; };
+		5F6E32CE259289C800E70AE2 /* TrailNetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F6E32CD259289C800E70AE2 /* TrailNetworkService.swift */; };
+		5F6E32D425928DB400E70AE2 /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F6E32D325928DB400E70AE2 /* Logger.swift */; };
 		74CA229ED74D8072B5A71D41 /* libPods-TrouverUITests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D518F0760DA433D03EE9EE6B /* libPods-TrouverUITests.a */; };
 		E225E10ADBFB0F7FC14809AC /* libPods-Trouver.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B6B911197AEA61F3F7BEE5C1 /* libPods-Trouver.a */; };
 /* End PBXBuildFile section */
@@ -53,6 +60,13 @@
 		5F6E3250258EFBAF00E70AE2 /* FeedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedView.swift; sourceTree = "<group>"; };
 		5F6E32632590186D00E70AE2 /* WebClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebClient.swift; sourceTree = "<group>"; };
 		5F6E32642590186D00E70AE2 /* HttpWebClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HttpWebClient.swift; sourceTree = "<group>"; };
+		5F6E32AF25927DA700E70AE2 /* Trail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Trail.swift; sourceTree = "<group>"; };
+		5F6E32B82592867C00E70AE2 /* TrailData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrailData.swift; sourceTree = "<group>"; };
+		5F6E32BD259287F300E70AE2 /* FeedViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewModel.swift; sourceTree = "<group>"; };
+		5F6E32C3259288DB00E70AE2 /* TrailInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrailInfo.swift; sourceTree = "<group>"; };
+		5F6E32C82592894400E70AE2 /* NetworkService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
+		5F6E32CD259289C800E70AE2 /* TrailNetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrailNetworkService.swift; sourceTree = "<group>"; };
+		5F6E32D325928DB400E70AE2 /* Logger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
 		71BD6CA610CE895FADAAC13F /* Pods-Trouver.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Trouver.debug.xcconfig"; path = "Target Support Files/Pods-Trouver/Pods-Trouver.debug.xcconfig"; sourceTree = "<group>"; };
 		7B71277CB445BB058B333961 /* Pods-Trouver.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Trouver.release.xcconfig"; path = "Target Support Files/Pods-Trouver/Pods-Trouver.release.xcconfig"; sourceTree = "<group>"; };
 		85CA952DBEB148556D1B4B74 /* Pods-TrouverTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TrouverTests.release.xcconfig"; path = "Target Support Files/Pods-TrouverTests/Pods-TrouverTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -191,6 +205,7 @@
 		5F6E323E258EFB7100E70AE2 /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
+				5F6E32BD259287F300E70AE2 /* FeedViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -206,6 +221,8 @@
 		5F6E3240258EFB7D00E70AE2 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				5F6E32AF25927DA700E70AE2 /* Trail.swift */,
+				5F6E32C3259288DB00E70AE2 /* TrailInfo.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -215,6 +232,8 @@
 			children = (
 				5F6E32632590186D00E70AE2 /* WebClient.swift */,
 				5F6E32642590186D00E70AE2 /* HttpWebClient.swift */,
+				5F6E32C82592894400E70AE2 /* NetworkService.swift */,
+				5F6E32CD259289C800E70AE2 /* TrailNetworkService.swift */,
 			);
 			path = Networking;
 			sourceTree = "<group>";
@@ -222,9 +241,27 @@
 		5F6E3291259279B700E70AE2 /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				5F6E32D225928D9D00E70AE2 /* Logging */,
+				5F6E32B72592866000E70AE2 /* Data */,
 				5F6E3241258EFB8300E70AE2 /* Networking */,
 			);
 			path = Common;
+			sourceTree = "<group>";
+		};
+		5F6E32B72592866000E70AE2 /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				5F6E32B82592867C00E70AE2 /* TrailData.swift */,
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
+		5F6E32D225928D9D00E70AE2 /* Logging */ = {
+			isa = PBXGroup;
+			children = (
+				5F6E32D325928DB400E70AE2 /* Logger.swift */,
+			);
+			path = Logging;
 			sourceTree = "<group>";
 		};
 		721C8B648AEA79B17D60B577 /* Pods */ = {
@@ -460,7 +497,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5F6E32BE259287F300E70AE2 /* FeedViewModel.swift in Sources */,
+				5F6E32D425928DB400E70AE2 /* Logger.swift in Sources */,
+				5F6E32CE259289C800E70AE2 /* TrailNetworkService.swift in Sources */,
+				5F6E32B025927DA700E70AE2 /* Trail.swift in Sources */,
+				5F6E32C4259288DB00E70AE2 /* TrailInfo.swift in Sources */,
 				5F6E3251258EFBAF00E70AE2 /* FeedView.swift in Sources */,
+				5F6E32C92592894400E70AE2 /* NetworkService.swift in Sources */,
+				5F6E32B92592867C00E70AE2 /* TrailData.swift in Sources */,
 				5F6E3209258E8F3500E70AE2 /* TrouverApp.swift in Sources */,
 				5F6E32652590186D00E70AE2 /* WebClient.swift in Sources */,
 				5F6E32662590186D00E70AE2 /* HttpWebClient.swift in Sources */,
