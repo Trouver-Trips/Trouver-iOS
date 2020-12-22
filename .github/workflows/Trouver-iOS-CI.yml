@@ -14,4 +14,3 @@ jobs:
         run: sudo xcode-select -switch /Applications/Xcode_12.2.app
       - name: Testing iOS app
         run: sh ./.github/scripts/test_app.sh
-        
