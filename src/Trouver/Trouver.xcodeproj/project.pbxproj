@@ -116,6 +116,7 @@
 			children = (
 				5F6E323C258EFB4300E70AE2 /* App */,
 				5F6E323D258EFB5600E70AE2 /* Assets */,
+				5F6E3291259279B700E70AE2 /* Common */,
 				5F6E323A258EFB2F00E70AE2 /* Feed */,
 				5F6E3211258E8F3600E70AE2 /* Info.plist */,
 			);
@@ -151,7 +152,6 @@
 		5F6E323A258EFB2F00E70AE2 /* Feed */ = {
 			isa = PBXGroup;
 			children = (
-				5F6E3241258EFB8300E70AE2 /* Networking */,
 				5F6E3240258EFB7D00E70AE2 /* Models */,
 				5F6E323F258EFB7700E70AE2 /* Views */,
 				5F6E323E258EFB7100E70AE2 /* ViewModels */,
@@ -205,6 +205,14 @@
 				5F6E32642590186D00E70AE2 /* HttpWebClient.swift */,
 			);
 			path = Networking;
+			sourceTree = "<group>";
+		};
+		5F6E3291259279B700E70AE2 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				5F6E3241258EFB8300E70AE2 /* Networking */,
+			);
+			path = Common;
 			sourceTree = "<group>";
 		};
 		721C8B648AEA79B17D60B577 /* Pods */ = {
