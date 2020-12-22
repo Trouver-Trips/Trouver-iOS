@@ -114,8 +114,8 @@
 		5F6E3207258E8F3500E70AE2 /* Trouver */ = {
 			isa = PBXGroup;
 			children = (
-				5F6E323D258EFB5600E70AE2 /* Assets */,
 				5F6E323C258EFB4300E70AE2 /* App */,
+				5F6E323D258EFB5600E70AE2 /* Assets */,
 				5F6E323A258EFB2F00E70AE2 /* Feed */,
 				5F6E3211258E8F3600E70AE2 /* Info.plist */,
 			);
