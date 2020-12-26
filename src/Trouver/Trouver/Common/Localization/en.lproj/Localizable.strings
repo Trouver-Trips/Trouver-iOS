@@ -1,0 +1,13 @@
+/* 
+  Localizable.strings
+  Trouver
+
+  Created by Sagar Punhani on 12/22/20.
+  
+*/
+
+/* title for trouver */
+"trouver_title" = "Trouver";
+
+/* title for a specific hike */
+"hiking_title" = "Hiking";
