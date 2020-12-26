@@ -1,6 +1,0 @@
-module Pods_Trouver {
-  umbrella header "Pods-Trouver-umbrella.h"
-
-  export *
-  module * { export * }
-}

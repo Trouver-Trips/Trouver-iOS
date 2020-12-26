@@ -13,6 +13,10 @@ struct Logger {
     }
 
     static func logError(_ message: String, error: Error? = nil) {
-        print("Log Error: \(message), withError: \(error?.localizedDescription ?? "none")")
+        if let error = error {
+            print("Log Error: \(message), withError: \(error)")
+        } else {
+            print("Log Error: \(message)")
+        }
     }
 }

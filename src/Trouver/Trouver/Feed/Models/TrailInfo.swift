@@ -6,15 +6,34 @@
 //
 
 import Foundation
+/*
+ Wrapper around Trail object
+ */
+struct TrailInfo: Identifiable {
+    private let trail: Trail
 
-struct TrailInfo {
-    private(set) var trails: [Trail]
-
-    static func createEmptyTrails() -> TrailInfo {
-        return TrailInfo(trails: [])
+    init(trail: Trail) {
+        self.trail = trail
     }
 
-    mutating func updateTrails(trails: [Trail]) {
-        self.trails = trails
+    // MARK: - Public properties
+
+    var id: Int { return trail.id }
+    var name: String { return trail.name }
+    var imageUrls: [URL] {
+        var urlStrings = [String]()
+        urlStrings.append(self.trail.imgMedium)
+        urlStrings.append(self.trail.imgMedium)
+        urlStrings.append(self.trail.imgMedium)
+        urlStrings.append(self.trail.imgMedium)
+        return urlStrings.compactMap { URL(string: $0) }
+    }
+}
+
+// MARK: - Sample data
+
+extension TrailInfo: DataFactory {
+    static func sampleData() -> TrailInfo {
+        TrailInfo(trail: TrailResult.sampleData().trails[0])
     }
 }

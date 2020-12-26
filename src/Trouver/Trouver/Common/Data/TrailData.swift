@@ -5,10 +5,17 @@
 //  Created by Sagar Punhani on 12/22/20.
 //
 
-import Foundation
+import UIKit
 
 // swiftlint:disable type_body_length line_length
+#if DEBUG
 struct TrailData {
+
+    static let trailImages = [
+        "https://crosscut.com/sites/default/files/styles/max_992x992/public/images/articles/DSC_4964_e2it6j.jpg?itok=SoLZo9nu",
+        "https://di-uploads-pod4.dealerinspire.com/fiatoftacoma/uploads/2018/12/Depositphotos_33075035_xl-2015.jpg",
+        "https://cdn.cnn.com/cnnnext/dam/assets/200630030038-mt-rainier-file-exlarge-169.jpg"
+    ].compactMap { URL(string: $0) }
 
     static let trailData =
     """
@@ -24,9 +31,9 @@ struct TrailData {
                 "starVotes": 92,
                 "location": "Superior, Colorado",
                 "url": "https://www.hikingproject.com/trail/7011192/boulder-skyline-traverse",
-                "imgSqSmall": "https://cdn2.apstatic.com/photos/hike/7039883_sqsmall_1555092747.jpg",
-                "imgSmall": "https://cdn2.apstatic.com/photos/hike/7039883_small_1555092747.jpg",
-                "imgSmallMed": "https://cdn2.apstatic.com/photos/hike/7039883_smallMed_1555092747.jpg",
+                "imgSqSmall": "https://cdn2.apstatic.com/photos/hike/7039625_medium_1555092312.jpg",
+                "imgSmall": "https://cdn2.apstatic.com/photos/hike/7002679_medium_1554226731.jpg",
+                "imgSmallMed": "https://cdn2.apstatic.com/photos/hike/7003740_medium_1554235436.jpg",
                 "imgMedium": "https://cdn2.apstatic.com/photos/hike/7039883_medium_1555092747.jpg",
                 "length": 17.3,
                 "ascent": 5446,
@@ -269,4 +276,5 @@ struct TrailData {
     }
     """
 }
+#endif
 // swiftlint:enable type_body_length line_length

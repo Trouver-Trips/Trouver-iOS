@@ -9,9 +9,11 @@ import SwiftUI
 
 @main
 struct TrouverApp: App {
+    @StateObject var trailFeed: HikingFeedViewModel = HikingFeedViewModel()
+
     var body: some Scene {
         WindowGroup {
-            FeedView(trailFeed: FeedViewModel())
+            HikingFeedView(viewModel: trailFeed)
         }
     }
 }
