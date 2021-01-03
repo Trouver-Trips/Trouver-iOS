@@ -12,9 +12,8 @@ jobs:
         uses: actions/checkout@v1
       - name: Force Xcode 12.3
         run: sudo xcode-select -switch /Applications/Xcode_12.3.app
-      - name: Navigate to Workspace
-        run: cd src/Trouver
       - name: Install Cocoapods
+        working-directory: ./src/Trouver
         run: pod install
       - name: Testing iOS app
         run: sh ./build-scripts/test_app.sh
