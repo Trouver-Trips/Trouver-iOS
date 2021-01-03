@@ -13,7 +13,6 @@ import SwiftUI
  */
 struct AsyncImage<Placeholder: View>: View {
     @ObservedObject var loader: ImageLoader
-    @State private var isLoaded = false
 
     private let placeholder: Placeholder
 
@@ -24,18 +23,15 @@ struct AsyncImage<Placeholder: View>: View {
 
     var body: some View {
         VStack {
-            Group {
+            ZStack {
                 if let uiImage = loader.image {
                     Image(uiImage: uiImage)
                         .resizable()
-                        .onAppear {
-                            isLoaded = true
-                        }
                 } else {
                     placeholder
                 }
             }
-            .opacity(isLoaded ? 1 : 0)
+            .opacity(loader.image != nil ? 1 : 0)
             .animation(.default)
         }
     }
