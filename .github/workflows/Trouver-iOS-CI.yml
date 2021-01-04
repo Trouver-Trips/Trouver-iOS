@@ -16,4 +16,5 @@ jobs:
         working-directory: ./src/Trouver
         run: pod install
       - name: Testing iOS app
-        run: sh ./build-scripts/test_app.sh
+        working-directory: ./src/Trouver/build-scripts
+        run: sh test_app.sh
