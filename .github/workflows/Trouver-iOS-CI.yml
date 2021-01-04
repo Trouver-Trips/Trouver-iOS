@@ -10,7 +10,11 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v1
-      - name: Force Xcode 12.2
-        run: sudo xcode-select -switch /Applications/Xcode_12.2.app
+      - name: Force Xcode 12.3
+        run: sudo xcode-select -switch /Applications/Xcode_12.3.app
+      - name: Install Cocoapods
+        working-directory: ./src/Trouver
+        run: pod install
       - name: Testing iOS app
-        run: sh ./.github/scripts/test_app.sh
+        working-directory: ./src/Trouver/build-scripts
+        run: sh test_app.sh

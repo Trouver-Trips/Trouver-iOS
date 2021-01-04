@@ -9,6 +9,7 @@ import SwiftUI
 
 struct HikingFeedView: View {
     @ObservedObject var viewModel: HikingFeedViewModel
+    @EnvironmentObject var userViewModel: TrouverUserViewModel
 
     var body: some View {
         NavigationView {
@@ -26,6 +27,13 @@ struct HikingFeedView: View {
                 }
             }
             .navigationBarTitle("trouver_title")
+            .navigationBarItems(trailing:
+                Button (action: {
+                    userViewModel.logOut()
+                }, label: {
+                    Text("log_out_button_title")
+                })
+            )
         }
     }
 }

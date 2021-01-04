@@ -11,3 +11,6 @@
 
 /* title for a specific hike */
 "hiking_title" = "Hiking";
+
+/* title for log out button */
+"log_out_button_title" = "Log Out";
