@@ -24,6 +24,10 @@ struct HikingFeedView: View {
                         }
                         .buttonStyle(FlatLinkStyle())
                     }
+                    Text("Fetching more...")
+                        .onAppear(perform: {
+                            self.viewModel.fetchTrails()
+                        })
                 }
             }
             .navigationBarTitle("trouver_title")

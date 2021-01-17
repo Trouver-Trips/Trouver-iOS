@@ -9,7 +9,13 @@ import Combine
 import Foundation
 
 enum APIPath: String {
-    case trails = "/data/get-trails"
+    case trails = "/feeds"
+}
+
+enum State: String {
+    case washington
+    case california
+    case oregon
 }
 
 protocol NetworkService {
@@ -18,12 +24,12 @@ protocol NetworkService {
      */
     func fetchTrails(latitude: Double,
                      longitude: Double,
-                     maxDistance: Int) -> AnyPublisher<TrailResult, Error>
+                     page: Int,
+                     state: State) -> AnyPublisher<TrailResult, Error>
 }
 
 struct TrailNetworkService {
-    private let host = "www.hikingproject.com"
-    private let apiKey = "200964296-8b941c199cdcf93d36af89ac419ebc66"
+    private let host = "itchy-firefox-84.loca.lt"
     private let webClient: WebClient
 
     init(webClient: WebClient = HttpWebClient()) {
@@ -34,23 +40,23 @@ struct TrailNetworkService {
 extension TrailNetworkService: NetworkService {
     func fetchTrails(latitude: Double,
                      longitude: Double,
-                     maxDistance: Int) -> AnyPublisher<TrailResult, Error> {
+                     page: Int,
+                     state: State) -> AnyPublisher<TrailResult, Error> {
         let params = [
             "lat": latitude.description,
-            "lon": longitude.description,
-            "maxDistance": maxDistance.description
+            "long": longitude.description,
+            "page": page.description,
+            "state": state.rawValue
         ]
         return self.request(path: APIPath.trails, params: params)
     }
 
     func request<T: Decodable>(path: APIPath, params: [String: String?]) -> AnyPublisher<T, Error> {
         var components = URLComponents()
-        var queryItems = [URLQueryItem(name: "key", value: apiKey)]
         components.scheme = "https"
         components.host = host
         components.path = path.rawValue
-        queryItems.append(contentsOf: params.map { URLQueryItem(name: $0, value: $1) })
-        components.queryItems = queryItems
+        components.queryItems = params.map { URLQueryItem(name: $0, value: $1) }
         guard let url = components.url else {
             preconditionFailure("URL is invalid")
         }

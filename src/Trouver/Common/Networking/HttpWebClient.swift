@@ -24,7 +24,6 @@ struct HttpWebClient: WebClient {
                 receiveOutput: { Logger.logInfo(String(data: $0, encoding: .utf8) ?? "Could not decode output" )}
             )
             .decode(type: T.self, decoder: JSONDecoder())
-            .receive(on: DispatchQueue.main)
             .eraseToAnyPublisher()
     }
 }

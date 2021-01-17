@@ -12,13 +12,13 @@ import SwiftUI
  https://github.com/V8tr/AsyncImage
  */
 struct AsyncImage<Placeholder: View>: View {
-    @ObservedObject var loader: ImageLoader
+    @StateObject private var loader: ImageLoader
 
     private let placeholder: Placeholder
 
     init(url: URL, @ViewBuilder placeholder: () -> Placeholder) {
         self.placeholder = placeholder()
-        loader = ImageLoader(url: url, cache: Environment(\.imageCache).wrappedValue)
+        _loader = StateObject(wrappedValue: ImageLoader(url: url, cache: Environment(\.imageCache).wrappedValue))
     }
 
     var body: some View {

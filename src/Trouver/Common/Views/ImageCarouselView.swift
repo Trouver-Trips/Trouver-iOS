@@ -11,7 +11,7 @@ struct ImageCarouselView: View {
     let images: [URL]
     var body: some View {
         TabView {
-            ForEach(images, id: \.self) { url in
+            ForEach(images[0..<5], id: \.self) { url in
                 AsyncImage(url: url, placeholder: { Image("Placeholder").resizable() })
                     .frame(maxWidth: 500, maxHeight: 300)
                     .scaledToFill()

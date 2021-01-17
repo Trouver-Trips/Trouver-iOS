@@ -18,23 +18,25 @@ class HikingFeedViewModel: ObservableObject {
     private let networkService: NetworkService
 
     private var cancellable: AnyCancellable?
+    private var currentPage = 0
 
     init(networkService: NetworkService = TrailNetworkService()) {
         self.networkService = networkService
-        self.fetchTrails()
     }
 
     // MARK: Access to the Model
 
     var trails: [TrailInfo] { hikingFeed.trails }
 
-    // MARK: - Helpers
+    // MARK: - Intents
 
-    private func fetchTrails() {
-        self.cancellable = self.networkService.fetchTrails(latitude: 40.0274,
-                                            longitude: -105.2519,
-                                            maxDistance: 50)
-            .map { trailResult in trailResult.trails.compactMap({ TrailInfo(trail: $0) })}
+    func fetchTrails() {
+        self.currentPage += 1
+        self.cancellable = self.networkService.fetchTrails(latitude: 47.6062,
+                                                           longitude: -122.3321,
+                                                           page: currentPage,
+                                                           state: .washington)
+            .map { trailResult in trailResult.hikes.docs.compactMap({ TrailInfo(trail: $0) })}
             .receive(on: DispatchQueue.main)
             .sink(
                 receiveCompletion: { completion in
@@ -43,7 +45,7 @@ class HikingFeedViewModel: ObservableObject {
                     case .failure(let error): Logger.logError("Failed to get trails", error: error)
                     }
                 },
-                receiveValue: { [weak self] in self?.hikingFeed.trails = $0 }
+                receiveValue: { [weak self] in self?.hikingFeed.trails.append(contentsOf: $0) }
             )
     }
 }
