@@ -44,13 +44,12 @@ struct Doc: Codable {
     let location: Location
     let images: [String]
     let id: String
-    let trailID, difficulty: Int
+    let difficulty: Int
     let name: String
 
     enum CodingKeys: String, CodingKey {
         case location, images
         case id = "_id"
-        case trailID = "trailId"
         case difficulty, name
     }
 }

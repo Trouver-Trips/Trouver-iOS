@@ -8,9 +8,15 @@
 import Foundation
 import GoogleSignIn
 
+enum SignInState {
+    case notSignedIn
+    case tryingSilentSignIn
+    case signedIn
+}
+
 class TrouverUserViewModel: NSObject, ObservableObject {
     @Published private var user: TrouverUser?
-    @Published var signedIn: Bool = false
+    @Published var signInState: SignInState = .notSignedIn
 
     // Access to model
 
@@ -21,6 +27,7 @@ class TrouverUserViewModel: NSObject, ObservableObject {
 
     func silentSignIn() {
         // Automatically sign in the user.
+        self.signInState = .tryingSilentSignIn
         GIDSignIn.sharedInstance()?.restorePreviousSignIn()
     }
 
@@ -33,7 +40,7 @@ class TrouverUserViewModel: NSObject, ObservableObject {
             }
         }
         self.user = nil
-        self.signedIn = false
+        self.signInState = .notSignedIn
     }
 }
 
@@ -42,6 +49,7 @@ extension TrouverUserViewModel: GIDSignInDelegate {
 
     func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error!) {
         if let error = error as NSError? {
+            self.signInState = .notSignedIn
             if error.code == GIDSignInErrorCode.hasNoAuthInKeychain.rawValue {
                 Logger.logInfo("The user has not signed in before or they have since signed out.")
             } else if error.code == GIDSignInErrorCode.canceled.rawValue {
@@ -54,9 +62,8 @@ extension TrouverUserViewModel: GIDSignInDelegate {
 
         // If the previous `error` is null, then the sign-in was succesful
         Logger.logInfo("Successful sign-in!")
-        self.signedIn = true
+        self.signInState = .signedIn
         self.signInGoogleUser(googleUser: user)
-        //Logger.logInfo(user.authentication.idToken ?? "No token") // Safe to send to the server
     }
 
     private func signInGoogleUser(googleUser: GIDGoogleUser) {
@@ -67,6 +74,7 @@ extension TrouverUserViewModel: GIDSignInDelegate {
                                     familyName: profile.familyName,
                                     email: profile.email,
                                     accountType: .google,
+                                    accessToken: googleUser.authentication.idToken,
                                     tokenRefresher: GoogleTokenRefresher(googleUser: googleUser))
         }
     }

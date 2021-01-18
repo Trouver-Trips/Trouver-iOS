@@ -38,6 +38,7 @@
 		5F6E32F0259300DB00E70AE2 /* TrailInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F6E32EF259300DB00E70AE2 /* TrailInfo.swift */; };
 		5F6E32F5259305CF00E70AE2 /* TrailDetailInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F6E32F4259305CF00E70AE2 /* TrailDetailInfoView.swift */; };
 		5F6E330B25930BD100E70AE2 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5F6E330D25930BD100E70AE2 /* Localizable.strings */; };
+		5F9B1EA725B53134000B3328 /* EnvironmentProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F9B1EA625B53134000B3328 /* EnvironmentProvider.swift */; };
 		5FCFC891259669D700D38AE4 /* FlatButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FCFC890259669D700D38AE4 /* FlatButtonStyle.swift */; };
 		5FCFC89A259704F700D38AE4 /* DataFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FCFC899259704F700D38AE4 /* DataFactory.swift */; };
 		80D1B588155FFE62407CE32E /* libPods-TrouverTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6A561502C9EBA17986E59173 /* libPods-TrouverTests.a */; };
@@ -103,6 +104,7 @@
 		5F6E32EF259300DB00E70AE2 /* TrailInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrailInfo.swift; sourceTree = "<group>"; };
 		5F6E32F4259305CF00E70AE2 /* TrailDetailInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrailDetailInfoView.swift; sourceTree = "<group>"; };
 		5F6E330C25930BD100E70AE2 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		5F9B1EA625B53134000B3328 /* EnvironmentProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnvironmentProvider.swift; sourceTree = "<group>"; };
 		5FCFC890259669D700D38AE4 /* FlatButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlatButtonStyle.swift; sourceTree = "<group>"; };
 		5FCFC899259704F700D38AE4 /* DataFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataFactory.swift; sourceTree = "<group>"; };
 		6A561502C9EBA17986E59173 /* libPods-TrouverTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-TrouverTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -171,6 +173,31 @@
 				5F01BADD25A19046002330BC /* GoogleTokenRefresher.swift */,
 			);
 			path = Google;
+			sourceTree = "<group>";
+		};
+		5F15C7B825B5537200638851 /* Detail */ = {
+			isa = PBXGroup;
+			children = (
+				5F15C7BA25B5538500638851 /* ViewModels */,
+				5F15C7B925B5537A00638851 /* Views */,
+			);
+			path = Detail;
+			sourceTree = "<group>";
+		};
+		5F15C7B925B5537A00638851 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				5F6E32F4259305CF00E70AE2 /* TrailDetailInfoView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		5F15C7BA25B5538500638851 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				5F6E32E72592FF5500E70AE2 /* TrailDetailViewModel.swift */,
+			);
+			path = ViewModels;
 			sourceTree = "<group>";
 		};
 		5F3B3E9D2595591500512B4C /* Views */ = {
@@ -257,6 +284,7 @@
 				5F6E323D258EFB5600E70AE2 /* Assets */,
 				5F6E3291259279B700E70AE2 /* Common */,
 				5F57B46925A10D7300741A5A /* Auth */,
+				5F15C7B825B5537200638851 /* Detail */,
 				5F6E323A258EFB2F00E70AE2 /* Feed */,
 				5F6E3211258E8F3600E70AE2 /* Info.plist */,
 			);
@@ -292,7 +320,6 @@
 		5F6E323A258EFB2F00E70AE2 /* Feed */ = {
 			isa = PBXGroup;
 			children = (
-				5F6E32FA259307A600E70AE2 /* Networking */,
 				5F6E3240258EFB7D00E70AE2 /* Models */,
 				5F6E323E258EFB7100E70AE2 /* ViewModels */,
 				5F6E323F258EFB7700E70AE2 /* Views */,
@@ -323,7 +350,6 @@
 			isa = PBXGroup;
 			children = (
 				5F6E32BD259287F300E70AE2 /* HikingFeedViewModel.swift */,
-				5F6E32E72592FF5500E70AE2 /* TrailDetailViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -333,7 +359,6 @@
 			children = (
 				5F6E3250258EFBAF00E70AE2 /* HikingFeedView.swift */,
 				5F6E32E025929BF700E70AE2 /* HikingFeedItemView.swift */,
-				5F6E32F4259305CF00E70AE2 /* TrailDetailInfoView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -351,7 +376,9 @@
 		5F6E3241258EFB8300E70AE2 /* Networking */ = {
 			isa = PBXGroup;
 			children = (
+				5F9B1EA625B53134000B3328 /* EnvironmentProvider.swift */,
 				5F3B3EFE2595A61200512B4C /* HttpWebClient.swift */,
+				5F6E32CD259289C800E70AE2 /* TrailNetworkService.swift */,
 			);
 			path = Networking;
 			sourceTree = "<group>";
@@ -393,14 +420,6 @@
 				5F6E330D25930BD100E70AE2 /* Localizable.strings */,
 			);
 			path = Localization;
-			sourceTree = "<group>";
-		};
-		5F6E32FA259307A600E70AE2 /* Networking */ = {
-			isa = PBXGroup;
-			children = (
-				5F6E32CD259289C800E70AE2 /* TrailNetworkService.swift */,
-			);
-			path = Networking;
 			sourceTree = "<group>";
 		};
 		5FCFC88F259669C000D38AE4 /* Styles */ = {
@@ -698,6 +717,7 @@
 			files = (
 				5F6E32BE259287F300E70AE2 /* HikingFeedViewModel.swift in Sources */,
 				5F6E32D425928DB400E70AE2 /* Logger.swift in Sources */,
+				5F9B1EA725B53134000B3328 /* EnvironmentProvider.swift in Sources */,
 				5F01BAD425A18FC6002330BC /* TokenRefresher.swift in Sources */,
 				5F3B3F0E2595B44700512B4C /* HikingFeed.swift in Sources */,
 				5F6E32CE259289C800E70AE2 /* TrailNetworkService.swift in Sources */,

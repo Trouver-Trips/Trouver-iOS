@@ -17,7 +17,7 @@ class AppDelegate: NSObject, UIApplicationDelegate {
         // Initialize sign-in
         GIDSignIn.sharedInstance().clientID = "14106003132-6e5p3gnulc32uall0qn9hdumh1jpvgbf.apps.googleusercontent.com"
         GIDSignIn.sharedInstance().delegate = viewModel
-
+        viewModel.silentSignIn()
         return true
     }
 

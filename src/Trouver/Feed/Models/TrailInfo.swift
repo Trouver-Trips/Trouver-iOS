@@ -18,7 +18,7 @@ struct TrailInfo: Identifiable {
 
     // MARK: - Public properties
 
-    var id: Int { trail.trailID }
+    var id: String { trail.id }
     var name: String { trail.name }
     var imageUrls: [URL] {
         trail.images.compactMap { URL(string: $0) }

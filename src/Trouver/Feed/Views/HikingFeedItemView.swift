@@ -8,13 +8,27 @@
 import SwiftUI
 
 struct HikingFeedItemView: View {
+    // Private members
+    private let cornerRadius: CGFloat = 25
+
     var trailInfo: TrailInfo
 
     var body: some View {
         VStack {
             Text(trailInfo.name)
-            ImageCarouselView(images: trailInfo.imageUrls)
+                .fontWeight(.bold)
+                .font(.title)
+            AsyncImage(url: trailInfo.imageUrls[0])
+                .clipShape(
+                    RoundedRectangle(cornerRadius: cornerRadius)
+                )
+                .overlay(
+                    RoundedRectangle(cornerRadius: cornerRadius)
+                        .stroke(Color("BackgroundColor"), lineWidth: 3)
+                )
+                .aspectRatio(contentMode: .fit)
         }
+        .padding(.horizontal)
     }
 }
 

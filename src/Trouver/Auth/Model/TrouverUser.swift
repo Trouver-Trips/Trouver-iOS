@@ -14,5 +14,6 @@ struct TrouverUser {
     let familyName: String
     let email: String
     let accountType: AccountType
+    let accessToken: String
     let tokenRefresher: TokenRefresher
 }

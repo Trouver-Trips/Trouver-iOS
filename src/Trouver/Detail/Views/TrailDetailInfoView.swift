@@ -13,10 +13,14 @@ struct TrailDetailInfoView: View {
     var body: some View {
         ScrollView(.vertical) {
             VStack {
+                Text(viewModel.name)
+                    .fontWeight(.bold)
+                    .font(.system(.largeTitle, design: .rounded))
+                    .padding()
                 ImageCarouselView(images: viewModel.trailImages)
+                    .frame(height: UIScreen.main.bounds.width * 3.0/4.0)
             }
         }
-        .navigationTitle("hiking_title")
     }
 }
 
