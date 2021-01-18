@@ -15,3 +15,11 @@ Xcode 12.2
 1. run pod install
 1. open Trouver.xcworkspace
 1. Run the Trouver scheme
+
+### Local Server
+1. Install [localtunnel](https://github.com/localtunnel/localtunnel)
+1. In Trouver-Core, navigate to NodeApiPlayground
+1. Run `node app.js` (Runs on PORT 8080)
+1. Open a new terminal and run lt --port 8000
+1. Take note of the url (without https) and paste it into the `host` variable on the class `EnvironmentProvider`
+1. Deploy the app to simulator/device

@@ -21,13 +21,16 @@ struct HikingFeedView: View {
                             HikingFeedItemView(trailInfo: trailInfo)
                                 .listRowInsets(EdgeInsets())
                                 .padding(.vertical, 10)
+                                .onAppear {
+                                    self.viewModel.loadMoreContentIfNeeded(currentItem: trailInfo)
+                                }
                         }
                         .buttonStyle(FlatLinkStyle())
                     }
-                    Text("Fetching more...")
-                        .onAppear(perform: {
-                            self.viewModel.fetchTrails()
-                        })
+                }
+
+                if viewModel.isLoadingPage {
+                  ProgressView()
                 }
             }
             .navigationBarTitle("trouver_title")

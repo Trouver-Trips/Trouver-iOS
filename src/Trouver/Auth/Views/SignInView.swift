@@ -14,9 +14,9 @@ struct SignInView: View {
     // To use if/else in our body, we need to wrap the view in a Group
     var body: some View {
         ZStack {
-            if userViewModel.signedIn {
-                HikingFeedView(viewModel: trailFeed)
-            } else {
+            switch userViewModel.signInState {
+            case .signedIn: HikingFeedView(viewModel: trailFeed)
+            case .notSignedIn:
                 ZStack {
                     Image("Rainier")
                         .resizable()
@@ -34,6 +34,7 @@ struct SignInView: View {
                         .position(x: geometry.size.width / 2, y: geometry.size.height)
                     }
                 }
+            case .tryingSilentSignIn: ProgressView()
             }
         }
     }

@@ -29,7 +29,7 @@ protocol NetworkService {
 }
 
 struct TrailNetworkService {
-    private let host = "itchy-firefox-84.loca.lt"
+    private let host = EnvironmentProvider.host
     private let webClient: WebClient
 
     init(webClient: WebClient = HttpWebClient()) {

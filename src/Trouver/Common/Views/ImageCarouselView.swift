@@ -11,14 +11,13 @@ struct ImageCarouselView: View {
     let images: [URL]
     var body: some View {
         TabView {
-            ForEach(images[0..<5], id: \.self) { url in
-                AsyncImage(url: url, placeholder: { Image("Placeholder").resizable() })
-                    .frame(maxWidth: 500, maxHeight: 300)
-                    .scaledToFill()
+            ForEach(images.prefix(5), id: \.self) { url in
+                AsyncImage(url: url)
+                    .aspectRatio(contentMode: .fit)
             }
         }
         .tabViewStyle(PageTabViewStyle())
-        .fixedSize()
+        .background(Color("CarouselBackground"))
     }
 }
 

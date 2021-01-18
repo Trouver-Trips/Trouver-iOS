@@ -18,7 +18,6 @@ struct GoogleSignInButton: UIViewRepresentable {
         let button = GIDSignInButton()
         // Customize button here
         button.colorScheme = .light
-        googleManager?.restorePreviousSignIn()
         return button
     }
 
