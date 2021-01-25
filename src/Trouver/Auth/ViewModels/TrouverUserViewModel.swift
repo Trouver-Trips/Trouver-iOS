@@ -68,6 +68,7 @@ extension TrouverUserViewModel: GIDSignInDelegate {
 
     private func signInGoogleUser(googleUser: GIDGoogleUser) {
         if let profile = googleUser.profile {
+
             self.user = TrouverUser(userId: googleUser.userID,
                                     fullName: profile.name,
                                     givenName: profile.givenName,

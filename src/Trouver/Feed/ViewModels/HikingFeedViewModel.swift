@@ -12,7 +12,7 @@ import Foundation
  Main hiking feed
  */
 class HikingFeedViewModel: ObservableObject {
-    // Update whenever trail info changes
+    // Update whenever hiking info changes
     @Published private var hikingFeed = HikingFeed()
     @Published var isLoadingPage = false
 
@@ -20,24 +20,24 @@ class HikingFeedViewModel: ObservableObject {
     private var canLoadMorePages = true
     private let networkService: NetworkService
 
-    init(networkService: NetworkService = TrailNetworkService()) {
+    init(networkService: NetworkService = HikingNetworkingService()) {
         self.networkService = networkService
         loadMoreContent()
     }
 
     // MARK: Access to the Model
 
-    var trails: [TrailInfo] { hikingFeed.trails }
+    var hikes: [HikeInfo] { hikingFeed.hikes }
 
     // MARK: - Intents
 
-    func loadMoreContentIfNeeded(currentItem item: TrailInfo?) {
+    func loadMoreContentIfNeeded(currentItem item: HikeInfo?) {
         guard let item = item else {
             loadMoreContent()
             return
         }
 
-        let items = hikingFeed.trails
+        let items = hikingFeed.hikes
         let thresholdIndex = items.index(items.endIndex, offsetBy: -5)
         if items.firstIndex(where: { $0.id == item.id }) == thresholdIndex {
           loadMoreContent()
@@ -51,20 +51,20 @@ class HikingFeedViewModel: ObservableObject {
 
         isLoadingPage = true
 
-        self.networkService.fetchTrails(latitude: 47.6062,
+        self.networkService.fetchHikes(latitude: 47.6062,
                                         longitude: -122.3321,
                                         page: currentPage,
                                         state: .washington)
             .receive(on: DispatchQueue.main)
-            .handleEvents(receiveOutput: { trailResult in
-                self.canLoadMorePages = trailResult.hikes.hasNextPage
+            .handleEvents(receiveOutput: { hikeResult in
+                self.canLoadMorePages = hikeResult.hikes.hasNextPage
                 self.isLoadingPage = false
                 self.currentPage += 1
             })
-            .map { trailResult in self.trails + trailResult.hikes.docs.compactMap({ TrailInfo(trail: $0) })}
-            .map { HikingFeed(trails: $0) }
+            .map { hikeResult in self.hikes + hikeResult.hikes.docs.compactMap({ HikeInfo(hike: $0) })}
+            .map { HikingFeed(hikes: $0) }
             .catch({ error -> Just<HikingFeed> in
-                Logger.logError("Failed to get trails", error: error)
+                Logger.logError("Failed to get hikes", error: error)
                 return Just(self.hikingFeed)
             })
             .assign(to: &$hikingFeed)

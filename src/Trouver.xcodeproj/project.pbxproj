@@ -17,6 +17,12 @@
 		5F3B3EF325959C7200512B4C /* ImageCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F3B3EF225959C7200512B4C /* ImageCache.swift */; };
 		5F3B3F002595A61200512B4C /* HttpWebClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F3B3EFE2595A61200512B4C /* HttpWebClient.swift */; };
 		5F3B3F0E2595B44700512B4C /* HikingFeed.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F3B3F0D2595B44700512B4C /* HikingFeed.swift */; };
+		5F5587C625B6635900D1100A /* HikeDetailResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F5587C525B6635900D1100A /* HikeDetailResult.swift */; };
+		5F5587CE25B6636900D1100A /* HikeDetailInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F5587CD25B6636900D1100A /* HikeDetailInfo.swift */; };
+		5F5587FE25B67BAB00D1100A /* PhotoGridView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F5587FD25B67BAB00D1100A /* PhotoGridView.swift */; };
+		5F55880925B69AB200D1100A /* FullPhotoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F55880825B69AB200D1100A /* FullPhotoView.swift */; };
+		5F55881925BE62DB00D1100A /* PillView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F55881825BE62DA00D1100A /* PillView.swift */; };
+		5F55881E25BE7D6400D1100A /* WrappedHStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F55881D25BE7D6300D1100A /* WrappedHStack.swift */; };
 		5F57B46225A10B8E00741A5A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F57B46125A10B8E00741A5A /* AppDelegate.swift */; };
 		5F57B47C25A141AB00741A5A /* TrouverUserViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F57B47B25A141AB00741A5A /* TrouverUserViewModel.swift */; };
 		5F57B48925A141F100741A5A /* GoogleSignInButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F57B48825A141F100741A5A /* GoogleSignInButton.swift */; };
@@ -28,15 +34,15 @@
 		5F6E321B258E8F3700E70AE2 /* TrouverTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F6E321A258E8F3700E70AE2 /* TrouverTests.swift */; };
 		5F6E3226258E8F3700E70AE2 /* TrouverUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F6E3225258E8F3700E70AE2 /* TrouverUITests.swift */; };
 		5F6E3251258EFBAF00E70AE2 /* HikingFeedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F6E3250258EFBAF00E70AE2 /* HikingFeedView.swift */; };
-		5F6E32B025927DA700E70AE2 /* Hike.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F6E32AF25927DA700E70AE2 /* Hike.swift */; };
-		5F6E32B92592867C00E70AE2 /* TrailData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F6E32B82592867C00E70AE2 /* TrailData.swift */; };
+		5F6E32B025927DA700E70AE2 /* HikeResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F6E32AF25927DA700E70AE2 /* HikeResult.swift */; };
+		5F6E32B92592867C00E70AE2 /* HikeData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F6E32B82592867C00E70AE2 /* HikeData.swift */; };
 		5F6E32BE259287F300E70AE2 /* HikingFeedViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F6E32BD259287F300E70AE2 /* HikingFeedViewModel.swift */; };
-		5F6E32CE259289C800E70AE2 /* TrailNetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F6E32CD259289C800E70AE2 /* TrailNetworkService.swift */; };
+		5F6E32CE259289C800E70AE2 /* HikingNetworkingService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F6E32CD259289C800E70AE2 /* HikingNetworkingService.swift */; };
 		5F6E32D425928DB400E70AE2 /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F6E32D325928DB400E70AE2 /* Logger.swift */; };
 		5F6E32E125929BF700E70AE2 /* HikingFeedItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F6E32E025929BF700E70AE2 /* HikingFeedItemView.swift */; };
-		5F6E32E82592FF5600E70AE2 /* TrailDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F6E32E72592FF5500E70AE2 /* TrailDetailViewModel.swift */; };
-		5F6E32F0259300DB00E70AE2 /* TrailInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F6E32EF259300DB00E70AE2 /* TrailInfo.swift */; };
-		5F6E32F5259305CF00E70AE2 /* TrailDetailInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F6E32F4259305CF00E70AE2 /* TrailDetailInfoView.swift */; };
+		5F6E32E82592FF5600E70AE2 /* HikeDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F6E32E72592FF5500E70AE2 /* HikeDetailViewModel.swift */; };
+		5F6E32F0259300DB00E70AE2 /* HikeInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F6E32EF259300DB00E70AE2 /* HikeInfo.swift */; };
+		5F6E32F5259305CF00E70AE2 /* HikeDetailInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F6E32F4259305CF00E70AE2 /* HikeDetailInfoView.swift */; };
 		5F6E330B25930BD100E70AE2 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5F6E330D25930BD100E70AE2 /* Localizable.strings */; };
 		5F9B1EA725B53134000B3328 /* EnvironmentProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F9B1EA625B53134000B3328 /* EnvironmentProvider.swift */; };
 		5FCFC891259669D700D38AE4 /* FlatButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FCFC890259669D700D38AE4 /* FlatButtonStyle.swift */; };
@@ -77,6 +83,12 @@
 		5F3B3EF225959C7200512B4C /* ImageCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCache.swift; sourceTree = "<group>"; };
 		5F3B3EFE2595A61200512B4C /* HttpWebClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HttpWebClient.swift; sourceTree = "<group>"; };
 		5F3B3F0D2595B44700512B4C /* HikingFeed.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HikingFeed.swift; sourceTree = "<group>"; };
+		5F5587C525B6635900D1100A /* HikeDetailResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HikeDetailResult.swift; sourceTree = "<group>"; };
+		5F5587CD25B6636900D1100A /* HikeDetailInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HikeDetailInfo.swift; sourceTree = "<group>"; };
+		5F5587FD25B67BAB00D1100A /* PhotoGridView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoGridView.swift; sourceTree = "<group>"; };
+		5F55880825B69AB200D1100A /* FullPhotoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullPhotoView.swift; sourceTree = "<group>"; };
+		5F55881825BE62DA00D1100A /* PillView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PillView.swift; sourceTree = "<group>"; };
+		5F55881D25BE7D6300D1100A /* WrappedHStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WrappedHStack.swift; sourceTree = "<group>"; };
 		5F57B46125A10B8E00741A5A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5F57B47B25A141AB00741A5A /* TrouverUserViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrouverUserViewModel.swift; sourceTree = "<group>"; };
 		5F57B48825A141F100741A5A /* GoogleSignInButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleSignInButton.swift; sourceTree = "<group>"; };
@@ -94,15 +106,15 @@
 		5F6E3225258E8F3700E70AE2 /* TrouverUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrouverUITests.swift; sourceTree = "<group>"; };
 		5F6E3227258E8F3700E70AE2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5F6E3250258EFBAF00E70AE2 /* HikingFeedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HikingFeedView.swift; sourceTree = "<group>"; };
-		5F6E32AF25927DA700E70AE2 /* Hike.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Hike.swift; sourceTree = "<group>"; };
-		5F6E32B82592867C00E70AE2 /* TrailData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrailData.swift; sourceTree = "<group>"; };
+		5F6E32AF25927DA700E70AE2 /* HikeResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HikeResult.swift; sourceTree = "<group>"; };
+		5F6E32B82592867C00E70AE2 /* HikeData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HikeData.swift; sourceTree = "<group>"; };
 		5F6E32BD259287F300E70AE2 /* HikingFeedViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HikingFeedViewModel.swift; sourceTree = "<group>"; };
-		5F6E32CD259289C800E70AE2 /* TrailNetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrailNetworkService.swift; sourceTree = "<group>"; };
+		5F6E32CD259289C800E70AE2 /* HikingNetworkingService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HikingNetworkingService.swift; sourceTree = "<group>"; };
 		5F6E32D325928DB400E70AE2 /* Logger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
 		5F6E32E025929BF700E70AE2 /* HikingFeedItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HikingFeedItemView.swift; sourceTree = "<group>"; };
-		5F6E32E72592FF5500E70AE2 /* TrailDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrailDetailViewModel.swift; sourceTree = "<group>"; };
-		5F6E32EF259300DB00E70AE2 /* TrailInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrailInfo.swift; sourceTree = "<group>"; };
-		5F6E32F4259305CF00E70AE2 /* TrailDetailInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrailDetailInfoView.swift; sourceTree = "<group>"; };
+		5F6E32E72592FF5500E70AE2 /* HikeDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HikeDetailViewModel.swift; sourceTree = "<group>"; };
+		5F6E32EF259300DB00E70AE2 /* HikeInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HikeInfo.swift; sourceTree = "<group>"; };
+		5F6E32F4259305CF00E70AE2 /* HikeDetailInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HikeDetailInfoView.swift; sourceTree = "<group>"; };
 		5F6E330C25930BD100E70AE2 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		5F9B1EA625B53134000B3328 /* EnvironmentProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnvironmentProvider.swift; sourceTree = "<group>"; };
 		5FCFC890259669D700D38AE4 /* FlatButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlatButtonStyle.swift; sourceTree = "<group>"; };
@@ -178,6 +190,7 @@
 		5F15C7B825B5537200638851 /* Detail */ = {
 			isa = PBXGroup;
 			children = (
+				5F5587C425B6634B00D1100A /* Models */,
 				5F15C7BA25B5538500638851 /* ViewModels */,
 				5F15C7B925B5537A00638851 /* Views */,
 			);
@@ -187,7 +200,12 @@
 		5F15C7B925B5537A00638851 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				5F6E32F4259305CF00E70AE2 /* TrailDetailInfoView.swift */,
+				5F3B3EA12595592D00512B4C /* ImageCarouselView.swift */,
+				5F55880825B69AB200D1100A /* FullPhotoView.swift */,
+				5F5587FD25B67BAB00D1100A /* PhotoGridView.swift */,
+				5F55881825BE62DA00D1100A /* PillView.swift */,
+				5F55881D25BE7D6300D1100A /* WrappedHStack.swift */,
+				5F6E32F4259305CF00E70AE2 /* HikeDetailInfoView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -195,7 +213,7 @@
 		5F15C7BA25B5538500638851 /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
-				5F6E32E72592FF5500E70AE2 /* TrailDetailViewModel.swift */,
+				5F6E32E72592FF5500E70AE2 /* HikeDetailViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -204,7 +222,6 @@
 			isa = PBXGroup;
 			children = (
 				5F3B3EDE259573BB00512B4C /* AsyncImage.swift */,
-				5F3B3EA12595592D00512B4C /* ImageCarouselView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -216,6 +233,15 @@
 				5F3B3EF225959C7200512B4C /* ImageCache.swift */,
 			);
 			path = ImageUtils;
+			sourceTree = "<group>";
+		};
+		5F5587C425B6634B00D1100A /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				5F5587C525B6635900D1100A /* HikeDetailResult.swift */,
+				5F5587CD25B6636900D1100A /* HikeDetailInfo.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 		5F57B46925A10D7300741A5A /* Auth */ = {
@@ -366,8 +392,8 @@
 		5F6E3240258EFB7D00E70AE2 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				5F6E32AF25927DA700E70AE2 /* Hike.swift */,
-				5F6E32EF259300DB00E70AE2 /* TrailInfo.swift */,
+				5F6E32AF25927DA700E70AE2 /* HikeResult.swift */,
+				5F6E32EF259300DB00E70AE2 /* HikeInfo.swift */,
 				5F3B3F0D2595B44700512B4C /* HikingFeed.swift */,
 			);
 			path = Models;
@@ -378,7 +404,7 @@
 			children = (
 				5F9B1EA625B53134000B3328 /* EnvironmentProvider.swift */,
 				5F3B3EFE2595A61200512B4C /* HttpWebClient.swift */,
-				5F6E32CD259289C800E70AE2 /* TrailNetworkService.swift */,
+				5F6E32CD259289C800E70AE2 /* HikingNetworkingService.swift */,
 			);
 			path = Networking;
 			sourceTree = "<group>";
@@ -401,7 +427,7 @@
 		5F6E32B72592866000E70AE2 /* Data */ = {
 			isa = PBXGroup;
 			children = (
-				5F6E32B82592867C00E70AE2 /* TrailData.swift */,
+				5F6E32B82592867C00E70AE2 /* HikeData.swift */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -718,32 +744,38 @@
 				5F6E32BE259287F300E70AE2 /* HikingFeedViewModel.swift in Sources */,
 				5F6E32D425928DB400E70AE2 /* Logger.swift in Sources */,
 				5F9B1EA725B53134000B3328 /* EnvironmentProvider.swift in Sources */,
+				5F55881E25BE7D6400D1100A /* WrappedHStack.swift in Sources */,
 				5F01BAD425A18FC6002330BC /* TokenRefresher.swift in Sources */,
+				5F5587CE25B6636900D1100A /* HikeDetailInfo.swift in Sources */,
+				5F55881925BE62DB00D1100A /* PillView.swift in Sources */,
 				5F3B3F0E2595B44700512B4C /* HikingFeed.swift in Sources */,
-				5F6E32CE259289C800E70AE2 /* TrailNetworkService.swift in Sources */,
-				5F6E32B025927DA700E70AE2 /* Hike.swift in Sources */,
+				5F6E32CE259289C800E70AE2 /* HikingNetworkingService.swift in Sources */,
+				5F6E32B025927DA700E70AE2 /* HikeResult.swift in Sources */,
 				5F01BAA325A15FF8002330BC /* UIApplication+ViewController.swift in Sources */,
 				5F6E32E125929BF700E70AE2 /* HikingFeedItemView.swift in Sources */,
 				5F6E3251258EFBAF00E70AE2 /* HikingFeedView.swift in Sources */,
 				5F57B48925A141F100741A5A /* GoogleSignInButton.swift in Sources */,
-				5F6E32B92592867C00E70AE2 /* TrailData.swift in Sources */,
+				5F6E32B92592867C00E70AE2 /* HikeData.swift in Sources */,
 				5F57B46225A10B8E00741A5A /* AppDelegate.swift in Sources */,
 				5F57B47C25A141AB00741A5A /* TrouverUserViewModel.swift in Sources */,
 				5F57B49725A1435C00741A5A /* TrouverUser.swift in Sources */,
 				5F3B3EF325959C7200512B4C /* ImageCache.swift in Sources */,
 				5F57B48E25A141FD00741A5A /* SignInView.swift in Sources */,
-				5F6E32F5259305CF00E70AE2 /* TrailDetailInfoView.swift in Sources */,
+				5F6E32F5259305CF00E70AE2 /* HikeDetailInfoView.swift in Sources */,
 				5F6E3209258E8F3500E70AE2 /* TrouverApp.swift in Sources */,
 				5F3B3F002595A61200512B4C /* HttpWebClient.swift in Sources */,
 				5F01BADE25A19046002330BC /* GoogleTokenRefresher.swift in Sources */,
-				5F6E32F0259300DB00E70AE2 /* TrailInfo.swift in Sources */,
+				5F6E32F0259300DB00E70AE2 /* HikeInfo.swift in Sources */,
 				5F3B3EC825956FF500512B4C /* ImageLoader.swift in Sources */,
 				5F3B3EA22595592D00512B4C /* ImageCarouselView.swift in Sources */,
-				5F6E32E82592FF5600E70AE2 /* TrailDetailViewModel.swift in Sources */,
+				5F55880925B69AB200D1100A /* FullPhotoView.swift in Sources */,
+				5F5587FE25B67BAB00D1100A /* PhotoGridView.swift in Sources */,
+				5F6E32E82592FF5600E70AE2 /* HikeDetailViewModel.swift in Sources */,
 				5FCFC89A259704F700D38AE4 /* DataFactory.swift in Sources */,
 				5FCFC891259669D700D38AE4 /* FlatButtonStyle.swift in Sources */,
 				5F3B3EDF259573BB00512B4C /* AsyncImage.swift in Sources */,
 				5F01BACF25A16CD9002330BC /* AccountType.swift in Sources */,
+				5F5587C625B6635900D1100A /* HikeDetailResult.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -14,3 +14,6 @@
 
 /* title for log out button */
 "log_out_button_title" = "Log Out";
+
+/* photos */
+"more_photos_title" = "More Photos";
