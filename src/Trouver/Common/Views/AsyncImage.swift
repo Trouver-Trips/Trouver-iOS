@@ -38,7 +38,7 @@ struct AsyncImage: View {
 #if DEBUG
 struct AsyncImageViewPreviews: PreviewProvider {
     static var previews: some View {
-        AsyncImage(url: TrailData.trailImages[0])
+        AsyncImage(url: HikeData.hikeImages[0])
     }
 }
 #endif

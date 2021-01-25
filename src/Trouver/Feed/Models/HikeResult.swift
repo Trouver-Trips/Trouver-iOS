@@ -1,5 +1,5 @@
 //
-//  Hike.swift
+//  HikeResult.swift
 //  Trouver
 //
 //  Created by Sagar Punhani on 12/22/20.
@@ -7,31 +7,16 @@
 
 import Foundation
 
-// MARK: - TrailResult
+// MARK: - HikeResult
 
-struct TrailResult: Codable {
+struct HikeResult: Codable {
     let message: String
     let hikes: Hikes
 }
 
-// MARK: - Sample Data
-
-extension TrailResult: DataFactory {
-    static func sampleData() -> TrailResult {
-        guard let data = TrailData.trailData.data(using: .utf8) else {
-           preconditionFailure("Could not convert string to data")
-        }
-        do {
-            return try JSONDecoder().decode(TrailResult.self, from: data)
-        } catch let error {
-            preconditionFailure("Could not decode data: \(error)")
-        }
-    }
-}
-
 // MARK: - Hikes
 struct Hikes: Codable {
-    let docs: [Doc]
+    let docs: [HikeDoc]
     let totalDocs, limit, totalPages, page: Int
     let pagingCounter: Int
     let hasPrevPage, hasNextPage: Bool
@@ -40,7 +25,7 @@ struct Hikes: Codable {
 }
 
 // MARK: - Doc
-struct Doc: Codable {
+struct HikeDoc: Codable {
     let location: Location
     let images: [String]
     let id: String
@@ -57,4 +42,18 @@ struct Doc: Codable {
 // MARK: - Location
 struct Location: Codable {
     let coordinates: [Double]
+}
+
+// MARK: - Sample Data
+extension HikeResult: DataFactory {
+    static func sampleData() -> HikeResult {
+        guard let data = HikeData.hikeInfo.data(using: .utf8) else {
+           preconditionFailure("Could not convert string to data")
+        }
+        do {
+            return try JSONDecoder().decode(HikeResult.self, from: data)
+        } catch let error {
+            preconditionFailure("Could not decode data: \(error)")
+        }
+    }
 }

@@ -8,5 +8,5 @@
 import Foundation
 
 struct HikingFeed {
-    var trails: [TrailInfo] = []
+    var hikes: [HikeInfo] = []
 }

@@ -9,13 +9,13 @@ import SwiftUI
 
 struct SignInView: View {
     @EnvironmentObject var userViewModel: TrouverUserViewModel
-    @StateObject var trailFeed: HikingFeedViewModel = HikingFeedViewModel()
+    @StateObject var hikeFeed: HikingFeedViewModel = HikingFeedViewModel()
 
     // To use if/else in our body, we need to wrap the view in a Group
     var body: some View {
         ZStack {
             switch userViewModel.signInState {
-            case .signedIn: HikingFeedView(viewModel: trailFeed)
+            case .signedIn: HikingFeedView(viewModel: hikeFeed)
             case .notSignedIn:
                 ZStack {
                     Image("Rainier")

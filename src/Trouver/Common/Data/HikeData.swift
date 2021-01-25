@@ -1,5 +1,5 @@
 //
-//  TrailData.swift
+//  HikeData.swift
 //  Trouver
 //
 //  Created by Sagar Punhani on 12/22/20.
@@ -9,15 +9,11 @@ import UIKit
 
 // swiftlint:disable type_body_length line_length file_length
 #if DEBUG
-struct TrailData {
+struct HikeData {
 
-    static let trailImages = [
-        "https://crosscut.com/sites/default/files/styles/max_992x992/public/images/articles/DSC_4964_e2it6j.jpg?itok=SoLZo9nu",
-        "https://di-uploads-pod4.dealerinspire.com/fiatoftacoma/uploads/2018/12/Depositphotos_33075035_xl-2015.jpg",
-        "https://cdn.cnn.com/cnnnext/dam/assets/200630030038-mt-rainier-file-exlarge-169.jpg"
-    ].compactMap { URL(string: $0) }
+    static let hikeImages = HikeResult.sampleData().hikes.docs[0].images.compactMap { URL(string: $0) }
 
-    static let trailData =
+    static let hikeInfo =
     """
     {
         "message": "Fetched hikes successfully.",

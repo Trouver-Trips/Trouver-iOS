@@ -15,14 +15,14 @@ struct HikingFeedView: View {
         NavigationView {
             ScrollView {
                 LazyVStack {
-                    ForEach(viewModel.trails) { trailInfo in
+                    ForEach(viewModel.hikes) { hikeInfo in
                         NavigationLink(destination:
-                                        TrailDetailInfoView(viewModel: TrailDetailViewModel(trailInfo: trailInfo))) {
-                            HikingFeedItemView(trailInfo: trailInfo)
+                                        HikeDetailInfoView(viewModel: HikeDetailViewModel(hikeInfo: hikeInfo))) {
+                            HikingFeedItemView(hikeInfo: hikeInfo)
                                 .listRowInsets(EdgeInsets())
                                 .padding(.vertical, 10)
                                 .onAppear {
-                                    self.viewModel.loadMoreContentIfNeeded(currentItem: trailInfo)
+                                    self.viewModel.loadMoreContentIfNeeded(currentItem: hikeInfo)
                                 }
                         }
                         .buttonStyle(FlatLinkStyle())
