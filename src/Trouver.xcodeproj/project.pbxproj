@@ -47,6 +47,8 @@
 		5F9B1EA725B53134000B3328 /* EnvironmentProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F9B1EA625B53134000B3328 /* EnvironmentProvider.swift */; };
 		5FCFC891259669D700D38AE4 /* FlatButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FCFC890259669D700D38AE4 /* FlatButtonStyle.swift */; };
 		5FCFC89A259704F700D38AE4 /* DataFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FCFC899259704F700D38AE4 /* DataFactory.swift */; };
+		5FD8F80725C3B5CB0025652E /* StarsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FD8F80625C3B5CB0025652E /* StarsView.swift */; };
+		5FE72ACD25C2493C00E17321 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FE72ACC25C2493C00E17321 /* MainView.swift */; };
 		80D1B588155FFE62407CE32E /* libPods-TrouverTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6A561502C9EBA17986E59173 /* libPods-TrouverTests.a */; };
 		A3B9B0CBC5F05493A7DAE5F6 /* libPods-Trouver-TrouverUITests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D19A014B1B4333C368BA2734 /* libPods-Trouver-TrouverUITests.a */; };
 		F6FFF84BE15EFD5B2898ECA1 /* libPods-Trouver.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D05ECA1C3024340E90D2EF38 /* libPods-Trouver.a */; };
@@ -119,6 +121,8 @@
 		5F9B1EA625B53134000B3328 /* EnvironmentProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnvironmentProvider.swift; sourceTree = "<group>"; };
 		5FCFC890259669D700D38AE4 /* FlatButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlatButtonStyle.swift; sourceTree = "<group>"; };
 		5FCFC899259704F700D38AE4 /* DataFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataFactory.swift; sourceTree = "<group>"; };
+		5FD8F80625C3B5CB0025652E /* StarsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StarsView.swift; sourceTree = "<group>"; };
+		5FE72ACC25C2493C00E17321 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		6A561502C9EBA17986E59173 /* libPods-TrouverTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-TrouverTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		79B77CF453AEBCE8AD231CA2 /* Pods-Trouver-TrouverUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Trouver-TrouverUITests.debug.xcconfig"; path = "Target Support Files/Pods-Trouver-TrouverUITests/Pods-Trouver-TrouverUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		8C3CFEDC3BC9E56A537A5E66 /* Pods-Trouver-TrouverUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Trouver-TrouverUITests.release.xcconfig"; path = "Target Support Files/Pods-Trouver-TrouverUITests/Pods-Trouver-TrouverUITests.release.xcconfig"; sourceTree = "<group>"; };
@@ -206,6 +210,7 @@
 				5F55881825BE62DA00D1100A /* PillView.swift */,
 				5F55881D25BE7D6300D1100A /* WrappedHStack.swift */,
 				5F6E32F4259305CF00E70AE2 /* HikeDetailInfoView.swift */,
+				5FD8F80625C3B5CB0025652E /* StarsView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -238,7 +243,6 @@
 		5F5587C425B6634B00D1100A /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				5F5587C525B6635900D1100A /* HikeDetailResult.swift */,
 				5F5587CD25B6636900D1100A /* HikeDetailInfo.swift */,
 			);
 			path = Models;
@@ -312,6 +316,7 @@
 				5F57B46925A10D7300741A5A /* Auth */,
 				5F15C7B825B5537200638851 /* Detail */,
 				5F6E323A258EFB2F00E70AE2 /* Feed */,
+				5FE72AC725C248CC00E17321 /* Favorites */,
 				5F6E3211258E8F3600E70AE2 /* Info.plist */,
 			);
 			path = Trouver;
@@ -359,6 +364,7 @@
 				5F6E3208258E8F3500E70AE2 /* TrouverApp.swift */,
 				5F57B46125A10B8E00741A5A /* AppDelegate.swift */,
 				5F01BAA225A15FF8002330BC /* UIApplication+ViewController.swift */,
+				5FE72ACC25C2493C00E17321 /* MainView.swift */,
 			);
 			path = App;
 			sourceTree = "<group>";
@@ -392,7 +398,6 @@
 		5F6E3240258EFB7D00E70AE2 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				5F6E32AF25927DA700E70AE2 /* HikeResult.swift */,
 				5F6E32EF259300DB00E70AE2 /* HikeInfo.swift */,
 				5F3B3F0D2595B44700512B4C /* HikingFeed.swift */,
 			);
@@ -402,6 +407,7 @@
 		5F6E3241258EFB8300E70AE2 /* Networking */ = {
 			isa = PBXGroup;
 			children = (
+				5FE72AC325C238D900E17321 /* Models */,
 				5F9B1EA625B53134000B3328 /* EnvironmentProvider.swift */,
 				5F3B3EFE2595A61200512B4C /* HttpWebClient.swift */,
 				5F6E32CD259289C800E70AE2 /* HikingNetworkingService.swift */,
@@ -462,6 +468,46 @@
 				5FCFC899259704F700D38AE4 /* DataFactory.swift */,
 			);
 			path = Factory;
+			sourceTree = "<group>";
+		};
+		5FE72AC325C238D900E17321 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				5F6E32AF25927DA700E70AE2 /* HikeResult.swift */,
+				5F5587C525B6635900D1100A /* HikeDetailResult.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		5FE72AC725C248CC00E17321 /* Favorites */ = {
+			isa = PBXGroup;
+			children = (
+				5FE72AC825C248D800E17321 /* Models */,
+				5FE72AC925C248DD00E17321 /* ViewModels */,
+				5FE72ACA25C248E200E17321 /* Views */,
+			);
+			path = Favorites;
+			sourceTree = "<group>";
+		};
+		5FE72AC825C248D800E17321 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		5FE72AC925C248DD00E17321 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		5FE72ACA25C248E200E17321 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -742,6 +788,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5F6E32BE259287F300E70AE2 /* HikingFeedViewModel.swift in Sources */,
+				5FE72ACD25C2493C00E17321 /* MainView.swift in Sources */,
 				5F6E32D425928DB400E70AE2 /* Logger.swift in Sources */,
 				5F9B1EA725B53134000B3328 /* EnvironmentProvider.swift in Sources */,
 				5F55881E25BE7D6400D1100A /* WrappedHStack.swift in Sources */,
@@ -758,6 +805,7 @@
 				5F6E32B92592867C00E70AE2 /* HikeData.swift in Sources */,
 				5F57B46225A10B8E00741A5A /* AppDelegate.swift in Sources */,
 				5F57B47C25A141AB00741A5A /* TrouverUserViewModel.swift in Sources */,
+				5FD8F80725C3B5CB0025652E /* StarsView.swift in Sources */,
 				5F57B49725A1435C00741A5A /* TrouverUser.swift in Sources */,
 				5F3B3EF325959C7200512B4C /* ImageCache.swift in Sources */,
 				5F57B48E25A141FD00741A5A /* SignInView.swift in Sources */,

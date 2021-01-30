@@ -12,8 +12,8 @@ import Combine
  Detail page for hike
  */
 class HikeDetailViewModel: ObservableObject {
-    @Published var hikeInfo: HikeInfo
-    @Published var hikeDetailInfo: HikeDetailInfo?
+    @Published var state: State = .idle
+    private let hikeInfo: HikeInfo
 
     private let networkService: NetworkService
 
@@ -22,12 +22,6 @@ class HikeDetailViewModel: ObservableObject {
         self.networkService = networkService
     }
 
-    // MARK: - Access to the model
-
-    var name: String { hikeDetailInfo?.name ?? hikeInfo.name }
-    var hikeImages: [URL] { hikeDetailInfo?.imageUrls ?? hikeInfo.imageUrls }
-    var attributes: [String] { hikeDetailInfo?.attrributes ?? [] }
-
     // MARK: - Intents
 
     func onAppear() {
@@ -35,13 +29,23 @@ class HikeDetailViewModel: ObservableObject {
     }
 
     private func loadContent() {
+        self.state = .loading
         self.networkService.getHikeDetail(id: self.hikeInfo.id, state: .washington)
             .receive(on: DispatchQueue.main)
-            .map { result in HikeDetailInfo(hikeDetail: result.hike) }
-            .catch({ error -> Just<HikeDetailInfo?> in
+            .map { result in State.loaded(HikeDetailInfo(hikeDetail: result.hike)) }
+            .catch({ error -> Just<State> in
                 Logger.logError("Failed to get hike detail", error: error)
-                return Just(self.hikeDetailInfo)
+                return Just(State.error(error))
             })
-            .assign(to: &$hikeDetailInfo)
+            .assign(to: &$state)
+    }
+}
+
+extension HikeDetailViewModel {
+    enum State {
+        case idle
+        case loading
+        case loaded(HikeDetailInfo)
+        case error(Error)
     }
 }

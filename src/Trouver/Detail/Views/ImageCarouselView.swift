@@ -10,15 +10,13 @@ import SwiftUI
 struct ImageCarouselView: View {
     let images: [URL]
     var body: some View {
-        GroupBox {
-            TabView {
-                ForEach(images.prefix(5), id: \.self) { url in
-                    AsyncImage(url: url)
-                        .aspectRatio(contentMode: .fit)
-                }
+        TabView {
+            ForEach(images.prefix(5), id: \.self) { url in
+                AsyncImage(url: url)
+                    .aspectRatio(contentMode: .fit)
             }
-            .tabViewStyle(PageTabViewStyle())
         }
+        .tabViewStyle(PageTabViewStyle())
     }
 }
 
