@@ -10,7 +10,7 @@ import Foundation
 struct EnvironmentProvider {
     static var host: String {
         #if DEBUG
-        return "shy-donkey-15.loca.lt"
+        return "cold-liger-16.loca.lt"
         #else
         return "www.trouvertrips.com"
         #endif

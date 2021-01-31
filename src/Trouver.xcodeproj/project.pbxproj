@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		00403BF548F5A54D51647902 /* libPods-TrouverTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 22C73E33FA7FC62C46557372 /* libPods-TrouverTests.a */; };
+		13BE8450E7A87B2809672768 /* libPods-Trouver-TrouverUITests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C72252497044FDF918D0193A /* libPods-Trouver-TrouverUITests.a */; };
+		221B21E4D48EFE13734339BA /* libPods-Trouver.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6EB57E507CD8E25E24ADDDDF /* libPods-Trouver.a */; };
 		5F01BAA325A15FF8002330BC /* UIApplication+ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F01BAA225A15FF8002330BC /* UIApplication+ViewController.swift */; };
 		5F01BACF25A16CD9002330BC /* AccountType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F01BACE25A16CD9002330BC /* AccountType.swift */; };
 		5F01BAD425A18FC6002330BC /* TokenRefresher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F01BAD325A18FC6002330BC /* TokenRefresher.swift */; };
@@ -48,10 +51,9 @@
 		5FCFC891259669D700D38AE4 /* FlatButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FCFC890259669D700D38AE4 /* FlatButtonStyle.swift */; };
 		5FCFC89A259704F700D38AE4 /* DataFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FCFC899259704F700D38AE4 /* DataFactory.swift */; };
 		5FD8F80725C3B5CB0025652E /* StarsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FD8F80625C3B5CB0025652E /* StarsView.swift */; };
+		5FD8F81125C62AB90025652E /* SearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FD8F81025C62AB90025652E /* SearchViewModel.swift */; };
+		5FD8F81C25C631EC0025652E /* NavigationSearch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FD8F81B25C631EC0025652E /* NavigationSearch.swift */; };
 		5FE72ACD25C2493C00E17321 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FE72ACC25C2493C00E17321 /* MainView.swift */; };
-		80D1B588155FFE62407CE32E /* libPods-TrouverTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6A561502C9EBA17986E59173 /* libPods-TrouverTests.a */; };
-		A3B9B0CBC5F05493A7DAE5F6 /* libPods-Trouver-TrouverUITests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D19A014B1B4333C368BA2734 /* libPods-Trouver-TrouverUITests.a */; };
-		F6FFF84BE15EFD5B2898ECA1 /* libPods-Trouver.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D05ECA1C3024340E90D2EF38 /* libPods-Trouver.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -73,6 +75,7 @@
 
 /* Begin PBXFileReference section */
 		0EBBA1D6D92C3C387E988922 /* Pods-TrouverTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TrouverTests.debug.xcconfig"; path = "Target Support Files/Pods-TrouverTests/Pods-TrouverTests.debug.xcconfig"; sourceTree = "<group>"; };
+		22C73E33FA7FC62C46557372 /* libPods-TrouverTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-TrouverTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3BB23F279F081CF4AC5B83CB /* Pods-TrouverTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TrouverTests.release.xcconfig"; path = "Target Support Files/Pods-TrouverTests/Pods-TrouverTests.release.xcconfig"; sourceTree = "<group>"; };
 		3E1D72EE7D4E56B1C0A41C4C /* Pods-Trouver.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Trouver.debug.xcconfig"; path = "Target Support Files/Pods-Trouver/Pods-Trouver.debug.xcconfig"; sourceTree = "<group>"; };
 		5F01BAA225A15FF8002330BC /* UIApplication+ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIApplication+ViewController.swift"; sourceTree = "<group>"; };
@@ -122,12 +125,13 @@
 		5FCFC890259669D700D38AE4 /* FlatButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlatButtonStyle.swift; sourceTree = "<group>"; };
 		5FCFC899259704F700D38AE4 /* DataFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataFactory.swift; sourceTree = "<group>"; };
 		5FD8F80625C3B5CB0025652E /* StarsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StarsView.swift; sourceTree = "<group>"; };
+		5FD8F81025C62AB90025652E /* SearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewModel.swift; sourceTree = "<group>"; };
+		5FD8F81B25C631EC0025652E /* NavigationSearch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationSearch.swift; sourceTree = "<group>"; };
 		5FE72ACC25C2493C00E17321 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
-		6A561502C9EBA17986E59173 /* libPods-TrouverTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-TrouverTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		6EB57E507CD8E25E24ADDDDF /* libPods-Trouver.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Trouver.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		79B77CF453AEBCE8AD231CA2 /* Pods-Trouver-TrouverUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Trouver-TrouverUITests.debug.xcconfig"; path = "Target Support Files/Pods-Trouver-TrouverUITests/Pods-Trouver-TrouverUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		8C3CFEDC3BC9E56A537A5E66 /* Pods-Trouver-TrouverUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Trouver-TrouverUITests.release.xcconfig"; path = "Target Support Files/Pods-Trouver-TrouverUITests/Pods-Trouver-TrouverUITests.release.xcconfig"; sourceTree = "<group>"; };
-		D05ECA1C3024340E90D2EF38 /* libPods-Trouver.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Trouver.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		D19A014B1B4333C368BA2734 /* libPods-Trouver-TrouverUITests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Trouver-TrouverUITests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		C72252497044FDF918D0193A /* libPods-Trouver-TrouverUITests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Trouver-TrouverUITests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		DC6E2CB79FF36043EF22C087 /* Pods-Trouver.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Trouver.release.xcconfig"; path = "Target Support Files/Pods-Trouver/Pods-Trouver.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -136,7 +140,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F6FFF84BE15EFD5B2898ECA1 /* libPods-Trouver.a in Frameworks */,
+				221B21E4D48EFE13734339BA /* libPods-Trouver.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -144,7 +148,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				80D1B588155FFE62407CE32E /* libPods-TrouverTests.a in Frameworks */,
+				00403BF548F5A54D51647902 /* libPods-TrouverTests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -152,7 +156,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A3B9B0CBC5F05493A7DAE5F6 /* libPods-Trouver-TrouverUITests.a in Frameworks */,
+				13BE8450E7A87B2809672768 /* libPods-Trouver-TrouverUITests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -162,9 +166,9 @@
 		2686D032E91E4A93A39810CB /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				D05ECA1C3024340E90D2EF38 /* libPods-Trouver.a */,
-				D19A014B1B4333C368BA2734 /* libPods-Trouver-TrouverUITests.a */,
-				6A561502C9EBA17986E59173 /* libPods-TrouverTests.a */,
+				6EB57E507CD8E25E24ADDDDF /* libPods-Trouver.a */,
+				C72252497044FDF918D0193A /* libPods-Trouver-TrouverUITests.a */,
+				22C73E33FA7FC62C46557372 /* libPods-TrouverTests.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -316,7 +320,6 @@
 				5F57B46925A10D7300741A5A /* Auth */,
 				5F15C7B825B5537200638851 /* Detail */,
 				5F6E323A258EFB2F00E70AE2 /* Feed */,
-				5FE72AC725C248CC00E17321 /* Favorites */,
 				5F6E3211258E8F3600E70AE2 /* Info.plist */,
 			);
 			path = Trouver;
@@ -382,6 +385,7 @@
 			isa = PBXGroup;
 			children = (
 				5F6E32BD259287F300E70AE2 /* HikingFeedViewModel.swift */,
+				5FD8F81025C62AB90025652E /* SearchViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -391,6 +395,7 @@
 			children = (
 				5F6E3250258EFBAF00E70AE2 /* HikingFeedView.swift */,
 				5F6E32E025929BF700E70AE2 /* HikingFeedItemView.swift */,
+				5FD8F81B25C631EC0025652E /* NavigationSearch.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -477,37 +482,6 @@
 				5F5587C525B6635900D1100A /* HikeDetailResult.swift */,
 			);
 			path = Models;
-			sourceTree = "<group>";
-		};
-		5FE72AC725C248CC00E17321 /* Favorites */ = {
-			isa = PBXGroup;
-			children = (
-				5FE72AC825C248D800E17321 /* Models */,
-				5FE72AC925C248DD00E17321 /* ViewModels */,
-				5FE72ACA25C248E200E17321 /* Views */,
-			);
-			path = Favorites;
-			sourceTree = "<group>";
-		};
-		5FE72AC825C248D800E17321 /* Models */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Models;
-			sourceTree = "<group>";
-		};
-		5FE72AC925C248DD00E17321 /* ViewModels */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = ViewModels;
-			sourceTree = "<group>";
-		};
-		5FE72ACA25C248E200E17321 /* Views */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -802,8 +776,10 @@
 				5F6E32E125929BF700E70AE2 /* HikingFeedItemView.swift in Sources */,
 				5F6E3251258EFBAF00E70AE2 /* HikingFeedView.swift in Sources */,
 				5F57B48925A141F100741A5A /* GoogleSignInButton.swift in Sources */,
+				5FD8F81C25C631EC0025652E /* NavigationSearch.swift in Sources */,
 				5F6E32B92592867C00E70AE2 /* HikeData.swift in Sources */,
 				5F57B46225A10B8E00741A5A /* AppDelegate.swift in Sources */,
+				5FD8F81125C62AB90025652E /* SearchViewModel.swift in Sources */,
 				5F57B47C25A141AB00741A5A /* TrouverUserViewModel.swift in Sources */,
 				5FD8F80725C3B5CB0025652E /* StarsView.swift in Sources */,
 				5F57B49725A1435C00741A5A /* TrouverUser.swift in Sources */,

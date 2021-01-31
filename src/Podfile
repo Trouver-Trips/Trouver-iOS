@@ -1,5 +1,6 @@
 # Uncomment the next line to define a global platform for your project
 platform :ios, '14.0'
+# use_frameworks!
 
 # ignore all warnings from all pods
 inhibit_all_warnings!
@@ -10,6 +11,7 @@ target 'Trouver' do
 
   # Pods for Trouver
   pod 'GoogleSignIn'
+  pod 'GooglePlaces'
 
   target 'TrouverTests' do
     inherit! :search_paths

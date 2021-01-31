@@ -10,7 +10,9 @@ import SwiftUI
 struct HikingFeedView: View {
     @ObservedObject var viewModel: HikingFeedViewModel
     @EnvironmentObject var userViewModel: TrouverUserViewModel
-
+    
+    @State private var text: String = ""
+    
     var body: some View {
         NavigationView {
             ScrollView {
@@ -41,7 +43,9 @@ struct HikingFeedView: View {
                     Text("log_out_button_title")
                 })
             )
+            .navigationSearch(text: $text)
         }
+
     }
 }
 

@@ -17,9 +17,9 @@ struct MainView: View {
                     Image(systemName: "list.dash")
                     Text("Feed")
                 }
-            HikingFeedView(viewModel: hikeFeed)
+            EmptyView()
                 .tabItem {
-                    Image(systemName: "list.dash")
+                    Image(systemName: "suit.heart.fill")
                     Text("Favorites")
                 }
         }
