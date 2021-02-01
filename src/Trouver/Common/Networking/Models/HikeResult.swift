@@ -21,7 +21,7 @@ struct Hikes: Codable {
     let pagingCounter: Int
     let hasPrevPage, hasNextPage: Bool
     let prevPage: Int?
-    let nextPage: Int
+    let nextPage: Int?
 }
 
 // MARK: - Doc

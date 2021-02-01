@@ -51,9 +51,9 @@
 		5FCFC891259669D700D38AE4 /* FlatButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FCFC890259669D700D38AE4 /* FlatButtonStyle.swift */; };
 		5FCFC89A259704F700D38AE4 /* DataFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FCFC899259704F700D38AE4 /* DataFactory.swift */; };
 		5FD8F80725C3B5CB0025652E /* StarsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FD8F80625C3B5CB0025652E /* StarsView.swift */; };
-		5FD8F81125C62AB90025652E /* SearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FD8F81025C62AB90025652E /* SearchViewModel.swift */; };
-		5FD8F81C25C631EC0025652E /* NavigationSearch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FD8F81B25C631EC0025652E /* NavigationSearch.swift */; };
+		5FD8F81C25C631EC0025652E /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FD8F81B25C631EC0025652E /* SearchView.swift */; };
 		5FE72ACD25C2493C00E17321 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FE72ACC25C2493C00E17321 /* MainView.swift */; };
+		5FF40A0725C7831600158C3A /* SearchViewCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FF40A0625C7831600158C3A /* SearchViewCoordinator.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -125,9 +125,9 @@
 		5FCFC890259669D700D38AE4 /* FlatButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlatButtonStyle.swift; sourceTree = "<group>"; };
 		5FCFC899259704F700D38AE4 /* DataFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataFactory.swift; sourceTree = "<group>"; };
 		5FD8F80625C3B5CB0025652E /* StarsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StarsView.swift; sourceTree = "<group>"; };
-		5FD8F81025C62AB90025652E /* SearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewModel.swift; sourceTree = "<group>"; };
-		5FD8F81B25C631EC0025652E /* NavigationSearch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationSearch.swift; sourceTree = "<group>"; };
+		5FD8F81B25C631EC0025652E /* SearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
 		5FE72ACC25C2493C00E17321 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
+		5FF40A0625C7831600158C3A /* SearchViewCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewCoordinator.swift; sourceTree = "<group>"; };
 		6EB57E507CD8E25E24ADDDDF /* libPods-Trouver.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Trouver.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		79B77CF453AEBCE8AD231CA2 /* Pods-Trouver-TrouverUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Trouver-TrouverUITests.debug.xcconfig"; path = "Target Support Files/Pods-Trouver-TrouverUITests/Pods-Trouver-TrouverUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		8C3CFEDC3BC9E56A537A5E66 /* Pods-Trouver-TrouverUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Trouver-TrouverUITests.release.xcconfig"; path = "Target Support Files/Pods-Trouver-TrouverUITests/Pods-Trouver-TrouverUITests.release.xcconfig"; sourceTree = "<group>"; };
@@ -385,7 +385,7 @@
 			isa = PBXGroup;
 			children = (
 				5F6E32BD259287F300E70AE2 /* HikingFeedViewModel.swift */,
-				5FD8F81025C62AB90025652E /* SearchViewModel.swift */,
+				5FF40A0625C7831600158C3A /* SearchViewCoordinator.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -395,7 +395,7 @@
 			children = (
 				5F6E3250258EFBAF00E70AE2 /* HikingFeedView.swift */,
 				5F6E32E025929BF700E70AE2 /* HikingFeedItemView.swift */,
-				5FD8F81B25C631EC0025652E /* NavigationSearch.swift */,
+				5FD8F81B25C631EC0025652E /* SearchView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -761,6 +761,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5FF40A0725C7831600158C3A /* SearchViewCoordinator.swift in Sources */,
 				5F6E32BE259287F300E70AE2 /* HikingFeedViewModel.swift in Sources */,
 				5FE72ACD25C2493C00E17321 /* MainView.swift in Sources */,
 				5F6E32D425928DB400E70AE2 /* Logger.swift in Sources */,
@@ -776,10 +777,9 @@
 				5F6E32E125929BF700E70AE2 /* HikingFeedItemView.swift in Sources */,
 				5F6E3251258EFBAF00E70AE2 /* HikingFeedView.swift in Sources */,
 				5F57B48925A141F100741A5A /* GoogleSignInButton.swift in Sources */,
-				5FD8F81C25C631EC0025652E /* NavigationSearch.swift in Sources */,
+				5FD8F81C25C631EC0025652E /* SearchView.swift in Sources */,
 				5F6E32B92592867C00E70AE2 /* HikeData.swift in Sources */,
 				5F57B46225A10B8E00741A5A /* AppDelegate.swift in Sources */,
-				5FD8F81125C62AB90025652E /* SearchViewModel.swift in Sources */,
 				5F57B47C25A141AB00741A5A /* TrouverUserViewModel.swift in Sources */,
 				5FD8F80725C3B5CB0025652E /* StarsView.swift in Sources */,
 				5F57B49725A1435C00741A5A /* TrouverUser.swift in Sources */,

@@ -53,7 +53,7 @@ struct HikeDetailInfoView: View {
 struct HikeDetailInfoViewPreviews: PreviewProvider {
     static var previews: some View {
         HikeDetailInfoView(viewModel:
-                            HikeDetailViewModel(hikeInfo: HikeInfo.sampleData()))
+                            HikeDetailViewModel(hikeInfo: HikeInfo.sampleData(), usState: .washington))
     }
 }
 #endif

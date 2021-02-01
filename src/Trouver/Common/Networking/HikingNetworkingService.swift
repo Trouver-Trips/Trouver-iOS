@@ -21,6 +21,7 @@ enum USState: String {
     case washington
     case california
     case oregon
+    case unknown
 }
 
 protocol NetworkService {

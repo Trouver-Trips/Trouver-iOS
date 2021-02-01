@@ -24,7 +24,7 @@ struct HikeDetailInfo {
         hikeDetail.images.compactMap { URL(string: $0) }
     }
     var attributes: [String] { hikeDetail.attributes }
-    var description: String { hikeDetail.hikeDescription }
+    var description: String { hikeDetail.hikeDescription ?? "No description found" }
     var rating: CGFloat { CGFloat(hikeDetail.rating) }
     var location: Location { hikeDetail.location }
     var difficulty: Int { hikeDetail.difficulty }

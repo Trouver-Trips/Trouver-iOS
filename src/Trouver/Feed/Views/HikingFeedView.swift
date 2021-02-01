@@ -19,7 +19,9 @@ struct HikingFeedView: View {
                 LazyVStack {
                     ForEach(viewModel.hikes) { hikeInfo in
                         NavigationLink(destination:
-                                        HikeDetailInfoView(viewModel: HikeDetailViewModel(hikeInfo: hikeInfo))) {
+                                        HikeDetailInfoView(viewModel:
+                                                            HikeDetailViewModel(hikeInfo: hikeInfo,
+                                                                                usState: viewModel.usState))) {
                             HikingFeedItemView(hikeInfo: hikeInfo)
                                 .listRowInsets(EdgeInsets())
                                 .padding(.vertical, 10)
@@ -43,7 +45,9 @@ struct HikingFeedView: View {
                     Text("log_out_button_title")
                 })
             )
-            .navigationSearch(text: $text)
+            .searchView { location, state in
+                viewModel.search(location: location, state: state)
+            }
         }
 
     }

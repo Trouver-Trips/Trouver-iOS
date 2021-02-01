@@ -17,7 +17,8 @@ struct DetailDoc: Codable {
     let location: Location
     let attributes: [String]
     let images: [String]
-    let id, hikeDescription: String
+    let id: String
+    let hikeDescription: String?
     let difficulty: Int
     let elevationGain, length: Double
     let name: String

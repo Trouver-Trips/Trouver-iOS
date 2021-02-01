@@ -9,31 +9,20 @@ import SwiftUI
 import GooglePlaces
 
 extension View {
-    func navigationSearch(text: Binding<String>,
-                          onSearchButtonClicked: @escaping () -> Void = {},
-                          onCancelButtonClicked: @escaping () -> Void = {}) -> some View {
-        overlay(NavigationSearch(text: text,
-                                 onSearchButtonClicked: onSearchButtonClicked,
-                                 onCancelButtonClicked: onCancelButtonClicked)
+    func navigationSearch(onSearchButtonClicked: @escaping () -> Void = {}) -> some View {
+        overlay(SearchView(onSearchButtonClicked: onSearchButtonClicked)
                     .frame(width: 0, height: 0))
     }
 }
 
-struct NavigationSearch: UIViewControllerRepresentable {
+struct SearchView: UIViewControllerRepresentable {
     typealias UIViewControllerType = Wrapper
     
-    @Binding private var text: String
-    
     private let onSearchButtonClicked: () -> Void
-    private let onCancelButtonClicked: () -> Void
     
     private var resultsViewController: GMSAutocompleteResultsViewController = GMSAutocompleteResultsViewController()
     
-    init(text: Binding<String>,
-         onSearchButtonClicked: @escaping () -> Void = {},
-         onCancelButtonClicked: @escaping () -> Void = {}) {
-        self._text = text
-        self.onCancelButtonClicked = onCancelButtonClicked
+    init(onSearchButtonClicked: @escaping () -> Void = {}) {
         self.onSearchButtonClicked = onSearchButtonClicked
     }
     
@@ -47,53 +36,37 @@ struct NavigationSearch: UIViewControllerRepresentable {
     
     func updateUIViewController(_ wrapper: Wrapper, context: Context) {
         wrapper.searchController = context.coordinator.searchController
-        wrapper.searchController?.searchBar.text = text
         wrapper.navigationBarSizeToFit()
         
     }
     
-    class Coordinator: NSObject, UISearchResultsUpdating, UISearchBarDelegate, GMSAutocompleteResultsViewControllerDelegate {
+    class Coordinator: NSObject,
+                       GMSAutocompleteResultsViewControllerDelegate {
         
-        let representable: NavigationSearch
+        let representable: SearchView
         
         let searchController: UISearchController
         
-        init(representable: NavigationSearch) {
+        init(representable: SearchView) {
             self.representable = representable
             
             // Specify the place data types to return.
-                let fields: GMSPlaceField = GMSPlaceField(rawValue: UInt(GMSPlaceField.name.rawValue) |
-                  UInt(GMSPlaceField.placeID.rawValue))
+            let fields: GMSPlaceField = GMSPlaceField(rawValue: UInt(GMSPlaceField.name.rawValue) |
+            UInt(GMSPlaceField.placeID.rawValue))
             self.representable.resultsViewController.placeFields = fields
             
-
-            self.searchController = UISearchController(searchResultsController: self.representable.resultsViewController)
+            self.searchController = UISearchController(searchResultsController:
+                                                        self.representable.resultsViewController)
             
             super.init()
             representable.resultsViewController.delegate = self
             self.searchController.searchResultsUpdater = self.representable.resultsViewController
-            self.searchController.searchBar.delegate = self
-            self.searchController.searchBar.text = representable.text
-        }
-        
-        // MARK: - UISearchResultsUpdating
-        func updateSearchResults(for searchController: UISearchController) {
-            guard let text = searchController.searchBar.text else { return }
-            DispatchQueue.main.async { [weak self] in self?.representable.text = text }
-        }
-        
-        // MARK: - UISearchBarDelegate
-        func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
-            DispatchQueue.main.async { self.representable.onCancelButtonClicked() }
-        }
-
-        func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-            DispatchQueue.main.async { self.representable.onSearchButtonClicked() }
         }
         
         func resultsController(_ resultsController: GMSAutocompleteResultsViewController,
                                didAutocompleteWith place: GMSPlace) {
             Logger.logInfo(place.name ?? "no name")
+            self.searchController.dismiss(animated: true, completion: nil)
         }
         
         func resultsController(_ resultsController: GMSAutocompleteResultsViewController,
