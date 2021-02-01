@@ -8,5 +8,13 @@
 import Foundation
 
 struct HikingFeed {
-    var hikes: [HikeInfo] = []
+    private(set) var hikes: [HikeInfo] = []
+    
+    mutating func addHikes(hikes: [HikeInfo]) {
+        self.hikes.append(contentsOf: hikes)
+    }
+    
+    mutating func clearHikes() {
+        self.hikes.removeAll()
+    }
 }

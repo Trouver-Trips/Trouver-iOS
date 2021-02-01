@@ -20,17 +20,18 @@ struct HikeDetailInfoView: View {
                     Text(hikeDetail.name)
                         .fontWeight(.bold)
                         .font(.system(.largeTitle, design: .rounded))
+                        .fixedSize(horizontal: false, vertical: true)
                         .padding()
+                    ImageCarouselView(images: hikeDetail.imageUrls)
+                        .frame(height: UIScreen.main.bounds.width * 3.0/4.0)
+                        .background(Color(.systemGray5))
                     Group {
-                        ImageCarouselView(images: hikeDetail.imageUrls)
-                            .frame(height: UIScreen.main.bounds.width * 3.0/4.0)
                         StarsView(rating: hikeDetail.rating, maxRating: 5)
                             .frame(width: 150)
-                            .padding(.bottom)
+                            .padding(.vertical)
                         GroupBox {
                             DisclosureGroup("more_photos_title") {
                                 PhotoGridView(images: hikeDetail.imageUrls)
-                                    .padding()
                             }
                             .accentColor(Color(UIColor.systemGray2))
                         }

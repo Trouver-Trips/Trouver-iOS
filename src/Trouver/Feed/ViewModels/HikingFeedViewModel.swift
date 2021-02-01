@@ -23,11 +23,17 @@ class HikingFeedViewModel: ObservableObject {
     private var canLoadMorePages = true
     private var location = CLLocationCoordinate2D(latitude: 47.6062,
                                                   longitude: -122.3321)
+    private var cancellable: AnyCancellable?
+    
     var usState = USState.washington
 
     init(networkService: NetworkService = HikingNetworkingService()) {
         self.networkService = networkService
         self.search(location: self.location, state: self.usState)
+    }
+    
+    deinit {
+        self.cancellable?.cancel()
     }
 
     // MARK: Access to the Model
@@ -40,7 +46,7 @@ class HikingFeedViewModel: ObservableObject {
         self.currentPage = 1
         self.location = location
         self.usState = state
-        self.hikingFeed = HikingFeed()
+        self.hikingFeed.clearHikes()
         self.canLoadMorePages = true
         loadMoreContent()
     }
@@ -65,22 +71,23 @@ class HikingFeedViewModel: ObservableObject {
 
         isLoadingPage = true
 
-        self.networkService.fetchHikes(latitude: self.location.latitude,
-                                       longitude: self.location.longitude,
-                                        page: currentPage,
-                                        state: self.usState)
+        self.cancellable = self.networkService.fetchHikes(latitude: self.location.latitude,
+                                                          longitude: self.location.longitude,
+                                                          page: currentPage,
+                                                          state: self.usState)
             .receive(on: DispatchQueue.main)
             .handleEvents(receiveOutput: { hikeResult in
                 self.canLoadMorePages = hikeResult.hikes.hasNextPage
                 self.isLoadingPage = false
                 self.currentPage += 1
             })
-            .map { hikeResult in self.hikes + hikeResult.hikes.docs.compactMap({ HikeInfo(hike: $0) })}
-            .map { HikingFeed(hikes: $0) }
-            .catch({ error -> Just<HikingFeed> in
+            .map { hikeResult in hikeResult.hikes.docs.compactMap({ HikeInfo(hike: $0) })}
+            .catch({ error -> Just<[HikeInfo]> in
                 Logger.logError("Failed to get hikes", error: error)
-                return Just(self.hikingFeed)
+                return Just([])
             })
-            .assign(to: &$hikingFeed)
+            .sink(receiveValue: { hikes in
+                self.hikingFeed.addHikes(hikes: hikes)
+            })
     }
 }
