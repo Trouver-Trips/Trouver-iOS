@@ -48,8 +48,8 @@ struct HikingFeedView: View {
             .searchView { location, state in
                 viewModel.search(location: location, state: state)
             }
+            .background(Color(.systemGray6))
         }
-
     }
 }
 

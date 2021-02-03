@@ -39,7 +39,10 @@ struct HikeDetailInfoView: View {
                         Text(hikeDetail.description)
                     }
                     .padding(.horizontal)
-                case .error: Text("Error")
+                case .error:
+                    HStack {
+                        Text("Error Loading Details")
+                    }
                 }
             }
         }

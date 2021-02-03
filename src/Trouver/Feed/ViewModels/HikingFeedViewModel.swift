@@ -78,15 +78,17 @@ class HikingFeedViewModel: ObservableObject {
             .receive(on: DispatchQueue.main)
             .handleEvents(receiveOutput: { hikeResult in
                 self.canLoadMorePages = hikeResult.hikes.hasNextPage
-                self.isLoadingPage = false
                 self.currentPage += 1
+            }, receiveCompletion: { _ in
+                self.isLoadingPage = false
             })
             .map { hikeResult in hikeResult.hikes.docs.compactMap({ HikeInfo(hike: $0) })}
             .catch({ error -> Just<[HikeInfo]> in
                 Logger.logError("Failed to get hikes", error: error)
                 return Just([])
             })
-            .sink(receiveValue: { hikes in
+            .sink(
+                receiveValue: { hikes in
                 self.hikingFeed.addHikes(hikes: hikes)
             })
     }
