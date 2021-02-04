@@ -21,7 +21,7 @@ class AppDelegate: NSObject, UIApplicationDelegate {
         viewModel.silentSignIn()
         
         // Initialize Places
-        GMSPlacesClient.provideAPIKey("AIzaSyB6Hcfy8V9t8LBA8GnIwOu3nHS-54Eqjbc")
+        GMSPlacesClient.provideAPIKey("<GOOGLE_API_KEY>")
         return true
     }
 
