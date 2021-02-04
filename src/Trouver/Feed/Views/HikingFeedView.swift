@@ -10,14 +10,18 @@ import SwiftUI
 struct HikingFeedView: View {
     @ObservedObject var viewModel: HikingFeedViewModel
     @EnvironmentObject var userViewModel: TrouverUserViewModel
-
+    
+    @State private var text: String = ""
+    
     var body: some View {
         NavigationView {
             ScrollView {
                 LazyVStack {
                     ForEach(viewModel.hikes) { hikeInfo in
                         NavigationLink(destination:
-                                        HikeDetailInfoView(viewModel: HikeDetailViewModel(hikeInfo: hikeInfo))) {
+                                        HikeDetailInfoView(viewModel:
+                                                            HikeDetailViewModel(hikeInfo: hikeInfo,
+                                                                                usState: viewModel.usState))) {
                             HikingFeedItemView(hikeInfo: hikeInfo)
                                 .listRowInsets(EdgeInsets())
                                 .padding(.vertical, 10)
@@ -41,6 +45,10 @@ struct HikingFeedView: View {
                     Text("log_out_button_title")
                 })
             )
+            .searchView { location, state in
+                viewModel.search(location: location, state: state)
+            }
+            .background(Color(.systemGray6))
         }
     }
 }

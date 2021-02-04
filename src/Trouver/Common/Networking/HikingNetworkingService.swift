@@ -21,6 +21,11 @@ enum USState: String {
     case washington
     case california
     case oregon
+    case unknown
+}
+
+enum NetworkError: Error {
+    case invalidUrl
 }
 
 protocol NetworkService {
@@ -78,7 +83,7 @@ extension HikingNetworkingService: NetworkService {
         components.path = path
         components.queryItems = params.map { URLQueryItem(name: $0, value: $1) }
         guard let url = components.url else {
-            preconditionFailure("URL is invalid")
+            return Fail(error: NetworkError.invalidUrl).eraseToAnyPublisher()
         }
         return self.webClient.request(URLRequest(url: url))
     }

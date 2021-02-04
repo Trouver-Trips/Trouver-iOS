@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		00403BF548F5A54D51647902 /* libPods-TrouverTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 22C73E33FA7FC62C46557372 /* libPods-TrouverTests.a */; };
+		13BE8450E7A87B2809672768 /* libPods-Trouver-TrouverUITests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C72252497044FDF918D0193A /* libPods-Trouver-TrouverUITests.a */; };
+		221B21E4D48EFE13734339BA /* libPods-Trouver.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6EB57E507CD8E25E24ADDDDF /* libPods-Trouver.a */; };
 		5F01BAA325A15FF8002330BC /* UIApplication+ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F01BAA225A15FF8002330BC /* UIApplication+ViewController.swift */; };
 		5F01BACF25A16CD9002330BC /* AccountType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F01BACE25A16CD9002330BC /* AccountType.swift */; };
 		5F01BAD425A18FC6002330BC /* TokenRefresher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F01BAD325A18FC6002330BC /* TokenRefresher.swift */; };
@@ -47,9 +50,11 @@
 		5F9B1EA725B53134000B3328 /* EnvironmentProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F9B1EA625B53134000B3328 /* EnvironmentProvider.swift */; };
 		5FCFC891259669D700D38AE4 /* FlatButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FCFC890259669D700D38AE4 /* FlatButtonStyle.swift */; };
 		5FCFC89A259704F700D38AE4 /* DataFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FCFC899259704F700D38AE4 /* DataFactory.swift */; };
-		80D1B588155FFE62407CE32E /* libPods-TrouverTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6A561502C9EBA17986E59173 /* libPods-TrouverTests.a */; };
-		A3B9B0CBC5F05493A7DAE5F6 /* libPods-Trouver-TrouverUITests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D19A014B1B4333C368BA2734 /* libPods-Trouver-TrouverUITests.a */; };
-		F6FFF84BE15EFD5B2898ECA1 /* libPods-Trouver.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D05ECA1C3024340E90D2EF38 /* libPods-Trouver.a */; };
+		5FD8F80725C3B5CB0025652E /* StarsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FD8F80625C3B5CB0025652E /* StarsView.swift */; };
+		5FD8F81C25C631EC0025652E /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FD8F81B25C631EC0025652E /* SearchView.swift */; };
+		5FE72ACD25C2493C00E17321 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FE72ACC25C2493C00E17321 /* MainView.swift */; };
+		5FF40A0725C7831600158C3A /* SearchViewCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FF40A0625C7831600158C3A /* SearchViewCoordinator.swift */; };
+		5FF40A0C25CA3A8300158C3A /* ErrorResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FF40A0B25CA3A8200158C3A /* ErrorResult.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -71,6 +76,7 @@
 
 /* Begin PBXFileReference section */
 		0EBBA1D6D92C3C387E988922 /* Pods-TrouverTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TrouverTests.debug.xcconfig"; path = "Target Support Files/Pods-TrouverTests/Pods-TrouverTests.debug.xcconfig"; sourceTree = "<group>"; };
+		22C73E33FA7FC62C46557372 /* libPods-TrouverTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-TrouverTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3BB23F279F081CF4AC5B83CB /* Pods-TrouverTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TrouverTests.release.xcconfig"; path = "Target Support Files/Pods-TrouverTests/Pods-TrouverTests.release.xcconfig"; sourceTree = "<group>"; };
 		3E1D72EE7D4E56B1C0A41C4C /* Pods-Trouver.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Trouver.debug.xcconfig"; path = "Target Support Files/Pods-Trouver/Pods-Trouver.debug.xcconfig"; sourceTree = "<group>"; };
 		5F01BAA225A15FF8002330BC /* UIApplication+ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIApplication+ViewController.swift"; sourceTree = "<group>"; };
@@ -119,11 +125,15 @@
 		5F9B1EA625B53134000B3328 /* EnvironmentProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnvironmentProvider.swift; sourceTree = "<group>"; };
 		5FCFC890259669D700D38AE4 /* FlatButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlatButtonStyle.swift; sourceTree = "<group>"; };
 		5FCFC899259704F700D38AE4 /* DataFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataFactory.swift; sourceTree = "<group>"; };
-		6A561502C9EBA17986E59173 /* libPods-TrouverTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-TrouverTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		5FD8F80625C3B5CB0025652E /* StarsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StarsView.swift; sourceTree = "<group>"; };
+		5FD8F81B25C631EC0025652E /* SearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
+		5FE72ACC25C2493C00E17321 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
+		5FF40A0625C7831600158C3A /* SearchViewCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewCoordinator.swift; sourceTree = "<group>"; };
+		5FF40A0B25CA3A8200158C3A /* ErrorResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorResult.swift; sourceTree = "<group>"; };
+		6EB57E507CD8E25E24ADDDDF /* libPods-Trouver.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Trouver.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		79B77CF453AEBCE8AD231CA2 /* Pods-Trouver-TrouverUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Trouver-TrouverUITests.debug.xcconfig"; path = "Target Support Files/Pods-Trouver-TrouverUITests/Pods-Trouver-TrouverUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		8C3CFEDC3BC9E56A537A5E66 /* Pods-Trouver-TrouverUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Trouver-TrouverUITests.release.xcconfig"; path = "Target Support Files/Pods-Trouver-TrouverUITests/Pods-Trouver-TrouverUITests.release.xcconfig"; sourceTree = "<group>"; };
-		D05ECA1C3024340E90D2EF38 /* libPods-Trouver.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Trouver.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		D19A014B1B4333C368BA2734 /* libPods-Trouver-TrouverUITests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Trouver-TrouverUITests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		C72252497044FDF918D0193A /* libPods-Trouver-TrouverUITests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Trouver-TrouverUITests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		DC6E2CB79FF36043EF22C087 /* Pods-Trouver.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Trouver.release.xcconfig"; path = "Target Support Files/Pods-Trouver/Pods-Trouver.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -132,7 +142,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F6FFF84BE15EFD5B2898ECA1 /* libPods-Trouver.a in Frameworks */,
+				221B21E4D48EFE13734339BA /* libPods-Trouver.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -140,7 +150,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				80D1B588155FFE62407CE32E /* libPods-TrouverTests.a in Frameworks */,
+				00403BF548F5A54D51647902 /* libPods-TrouverTests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -148,7 +158,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A3B9B0CBC5F05493A7DAE5F6 /* libPods-Trouver-TrouverUITests.a in Frameworks */,
+				13BE8450E7A87B2809672768 /* libPods-Trouver-TrouverUITests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -158,9 +168,9 @@
 		2686D032E91E4A93A39810CB /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				D05ECA1C3024340E90D2EF38 /* libPods-Trouver.a */,
-				D19A014B1B4333C368BA2734 /* libPods-Trouver-TrouverUITests.a */,
-				6A561502C9EBA17986E59173 /* libPods-TrouverTests.a */,
+				6EB57E507CD8E25E24ADDDDF /* libPods-Trouver.a */,
+				C72252497044FDF918D0193A /* libPods-Trouver-TrouverUITests.a */,
+				22C73E33FA7FC62C46557372 /* libPods-TrouverTests.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -206,6 +216,7 @@
 				5F55881825BE62DA00D1100A /* PillView.swift */,
 				5F55881D25BE7D6300D1100A /* WrappedHStack.swift */,
 				5F6E32F4259305CF00E70AE2 /* HikeDetailInfoView.swift */,
+				5FD8F80625C3B5CB0025652E /* StarsView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -238,7 +249,6 @@
 		5F5587C425B6634B00D1100A /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				5F5587C525B6635900D1100A /* HikeDetailResult.swift */,
 				5F5587CD25B6636900D1100A /* HikeDetailInfo.swift */,
 			);
 			path = Models;
@@ -359,6 +369,7 @@
 				5F6E3208258E8F3500E70AE2 /* TrouverApp.swift */,
 				5F57B46125A10B8E00741A5A /* AppDelegate.swift */,
 				5F01BAA225A15FF8002330BC /* UIApplication+ViewController.swift */,
+				5FE72ACC25C2493C00E17321 /* MainView.swift */,
 			);
 			path = App;
 			sourceTree = "<group>";
@@ -376,6 +387,7 @@
 			isa = PBXGroup;
 			children = (
 				5F6E32BD259287F300E70AE2 /* HikingFeedViewModel.swift */,
+				5FF40A0625C7831600158C3A /* SearchViewCoordinator.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -385,6 +397,7 @@
 			children = (
 				5F6E3250258EFBAF00E70AE2 /* HikingFeedView.swift */,
 				5F6E32E025929BF700E70AE2 /* HikingFeedItemView.swift */,
+				5FD8F81B25C631EC0025652E /* SearchView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -392,7 +405,6 @@
 		5F6E3240258EFB7D00E70AE2 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				5F6E32AF25927DA700E70AE2 /* HikeResult.swift */,
 				5F6E32EF259300DB00E70AE2 /* HikeInfo.swift */,
 				5F3B3F0D2595B44700512B4C /* HikingFeed.swift */,
 			);
@@ -402,6 +414,7 @@
 		5F6E3241258EFB8300E70AE2 /* Networking */ = {
 			isa = PBXGroup;
 			children = (
+				5FE72AC325C238D900E17321 /* Models */,
 				5F9B1EA625B53134000B3328 /* EnvironmentProvider.swift */,
 				5F3B3EFE2595A61200512B4C /* HttpWebClient.swift */,
 				5F6E32CD259289C800E70AE2 /* HikingNetworkingService.swift */,
@@ -462,6 +475,16 @@
 				5FCFC899259704F700D38AE4 /* DataFactory.swift */,
 			);
 			path = Factory;
+			sourceTree = "<group>";
+		};
+		5FE72AC325C238D900E17321 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				5F6E32AF25927DA700E70AE2 /* HikeResult.swift */,
+				5F5587C525B6635900D1100A /* HikeDetailResult.swift */,
+				5FF40A0B25CA3A8200158C3A /* ErrorResult.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -741,7 +764,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5FF40A0725C7831600158C3A /* SearchViewCoordinator.swift in Sources */,
 				5F6E32BE259287F300E70AE2 /* HikingFeedViewModel.swift in Sources */,
+				5FE72ACD25C2493C00E17321 /* MainView.swift in Sources */,
 				5F6E32D425928DB400E70AE2 /* Logger.swift in Sources */,
 				5F9B1EA725B53134000B3328 /* EnvironmentProvider.swift in Sources */,
 				5F55881E25BE7D6400D1100A /* WrappedHStack.swift in Sources */,
@@ -755,9 +780,12 @@
 				5F6E32E125929BF700E70AE2 /* HikingFeedItemView.swift in Sources */,
 				5F6E3251258EFBAF00E70AE2 /* HikingFeedView.swift in Sources */,
 				5F57B48925A141F100741A5A /* GoogleSignInButton.swift in Sources */,
+				5FD8F81C25C631EC0025652E /* SearchView.swift in Sources */,
 				5F6E32B92592867C00E70AE2 /* HikeData.swift in Sources */,
 				5F57B46225A10B8E00741A5A /* AppDelegate.swift in Sources */,
 				5F57B47C25A141AB00741A5A /* TrouverUserViewModel.swift in Sources */,
+				5FD8F80725C3B5CB0025652E /* StarsView.swift in Sources */,
+				5FF40A0C25CA3A8300158C3A /* ErrorResult.swift in Sources */,
 				5F57B49725A1435C00741A5A /* TrouverUser.swift in Sources */,
 				5F3B3EF325959C7200512B4C /* ImageCache.swift in Sources */,
 				5F57B48E25A141FD00741A5A /* SignInView.swift in Sources */,

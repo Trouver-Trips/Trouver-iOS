@@ -10,6 +10,7 @@ target 'Trouver' do
 
   # Pods for Trouver
   pod 'GoogleSignIn'
+  pod 'GooglePlaces'
 
   target 'TrouverTests' do
     inherit! :search_paths

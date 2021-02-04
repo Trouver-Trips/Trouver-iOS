@@ -13,21 +13,38 @@ struct HikeDetailInfoView: View {
     var body: some View {
         ScrollView(.vertical, showsIndicators: false) {
             VStack {
-                Text(viewModel.name)
-                    .fontWeight(.bold)
-                    .font(.system(.largeTitle, design: .rounded))
-                ImageCarouselView(images: viewModel.hikeImages)
-                    .frame(height: UIScreen.main.bounds.width * 3.0/4.0)
-                WrappedHStack(items: viewModel.attributes)
-                GroupBox {
-                    DisclosureGroup("more_photos_title") {
-                        PhotoGridView(images: viewModel.hikeImages)
-                            .padding()
+                switch viewModel.state {
+                case .idle: EmptyView()
+                case .loading: ProgressView()
+                case .loaded(let hikeDetail):
+                    Text(hikeDetail.name)
+                        .fontWeight(.bold)
+                        .font(.system(.largeTitle, design: .rounded))
+                        .fixedSize(horizontal: false, vertical: true)
+                        .padding()
+                    ImageCarouselView(images: hikeDetail.imageUrls)
+                        .frame(height: UIScreen.main.bounds.width * 3.0/4.0)
+                        .background(Color(.systemGray5))
+                    Group {
+                        StarsView(rating: hikeDetail.rating, maxRating: 5)
+                            .frame(width: 150)
+                            .padding(.vertical)
+                        GroupBox {
+                            DisclosureGroup("more_photos_title") {
+                                PhotoGridView(images: hikeDetail.imageUrls)
+                            }
+                            .accentColor(Color(UIColor.systemGray2))
+                        }
+                        WrappedHStack(items: hikeDetail.attributes)
+                        Text(hikeDetail.description)
                     }
-                    .accentColor(Color(UIColor.systemGray2))
+                    .padding(.horizontal)
+                case .error:
+                    HStack {
+                        Text("Error Loading Details")
+                    }
                 }
             }
-            .padding()
         }
         .onAppear {
             viewModel.onAppear()
@@ -40,7 +57,7 @@ struct HikeDetailInfoView: View {
 struct HikeDetailInfoViewPreviews: PreviewProvider {
     static var previews: some View {
         HikeDetailInfoView(viewModel:
-                            HikeDetailViewModel(hikeInfo: HikeInfo.sampleData()))
+                            HikeDetailViewModel(hikeInfo: HikeInfo.sampleData(), usState: .washington))
     }
 }
 #endif
