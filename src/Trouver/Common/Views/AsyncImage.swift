@@ -13,9 +13,11 @@ import SwiftUI
  */
 struct AsyncImage: View {
     @StateObject private var loader: ImageLoader
+    private let showPlaceHolder: Bool
 
-    init(url: URL) {
+    init(url: URL, showPlaceHolder: Bool = false) {
         _loader = StateObject(wrappedValue: ImageLoader(url: url, cache: Environment(\.imageCache).wrappedValue))
+        self.showPlaceHolder = showPlaceHolder
     }
 
     var body: some View {
@@ -25,7 +27,12 @@ struct AsyncImage: View {
                     Image(uiImage: uiImage)
                         .resizable()
                 } else {
-                    EmptyView()
+                    if showPlaceHolder {
+                        Image("Logo")
+                            .resizable()
+                    } else {
+                        EmptyView()
+                    }
                 }
             }
             .opacity(loader.image != nil ? 1 : 0)

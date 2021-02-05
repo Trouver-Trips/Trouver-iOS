@@ -8,11 +8,17 @@
 import Foundation
 
 struct EnvironmentProvider {
+    static var currEnv: Environment = .production
+    
+    enum Environment {
+        case development
+        case production
+    }
+    
     static var host: String {
-        #if DEBUG
-        return "gentle-kangaroo-36.loca.lt"
-        #else
-        return "www.trouvertrips.com"
-        #endif
+        switch currEnv {
+        case .development: return "gentle-kangaroo-36.loca.lt"
+        case .production: return "trouver-1609617930729.wl.r.appspot.com"
+        }
     }
 }

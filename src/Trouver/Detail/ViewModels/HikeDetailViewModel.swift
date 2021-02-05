@@ -14,13 +14,11 @@ import Combine
 class HikeDetailViewModel: ObservableObject {
     @Published var state: State = .idle
     private let hikeInfo: HikeInfo
-    private let usState: USState
 
     private let networkService: NetworkService
 
-    init(hikeInfo: HikeInfo, usState: USState, networkService: NetworkService = HikingNetworkingService()) {
+    init(hikeInfo: HikeInfo, networkService: NetworkService = HikingNetworkingService()) {
         self.hikeInfo = hikeInfo
-        self.usState = usState
         self.networkService = networkService
     }
 
@@ -32,7 +30,7 @@ class HikeDetailViewModel: ObservableObject {
 
     private func loadContent() {
         self.state = .loading
-        self.networkService.getHikeDetail(id: self.hikeInfo.id, state: usState)
+        self.networkService.getHikeDetail(id: self.hikeInfo.id)
             .receive(on: DispatchQueue.main)
             .map { result in State.loaded(HikeDetailInfo(hikeDetail: result.hike)) }
             .catch({ error -> Just<State> in

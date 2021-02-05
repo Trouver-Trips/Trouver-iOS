@@ -25,11 +25,9 @@ class HikingFeedViewModel: ObservableObject {
                                                   longitude: -122.3321)
     private var cancellable: AnyCancellable?
     
-    var usState = USState.washington
-
     init(networkService: NetworkService = HikingNetworkingService()) {
         self.networkService = networkService
-        self.search(location: self.location, state: self.usState)
+        self.search(location: self.location)
     }
     
     deinit {
@@ -42,10 +40,9 @@ class HikingFeedViewModel: ObservableObject {
 
     // MARK: - Intents
     
-    func search(location: CLLocationCoordinate2D, state: USState) {
+    func search(location: CLLocationCoordinate2D) {
         self.currentPage = 1
         self.location = location
-        self.usState = state
         self.hikingFeed.clearHikes()
         self.canLoadMorePages = true
         loadMoreContent()
@@ -73,8 +70,7 @@ class HikingFeedViewModel: ObservableObject {
 
         self.cancellable = self.networkService.fetchHikes(latitude: self.location.latitude,
                                                           longitude: self.location.longitude,
-                                                          page: currentPage,
-                                                          state: self.usState)
+                                                          page: currentPage)
             .receive(on: DispatchQueue.main)
             .handleEvents(receiveOutput: { hikeResult in
                 self.canLoadMorePages = hikeResult.hikes.hasNextPage

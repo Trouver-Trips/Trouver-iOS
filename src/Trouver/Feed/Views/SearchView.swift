@@ -9,7 +9,7 @@ import SwiftUI
 import GooglePlaces
 
 extension View {
-    func searchView(onSearchButtonClicked: @escaping (CLLocationCoordinate2D, USState) -> Void = {_, _  in })
+    func searchView(onSearchButtonClicked: @escaping (CLLocationCoordinate2D) -> Void = {_  in })
         -> some View {
         overlay(SearchView(onSearchButtonClicked: onSearchButtonClicked)
                     .frame(width: 0, height: 0))
@@ -19,10 +19,10 @@ extension View {
 struct SearchView: UIViewControllerRepresentable {
     typealias UIViewControllerType = Wrapper
     
-    let onSearchButtonClicked: (CLLocationCoordinate2D, USState) -> Void
+    let onSearchButtonClicked: (CLLocationCoordinate2D) -> Void
     let resultsViewController: GMSAutocompleteResultsViewController = GMSAutocompleteResultsViewController()
     
-    init(onSearchButtonClicked: @escaping (CLLocationCoordinate2D, USState) -> Void = {_, _  in }) {
+    init(onSearchButtonClicked: @escaping (CLLocationCoordinate2D) -> Void = {_ in }) {
         self.onSearchButtonClicked = onSearchButtonClicked
     }
     

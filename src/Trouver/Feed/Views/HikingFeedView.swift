@@ -20,8 +20,7 @@ struct HikingFeedView: View {
                     ForEach(viewModel.hikes) { hikeInfo in
                         NavigationLink(destination:
                                         HikeDetailInfoView(viewModel:
-                                                            HikeDetailViewModel(hikeInfo: hikeInfo,
-                                                                                usState: viewModel.usState))) {
+                                                            HikeDetailViewModel(hikeInfo: hikeInfo))) {
                             HikingFeedItemView(hikeInfo: hikeInfo)
                                 .listRowInsets(EdgeInsets())
                                 .padding(.vertical, 10)
@@ -45,8 +44,8 @@ struct HikingFeedView: View {
                     Text("log_out_button_title")
                 })
             )
-            .searchView { location, state in
-                viewModel.search(location: location, state: state)
+            .searchView { location in
+                viewModel.search(location: location)
             }
             .background(Color(.systemGray6))
         }

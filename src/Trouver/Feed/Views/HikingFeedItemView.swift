@@ -18,7 +18,7 @@ struct HikingFeedItemView: View {
             Text(hikeInfo.name)
                 .fontWeight(.bold)
                 .font(.title)
-            AsyncImage(url: hikeInfo.imageUrls[0])
+            AsyncImage(url: hikeInfo.imageUrls[0], showPlaceHolder: true)
                 .cornerRadius(cornerRadius)
                 .shadow(color: Color("BackgroundColor"), radius: 3)
                 .aspectRatio(contentMode: .fit)

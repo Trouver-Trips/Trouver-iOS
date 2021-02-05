@@ -17,13 +17,6 @@ enum APIPath: String {
     }
 }
 
-enum USState: String {
-    case washington
-    case california
-    case oregon
-    case unknown
-}
-
 enum NetworkError: Error {
     case invalidUrl
 }
@@ -34,13 +27,12 @@ protocol NetworkService {
      */
     func fetchHikes(latitude: Double,
                     longitude: Double,
-                    page: Int,
-                    state: USState) -> AnyPublisher<HikeResult, Error>
+                    page: Int) -> AnyPublisher<HikeResult, Error>
 
     /**
      Get hike detail page
      */
-    func getHikeDetail(id: String, state: USState) -> AnyPublisher<HikeDetailResult, Error>
+    func getHikeDetail(id: String) -> AnyPublisher<HikeDetailResult, Error>
 }
 
 struct HikingNetworkingService {
@@ -56,27 +48,21 @@ extension HikingNetworkingService: NetworkService {
 
     func fetchHikes(latitude: Double,
                     longitude: Double,
-                    page: Int,
-                    state: USState) -> AnyPublisher<HikeResult, Error> {
+                    page: Int) -> AnyPublisher<HikeResult, Error> {
         let params = [
             "lat": latitude.description,
             "long": longitude.description,
-            "page": page.description,
-            "state": state.rawValue
+            "page": page.description
         ]
 
         return self.request(path: APIPath.feed.rawValue, params: params)
     }
 
-    func getHikeDetail(id: String, state: USState) -> AnyPublisher<HikeDetailResult, Error> {
-        let params = [
-            "state": state.rawValue
-        ]
-
-        return self.request(path: APIPath.hikeDetail.addHikeId(id: id), params: params)
+    func getHikeDetail(id: String) -> AnyPublisher<HikeDetailResult, Error> {
+        self.request(path: APIPath.hikeDetail.addHikeId(id: id))
     }
 
-    private func request<T: Decodable>(path: String, params: [String: String?]) -> AnyPublisher<T, Error> {
+    private func request<T: Decodable>(path: String, params: [String: String?] = [:]) -> AnyPublisher<T, Error> {
         var components = URLComponents()
         components.scheme = "https"
         components.host = host
