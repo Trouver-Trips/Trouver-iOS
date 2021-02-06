@@ -8,11 +8,16 @@
 import SwiftUI
 
 struct MainView: View {
-    @StateObject var hikeFeed: HikingFeedViewModel = HikingFeedViewModel()
+    @EnvironmentObject var loginViewModel: LoginViewModel
+    
+    private var networkService: NetworkService {
+        HikingNetworkingService(accountHandle: loginViewModel.accountHandle)
+    }
 
     var body: some View {
         TabView {
-            HikingFeedView(viewModel: hikeFeed)
+            HikingFeedView(viewModel:
+                            HikingFeedViewModel(networkService: networkService))
                 .tabItem {
                     Image(systemName: "list.dash")
                     Text("Feed")

@@ -9,37 +9,43 @@ import SwiftUI
 
 struct HikingFeedView: View {
     @ObservedObject var viewModel: HikingFeedViewModel
-    @EnvironmentObject var userViewModel: TrouverUserViewModel
+    @EnvironmentObject var loginViewModel: LoginViewModel
     
-    @State private var text: String = ""
-    
+    private var networkService: NetworkService {
+        HikingNetworkingService(accountHandle: loginViewModel.accountHandle)
+    }
+        
     var body: some View {
         NavigationView {
             ScrollView {
-                LazyVStack {
-                    ForEach(viewModel.hikes) { hikeInfo in
-                        NavigationLink(destination:
-                                        HikeDetailInfoView(viewModel:
-                                                            HikeDetailViewModel(hikeInfo: hikeInfo))) {
-                            HikingFeedItemView(hikeInfo: hikeInfo)
-                                .listRowInsets(EdgeInsets())
-                                .padding(.vertical, 10)
-                                .onAppear {
-                                    self.viewModel.loadMoreContentIfNeeded(currentItem: hikeInfo)
-                                }
+                Group {
+                    LazyVStack {
+                        ForEach(viewModel.hikes) { hikeInfo in
+                            NavigationLink(destination:
+                                            HikeDetailInfoView(viewModel:
+                                                                HikeDetailViewModel(hikeInfo: hikeInfo,
+                                                                                    networkService: networkService))) {
+                                HikingFeedItemView(hikeInfo: hikeInfo)
+                                    .listRowInsets(EdgeInsets())
+                                    .padding(.vertical, 10)
+                                    .onAppear {
+                                        self.viewModel.loadMoreContentIfNeeded(currentItem: hikeInfo)
+                                    }
+                            }
+                            .buttonStyle(FlatLinkStyle())
                         }
-                        .buttonStyle(FlatLinkStyle())
+                    }
+
+                    if viewModel.isLoadingPage {
+                      ProgressView()
                     }
                 }
-
-                if viewModel.isLoadingPage {
-                  ProgressView()
-                }
+                .background(Color(.systemGray6))
             }
             .navigationBarTitle("trouver_title")
             .navigationBarItems(trailing:
                 Button (action: {
-                    userViewModel.logOut()
+                    loginViewModel.logOut()
                 }, label: {
                     Text("log_out_button_title")
                 })
@@ -47,7 +53,6 @@ struct HikingFeedView: View {
             .searchView { location in
                 viewModel.search(location: location)
             }
-            .background(Color(.systemGray6))
         }
     }
 }

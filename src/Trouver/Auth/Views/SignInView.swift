@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct SignInView: View {
-    @EnvironmentObject var userViewModel: TrouverUserViewModel
+    @EnvironmentObject var userViewModel: LoginViewModel
 
     // To use if/else in our body, we need to wrap the view in a Group
     var body: some View {
@@ -34,6 +34,7 @@ struct SignInView: View {
                     }
                 }
             case .tryingSilentSignIn: ProgressView()
+            case .error: Text("Error")
             }
         }
     }
@@ -42,6 +43,6 @@ struct SignInView: View {
 struct SignInViewPreviews: PreviewProvider {
     static var previews: some View {
         SignInView()
-            .environmentObject(TrouverUserViewModel())
+            .environmentObject(LoginViewModel())
     }
 }

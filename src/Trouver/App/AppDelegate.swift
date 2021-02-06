@@ -10,7 +10,7 @@ import GoogleSignIn
 import GooglePlaces
 
 class AppDelegate: NSObject, UIApplicationDelegate {
-    let viewModel = TrouverUserViewModel()
+    let viewModel = LoginViewModel()
 
     func application(_ application: UIApplication,
                      didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]? = nil)

@@ -9,6 +9,7 @@ import Combine
 import Foundation
 
 enum APIPath: String {
+    case login = "/login"
     case feed = "/feeds"
     case hikeDetail = "/hikes"
 
@@ -17,11 +18,21 @@ enum APIPath: String {
     }
 }
 
+enum HTTPMethod: String {
+    case get = "GET"
+    case post = "POST"
+}
+
 enum NetworkError: Error {
     case invalidUrl
 }
 
 protocol NetworkService {
+    /**
+     Get hike detail page
+     */
+    func login(idToken: String) -> AnyPublisher<UserResult, Error>
+    
     /**
      Conduct a search query and return hikes
      */
@@ -38,13 +49,27 @@ protocol NetworkService {
 struct HikingNetworkingService {
     private let host = EnvironmentProvider.host
     private let webClient: WebClient
+    private let accountHandle: AccountHandle
+    
+    private var defaultHeaders: [String: String] {
+        ["Authorization": accountHandle.user.accessToken]
+    }
 
-    init(webClient: WebClient = HttpWebClient()) {
+    init(webClient: WebClient = HttpWebClient(), accountHandle: AccountHandle = .guestAccount) {
         self.webClient = webClient
+        self.accountHandle = accountHandle
     }
 }
 
 extension HikingNetworkingService: NetworkService {
+
+    func login(idToken: String) -> AnyPublisher<UserResult, Error> {
+        let headers = [
+            "Authorization": idToken
+        ]
+        
+        return self.request(httpMethod: .post, path: APIPath.login.rawValue, headers: headers)
+    }
 
     func fetchHikes(latitude: Double,
                     longitude: Double,
@@ -62,7 +87,10 @@ extension HikingNetworkingService: NetworkService {
         self.request(path: APIPath.hikeDetail.addHikeId(id: id))
     }
 
-    private func request<T: Decodable>(path: String, params: [String: String?] = [:]) -> AnyPublisher<T, Error> {
+    private func request<T: Decodable>(httpMethod: HTTPMethod = .get,
+                                       path: String,
+                                       headers: [String: String]? = nil,
+                                       params: [String: String?] = [:]) -> AnyPublisher<T, Error> {
         var components = URLComponents()
         components.scheme = "https"
         components.host = host
@@ -71,6 +99,10 @@ extension HikingNetworkingService: NetworkService {
         guard let url = components.url else {
             return Fail(error: NetworkError.invalidUrl).eraseToAnyPublisher()
         }
-        return self.webClient.request(URLRequest(url: url))
+        var request = URLRequest(url: url)
+        request.httpMethod = httpMethod.rawValue
+        let allHeaders = headers ?? defaultHeaders
+        allHeaders.forEach { request.addValue($1, forHTTPHeaderField: $0) }
+        return self.webClient.request(request)
     }
 }

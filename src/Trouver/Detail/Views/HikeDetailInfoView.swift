@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct HikeDetailInfoView: View {
+    @EnvironmentObject var loginViewModel: LoginViewModel
     @ObservedObject var viewModel: HikeDetailViewModel
 
     var body: some View {
