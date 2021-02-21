@@ -25,6 +25,10 @@ class SearchViewCoordinator: NSObject,
                                                     UInt(GMSPlaceField.coordinate.rawValue))
         self.representable.resultsViewController.placeFields = fields
         
+        let filter = GMSAutocompleteFilter()
+        filter.country = "USA"
+        self.representable.resultsViewController.autocompleteFilter = filter
+        
         self.searchController = UISearchController(searchResultsController:
                                                     self.representable.resultsViewController)
         

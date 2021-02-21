@@ -9,6 +9,9 @@
 /* title for trouver */
 "trouver_title" = "Trouver";
 
+/* title for favorites */
+"favorites_title" = "Favorites";
+
 /* title for a specific hike */
 "hiking_title" = "Hiking";
 
@@ -17,3 +20,6 @@
 
 /* photos */
 "more_photos_title" = "More Photos";
+
+/* error title */
+"generic_error" = "We are having some trouble...";

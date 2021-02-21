@@ -35,8 +35,6 @@ struct AsyncImage: View {
                     }
                 }
             }
-            .opacity(loader.image != nil ? 1 : 0)
-            .animation(.default)
             .aspectRatio(contentMode: .fit)
         }
     }

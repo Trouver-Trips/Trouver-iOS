@@ -8,15 +8,17 @@
 import SwiftUI
 
 struct HikeDetailInfoView: View {
-    @EnvironmentObject var loginViewModel: LoginViewModel
-    @ObservedObject var viewModel: HikeDetailViewModel
+    @EnvironmentObject var loginViewModel: LoginService
+    @ObservedObject var viewModel: HikeDetail
 
     var body: some View {
         ScrollView(.vertical, showsIndicators: false) {
             VStack {
                 switch viewModel.state {
                 case .idle: EmptyView()
-                case .loading: ProgressView()
+                case .loading:
+                    ProgressView()
+                        .padding()
                 case .loaded(let hikeDetail):
                     Text(hikeDetail.name)
                         .fontWeight(.bold)
@@ -58,7 +60,7 @@ struct HikeDetailInfoView: View {
 struct HikeDetailInfoViewPreviews: PreviewProvider {
     static var previews: some View {
         HikeDetailInfoView(viewModel:
-                            HikeDetailViewModel(hikeInfo: HikeInfo.sampleData()))
+                            HikeDetail(hikeInfo: HikeInfo.sampleData()))
     }
 }
 #endif
