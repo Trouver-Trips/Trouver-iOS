@@ -1,5 +1,4 @@
 PODS:
-  - Alamofire (5.4.0)
   - AppAuth (1.4.0):
     - AppAuth/Core (= 1.4.0)
     - AppAuth/ExternalUserAgent (= 1.4.0)
@@ -22,13 +21,11 @@ PODS:
     - GTMSessionFetcher/Core (= 1.5.0)
 
 DEPENDENCIES:
-  - Alamofire
   - GooglePlaces
   - GoogleSignIn
 
 SPEC REPOS:
   trunk:
-    - Alamofire
     - AppAuth
     - GoogleMaps
     - GooglePlaces
@@ -37,7 +34,6 @@ SPEC REPOS:
     - GTMSessionFetcher
 
 SPEC CHECKSUMS:
-  Alamofire: 3b6a534a3df22db367e4dedeeca73d1ddfcf0e2f
   AppAuth: 31bcec809a638d7bd2f86ea8a52bd45f6e81e7c7
   GoogleMaps: 008e2c80e38605b56b560e8deb73d4194ff30bef
   GooglePlaces: a058b776259c13e1323c9ff135549cb1b13ad8e7
@@ -45,6 +41,6 @@ SPEC CHECKSUMS:
   GTMAppAuth: 197a8dabfea5d665224aa00d17f164fc2248dab9
   GTMSessionFetcher: b3503b20a988c4e20cc189aa798fd18220133f52
 
-PODFILE CHECKSUM: d4864449637367961d60252bcec23dcce2d4dc9a
+PODFILE CHECKSUM: be68b0ab258359425c0318f746f9efa74369dcfb
 
 COCOAPODS: 1.10.0
