@@ -12,6 +12,9 @@ jobs:
         uses: actions/checkout@v1
       - name: Force Xcode 12.3
         run: sudo xcode-select -switch /Applications/Xcode_12.3.app
+      - name: Touch APIKeys.plist
+      - working-directory: ./src/Trouver
+        run: touch APIKeys.plist
       - name: Install Cocoapods
         working-directory: ./src
         run: pod install
