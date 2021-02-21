@@ -8,12 +8,15 @@
 import Foundation
 
 struct TrouverUser {
-    let userId: String
-    let fullName: String
-    let givenName: String
-    let familyName: String
-    let email: String
+    let trouverId: String
     let accountType: AccountType
     let accessToken: String
-    let tokenRefresher: TokenRefresher
+    let refreshToken: String
+    
+    static var guest: TrouverUser {
+        TrouverUser(trouverId: "",
+                    accountType: .guest,
+                    accessToken: "",
+                    refreshToken: "")
+    }
 }

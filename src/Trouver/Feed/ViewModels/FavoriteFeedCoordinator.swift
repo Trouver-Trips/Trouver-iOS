@@ -1,8 +1,8 @@
 //
-//  HikingFeedViewModel.swift
+//  FavoriteFeedCoordinator.swift
 //  Trouver
 //
-//  Created by Sagar Punhani on 12/22/20.
+//  Created by Sagar Punhani on 2/6/21.
 //
 
 import Combine
@@ -12,7 +12,7 @@ import CoreLocation
 /*
  Main hiking feed
  */
-class HikingFeedViewModel: ObservableObject {
+class FavoriteFeedCoordinator: ObservableObject {
     // Update whenever hiking info changes
     @Published private var hikingFeed = HikingFeed()
     @Published var isLoadingPage = false
@@ -24,12 +24,11 @@ class HikingFeedViewModel: ObservableObject {
     private var location = CLLocationCoordinate2D(latitude: 47.6062,
                                                   longitude: -122.3321)
     private var cancellable: AnyCancellable?
+    private var updateFavoriteCancellable: AnyCancellable?
     
-    var usState = USState.washington
-
-    init(networkService: NetworkService = HikingNetworkingService()) {
+    init(networkService: NetworkService = HikingNetworkService()) {
         self.networkService = networkService
-        self.search(location: self.location, state: self.usState)
+        self.search(location: self.location)
     }
     
     deinit {
@@ -42,10 +41,9 @@ class HikingFeedViewModel: ObservableObject {
 
     // MARK: - Intents
     
-    func search(location: CLLocationCoordinate2D, state: USState) {
+    func search(location: CLLocationCoordinate2D) {
         self.currentPage = 1
         self.location = location
-        self.usState = state
         self.hikingFeed.clearHikes()
         self.canLoadMorePages = true
         loadMoreContent()
@@ -63,6 +61,32 @@ class HikingFeedViewModel: ObservableObject {
           loadMoreContent()
         }
     }
+    
+    @discardableResult
+    func update(_ hike: HikeInfo) -> Bool {
+        let addHike = !hikingFeed.containsHike(hike)
+        if addHike {
+            hikingFeed.addHikes(hike)
+        } else {
+            hikingFeed.removeHike(hike)
+        }
+        save(hikeId: hike.id, addHike: addHike)
+        return addHike
+    }
+
+    private func save(hikeId: String, addHike: Bool) {
+        
+        // catch errors
+        self.updateFavoriteCancellable = self.networkService.updateFavorite(hikeId: hikeId, addHike: addHike)
+            .sink(receiveCompletion: { error in
+                if case let .failure(error) = error {
+                    Logger.logError("Could not favorite", error: error)
+                }
+            }, receiveValue: { _ in
+                Logger.logInfo("Successfully \(addHike ? "Added" : "Deleted") Favorite")
+
+            })
+    }
 
     private func loadMoreContent() {
         guard !isLoadingPage && canLoadMorePages else {
@@ -71,25 +95,20 @@ class HikingFeedViewModel: ObservableObject {
 
         isLoadingPage = true
 
-        self.cancellable = self.networkService.fetchHikes(latitude: self.location.latitude,
-                                                          longitude: self.location.longitude,
-                                                          page: currentPage,
-                                                          state: self.usState)
+        self.cancellable = self.networkService.fetchFavorites(page: currentPage)
             .receive(on: DispatchQueue.main)
-            .handleEvents(receiveOutput: { hikeResult in
-                self.canLoadMorePages = hikeResult.hikes.hasNextPage
+            .handleEvents(receiveOutput: { favoritesResult in
+                self.canLoadMorePages = favoritesResult.hasNextPage
                 self.currentPage += 1
             }, receiveCompletion: { _ in
                 self.isLoadingPage = false
             })
-            .map { hikeResult in hikeResult.hikes.docs.compactMap({ HikeInfo(hike: $0) })}
+            .map { favoritesResult in favoritesResult.favorites.compactMap({ HikeInfo(hike: $0) })}
             .catch({ error -> Just<[HikeInfo]> in
                 Logger.logError("Failed to get hikes", error: error)
                 return Just([])
             })
             .sink(
-                receiveValue: { hikes in
-                self.hikingFeed.addHikes(hikes: hikes)
-            })
+                receiveValue: {  self.hikingFeed.addHikes($0) })
     }
 }

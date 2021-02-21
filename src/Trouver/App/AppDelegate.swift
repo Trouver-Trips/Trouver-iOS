@@ -10,7 +10,7 @@ import GoogleSignIn
 import GooglePlaces
 
 class AppDelegate: NSObject, UIApplicationDelegate {
-    let viewModel = TrouverUserViewModel()
+    let viewModel = LoginService()
 
     func application(_ application: UIApplication,
                      didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]? = nil)
@@ -21,7 +21,8 @@ class AppDelegate: NSObject, UIApplicationDelegate {
         viewModel.silentSignIn()
         
         // Initialize Places
-        GMSPlacesClient.provideAPIKey("<GOOGLE_API_KEY>")
+        
+        GMSPlacesClient.provideAPIKey(PlistReader.read(key: "GOOGLE_API_KEY") ?? "Invalid key")
         return true
     }
 

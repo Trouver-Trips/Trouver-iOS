@@ -22,9 +22,12 @@ class SearchViewCoordinator: NSObject,
         let fields: GMSPlaceField = GMSPlaceField(rawValue:
                                                     UInt(GMSPlaceField.name.rawValue) |
                                                     UInt(GMSPlaceField.placeID.rawValue) |
-                                                    UInt(GMSPlaceField.coordinate.rawValue) |
-                                                    UInt(GMSPlaceField.addressComponents.rawValue))
+                                                    UInt(GMSPlaceField.coordinate.rawValue))
         self.representable.resultsViewController.placeFields = fields
+        
+        let filter = GMSAutocompleteFilter()
+        filter.country = "USA"
+        self.representable.resultsViewController.autocompleteFilter = filter
         
         self.searchController = UISearchController(searchResultsController:
                                                     self.representable.resultsViewController)
@@ -39,13 +42,7 @@ class SearchViewCoordinator: NSObject,
     func resultsController(_ resultsController: GMSAutocompleteResultsViewController,
                            didAutocompleteWith place: GMSPlace) {
         
-        var state = USState.unknown
-        place.addressComponents?.forEach({ comp in
-            if comp.types.contains("administrative_area_level_1") {
-                state = USState(rawValue: comp.name.lowercased()) ?? .unknown
-            }
-        })
-        self.representable.onSearchButtonClicked(place.coordinate, state)
+        self.representable.onSearchButtonClicked(place.coordinate)
         self.searchController.dismiss(animated: true, completion: nil)
     }
     

@@ -1,5 +1,5 @@
 //
-//  HikingFeedItemView.swift
+//  FeedItemView.swift
 //  Trouver
 //
 //  Created by Sagar Punhani on 12/22/20.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct HikingFeedItemView: View {
+struct FeedItemView: View {
     // Private members
     private let cornerRadius: CGFloat = 25
 
@@ -18,7 +18,7 @@ struct HikingFeedItemView: View {
             Text(hikeInfo.name)
                 .fontWeight(.bold)
                 .font(.title)
-            AsyncImage(url: hikeInfo.imageUrls[0])
+            AsyncImage(url: hikeInfo.imageUrls[0], showPlaceHolder: true)
                 .cornerRadius(cornerRadius)
                 .shadow(color: Color("BackgroundColor"), radius: 3)
                 .aspectRatio(contentMode: .fit)
@@ -28,9 +28,9 @@ struct HikingFeedItemView: View {
 }
 
 #if DEBUG
-struct HikingFeedItemViewPreviews: PreviewProvider {
+struct FeedItemViewPreviews: PreviewProvider {
     static var previews: some View {
-        HikingFeedItemView(hikeInfo: HikeInfo.sampleData())
+        FeedItemView(hikeInfo: HikeInfo.sampleData())
     }
 }
 #endif

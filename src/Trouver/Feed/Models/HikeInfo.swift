@@ -9,7 +9,11 @@ import Foundation
 /*
  Wrapper around Hike object
  */
-struct HikeInfo: Identifiable {
+struct HikeInfo: Identifiable, Codable, Hashable {
+    static func == (lhs: HikeInfo, rhs: HikeInfo) -> Bool {
+        lhs.id == rhs.id    
+    }
+    
     private let hike: HikeDoc
 
     init(hike: HikeDoc) {

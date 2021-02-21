@@ -25,7 +25,11 @@ struct Hikes: Codable {
 }
 
 // MARK: - Doc
-struct HikeDoc: Codable {
+struct HikeDoc: Codable, Hashable {
+    static func == (lhs: HikeDoc, rhs: HikeDoc) -> Bool {
+        lhs.id == rhs.id
+    }
+    
     let location: Location
     let images: [String]
     let id: String
@@ -40,7 +44,7 @@ struct HikeDoc: Codable {
 }
 
 // MARK: - Location
-struct Location: Codable {
+struct Location: Codable, Hashable {
     let coordinates: [Double]
 }
 

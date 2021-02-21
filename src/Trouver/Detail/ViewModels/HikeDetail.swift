@@ -1,5 +1,5 @@
 //
-//  HikeViewModel.swift
+//  HikeDetail.swift
 //  Trouver
 //
 //  Created by Sagar Punhani on 12/22/20.
@@ -11,16 +11,14 @@ import Combine
 /*
  Detail page for hike
  */
-class HikeDetailViewModel: ObservableObject {
+class HikeDetail: ObservableObject {
     @Published var state: State = .idle
     private let hikeInfo: HikeInfo
-    private let usState: USState
 
     private let networkService: NetworkService
 
-    init(hikeInfo: HikeInfo, usState: USState, networkService: NetworkService = HikingNetworkingService()) {
+    init(hikeInfo: HikeInfo, networkService: NetworkService = HikingNetworkService()) {
         self.hikeInfo = hikeInfo
-        self.usState = usState
         self.networkService = networkService
     }
 
@@ -32,7 +30,7 @@ class HikeDetailViewModel: ObservableObject {
 
     private func loadContent() {
         self.state = .loading
-        self.networkService.getHikeDetail(id: self.hikeInfo.id, state: usState)
+        self.networkService.getHikeDetail(hikeId: self.hikeInfo.id)
             .receive(on: DispatchQueue.main)
             .map { result in State.loaded(HikeDetailInfo(hikeDetail: result.hike)) }
             .catch({ error -> Just<State> in
@@ -43,7 +41,7 @@ class HikeDetailViewModel: ObservableObject {
     }
 }
 
-extension HikeDetailViewModel {
+extension HikeDetail {
     enum State {
         case idle
         case loading
