@@ -242,7 +242,6 @@
 			isa = PBXGroup;
 			children = (
 				5F3B3EDE259573BB00512B4C /* AsyncImage.swift */,
-				5F6E32E025929BF700E70AE2 /* FeedItemView.swift */,
 				5F395BC625E22EAB00AD618D /* ScrollView+Extensions.swift */,
 			);
 			path = Views;
@@ -408,10 +407,11 @@
 		5F6E323F258EFB7700E70AE2 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				5F6E32E025929BF700E70AE2 /* FeedItemView.swift */,
 				5FF40A8625CF0BDF00158C3A /* FavoriteFeedView.swift */,
+				5FF40A9325CF0E6A00158C3A /* FeedView.swift */,
 				5F6E3250258EFBAF00E70AE2 /* HikingFeedView.swift */,
 				5FD8F81B25C631EC0025652E /* SearchView.swift */,
-				5FF40A9325CF0E6A00158C3A /* FeedView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";

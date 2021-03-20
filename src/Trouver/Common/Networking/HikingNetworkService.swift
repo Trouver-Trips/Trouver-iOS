@@ -25,7 +25,7 @@ struct HikingNetworkService {
 
 extension HikingNetworkService: NetworkService {
 
-    func login(idToken: String) -> AnyPublisher<UserResult, Error> {
+    func login(idToken: String) -> AnyPublisher<WebResult<UserResult>, Error> {
         let headers = [
             "Authorization": idToken
         ]
@@ -39,7 +39,8 @@ extension HikingNetworkService: NetworkService {
         let params = [
             "lat": latitude.description,
             "long": longitude.description,
-            "page": page.description
+            "page": page.description,
+            "trouverId": self.accountHandle.user.trouverId
         ]
 
         return self.request(path: APIPath.feed.rawValue, params: params)
@@ -68,22 +69,48 @@ extension HikingNetworkService: NetworkService {
         return self.request(path: path, params: params)
     }
     
-    private func request<T: Decodable>(httpMethod: HTTPMethod = .get,
-                                       path: String,
-                                       headers: [String: String]? = nil,
-                                       params: [String: String?] = [:]) -> AnyPublisher<T, Error> {
+    private func buildRequest(httpMethod: HTTPMethod = .get,
+                              path: String,
+                              headers: [String: String]? = nil,
+                              params: [String: String?] = [:]) -> Result<URLRequest, Error> {
         var components = URLComponents()
         components.scheme = "https"
         components.host = host
         components.path = path
         components.queryItems = params.map { URLQueryItem(name: $0, value: $1) }
         guard let url = components.url else {
-            return Fail(error: NetworkError.invalidUrl).eraseToAnyPublisher()
+            return .failure(NetworkError.invalidUrl)
         }
         var request = URLRequest(url: url)
         request.httpMethod = httpMethod.rawValue
         let allHeaders = headers ?? defaultHeaders
         allHeaders.forEach { request.addValue($1, forHTTPHeaderField: $0) }
-        return self.webClient.request(request)
+        return .success(request)
+    }
+    
+    private func request<T: Decodable>(httpMethod: HTTPMethod = .get,
+                                       path: String,
+                                       headers: [String: String]? = nil,
+                                       params: [String: String?] = [:]) -> AnyPublisher<T, Error> {
+        switch buildRequest(httpMethod: httpMethod,
+                            path: path,
+                            headers: headers,
+                            params: params) {
+        case .success(let request): return self.webClient.request(request)
+        case .failure(let error): return Fail(error: error).eraseToAnyPublisher()
+        }
+    }
+    
+    private func request<T: Decodable>(httpMethod: HTTPMethod = .get,
+                                       path: String,
+                                       headers: [String: String]? = nil,
+                                       params: [String: String?] = [:]) -> AnyPublisher<WebResult<T>, Error> {
+        switch buildRequest(httpMethod: httpMethod,
+                            path: path,
+                            headers: headers,
+                            params: params) {
+        case .success(let request): return self.webClient.request(request)
+        case .failure(let error): return Fail(error: error).eraseToAnyPublisher()
+        }
     }
 }

@@ -35,11 +35,12 @@ struct HikeDoc: Codable, Hashable {
     let id: String
     let difficulty: Int
     let name: String
+    let favorite: Bool?
 
     enum CodingKeys: String, CodingKey {
         case location, images
         case id = "_id"
-        case difficulty, name
+        case difficulty, name, favorite
     }
 }
 

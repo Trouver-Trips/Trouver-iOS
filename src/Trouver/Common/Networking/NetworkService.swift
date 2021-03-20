@@ -30,13 +30,14 @@ enum HTTPMethod: String {
 
 enum NetworkError: Error {
     case invalidUrl
+    case badOutput
 }
 
 protocol NetworkService {
     /**
      Get hike detail page
      */
-    func login(idToken: String) -> AnyPublisher<UserResult, Error>
+    func login(idToken: String) -> AnyPublisher<WebResult<UserResult>, Error>
     
     /**
      Conduct a search query and return hikes

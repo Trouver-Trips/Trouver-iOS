@@ -87,12 +87,19 @@ extension LoginService: GIDSignInDelegate {
             .assign(to: &$signInState)
     }
     
-    private func createUser(userResult: UserResult,
+    private func createUser(userResult: WebResult<UserResult>,
                             accountType: AccountType) -> AccountHandle {
-        let user = TrouverUser(trouverId: userResult.trouverId,
+        let refreshToken: String
+        if let token = userResult.headers["Set-Cookie"] as? String {
+            refreshToken = token.components(separatedBy: "=")[1].components(separatedBy: ";")[0]
+        } else {
+            refreshToken = ""
+        }
+                
+        let user = TrouverUser(trouverId: userResult.data.trouverId,
                                accountType: .google,
-                               accessToken: userResult.token,
-                               refreshToken: "")
+                               accessToken: userResult.data.token,
+                               refreshToken: refreshToken)
         
         return AccountHandle(user: user)
     }

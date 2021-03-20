@@ -47,6 +47,12 @@ class HikingFeedCoordinator: ObservableObject {
         self.canLoadMorePages = true
         loadMoreContent()
     }
+    
+    func toggleFavorite(hike: HikeInfo) {
+        var newHike = hike
+        newHike.isFavorite = !hike.isFavorite
+        self.updateHike(newHike)
+    }
 
     func loadMoreContentIfNeeded(currentItem item: HikeInfo?) {
         guard let item = item else {
@@ -87,5 +93,9 @@ class HikingFeedCoordinator: ObservableObject {
                 receiveValue: { hikes in
                 self.hikingFeed.addHikes(hikes)
             })
+    }
+    
+    private func updateHike(_ hike: HikeInfo) {
+        self.hikingFeed.updateHike(hike)
     }
 }

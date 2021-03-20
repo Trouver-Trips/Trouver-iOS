@@ -12,7 +12,8 @@ struct FeedView: View {
     let networkService: NetworkService
     let hikes: [HikeInfo]
     let onAppear: (HikeInfo) -> Void
-    var onItemDoubleTap: ((HikeInfo) -> Void)?
+    
+    var favoriteAction: ((HikeInfo) -> Void)?
     
     var body: some View {
         ScrollView {
@@ -22,13 +23,12 @@ struct FeedView: View {
                                     HikeDetailInfoView(viewModel:
                                                         HikeDetail(hikeInfo: hikeInfo,
                                                                             networkService: networkService))) {
-                        FeedItemView(hikeInfo: hikeInfo)
+                        FeedItemView(hikeInfo: hikeInfo, favoriteAction: favoriteAction)
                             .listRowInsets(EdgeInsets())
                             .padding(.vertical, 10)
                             .onAppear {
                                 self.onAppear(hikeInfo)
                             }
-                            .gesture(getTapGesture(hike: hikeInfo))
                     }
                     .buttonStyle(FlatLinkStyle())
                 }
@@ -42,10 +42,5 @@ struct FeedView: View {
             scrollView
                 .background(Color(.systemGray6))
         }
-    }
-    
-    func getTapGesture(hike: HikeInfo) -> some Gesture {
-        let gesture = TapGesture(count: 2).onEnded { onItemDoubleTap?(hike) }
-        return onItemDoubleTap != nil ? gesture : nil
     }
 }

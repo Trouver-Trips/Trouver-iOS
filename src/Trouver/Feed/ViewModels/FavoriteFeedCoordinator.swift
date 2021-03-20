@@ -10,7 +10,7 @@ import Foundation
 import CoreLocation
 
 /*
- Main hiking feed
+Favorite Feed
  */
 class FavoriteFeedCoordinator: ObservableObject {
     // Update whenever hiking info changes
@@ -62,16 +62,13 @@ class FavoriteFeedCoordinator: ObservableObject {
         }
     }
     
-    @discardableResult
-    func update(_ hike: HikeInfo) -> Bool {
-        let addHike = !hikingFeed.containsHike(hike)
-        if addHike {
+    func update(_ hike: HikeInfo) {
+        if !hike.isFavorite {
             hikingFeed.addHikes(hike)
         } else {
             hikingFeed.removeHike(hike)
         }
-        save(hikeId: hike.id, addHike: addHike)
-        return addHike
+        save(hikeId: hike.id, addHike: !hike.isFavorite)
     }
 
     private func save(hikeId: String, addHike: Bool) {
@@ -84,7 +81,6 @@ class FavoriteFeedCoordinator: ObservableObject {
                 }
             }, receiveValue: { _ in
                 Logger.logInfo("Successfully \(addHike ? "Added" : "Deleted") Favorite")
-
             })
     }
 

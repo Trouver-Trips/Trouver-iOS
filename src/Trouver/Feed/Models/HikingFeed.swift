@@ -31,6 +31,12 @@ struct HikingFeed {
         self.hikes.removeAll { $0 == hike }
     }
     
+    mutating func updateHike(_ hike: HikeInfo) {
+        if let index = self.hikes.firstIndex(of: hike) {
+            self.hikes[index] = hike
+        }
+    }
+    
     mutating func clearHikes() {
         self.hikeChecker.removeAll()
         self.hikes.removeAll()
