@@ -36,9 +36,4 @@ struct HikingFeed {
             hikes[index] = hike
         }
     }
-    
-    mutating func clearHikes() {
-        hikeChecker.removeAll()
-        hikes.removeAll()
-    }
 }

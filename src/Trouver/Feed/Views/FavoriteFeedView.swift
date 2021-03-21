@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct FavoriteFeedView: View {
-    @EnvironmentObject var viewModel: FavoriteFeedCoordinator
+    @ObservedObject var viewModel: FavoriteFeedCoordinator
     @EnvironmentObject var loginService: LoginService
     
     private var networkService: NetworkService {
@@ -17,7 +17,7 @@ struct FavoriteFeedView: View {
         
     var body: some View {
         NavigationView {
-            FeedView(isLoadingPage: viewModel.isLoadingPage,
+            FeedView(isLoadingPage: viewModel.isLoading,
                      networkService: networkService,
                      hikes: viewModel.hikes,
                      onAppear: {
@@ -38,7 +38,7 @@ struct FavoriteFeedView: View {
 #if DEBUG
 struct FavoriteFeedViewPreviews: PreviewProvider {
     static var previews: some View {
-        FavoriteFeedView()
+        FavoriteFeedView(viewModel: FavoriteFeedCoordinator())
             .environmentObject(LoginService())
     }
 }

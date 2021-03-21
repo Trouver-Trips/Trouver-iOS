@@ -10,7 +10,6 @@ import SwiftUI
 struct HikingFeedView: View {
     @ObservedObject var viewModel: HikingFeedCoordinator
     @EnvironmentObject var loginViewModel: LoginService
-    @EnvironmentObject var favorites: FavoriteFeedCoordinator
         
     private var networkService: NetworkService {
         HikingNetworkService(accountHandle: loginViewModel.accountHandle)
@@ -18,14 +17,11 @@ struct HikingFeedView: View {
         
     var body: some View {
         NavigationView {
-            FeedView(isLoadingPage: viewModel.isLoadingPage,
+            FeedView(isLoadingPage: viewModel.isLoading,
                      networkService: networkService,
                      hikes: viewModel.hikes,
                      onAppear: {
                         viewModel.loadMoreContentIfNeeded(currentItem: $0)
-                     }, favoriteAction: {
-                        favorites.update($0)
-                        viewModel.toggleFavorite(hike: $0)
                      })
             .navigationBarTitle("trouver_title")
             .navigationBarItems(trailing:
@@ -46,7 +42,7 @@ struct HikingFeedView: View {
 struct HikingFeedViewPreviews: PreviewProvider {
     static var previews: some View {
         HikingFeedView(viewModel: HikingFeedCoordinator())
-            .environmentObject(FavoriteFeedCoordinator())
+            .environmentObject(LoginService())
     }
 }
 #endif

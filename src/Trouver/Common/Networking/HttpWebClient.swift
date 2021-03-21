@@ -26,7 +26,9 @@ struct HttpWebClient: WebClient {
         URLSession.shared
             .dataTaskPublisher(for: request)
             .handleEvents(
-                receiveOutput: { Logger.logInfo(String(data: $0.data, encoding: .utf8) ?? "Could not decode output", level: .verbose) }
+                receiveOutput: {
+                    Logger.logInfo(String(data: $0.data, encoding: .utf8) ?? "Could not decode output", level: .verbose)
+                }
             )
             .tryMap {
                 if let response = $0.response as? HTTPURLResponse,

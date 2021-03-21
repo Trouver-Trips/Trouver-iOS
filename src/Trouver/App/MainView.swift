@@ -16,24 +16,23 @@ struct MainView: View {
 
     var body: some View {
         TabView {
-            HikingFeedView(viewModel:
-                            HikingFeedCoordinator(networkService: networkService))
+            HikingFeedView(viewModel: HikingFeedCoordinator(networkService: networkService))
                 .tabItem {
                     Image(systemName: "list.dash")
                     Text("Feed")
                 }
-            FavoriteFeedView()
+            FavoriteFeedView(viewModel: FavoriteFeedCoordinator(networkService: networkService))
                 .tabItem {
                     Image(systemName: "suit.heart.fill")
                     Text("Favorites")
                 }
         }
-        .environmentObject(FavoriteFeedCoordinator(networkService: networkService))
     }
 }
 
 struct MainViewPreviews: PreviewProvider {
     static var previews: some View {
         MainView()
+            .environmentObject(LoginService())
     }
 }
