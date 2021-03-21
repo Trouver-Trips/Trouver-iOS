@@ -27,7 +27,7 @@ struct FeedView: View {
                             .listRowInsets(EdgeInsets())
                             .padding(.vertical, 10)
                             .onAppear {
-                                self.onAppear(hikeInfo)
+                                onAppear(hikeInfo)
                             }
                     }
                     .buttonStyle(FlatLinkStyle())

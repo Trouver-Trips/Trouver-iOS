@@ -12,13 +12,14 @@ enum APIPath: String {
     case feed = "/feeds"
     case hikeDetail = "/hikes"
     case users = "/users"
+    case refresh = "/refreshToken"
 
     func addHikeId(_ id: String) -> String {
-        "\(self.rawValue)/\(id)"
+        "\(rawValue)/\(id)"
     }
     
     func addFavoriteId(_ id: String) -> String {
-        "\(self.rawValue)/\(id)/favorites"
+        "\(rawValue)/\(id)/favorites"
     }
 }
 
@@ -34,30 +35,20 @@ enum NetworkError: Error {
 }
 
 protocol NetworkService {
-    /**
-     Get hike detail page
-     */
+    /// Get hike detail page
     func login(idToken: String) -> AnyPublisher<WebResult<UserResult>, Error>
     
-    /**
-     Conduct a search query and return hikes
-     */
+    /// Conduct a search query and return hikes
     func fetchHikes(latitude: Double,
                     longitude: Double,
                     page: Int) -> AnyPublisher<HikeResult, Error>
 
-    /**
-     Get hike detail page
-     */
+    /// Get hike detail page
     func getHikeDetail(hikeId: String) -> AnyPublisher<HikeDetailResult, Error>
     
-    /**
-     Delete or update a hike
-     */
+    /// Delete or update a hike
     func updateFavorite(hikeId: String, addHike: Bool) -> AnyPublisher<FavoriteActionResult, Error>
     
-    /**
-     Get all favorites for a particular user
-     */
+    /// Get all favorites for a particular user
     func fetchFavorites(page: Int) -> AnyPublisher<FavoritesResult, Error>
 }

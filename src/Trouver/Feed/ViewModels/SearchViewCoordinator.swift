@@ -23,27 +23,27 @@ class SearchViewCoordinator: NSObject,
                                                     UInt(GMSPlaceField.name.rawValue) |
                                                     UInt(GMSPlaceField.placeID.rawValue) |
                                                     UInt(GMSPlaceField.coordinate.rawValue))
-        self.representable.resultsViewController.placeFields = fields
+        representable.resultsViewController.placeFields = fields
         
         let filter = GMSAutocompleteFilter()
         filter.country = "USA"
-        self.representable.resultsViewController.autocompleteFilter = filter
+        representable.resultsViewController.autocompleteFilter = filter
         
-        self.searchController = UISearchController(searchResultsController:
-                                                    self.representable.resultsViewController)
+        searchController = UISearchController(searchResultsController:
+                                                    representable.resultsViewController)
         
-        self.searchController.hidesNavigationBarDuringPresentation = false
+        searchController.hidesNavigationBarDuringPresentation = false
         
         super.init()
         representable.resultsViewController.delegate = self
-        self.searchController.searchResultsUpdater = self.representable.resultsViewController
+        searchController.searchResultsUpdater = representable.resultsViewController
     }
     
     func resultsController(_ resultsController: GMSAutocompleteResultsViewController,
                            didAutocompleteWith place: GMSPlace) {
         
-        self.representable.onSearchButtonClicked(place.coordinate)
-        self.searchController.dismiss(animated: true, completion: nil)
+        representable.onSearchButtonClicked(place.coordinate)
+        searchController.dismiss(animated: true, completion: nil)
     }
     
     func resultsController(_ resultsController: GMSAutocompleteResultsViewController,

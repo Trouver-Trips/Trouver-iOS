@@ -28,11 +28,12 @@ class FavoriteFeedCoordinator: ObservableObject {
     
     init(networkService: NetworkService = HikingNetworkService()) {
         self.networkService = networkService
-        self.search(location: self.location)
+        search(location: location)
     }
     
     deinit {
-        self.cancellable?.cancel()
+        cancellable?.cancel()
+        updateFavoriteCancellable?.cancel()
     }
 
     // MARK: Access to the Model
@@ -42,10 +43,10 @@ class FavoriteFeedCoordinator: ObservableObject {
     // MARK: - Intents
     
     func search(location: CLLocationCoordinate2D) {
-        self.currentPage = 1
+        currentPage = 1
         self.location = location
-        self.hikingFeed.clearHikes()
-        self.canLoadMorePages = true
+        hikingFeed.clearHikes()
+        canLoadMorePages = true
         loadMoreContent()
     }
 
@@ -74,7 +75,7 @@ class FavoriteFeedCoordinator: ObservableObject {
     private func save(hikeId: String, addHike: Bool) {
         
         // catch errors
-        self.updateFavoriteCancellable = self.networkService.updateFavorite(hikeId: hikeId, addHike: addHike)
+        updateFavoriteCancellable = networkService.updateFavorite(hikeId: hikeId, addHike: addHike)
             .sink(receiveCompletion: { error in
                 if case let .failure(error) = error {
                     Logger.logError("Could not favorite", error: error)
@@ -91,13 +92,14 @@ class FavoriteFeedCoordinator: ObservableObject {
 
         isLoadingPage = true
 
-        self.cancellable = self.networkService.fetchFavorites(page: currentPage)
+        cancellable = networkService.fetchFavorites(page: currentPage)
             .receive(on: DispatchQueue.main)
-            .handleEvents(receiveOutput: { favoritesResult in
-                self.canLoadMorePages = favoritesResult.hasNextPage
-                self.currentPage += 1
-            }, receiveCompletion: { _ in
-                self.isLoadingPage = false
+            .handleEvents(receiveOutput: { [weak self] favoritesResult in
+                guard let strongSelf = self else { return }
+                strongSelf.canLoadMorePages = favoritesResult.hasNextPage
+                strongSelf.currentPage += 1
+            }, receiveCompletion: { [weak self] _ in
+                self?.isLoadingPage = false
             })
             .map { favoritesResult in favoritesResult.favorites.compactMap({ HikeInfo(hike: $0) })}
             .catch({ error -> Just<[HikeInfo]> in
@@ -105,6 +107,6 @@ class FavoriteFeedCoordinator: ObservableObject {
                 return Just([])
             })
             .sink(
-                receiveValue: {  self.hikingFeed.addHikes($0) })
+                receiveValue: { [weak self] in self?.hikingFeed.addHikes($0) })
     }
 }

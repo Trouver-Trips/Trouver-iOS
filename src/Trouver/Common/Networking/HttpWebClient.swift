@@ -14,10 +14,6 @@ struct WebResult<T: Decodable> {
 }
 
 protocol WebClient {
-    /**
-     Request that returns a publisher
-     */
-    func request<T: Decodable>(_ request: URLRequest) -> AnyPublisher<T, Error>
     
     /**
      Request that returns a publisher with Info
@@ -30,7 +26,7 @@ struct HttpWebClient: WebClient {
         URLSession.shared
             .dataTaskPublisher(for: request)
             .handleEvents(
-                receiveOutput: { Logger.logInfo(String(data: $0.data, encoding: .utf8) ?? "Could not decode output" )}
+                receiveOutput: { Logger.logInfo(String(data: $0.data, encoding: .utf8) ?? "Could not decode output", level: .verbose) }
             )
             .tryMap {
                 if let response = $0.response as? HTTPURLResponse,
@@ -41,17 +37,6 @@ struct HttpWebClient: WebClient {
                     throw NetworkError.badOutput
                 }
             }
-            .eraseToAnyPublisher()
-    }
-    
-    func request<T>(_ request: URLRequest) -> AnyPublisher<T, Error> where T: Decodable {
-        URLSession.shared
-            .dataTaskPublisher(for: request)
-            .map { $0.data }
-            .handleEvents(
-                receiveOutput: { Logger.logInfo(String(data: $0, encoding: .utf8) ?? "Could not decode output" )}
-            )
-            .decode(type: T.self, decoder: JSONDecoder())
             .eraseToAnyPublisher()
     }
 }

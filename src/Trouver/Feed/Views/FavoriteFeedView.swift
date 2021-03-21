@@ -21,7 +21,7 @@ struct FavoriteFeedView: View {
                      networkService: networkService,
                      hikes: viewModel.hikes,
                      onAppear: {
-                        self.viewModel.loadMoreContentIfNeeded(currentItem: $0)
+                        viewModel.loadMoreContentIfNeeded(currentItem: $0)
                      })
             .navigationBarTitle("favorites_title")
             .navigationBarItems(trailing:

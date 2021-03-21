@@ -18,7 +18,7 @@ struct HikeInfo: Identifiable, Codable, Hashable {
 
     init(hike: HikeDoc) {
         self.hike = hike
-        self.isFavorite = hike.favorite ?? true
+        isFavorite = hike.favorite ?? true
     }
 
     // MARK: - Public properties

@@ -30,7 +30,7 @@ extension HikingNetworkService: NetworkService {
             "Authorization": idToken
         ]
         
-        return self.request(httpMethod: .post, path: APIPath.login.rawValue, headers: headers)
+        return request(httpMethod: .post, path: APIPath.login.rawValue, headers: headers)
     }
 
     func fetchHikes(latitude: Double,
@@ -40,77 +40,94 @@ extension HikingNetworkService: NetworkService {
             "lat": latitude.description,
             "long": longitude.description,
             "page": page.description,
-            "trouverId": self.accountHandle.user.trouverId
+            "trouverId": accountHandle.user.trouverId
         ]
 
-        return self.request(path: APIPath.feed.rawValue, params: params)
+        return request(path: APIPath.feed.rawValue, params: params)
     }
 
     func getHikeDetail(hikeId: String) -> AnyPublisher<HikeDetailResult, Error> {
-        self.request(path: APIPath.hikeDetail.addHikeId(hikeId))
+        request(path: APIPath.hikeDetail.addHikeId(hikeId))
     }
     
     func updateFavorite(hikeId: String, addHike: Bool) -> AnyPublisher<FavoriteActionResult, Error> {
         let httpMethod: HTTPMethod = addHike ? .post : .delete
-        let path = APIPath.users.addFavoriteId(self.accountHandle.user.trouverId)
+        let path = APIPath.users.addFavoriteId(accountHandle.user.trouverId)
         let params = [
             "hikeId": hikeId
         ]
         
-        return self.request(httpMethod: httpMethod, path: path, params: params)
+        return request(httpMethod: httpMethod, path: path, params: params)
     }
     
     func fetchFavorites(page: Int) -> AnyPublisher<FavoritesResult, Error> {
-        let path = APIPath.users.addFavoriteId(self.accountHandle.user.trouverId)
+        let path = APIPath.users.addFavoriteId(accountHandle.user.trouverId)
         let params = [
             "page": page.description
         ]
         
-        return self.request(path: path, params: params)
+        return request(path: path, params: params)
     }
     
-    private func buildRequest(httpMethod: HTTPMethod = .get,
-                              path: String,
-                              headers: [String: String]? = nil,
-                              params: [String: String?] = [:]) -> Result<URLRequest, Error> {
-        var components = URLComponents()
-        components.scheme = "https"
-        components.host = host
-        components.path = path
-        components.queryItems = params.map { URLQueryItem(name: $0, value: $1) }
-        guard let url = components.url else {
-            return .failure(NetworkError.invalidUrl)
-        }
-        var request = URLRequest(url: url)
-        request.httpMethod = httpMethod.rawValue
-        let allHeaders = headers ?? defaultHeaders
-        allHeaders.forEach { request.addValue($1, forHTTPHeaderField: $0) }
-        return .success(request)
-    }
-    
-    private func request<T: Decodable>(httpMethod: HTTPMethod = .get,
-                                       path: String,
-                                       headers: [String: String]? = nil,
-                                       params: [String: String?] = [:]) -> AnyPublisher<T, Error> {
-        switch buildRequest(httpMethod: httpMethod,
-                            path: path,
-                            headers: headers,
-                            params: params) {
-        case .success(let request): return self.webClient.request(request)
-        case .failure(let error): return Fail(error: error).eraseToAnyPublisher()
-        }
+    private func refreshToken() -> AnyPublisher<TokenRefreshResult, Error> {
+        let headers = [
+            "Authorization": accountHandle.user.accessToken,
+            "x-Refresh-Token": accountHandle.user.refreshToken
+        ]
+        let params = [
+            "trouverId": accountHandle.user.trouverId
+        ]
+        print(headers.debugDescription)
+        print(params.debugDescription)
+        return request(path: APIPath.refresh.rawValue, headers: headers, params: params)
     }
     
     private func request<T: Decodable>(httpMethod: HTTPMethod = .get,
                                        path: String,
                                        headers: [String: String]? = nil,
                                        params: [String: String?] = [:]) -> AnyPublisher<WebResult<T>, Error> {
-        switch buildRequest(httpMethod: httpMethod,
-                            path: path,
-                            headers: headers,
-                            params: params) {
-        case .success(let request): return self.webClient.request(request)
-        case .failure(let error): return Fail(error: error).eraseToAnyPublisher()
+        var components = URLComponents()
+        components.scheme = "https"
+        components.host = host
+        components.path = path
+        components.queryItems = params.map { URLQueryItem(name: $0, value: $1) }
+        guard let url = components.url else {
+            return Fail(error: NetworkError.invalidUrl).eraseToAnyPublisher()
         }
+        var request = URLRequest(url: url)
+        request.httpMethod = httpMethod.rawValue
+        let allHeaders = headers ?? defaultHeaders
+        allHeaders.forEach { request.addValue($1, forHTTPHeaderField: $0) }
+        
+        // Do not refresh for itself or login
+        if accountHandle.hasExpired && !path.contains("refresh") && !path.contains("login") {
+            return refreshToken()
+                .handleEvents(
+                    receiveOutput: {
+                        if let token = $0.token {
+                            self.accountHandle.updateToken(token)
+                        }
+                    }
+                )
+                .flatMap { _ -> AnyPublisher<WebResult<T>, Error> in
+                    self.webClient.request(request).eraseToAnyPublisher()
+                }
+                .eraseToAnyPublisher()
+        }
+        
+        return webClient.request(request)
+    }
+    
+    private func request<T: Decodable>(httpMethod: HTTPMethod = .get,
+                                       path: String,
+                                       headers: [String: String]? = nil,
+                                       params: [String: String?] = [:]) -> AnyPublisher<T, Error> {
+        let publisher: AnyPublisher<WebResult<T>, Error> = request(httpMethod: httpMethod,
+                                                                        path: path,
+                                                                        headers: headers,
+                                                                        params: params)
+        return publisher
+            .map { $0.data }
+            .eraseToAnyPublisher()
     }
 }

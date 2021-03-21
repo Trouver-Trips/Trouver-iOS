@@ -17,8 +17,8 @@ struct HikingFeed {
     
     mutating func addHikes(_ hike: HikeInfo) {
         if !hikeChecker.contains(hike) {
-            self.hikeChecker.insert(hike)
-            self.hikes.append(hike)
+            hikeChecker.insert(hike)
+            hikes.append(hike)
         }
     }
     
@@ -27,18 +27,18 @@ struct HikingFeed {
     }
     
     mutating func removeHike(_ hike: HikeInfo) {
-        self.hikeChecker.remove(hike)
-        self.hikes.removeAll { $0 == hike }
+        hikeChecker.remove(hike)
+        hikes.removeAll { $0 == hike }
     }
     
     mutating func updateHike(_ hike: HikeInfo) {
-        if let index = self.hikes.firstIndex(of: hike) {
-            self.hikes[index] = hike
+        if let index = hikes.firstIndex(of: hike) {
+            hikes[index] = hike
         }
     }
     
     mutating func clearHikes() {
-        self.hikeChecker.removeAll()
-        self.hikes.removeAll()
+        hikeChecker.removeAll()
+        hikes.removeAll()
     }
 }

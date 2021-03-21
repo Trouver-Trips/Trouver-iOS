@@ -22,7 +22,7 @@ class ImageLoader: ObservableObject {
     init(url: URL, cache: ImageCache? = nil) {
         self.url = url
         self.cache = cache
-        self.load()
+        load()
     }
 
     deinit {
@@ -39,8 +39,8 @@ class ImageLoader: ObservableObject {
             return
         }
 
-        self.cancellable = URLSession.shared.dataTaskPublisher(for: url)
-            .subscribe(on: Self.imageProcessingQueue)
+        cancellable = URLSession.shared.dataTaskPublisher(for: url)
+            .subscribe(on: ImageLoader.imageProcessingQueue)
             .map { UIImage(data: $0.data) }
             .replaceError(with: nil)
             .handleEvents(
@@ -54,7 +54,7 @@ class ImageLoader: ObservableObject {
     }
 
     func cancel() {
-        self.cancellable?.cancel()
+        cancellable?.cancel()
     }
 
     // MARK: - Private methods

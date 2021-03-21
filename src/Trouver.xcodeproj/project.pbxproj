@@ -48,6 +48,7 @@
 		5F6E32F0259300DB00E70AE2 /* HikeInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F6E32EF259300DB00E70AE2 /* HikeInfo.swift */; };
 		5F6E32F5259305CF00E70AE2 /* HikeDetailInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F6E32F4259305CF00E70AE2 /* HikeDetailInfoView.swift */; };
 		5F6E330B25930BD100E70AE2 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5F6E330D25930BD100E70AE2 /* Localizable.strings */; };
+		5F76BFA32606B89A00F09B8F /* TokenRefreshResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F76BFA22606B89A00F09B8F /* TokenRefreshResult.swift */; };
 		5F9B1EA725B53134000B3328 /* EnvironmentProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F9B1EA625B53134000B3328 /* EnvironmentProvider.swift */; };
 		5FCFC891259669D700D38AE4 /* FlatButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FCFC890259669D700D38AE4 /* FlatButtonStyle.swift */; };
 		5FCFC89A259704F700D38AE4 /* DataFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FCFC899259704F700D38AE4 /* DataFactory.swift */; };
@@ -132,6 +133,7 @@
 		5F6E32EF259300DB00E70AE2 /* HikeInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HikeInfo.swift; sourceTree = "<group>"; };
 		5F6E32F4259305CF00E70AE2 /* HikeDetailInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HikeDetailInfoView.swift; sourceTree = "<group>"; };
 		5F6E330C25930BD100E70AE2 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		5F76BFA22606B89A00F09B8F /* TokenRefreshResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenRefreshResult.swift; sourceTree = "<group>"; };
 		5F9B1EA625B53134000B3328 /* EnvironmentProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnvironmentProvider.swift; sourceTree = "<group>"; };
 		5FCFC890259669D700D38AE4 /* FlatButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlatButtonStyle.swift; sourceTree = "<group>"; };
 		5FCFC899259704F700D38AE4 /* DataFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataFactory.swift; sourceTree = "<group>"; };
@@ -494,6 +496,7 @@
 				5FF40A1D25CCE87300158C3A /* UserResult.swift */,
 				5FF40A5F25CF08AD00158C3A /* FavoritesResult.swift */,
 				5FF40A7625CF091A00158C3A /* FavoriteActionResult.swift */,
+				5F76BFA22606B89A00F09B8F /* TokenRefreshResult.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -797,6 +800,7 @@
 				5F57B48925A141F100741A5A /* GoogleSignInButton.swift in Sources */,
 				5FD8F81C25C631EC0025652E /* SearchView.swift in Sources */,
 				5FF40A6025CF08AD00158C3A /* FavoritesResult.swift in Sources */,
+				5F76BFA32606B89A00F09B8F /* TokenRefreshResult.swift in Sources */,
 				5F6E32B92592867C00E70AE2 /* HikeData.swift in Sources */,
 				5FF40A8C25CF0C2B00158C3A /* FavoriteFeedCoordinator.swift in Sources */,
 				5F57B46225A10B8E00741A5A /* AppDelegate.swift in Sources */,

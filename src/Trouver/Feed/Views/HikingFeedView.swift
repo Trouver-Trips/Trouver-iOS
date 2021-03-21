@@ -22,10 +22,10 @@ struct HikingFeedView: View {
                      networkService: networkService,
                      hikes: viewModel.hikes,
                      onAppear: {
-                        self.viewModel.loadMoreContentIfNeeded(currentItem: $0)
+                        viewModel.loadMoreContentIfNeeded(currentItem: $0)
                      }, favoriteAction: {
-                        self.favorites.update($0)
-                        self.viewModel.toggleFavorite(hike: $0)
+                        favorites.update($0)
+                        viewModel.toggleFavorite(hike: $0)
                      })
             .navigationBarTitle("trouver_title")
             .navigationBarItems(trailing:

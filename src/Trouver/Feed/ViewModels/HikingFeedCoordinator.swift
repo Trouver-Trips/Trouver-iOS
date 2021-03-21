@@ -27,11 +27,11 @@ class HikingFeedCoordinator: ObservableObject {
     
     init(networkService: NetworkService = HikingNetworkService()) {
         self.networkService = networkService
-        self.search(location: self.location)
+        search(location: location)
     }
     
     deinit {
-        self.cancellable?.cancel()
+        cancellable?.cancel()
     }
 
     // MARK: Access to the Model
@@ -41,17 +41,17 @@ class HikingFeedCoordinator: ObservableObject {
     // MARK: - Intents
     
     func search(location: CLLocationCoordinate2D) {
-        self.currentPage = 1
+        currentPage = 1
         self.location = location
-        self.hikingFeed.clearHikes()
-        self.canLoadMorePages = true
+        hikingFeed.clearHikes()
+        canLoadMorePages = true
         loadMoreContent()
     }
     
     func toggleFavorite(hike: HikeInfo) {
         var newHike = hike
         newHike.isFavorite = !hike.isFavorite
-        self.updateHike(newHike)
+        updateHike(newHike)
     }
 
     func loadMoreContentIfNeeded(currentItem item: HikeInfo?) {
@@ -74,15 +74,16 @@ class HikingFeedCoordinator: ObservableObject {
 
         isLoadingPage = true
 
-        self.cancellable = self.networkService.fetchHikes(latitude: self.location.latitude,
-                                                          longitude: self.location.longitude,
+        cancellable = networkService.fetchHikes(latitude: location.latitude,
+                                                          longitude: location.longitude,
                                                           page: currentPage)
             .receive(on: DispatchQueue.main)
-            .handleEvents(receiveOutput: { hikeResult in
-                self.canLoadMorePages = hikeResult.hikes.hasNextPage
-                self.currentPage += 1
-            }, receiveCompletion: { _ in
-                self.isLoadingPage = false
+            .handleEvents(receiveOutput: { [weak self] hikeResult in
+                guard let strongSelf = self else { return }
+                strongSelf.canLoadMorePages = hikeResult.hikes.hasNextPage
+                strongSelf.currentPage += 1
+            }, receiveCompletion: { [weak self] _ in
+                self?.isLoadingPage = false
             })
             .map { hikeResult in hikeResult.hikes.docs.compactMap({ HikeInfo(hike: $0) })}
             .catch({ error -> Just<[HikeInfo]> in
@@ -90,12 +91,12 @@ class HikingFeedCoordinator: ObservableObject {
                 return Just([])
             })
             .sink(
-                receiveValue: { hikes in
-                self.hikingFeed.addHikes(hikes)
+                receiveValue: { [weak self] hikes in
+                    self?.hikingFeed.addHikes(hikes)
             })
     }
     
     private func updateHike(_ hike: HikeInfo) {
-        self.hikingFeed.updateHike(hike)
+        hikingFeed.updateHike(hike)
     }
 }

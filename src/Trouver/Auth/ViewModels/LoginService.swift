@@ -38,7 +38,7 @@ class LoginService: NSObject, ObservableObject {
 
     func silentSignIn() {
         // Automatically sign in the user.
-        self.signInState = .tryingSilentSignIn
+        signInState = .tryingSilentSignIn
         GIDSignIn.sharedInstance()?.restorePreviousSignIn()
     }
 
@@ -53,7 +53,7 @@ class LoginService: NSObject, ObservableObject {
         default: break
         }
         
-        self.signInState = .notSignedIn
+        signInState = .notSignedIn
     }
 }
 
@@ -62,7 +62,7 @@ extension LoginService: GIDSignInDelegate {
 
     func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error!) {
         if let error = error as NSError? {
-            self.signInState = .notSignedIn
+            signInState = .notSignedIn
             if error.code == GIDSignInErrorCode.hasNoAuthInKeychain.rawValue {
                 Logger.logInfo("The user has not signed in before or they have since signed out.")
             } else if error.code == GIDSignInErrorCode.canceled.rawValue {
@@ -76,10 +76,10 @@ extension LoginService: GIDSignInDelegate {
         // If the previous `error` is null, then the sign-in was succesful
         Logger.logInfo("Successful Google sign-in!")
                 
-        self.networkService.login(idToken: user.authentication.idToken)
+        networkService.login(idToken: user.authentication.idToken)
             .receive(on: DispatchQueue.main)
             .handleEvents(receiveOutput: { _ in Logger.logInfo("Successfuly got trouver user") })
-            .map { SignInState.signedIn(self.createUser(userResult: $0, accountType: .google)) }
+            .map { SignInState.signedIn(LoginService.createUser(userResult: $0, accountType: .google)) }
             .catch({ error -> Just<SignInState> in
                 Logger.logError("Failed to get trouver user", error: error)
                 return Just(SignInState.error(error))
@@ -87,8 +87,8 @@ extension LoginService: GIDSignInDelegate {
             .assign(to: &$signInState)
     }
     
-    private func createUser(userResult: WebResult<UserResult>,
-                            accountType: AccountType) -> AccountHandle {
+    private static func createUser(userResult: WebResult<UserResult>,
+                                   accountType: AccountType) -> AccountHandle {
         let refreshToken: String
         if let token = userResult.headers["Set-Cookie"] as? String {
             refreshToken = token.components(separatedBy: "=")[1].components(separatedBy: ";")[0]

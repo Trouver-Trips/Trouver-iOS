@@ -10,7 +10,7 @@ import SwiftUI
 extension ScrollView {
     
     public func fixFlickering() -> some View {
-        return self.fixFlickering { (scrollView) in
+        return fixFlickering { (scrollView) in
             return scrollView
         }
     }
@@ -19,10 +19,10 @@ extension ScrollView {
         GeometryReader { geometryWithSafeArea in
             GeometryReader { _ in
                 configurator(
-                ScrollView<AnyView>(self.axes, showsIndicators: self.showsIndicators) {
+                ScrollView<AnyView>(axes, showsIndicators: showsIndicators) {
                     AnyView(
                     VStack {
-                        self.content
+                        content
                     }
                     .padding(.top, geometryWithSafeArea.safeAreaInsets.top)
                     .padding(.bottom, geometryWithSafeArea.safeAreaInsets.bottom)
