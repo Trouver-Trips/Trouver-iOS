@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct HikingFeedView: View {
-    @ObservedObject var viewModel: HikingFeedCoordinator
+    @ObservedObject var viewModel: FeedCoordinator
     @EnvironmentObject var loginViewModel: LoginService
         
     private var networkService: NetworkService {
@@ -17,12 +17,7 @@ struct HikingFeedView: View {
         
     var body: some View {
         NavigationView {
-            FeedView(isLoadingPage: viewModel.isLoading,
-                     networkService: networkService,
-                     hikes: viewModel.hikes,
-                     onAppear: {
-                        viewModel.loadMoreContentIfNeeded(currentItem: $0)
-                     })
+            FeedView(viewModel: viewModel)
             .navigationBarTitle("trouver_title")
             .navigationBarItems(trailing:
                 Button (action: {
@@ -41,7 +36,7 @@ struct HikingFeedView: View {
 #if DEBUG
 struct HikingFeedViewPreviews: PreviewProvider {
     static var previews: some View {
-        HikingFeedView(viewModel: HikingFeedCoordinator())
+        HikingFeedView(viewModel: FeedCoordinator(feedType: .newsfeed, favoritesCoordinator: FavoritesCoordinator()))
             .environmentObject(LoginService())
     }
 }

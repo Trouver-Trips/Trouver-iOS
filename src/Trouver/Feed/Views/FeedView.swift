@@ -8,39 +8,34 @@
 import SwiftUI
 
 struct FeedView: View {
-    let isLoadingPage: Bool
-    let networkService: NetworkService
-    let hikes: [HikeInfo]
-    let onAppear: (HikeInfo) -> Void
-    
-    var favoriteAction: ((HikeInfo) -> Void)?
+    @ObservedObject var viewModel: FeedCoordinator
     
     var body: some View {
         ScrollView {
             LazyVStack {
-                ForEach(hikes) { hikeInfo in
+                ForEach(viewModel.hikes) { hikeInfo in
                     NavigationLink(destination:
                                     HikeDetailInfoView(viewModel:
                                                         HikeDetail(hikeInfo: hikeInfo,
-                                                                            networkService: networkService))) {
-                        FeedItemView(hikeInfo: hikeInfo, favoriteAction: favoriteAction)
+                                                                   networkService: viewModel.networkService))) {
+                        FeedItemView(viewModel: viewModel, hikeInfo: hikeInfo)
                             .listRowInsets(EdgeInsets())
                             .padding(.vertical, 10)
                             .onAppear {
-                                onAppear(hikeInfo)
+                                viewModel.loadMoreContentIfNeeded(item: hikeInfo)
                             }
                     }
                     .buttonStyle(FlatLinkStyle())
                 }
             }
 
-            if isLoadingPage {
+            if viewModel.isLoading {
               ProgressView()
             }
         }
-        .fixFlickering { scrollView in
-            scrollView
-                .background(Color(.systemGray6))
-        }
+//        .fixFlickering { scrollView in
+//            scrollView
+//                .background(Color(.systemGray6))
+//        }
     }
 }

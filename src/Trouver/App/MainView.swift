@@ -8,20 +8,25 @@
 import SwiftUI
 
 struct MainView: View {
+    @EnvironmentObject var favoritesCoordinator: FavoritesCoordinator
     @EnvironmentObject var loginViewModel: LoginService
     
     private var networkService: NetworkService {
         HikingNetworkService(accountHandle: loginViewModel.accountHandle)
     }
-
+    
     var body: some View {
         TabView {
-            HikingFeedView(viewModel: HikingFeedCoordinator(networkService: networkService))
+            HikingFeedView(viewModel: FeedCoordinator(networkService: networkService,
+                                                      feedType: .newsfeed,
+                                                      favoritesCoordinator: favoritesCoordinator))
                 .tabItem {
                     Image(systemName: "list.dash")
                     Text("Feed")
                 }
-            FavoriteFeedView(viewModel: FavoriteFeedCoordinator(networkService: networkService))
+            FavoriteFeedView(viewModel: FeedCoordinator(networkService: networkService,
+                                                        feedType: .favorites,
+                                                        favoritesCoordinator: favoritesCoordinator))
                 .tabItem {
                     Image(systemName: "suit.heart.fill")
                     Text("Favorites")

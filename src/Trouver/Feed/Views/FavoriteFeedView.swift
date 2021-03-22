@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct FavoriteFeedView: View {
-    @ObservedObject var viewModel: FavoriteFeedCoordinator
+    @ObservedObject var viewModel: FeedCoordinator
     @EnvironmentObject var loginService: LoginService
     
     private var networkService: NetworkService {
@@ -17,12 +17,7 @@ struct FavoriteFeedView: View {
         
     var body: some View {
         NavigationView {
-            FeedView(isLoadingPage: viewModel.isLoading,
-                     networkService: networkService,
-                     hikes: viewModel.hikes,
-                     onAppear: {
-                        viewModel.loadMoreContentIfNeeded(currentItem: $0)
-                     })
+            FeedView(viewModel: viewModel)
             .navigationBarTitle("favorites_title")
             .navigationBarItems(trailing:
                 Button (action: {
@@ -38,7 +33,7 @@ struct FavoriteFeedView: View {
 #if DEBUG
 struct FavoriteFeedViewPreviews: PreviewProvider {
     static var previews: some View {
-        FavoriteFeedView(viewModel: FavoriteFeedCoordinator())
+        FavoriteFeedView(viewModel: FeedCoordinator(feedType: .favorites, favoritesCoordinator: FavoritesCoordinator()))
             .environmentObject(LoginService())
     }
 }

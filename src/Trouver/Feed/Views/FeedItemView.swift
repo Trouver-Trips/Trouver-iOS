@@ -8,10 +8,11 @@
 import SwiftUI
 
 struct FeedItemView: View {
-    // Private members
+    
+    @ObservedObject var viewModel: FeedCoordinator
+    
     private let cornerRadius: CGFloat = 25
     let hikeInfo: HikeInfo
-    let favoriteAction: ((HikeInfo) -> Void)?
 
     var body: some View {
         VStack {
@@ -21,9 +22,9 @@ struct FeedItemView: View {
                 .fontWeight(.bold)
                 .font(.title)
                 .padding()
-            if let action = favoriteAction {
+            if viewModel.showFavoriteToggle {
                 Button(action: {
-                    action(hikeInfo)
+                    viewModel.toggleFavorite(hike: hikeInfo)
                 }, label: {
                     Image(systemName: hikeInfo.isFavorite ? "heart.fill" : "heart")
                         .resizable()
@@ -46,7 +47,9 @@ struct FeedItemView: View {
 #if DEBUG
 struct FeedItemViewPreviews: PreviewProvider {
     static var previews: some View {
-        FeedItemView(hikeInfo: HikeInfo.sampleData(), favoriteAction: nil)
+        FeedItemView(viewModel: FeedCoordinator(feedType: .newsfeed,
+                                                favoritesCoordinator: FavoritesCoordinator()),
+                     hikeInfo: HikeInfo.sampleData())
     }
 }
 #endif
