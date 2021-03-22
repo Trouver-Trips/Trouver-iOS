@@ -22,6 +22,7 @@ class FeedCoordinator: ObservableObject {
     private var currentPage = 1
     private var canLoadMorePages = true
     private var bag = Set<AnyCancellable>()
+    private var shouldUpdateFavorite: Bool = true
     
     private var location = CLLocationCoordinate2D(latitude: 47.6062,
                                                   longitude: -122.3321)
@@ -37,6 +38,7 @@ class FeedCoordinator: ObservableObject {
         self.feedType = feedType
         self.favoritesCoordinator = favoritesCoordinator
         loadMoreContent()
+        favoritesUpdated()
     }
     
     deinit {
@@ -47,6 +49,7 @@ class FeedCoordinator: ObservableObject {
     
     let networkService: NetworkService
     var hikes: [HikeInfo] { hikingFeed.hikes }
+    
     var showFavoriteToggle: Bool { feedType == .newsfeed }
 
     // MARK: - Intents
@@ -65,7 +68,14 @@ class FeedCoordinator: ObservableObject {
     }
     
     func toggleFavorite(hike: HikeInfo) {
-        hikingFeed.updateHike(favoritesCoordinator.toggleFavorite(hike: hike))
+        if shouldUpdateFavorite {
+            shouldUpdateFavorite = false
+            let newHike = hikingFeed.toggleFavorite(hike)
+            favoritesCoordinator.updateFavorite(newHike: newHike)
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) { [weak self]  in
+                self?.shouldUpdateFavorite = true
+            }
+        }
     }
     
     // MARK: - Private functions
@@ -119,9 +129,19 @@ class FeedCoordinator: ObservableObject {
     }
     
     private func favoritesUpdated() {
-        favoritesCoordinator.$favoriteFeed.sink(receiveValue: {
-            print($0.hikes.count)
-        })
-        .store(in: &bag)
+        if feedType == .favorites {
+            favoritesCoordinator.$favoriteHike
+                .debounce(for: .milliseconds(500), scheduler: RunLoop.main)
+                .sink(receiveValue: { [weak self] in
+                if let updatedHike = $0 {
+                    if updatedHike.isFavorite {
+                        self?.hikingFeed.addHikes(updatedHike, toFront: true)
+                    } else {
+                        self?.hikingFeed.removeHike(updatedHike)
+                    }
+                }
+            })
+            .store(in: &bag)
+        }
     }
 }

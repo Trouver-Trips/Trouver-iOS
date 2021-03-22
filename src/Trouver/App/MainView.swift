@@ -8,8 +8,8 @@
 import SwiftUI
 
 struct MainView: View {
-    @EnvironmentObject var favoritesCoordinator: FavoritesCoordinator
     @EnvironmentObject var loginViewModel: LoginService
+    let favoritesCoordinator: FavoritesCoordinator
     
     private var networkService: NetworkService {
         HikingNetworkService(accountHandle: loginViewModel.accountHandle)
@@ -37,7 +37,7 @@ struct MainView: View {
 
 struct MainViewPreviews: PreviewProvider {
     static var previews: some View {
-        MainView()
+        MainView(favoritesCoordinator: FavoritesCoordinator())
             .environmentObject(LoginService())
     }
 }

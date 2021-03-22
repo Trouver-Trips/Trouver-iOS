@@ -7,11 +7,11 @@
 
 import Combine
 
-class FavoritesCoordinator: ObservableObject {
+class FavoritesCoordinator {
     private var bag = Set<AnyCancellable>()
 
     let networkService: NetworkService
-    @Published var favoriteFeed = HikingFeed()
+    @Published var favoriteHike: HikeInfo?
 
     init(networkService: NetworkService = HikingNetworkService()) {
         self.networkService = networkService
@@ -21,11 +21,10 @@ class FavoritesCoordinator: ObservableObject {
         bag.forEach { $0.cancel() }
     }
 
-    func toggleFavorite(hike: HikeInfo) -> HikeInfo {
-        var newHike = hike
-        newHike.isFavorite = !hike.isFavorite
-        save(hikeId: hike.id, addHike: !hike.isFavorite)
-        return newHike
+    func updateFavorite(newHike: HikeInfo) {
+        favoriteHike = nil
+        favoriteHike = newHike
+        save(hikeId: newHike.id, addHike: newHike.isFavorite)
     }
     
     private func save(hikeId: String, addHike: Bool) {

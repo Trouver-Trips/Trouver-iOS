@@ -19,8 +19,7 @@ struct SignInView: View {
         ZStack {
             switch userViewModel.signInState {
             case .signedIn:
-                MainView()
-                    .environmentObject(FavoritesCoordinator(networkService: networkService))
+                MainView(favoritesCoordinator: FavoritesCoordinator(networkService: networkService))
             case .notSignedIn:
                 ZStack {
                     Image("Rainier")

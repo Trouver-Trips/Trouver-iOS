@@ -11,8 +11,8 @@ struct FeedView: View {
     @ObservedObject var viewModel: FeedCoordinator
     
     var body: some View {
-        ScrollView {
-            LazyVStack {
+        //ScrollView {
+            List {
                 ForEach(viewModel.hikes) { hikeInfo in
                     NavigationLink(destination:
                                     HikeDetailInfoView(viewModel:
@@ -32,7 +32,8 @@ struct FeedView: View {
             if viewModel.isLoading {
               ProgressView()
             }
-        }
+        
+        //}
 //        .fixFlickering { scrollView in
 //            scrollView
 //                .background(Color(.systemGray6))

@@ -11,6 +11,10 @@ struct FeedItemView: View {
     
     @ObservedObject var viewModel: FeedCoordinator
     
+    private var hikeIndex: Int {
+        viewModel.hikes.firstIndex(of: hikeInfo) ?? 0
+    }
+    
     private let cornerRadius: CGFloat = 25
     let hikeInfo: HikeInfo
 
@@ -26,7 +30,7 @@ struct FeedItemView: View {
                 Button(action: {
                     viewModel.toggleFavorite(hike: hikeInfo)
                 }, label: {
-                    Image(systemName: hikeInfo.isFavorite ? "heart.fill" : "heart")
+                    Image(systemName: viewModel.hikes[hikeIndex].isFavorite ? "heart.fill" : "heart")
                         .resizable()
                         .frame(width: 30, height: 30)
                         .foregroundColor(.pink)
