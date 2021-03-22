@@ -12,7 +12,7 @@ struct FeedItemView: View {
     @ObservedObject var viewModel: FeedCoordinator
     
     private var hikeIndex: Int {
-        viewModel.hikes.firstIndex(of: hikeInfo) ?? 0
+        viewModel.hikes.firstIndex(of: hikeInfo) ?? -1
     }
     
     private let cornerRadius: CGFloat = 25
@@ -26,7 +26,7 @@ struct FeedItemView: View {
                 .fontWeight(.bold)
                 .font(.title)
                 .padding()
-            if viewModel.showFavoriteToggle {
+            if viewModel.showFavoriteToggle && hikeIndex >= 0 {
                 Button(action: {
                     viewModel.toggleFavorite(hike: hikeInfo)
                 }, label: {

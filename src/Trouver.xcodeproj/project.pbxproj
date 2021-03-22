@@ -12,7 +12,6 @@
 		221B21E4D48EFE13734339BA /* libPods-Trouver.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6EB57E507CD8E25E24ADDDDF /* libPods-Trouver.a */; };
 		5F01BAA325A15FF8002330BC /* UIApplication+ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F01BAA225A15FF8002330BC /* UIApplication+ViewController.swift */; };
 		5F01BACF25A16CD9002330BC /* AccountType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F01BACE25A16CD9002330BC /* AccountType.swift */; };
-		5F395BC725E22EAB00AD618D /* ScrollView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F395BC625E22EAB00AD618D /* ScrollView+Extensions.swift */; };
 		5F395BCC25E2300F00AD618D /* APIKeys.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5F395BCB25E2300F00AD618D /* APIKeys.plist */; };
 		5F395BD125E2312400AD618D /* PlistReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F395BD025E2312400AD618D /* PlistReader.swift */; };
 		5F3B3EA22595592D00512B4C /* ImageCarouselView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F3B3EA12595592D00512B4C /* ImageCarouselView.swift */; };
@@ -91,7 +90,6 @@
 		3E1D72EE7D4E56B1C0A41C4C /* Pods-Trouver.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Trouver.debug.xcconfig"; path = "Target Support Files/Pods-Trouver/Pods-Trouver.debug.xcconfig"; sourceTree = "<group>"; };
 		5F01BAA225A15FF8002330BC /* UIApplication+ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIApplication+ViewController.swift"; sourceTree = "<group>"; };
 		5F01BACE25A16CD9002330BC /* AccountType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountType.swift; sourceTree = "<group>"; };
-		5F395BC625E22EAB00AD618D /* ScrollView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ScrollView+Extensions.swift"; sourceTree = "<group>"; };
 		5F395BCB25E2300F00AD618D /* APIKeys.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = APIKeys.plist; sourceTree = "<group>"; };
 		5F395BD025E2312400AD618D /* PlistReader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlistReader.swift; sourceTree = "<group>"; };
 		5F3B3EA12595592D00512B4C /* ImageCarouselView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCarouselView.swift; sourceTree = "<group>"; };
@@ -244,7 +242,6 @@
 			isa = PBXGroup;
 			children = (
 				5F3B3EDE259573BB00512B4C /* AsyncImage.swift */,
-				5F395BC625E22EAB00AD618D /* ScrollView+Extensions.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -796,7 +793,6 @@
 				5F6E32E125929BF700E70AE2 /* FeedItemView.swift in Sources */,
 				5F6E3251258EFBAF00E70AE2 /* HikingFeedView.swift in Sources */,
 				5FF40A7725CF091A00158C3A /* FavoriteActionResult.swift in Sources */,
-				5F395BC725E22EAB00AD618D /* ScrollView+Extensions.swift in Sources */,
 				5F57B48925A141F100741A5A /* GoogleSignInButton.swift in Sources */,
 				5FD8F81C25C631EC0025652E /* SearchView.swift in Sources */,
 				5FF40A6025CF08AD00158C3A /* FavoritesResult.swift in Sources */,
