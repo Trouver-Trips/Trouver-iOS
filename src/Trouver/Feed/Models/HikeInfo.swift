@@ -18,6 +18,7 @@ struct HikeInfo: Identifiable, Codable, Hashable {
 
     init(hike: HikeDoc) {
         self.hike = hike
+        isFavorite = hike.favorite ?? true
     }
 
     // MARK: - Public properties
@@ -27,6 +28,8 @@ struct HikeInfo: Identifiable, Codable, Hashable {
     var imageUrls: [URL] {
         hike.images.compactMap { URL(string: $0) }
     }
+    var showFavorite: Bool { hike.favorite != nil}
+    var isFavorite: Bool
 }
 
 // MARK: - Sample data

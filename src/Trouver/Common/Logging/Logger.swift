@@ -8,8 +8,18 @@
 import Foundation
 
 struct Logger {
-    static func logInfo(_ message: String) {
-        print("Log Info: \(message)")
+    enum Level: Int {
+        case none = 0
+        case debug = 1
+        case verbose = 2
+    }
+    
+    static var currentLevel: Level = .debug
+    
+    static func logInfo(_ message: String, level: Level = .debug) {
+        if level.rawValue <= currentLevel.rawValue {
+            print("Log Info: \(message)")
+        }
     }
 
     static func logError(_ message: String, error: Error? = nil) {

@@ -14,7 +14,7 @@ struct WrappedHStack: View {
 
     var body: some View {
         GeometryReader { geometry in
-            self.generateContent(in: geometry)
+            generateContent(in: geometry)
         }
         .frame(height: totalHeight)
     }
@@ -24,7 +24,7 @@ struct WrappedHStack: View {
         var height = CGFloat.zero
 
         return ZStack(alignment: .topLeading) {
-            ForEach(self.items, id: \.self) { item in
+            ForEach(items, id: \.self) { item in
                 PillView(text: item)
                     .padding([.horizontal, .vertical], 4)
                     .alignmentGuide(.leading, computeValue: { d in
@@ -33,7 +33,7 @@ struct WrappedHStack: View {
                             height -= d.height
                         }
                         let result = width
-                        if self.items.last == item {
+                        if items.last == item {
                             width = 0 //last item
                         } else {
                             width -= d.width
@@ -42,7 +42,7 @@ struct WrappedHStack: View {
                     })
                     .alignmentGuide(.top, computeValue: { _ in
                         let result = height
-                        if self.items.last == item {
+                        if items.last == item {
                             height = 0 // last item
                         }
                         return result
@@ -52,7 +52,7 @@ struct WrappedHStack: View {
         .background(GeometryReader {gp -> Color in
             DispatchQueue.main.async {
                 // update on next cycle with calculated height of ZStack
-                self.totalHeight = gp.size.height
+                totalHeight = gp.size.height
             }
             return Color.clear
         })

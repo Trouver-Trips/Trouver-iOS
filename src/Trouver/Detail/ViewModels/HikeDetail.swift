@@ -25,12 +25,12 @@ class HikeDetail: ObservableObject {
     // MARK: - Intents
 
     func onAppear() {
-        self.loadContent()
+        loadContent()
     }
 
     private func loadContent() {
-        self.state = .loading
-        self.networkService.getHikeDetail(hikeId: self.hikeInfo.id)
+        state = .loading
+        networkService.getHikeDetail(hikeId: hikeInfo.id)
             .receive(on: DispatchQueue.main)
             .map { result in State.loaded(HikeDetailInfo(hikeDetail: result.hike)) }
             .catch({ error -> Just<State> in

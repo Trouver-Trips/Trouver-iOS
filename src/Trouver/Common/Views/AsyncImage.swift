@@ -28,7 +28,7 @@ struct AsyncImage: View {
                         .resizable()
                 } else {
                     if showPlaceHolder {
-                        Image("Logo")
+                        Image("Placeholder")
                             .resizable()
                     } else {
                         EmptyView()

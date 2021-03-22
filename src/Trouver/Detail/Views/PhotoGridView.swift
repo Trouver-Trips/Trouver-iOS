@@ -17,8 +17,8 @@ struct PhotoGridView: View {
           LazyVGrid(columns: gridLayout, alignment: .center, spacing: 10) {
             ForEach(Array(images.enumerated()), id: \.1) { index, imageUrl in
                 Button(action: {
-                    self.selectedPhoto = index
-                    self.showingFullPhoto = true
+                    selectedPhoto = index
+                    showingFullPhoto = true
                 }, label: {
                     Color("CarouselBackground")
                         .aspectRatio(1, contentMode: .fill)

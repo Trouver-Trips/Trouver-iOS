@@ -47,15 +47,15 @@ extension SearchView {
     class Wrapper: UIViewController {
         var searchController: UISearchController? {
             get {
-                self.parent?.navigationItem.searchController
+                parent?.navigationItem.searchController
             }
             set {
-                self.parent?.navigationItem.searchController = newValue
+                parent?.navigationItem.searchController = newValue
             }
         }
         
         func navigationBarSizeToFit() {
-            self.parent?.navigationController?.navigationBar.sizeToFit()
+            parent?.navigationController?.navigationBar.sizeToFit()
         }
     }
 }

@@ -8,44 +8,32 @@
 import SwiftUI
 
 struct FeedView: View {
-    let isLoadingPage: Bool
-    let networkService: NetworkService
-    let hikes: [HikeInfo]
-    let onAppear: (HikeInfo) -> Void
-    var onItemDoubleTap: ((HikeInfo) -> Void)?
+    @ObservedObject var viewModel: FeedCoordinator
     
     var body: some View {
-        ScrollView {
-            LazyVStack {
-                ForEach(hikes) { hikeInfo in
-                    NavigationLink(destination:
-                                    HikeDetailInfoView(viewModel:
-                                                        HikeDetail(hikeInfo: hikeInfo,
-                                                                            networkService: networkService))) {
-                        FeedItemView(hikeInfo: hikeInfo)
-                            .listRowInsets(EdgeInsets())
-                            .padding(.vertical, 10)
-                            .onAppear {
-                                self.onAppear(hikeInfo)
-                            }
-                            .gesture(getTapGesture(hike: hikeInfo))
-                    }
-                    .buttonStyle(FlatLinkStyle())
+        List {
+            ForEach(viewModel.hikes) { hikeInfo in
+                NavigationLink(destination:
+                                HikeDetailInfoView(viewModel:
+                                                    HikeDetail(hikeInfo: hikeInfo,
+                                                               networkService: viewModel.networkService))) {
+                    FeedItemView(viewModel: viewModel, hikeInfo: hikeInfo)
+                        .listRowInsets(EdgeInsets())
+                        .padding(.vertical, 10)
+                        .onAppear {
+                            viewModel.loadMoreContentIfNeeded(item: hikeInfo)
+                        }
+                        .padding([.trailing], -34.0)
                 }
+                .buttonStyle(FlatLinkStyle())
+                .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .leading)
+                .listRowInsets(EdgeInsets())
+                .background(Color(.systemBackground))
             }
+        }
 
-            if isLoadingPage {
-              ProgressView()
-            }
+        if viewModel.isLoading {
+          ProgressView()
         }
-        .fixFlickering { scrollView in
-            scrollView
-                .background(Color(.systemGray6))
-        }
-    }
-    
-    func getTapGesture(hike: HikeInfo) -> some Gesture {
-        let gesture = TapGesture(count: 2).onEnded { onItemDoubleTap?(hike) }
-        return onItemDoubleTap != nil ? gesture : nil
     }
 }

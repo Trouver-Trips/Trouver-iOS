@@ -25,12 +25,12 @@ struct HikingNetworkService {
 
 extension HikingNetworkService: NetworkService {
 
-    func login(idToken: String) -> AnyPublisher<UserResult, Error> {
+    func login(idToken: String) -> AnyPublisher<WebResult<UserResult>, Error> {
         let headers = [
             "Authorization": idToken
         ]
         
-        return self.request(httpMethod: .post, path: APIPath.login.rawValue, headers: headers)
+        return request(httpMethod: .post, path: APIPath.login.rawValue, headers: headers)
     }
 
     func fetchHikes(latitude: Double,
@@ -39,39 +39,53 @@ extension HikingNetworkService: NetworkService {
         let params = [
             "lat": latitude.description,
             "long": longitude.description,
-            "page": page.description
+            "page": page.description,
+            "trouverId": accountHandle.user.trouverId
         ]
 
-        return self.request(path: APIPath.feed.rawValue, params: params)
+        return request(path: APIPath.feed.rawValue, params: params)
     }
 
     func getHikeDetail(hikeId: String) -> AnyPublisher<HikeDetailResult, Error> {
-        self.request(path: APIPath.hikeDetail.addHikeId(hikeId))
+        request(path: APIPath.hikeDetail.addHikeId(hikeId))
     }
     
     func updateFavorite(hikeId: String, addHike: Bool) -> AnyPublisher<FavoriteActionResult, Error> {
         let httpMethod: HTTPMethod = addHike ? .post : .delete
-        let path = APIPath.users.addFavoriteId(self.accountHandle.user.trouverId)
+        let path = APIPath.users.addFavoriteId(accountHandle.user.trouverId)
         let params = [
             "hikeId": hikeId
         ]
         
-        return self.request(httpMethod: httpMethod, path: path, params: params)
+        return request(httpMethod: httpMethod, path: path, params: params)
     }
     
     func fetchFavorites(page: Int) -> AnyPublisher<FavoritesResult, Error> {
-        let path = APIPath.users.addFavoriteId(self.accountHandle.user.trouverId)
+        let path = APIPath.users.addFavoriteId(accountHandle.user.trouverId)
         let params = [
             "page": page.description
         ]
         
-        return self.request(path: path, params: params)
+        return request(path: path, params: params)
+    }
+    
+    private func refreshToken() -> AnyPublisher<TokenRefreshResult, Error> {
+        let headers = [
+            "Authorization": accountHandle.user.accessToken,
+            "x-Refresh-Token": accountHandle.user.refreshToken
+        ]
+        let params = [
+            "trouverId": accountHandle.user.trouverId
+        ]
+        print(headers.debugDescription)
+        print(params.debugDescription)
+        return request(path: APIPath.refresh.rawValue, headers: headers, params: params)
     }
     
     private func request<T: Decodable>(httpMethod: HTTPMethod = .get,
                                        path: String,
                                        headers: [String: String]? = nil,
-                                       params: [String: String?] = [:]) -> AnyPublisher<T, Error> {
+                                       params: [String: String?] = [:]) -> AnyPublisher<WebResult<T>, Error> {
         var components = URLComponents()
         components.scheme = "https"
         components.host = host
@@ -84,6 +98,36 @@ extension HikingNetworkService: NetworkService {
         request.httpMethod = httpMethod.rawValue
         let allHeaders = headers ?? defaultHeaders
         allHeaders.forEach { request.addValue($1, forHTTPHeaderField: $0) }
-        return self.webClient.request(request)
+        
+        // Do not refresh for itself or login
+        if accountHandle.hasExpired && !path.contains("refresh") && !path.contains("login") {
+            return refreshToken()
+                .handleEvents(
+                    receiveOutput: {
+                        if let token = $0.token {
+                            self.accountHandle.updateToken(token)
+                        }
+                    }
+                )
+                .flatMap { _ -> AnyPublisher<WebResult<T>, Error> in
+                    self.webClient.request(request).eraseToAnyPublisher()
+                }
+                .eraseToAnyPublisher()
+        }
+        
+        return webClient.request(request)
+    }
+    
+    private func request<T: Decodable>(httpMethod: HTTPMethod = .get,
+                                       path: String,
+                                       headers: [String: String]? = nil,
+                                       params: [String: String?] = [:]) -> AnyPublisher<T, Error> {
+        let publisher: AnyPublisher<WebResult<T>, Error> = request(httpMethod: httpMethod,
+                                                                        path: path,
+                                                                        headers: headers,
+                                                                        params: params)
+        return publisher
+            .map { $0.data }
+            .eraseToAnyPublisher()
     }
 }
