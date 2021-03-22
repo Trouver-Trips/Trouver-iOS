@@ -65,10 +65,7 @@ class FeedCoordinator: ObservableObject {
     }
     
     func toggleFavorite(hike: HikeInfo) {
-        let newHike = favoritesCoordinator.toggleFavorite(hike: hike)
-        print(newHike.isFavorite)
-        print(hike.isFavorite)
-        hikingFeed.updateHike(newHike)
+        hikingFeed.updateHike(favoritesCoordinator.toggleFavorite(hike: hike))
     }
     
     // MARK: - Private functions
