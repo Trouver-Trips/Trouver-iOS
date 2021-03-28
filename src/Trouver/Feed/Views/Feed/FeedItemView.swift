@@ -19,23 +19,34 @@ struct FeedItemView: View {
     let hikeInfo: HikeInfo
 
     var body: some View {
-        VStack {
+        ZStack {
             AsyncImage(url: hikeInfo.imageUrls[0], showPlaceHolder: true)
                 .aspectRatio(contentMode: .fit)
-            Text(hikeInfo.name)
-                .fontWeight(.bold)
-                .font(.title)
-                .padding()
-            if viewModel.showFavoriteToggle && hikeIndex >= 0 {
-                Button(action: {
-                    viewModel.toggleFavorite(hike: hikeInfo)
-                }, label: {
-                    Image(systemName: viewModel.hikes[hikeIndex].isFavorite ? "heart.fill" : "heart")
-                        .resizable()
-                        .frame(width: 30, height: 30)
-                        .foregroundColor(.pink)
+            VStack {
+                Spacer().frame(maxWidth: .infinity)
+                HStack {
+                    Text(hikeInfo.name)
+                        .fontWeight(.bold)
+                        .font(.headline)
+                        .foregroundColor(.white)
                         .padding()
-                })
+                    Spacer()
+                    if viewModel.showFavoriteToggle && hikeIndex >= 0 {
+                        Button(action: {
+                            viewModel.toggleFavorite(hike: hikeInfo)
+                        }, label: {
+                            Image(systemName: viewModel.hikes[hikeIndex].isFavorite ? "heart.fill" : "heart")
+                                .resizable()
+                                .frame(width: 30, height: 30)
+                                .foregroundColor(.pink)
+                                .padding()
+                        })
+                    }
+                }
+                .background(
+                    Color.black
+                        .opacity(0.7)
+                )
             }
         }
         .clipShape(RoundedRectangle(cornerRadius: cornerRadius)) // clip corners

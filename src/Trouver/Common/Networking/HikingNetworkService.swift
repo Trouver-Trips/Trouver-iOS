@@ -24,7 +24,6 @@ struct HikingNetworkService {
 }
 
 extension HikingNetworkService: NetworkService {
-
     func login(idToken: String) -> AnyPublisher<WebResult<UserResult>, Error> {
         let headers = [
             "Authorization": idToken
@@ -33,14 +32,18 @@ extension HikingNetworkService: NetworkService {
         return request(httpMethod: .post, path: APIPath.login.rawValue, headers: headers)
     }
 
-    func fetchHikes(latitude: Double,
-                    longitude: Double,
-                    page: Int) -> AnyPublisher<HikeResult, Error> {
+    func fetchHikes(hikeParams: HikeParams) -> AnyPublisher<HikeResult, Error> {
         let params = [
-            "lat": latitude.description,
-            "long": longitude.description,
-            "page": page.description,
-            "trouverId": accountHandle.user.trouverId
+            ("lat", hikeParams.latitude.description),
+            ("long", hikeParams.longitude.description),
+            ("difficulty", hikeParams.difficulty?.name),
+            ("elevation", "gte:\((hikeParams.elevationMin ?? 0).description)"),
+            ("elevation", "lte:\((hikeParams.elevationMax ?? Int.max).description)"),
+            ("length", "gte:\((hikeParams.lengthMin ?? 0).description)"),
+            ("length", "lte:\((hikeParams.lengthMax ?? Int.max).description)"),
+            ("sort", hikeParams.sortType?.rawValue),
+            ("page", hikeParams.page.description),
+            ("trouverId", accountHandle.user.trouverId)
         ]
 
         return request(path: APIPath.feed.rawValue, params: params)
@@ -54,7 +57,7 @@ extension HikingNetworkService: NetworkService {
         let httpMethod: HTTPMethod = addHike ? .post : .delete
         let path = APIPath.users.addFavoriteId(accountHandle.user.trouverId)
         let params = [
-            "hikeId": hikeId
+            ("hikeId", hikeId)
         ]
         
         return request(httpMethod: httpMethod, path: path, params: params)
@@ -63,7 +66,7 @@ extension HikingNetworkService: NetworkService {
     func fetchFavorites(page: Int) -> AnyPublisher<FavoritesResult, Error> {
         let path = APIPath.users.addFavoriteId(accountHandle.user.trouverId)
         let params = [
-            "page": page.description
+            ("page", page.description)
         ]
         
         return request(path: path, params: params)
@@ -75,7 +78,7 @@ extension HikingNetworkService: NetworkService {
             "x-Refresh-Token": accountHandle.user.refreshToken
         ]
         let params = [
-            "trouverId": accountHandle.user.trouverId
+            ("trouverId", accountHandle.user.trouverId)
         ]
         print(headers.debugDescription)
         print(params.debugDescription)
@@ -85,7 +88,7 @@ extension HikingNetworkService: NetworkService {
     private func request<T: Decodable>(httpMethod: HTTPMethod = .get,
                                        path: String,
                                        headers: [String: String]? = nil,
-                                       params: [String: String?] = [:]) -> AnyPublisher<WebResult<T>, Error> {
+                                       params: [(String, String?)] = []) -> AnyPublisher<WebResult<T>, Error> {
         var components = URLComponents()
         components.scheme = "https"
         components.host = host
@@ -121,11 +124,11 @@ extension HikingNetworkService: NetworkService {
     private func request<T: Decodable>(httpMethod: HTTPMethod = .get,
                                        path: String,
                                        headers: [String: String]? = nil,
-                                       params: [String: String?] = [:]) -> AnyPublisher<T, Error> {
+                                       params: [(String, String?)] = []) -> AnyPublisher<T, Error> {
         let publisher: AnyPublisher<WebResult<T>, Error> = request(httpMethod: httpMethod,
-                                                                        path: path,
-                                                                        headers: headers,
-                                                                        params: params)
+                                                                   path: path,
+                                                                   headers: headers,
+                                                                   params: params)
         return publisher
             .map { $0.data }
             .eraseToAnyPublisher()

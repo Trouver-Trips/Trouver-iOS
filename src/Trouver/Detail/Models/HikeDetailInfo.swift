@@ -27,7 +27,7 @@ struct HikeDetailInfo {
     var description: String { hikeDetail.hikeDescription ?? "No description found" }
     var rating: CGFloat { CGFloat(hikeDetail.rating) }
     var location: Location { hikeDetail.location }
-    var difficulty: Int { hikeDetail.difficulty }
+    var difficulty: Difficulty { Difficulty(rawValue: hikeDetail.difficulty) ?? .unknown }
     var elevationGain: Double { hikeDetail.elevationGain }
     var length: Double { hikeDetail.length }
     var popularity: Double { hikeDetail.length }

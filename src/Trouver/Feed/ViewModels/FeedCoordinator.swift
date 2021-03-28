@@ -48,7 +48,15 @@ class FeedCoordinator: ObservableObject {
     // MARK: - Access to the model
     
     let networkService: NetworkService
-    var hikes: [HikeInfo] { hikingFeed.hikes }
+    var hikes: [HikeInfo] {
+        hikingFeed.hikes.values
+        .sorted {
+            feedType == .newsfeed ?
+                $0.timeAdded < $1.timeAdded :
+                $0.timeAdded > $0.timeAdded
+        }
+        .map { $0.hikeInfo }
+    }
     
     var showFavoriteToggle: Bool { feedType == .newsfeed }
 
@@ -61,7 +69,7 @@ class FeedCoordinator: ObservableObject {
     }
     
     func loadMoreContentIfNeeded(item: HikeInfo) {
-        let thresholdIndex = hikes.index(hikes.endIndex, offsetBy: -3)
+        let thresholdIndex = hikes.index(hikes.endIndex, offsetBy: -5)
         if hikes.firstIndex(where: { $0.id == item.id }) == thresholdIndex {
             loadMoreContent()
         }
@@ -106,9 +114,11 @@ class FeedCoordinator: ObservableObject {
     private func publisher() -> AnyPublisher<[HikeInfo], Error> {
         switch feedType {
         case .newsfeed:
-            return networkService.fetchHikes(latitude: location.latitude,
-                                                   longitude: location.longitude,
-                                                   page: currentPage)
+            return networkService.fetchHikes(hikeParams:
+                HikeParams(latitude: location.latitude,
+                           longitude: location.longitude,
+                           difficulty: .hard,
+                           page: currentPage))
                 .handleEvents(receiveOutput: { [weak self] hikeResult in
                     guard let strongSelf = self else { return }
                     strongSelf.canLoadMorePages = hikeResult.hikes.hasNextPage
