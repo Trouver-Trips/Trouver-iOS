@@ -34,7 +34,7 @@ struct HikeDetailInfoView: View {
                             .padding(.vertical)
                         Text("Difficulty: \(hikeDetail.difficulty.name)")
                         GroupBox {
-                            DisclosureGroup("more_photos_title") {
+                            DisclosureGroup("more.photos.title") {
                                 PhotoGridView(images: hikeDetail.imageUrls)
                             }
                             .accentColor(Color(UIColor.systemGray2))

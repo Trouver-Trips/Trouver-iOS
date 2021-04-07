@@ -117,7 +117,6 @@ class FeedCoordinator: ObservableObject {
             return networkService.fetchHikes(hikeParams:
                 HikeParams(latitude: location.latitude,
                            longitude: location.longitude,
-                           difficulty: .hard,
                            page: currentPage))
                 .handleEvents(receiveOutput: { [weak self] hikeResult in
                     guard let strongSelf = self else { return }

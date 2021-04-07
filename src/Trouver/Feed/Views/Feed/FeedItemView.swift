@@ -50,11 +50,7 @@ struct FeedItemView: View {
             }
         }
         .clipShape(RoundedRectangle(cornerRadius: cornerRadius)) // clip corners
-        .overlay(
-            RoundedRectangle(cornerRadius: cornerRadius)
-                .stroke(Color("BackgroundColor"))
-                .shadow(color: Color("BackgroundColor"), radius: 3)
-        )
+        .shadow(color: Color("BackgroundColor").opacity(0.15), radius: 8, x: 0, y: 0)
         .padding(.horizontal)
     }
 }

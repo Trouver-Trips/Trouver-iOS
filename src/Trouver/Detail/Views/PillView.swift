@@ -15,7 +15,7 @@ struct PillView: View {
             .padding()
             .overlay(
                 Capsule(style: .continuous)
-                    .stroke(Color.green, lineWidth: 2)
+                    .stroke(Color.accentColor, lineWidth: 2)
             )
     }
 }

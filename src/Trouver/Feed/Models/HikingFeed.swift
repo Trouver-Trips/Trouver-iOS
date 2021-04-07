@@ -13,7 +13,6 @@ struct HikeInfoSet: Hashable {
 }
 
 struct HikingFeed {
-    //var hikes: [HikeInfo] = []
     var hikes = [String: HikeInfoSet]()
     
     mutating func addHikes(_ hike: HikeInfo, toFront: Bool = false) {

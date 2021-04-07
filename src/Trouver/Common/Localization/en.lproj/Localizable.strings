@@ -6,20 +6,56 @@
   
 */
 
-/* title for trouver */
-"trouver_title" = "Trouver";
+/* Title for trouver */
+"trouver.title" = "Trouver";
 
-/* title for favorites */
-"favorites_title" = "Favorites";
+/* Title for favorites */
+"favorites.title" = "Favorites";
 
-/* title for a specific hike */
-"hiking_title" = "Hiking";
+/* Title for log out button */
+"log.out.button.title" = "Log Out";
 
-/* title for log out button */
-"log_out_button_title" = "Log Out";
+/* Photos */
+"more.photos.title" = "More Photos";
 
-/* photos */
-"more_photos_title" = "More Photos";
+/* Error Title */
+"generic.error" = "We are having some trouble...";
 
-/* error title */
-"generic_error" = "We are having some trouble...";
+/* Filter title */
+"filter.title" = "Filter";
+
+/* Sort title */
+"sort.title" = "Sort";
+
+/* Sort Options Recommended */
+"sort.option.recommended" = "Recommended";
+
+/* Sort Options Popular */
+"sort.option.popular" = "Popular";
+
+/* Sort Options Closest */
+"sort.option.closest" = "Closest";
+
+/* Difficulty title */
+"difficulty.title" = "Difficulty";
+
+/* Difficulty Option Easy */
+"difficulty.option.easy" = "Easy";
+
+/* Difficulty Option Medium */
+"difficulty.option.medium" = "Medium";
+
+/* Difficulty Option Hard */
+"difficulty.option.hard" = "Hard";
+
+/* Length title*/
+"length.title" = "Length";
+
+/* Elevation title*/
+"elevation.title" = "Elevation";
+
+/* Units in feet */
+"units.feet" = "ft";
+
+/* Units in miles */
+"units.miles" = "mi";

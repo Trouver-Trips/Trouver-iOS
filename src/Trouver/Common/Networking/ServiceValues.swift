@@ -47,27 +47,28 @@ enum Difficulty: Int {
 
 enum SortType: String {
     case popularity
+    case closest
 }
 
 struct HikeParams {
     let latitude: Double
     let longitude: Double
-    let difficulty: Difficulty?
-    let elevationMin: Int?
-    let elevationMax: Int?
-    let lengthMin: Int?
-    let lengthMax: Int?
-    let sortType: SortType?
+    let difficulty: [Difficulty]
+    let elevationMin: Int
+    let elevationMax: Int
+    let lengthMin: Int
+    let lengthMax: Int
+    let sortType: SortType
     let page: Int
     
     init(latitude: Double,
          longitude: Double,
-         difficulty: Difficulty? = nil,
-         elevationMin: Int? = nil,
-         elevationMax: Int? = nil,
-         lengthMin: Int? = nil,
-         lengthMax: Int? = nil,
-         sortType: SortType? = nil,
+         difficulty: [Difficulty] = [],
+         elevationMin: Int = 0,
+         elevationMax: Int = Int.max,
+         lengthMin: Int = 0,
+         lengthMax: Int = Int.max,
+         sortType: SortType = .closest,
          page: Int) {
         self.latitude = latitude
         self.longitude = longitude

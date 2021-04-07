@@ -33,15 +33,15 @@ extension HikingNetworkService: NetworkService {
     }
 
     func fetchHikes(hikeParams: HikeParams) -> AnyPublisher<HikeResult, Error> {
-        let params = [
+        let params: [(String, String?)] = [
             ("lat", hikeParams.latitude.description),
             ("long", hikeParams.longitude.description),
-            ("difficulty", hikeParams.difficulty?.name),
-            ("elevation", "gte:\((hikeParams.elevationMin ?? 0).description)"),
-            ("elevation", "lte:\((hikeParams.elevationMax ?? Int.max).description)"),
-            ("length", "gte:\((hikeParams.lengthMin ?? 0).description)"),
-            ("length", "lte:\((hikeParams.lengthMax ?? Int.max).description)"),
-            ("sort", hikeParams.sortType?.rawValue),
+            ("difficulty", hikeParams.difficulty.map { $0.name }.joined(separator: ",")),
+            ("elevation", "gte:\(hikeParams.elevationMin.description)"),
+            ("elevation", "lte:\(hikeParams.elevationMax.description)"),
+            ("length", "gte:\(hikeParams.lengthMin.description)"),
+            ("length", "lte:\(hikeParams.lengthMax.description)"),
+            ("sort", hikeParams.sortType.rawValue),
             ("page", hikeParams.page.description),
             ("trouverId", accountHandle.user.trouverId)
         ]
