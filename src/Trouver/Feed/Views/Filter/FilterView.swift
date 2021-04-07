@@ -9,19 +9,28 @@ import SwiftUI
 
 struct FilterView: View {
     @ObservedObject var filter: FilterCoordinator
+    @Environment(\.presentationMode) var presentationMode
     
     var body: some View {
         NavigationView {
-            ScrollView {
-                VStack {
-                    SelectorView(viewModel: filter.sortSelector)
-                    Divider()
-                    SelectorView(viewModel: filter.difficultySelector)
-                    Divider()
-                    SliderOptionView(sliderOption: filter.lengthSlider)
-                    Divider()
-                    SliderOptionView(sliderOption: filter.elevationSlider)
+            VStack {
+                ScrollView {
+                    VStack {
+                        SelectorView(viewModel: filter.sortSelector)
+                        Divider()
+                        SelectorView(viewModel: filter.difficultySelector)
+                        Divider()
+                        SliderOptionView(sliderOption: filter.lengthSlider)
+                        Divider()
+                        SliderOptionView(sliderOption: filter.elevationSlider)
+                    }
                 }
+                Spacer()
+                Button(action: {
+                    presentationMode.wrappedValue.dismiss()
+                }, label: {
+                    Text("See All Trails")
+                })
             }
             .navigationBarTitle("filter.title", displayMode: .inline)
         }

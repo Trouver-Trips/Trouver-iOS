@@ -29,8 +29,7 @@ class SliderHandle: ObservableObject {
             currentValue = sliderValueStart + currentPercentage.wrappedValue * sliderValueRange
         }
     }
-    
-    
+
     //Slider Button Location
     @Published var onDrag: Bool
     @Published var currentLocation: CGPoint

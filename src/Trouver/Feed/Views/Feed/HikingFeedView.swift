@@ -40,9 +40,7 @@ struct HikingFeedView: View {
             }
         }
         .sheet(isPresented: $showSortView) {
-            GeometryReader { geo in
-                FilterView(filter: FilterCoordinator(width: geo.size.width - 50))
-            }
+            FilterView(filter: viewModel.filterCoordinator)
         }
     }
 }

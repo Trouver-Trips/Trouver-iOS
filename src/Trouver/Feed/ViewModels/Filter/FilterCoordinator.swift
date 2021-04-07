@@ -47,7 +47,7 @@ class FilterCoordinator: ObservableObject {
         lengthSlider = SliderOption(title: "length.title",
                                     units: .miles,
                                     start: 0,
-                                    end: 250_000,
+                                    end: 5280 * 50,
                                     width: width)
         
         elevationSlider = SliderOption(title: "elevation.title",
@@ -66,7 +66,6 @@ class FilterCoordinator: ObservableObject {
     private func updateOptions() {
         sortSelector.$options.sink(receiveValue: { [weak self] options in
             self?.filterOptions.sort = options.first(where: { $0.selected })?.type ?? .closest
-            self?.printOptions()
         })
         .store(in: &bag)
         
@@ -75,42 +74,27 @@ class FilterCoordinator: ObservableObject {
                 options
                 .filter { $0.selected }
                 .map { $0.type }
-            self?.printOptions()
-            
         })
         .store(in: &bag)
         
         lengthSlider.slider.lowHandle.$currentValue.sink(receiveValue: { [weak self] value in
             self?.filterOptions.lengthMin = Int(value)
-            self?.printOptions()
         })
         .store(in: &bag)
         
         lengthSlider.slider.highHandle.$currentValue.sink(receiveValue: { [weak self] value in
             self?.filterOptions.lengthMax = Int(value)
-            self?.printOptions()
         })
         .store(in: &bag)
         
         elevationSlider.slider.lowHandle.$currentValue.sink(receiveValue: { [weak self] value in
             self?.filterOptions.elevationMin = Int(value)
-            self?.printOptions()
         })
         .store(in: &bag)
         
         elevationSlider.slider.highHandle.$currentValue.sink(receiveValue: { [weak self] value in
             self?.filterOptions.elevationMax = Int(value)
-            self?.printOptions()
         })
         .store(in: &bag)
-    }
-    
-    private func printOptions() {
-        let filterMirror = Mirror(reflecting: filterOptions)
-        let properties = filterMirror.children
-        
-        let output = properties.map { "\($0.label!) = \($0.value)"}
-
-        Logger.logInfo(output.joined(separator: "\n"))
     }
 }

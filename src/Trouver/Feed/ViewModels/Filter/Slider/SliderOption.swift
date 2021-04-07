@@ -7,6 +7,7 @@
 
 import CoreGraphics
 import Combine
+import Foundation
 
 enum Unit: String {
     case feet = "units.feet"
@@ -16,12 +17,12 @@ enum Unit: String {
 class SliderOption: ObservableObject {
     private let units: Unit
     
-    private var lowRange: String {
-        Int(slider.lowHandle.currentValue).description
+    private var lowRange: Double {
+        slider.lowHandle.currentValue
     }
     
-    private var highRange: String {
-        Int(slider.highHandle.currentValue).description
+    private var highRange: Double {
+        slider.highHandle.currentValue
     }
     
     let title: String
@@ -48,6 +49,18 @@ class SliderOption: ObservableObject {
     }
     
     var sliderRangeLabel: String {
-        "\(lowRange) - \(highRange)"
+        let low: String
+        let high: String
+        let unitDescription = Bundle.main.localizedString(forKey: units.rawValue, value: nil, table: nil)
+        switch units {
+        case .feet:
+            low = Int(lowRange).description
+            high = Int(highRange).description
+        case .miles:
+            low = Int(lowRange / 5280).description
+            high = Int(highRange / 5280).description
+        }
+        
+        return "\(low) \(unitDescription) - \(high) \(unitDescription)"
     }
 }
