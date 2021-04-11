@@ -20,8 +20,17 @@ struct FeedItemView: View {
 
     var body: some View {
         ZStack {
-            AsyncImage(url: hikeInfo.imageUrls[0], showPlaceHolder: true)
-                .aspectRatio(contentMode: .fit)
+            
+            // Fallback for no image
+            if hikeInfo.imageUrls.isEmpty {
+                Image("Rainier")
+                    .resizable()
+                    .aspectRatio(contentMode: .fit)
+            } else {
+                AsyncImage(url: hikeInfo.imageUrls[0], showPlaceHolder: true)
+                    .aspectRatio(contentMode: .fit)
+            }
+
             VStack {
                 Spacer().frame(maxWidth: .infinity)
                 HStack {

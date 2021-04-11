@@ -36,7 +36,7 @@ struct SelectorViewContainer: View {
                         multiSelect: true,
                         options: [
                             .init(name: "difficulty.option.easy", type: Difficulty.easy),
-                            .init(name: "difficulty.option.medium", type: Difficulty.medium),
+                            .init(name: "difficulty.option.medium", type: Difficulty.moderate),
                             .init(name: "difficulty.option.hard", type: Difficulty.hard)
                         ]))
     }

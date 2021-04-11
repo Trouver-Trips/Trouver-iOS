@@ -42,8 +42,8 @@
 /* Difficulty Option Easy */
 "difficulty.option.easy" = "Easy";
 
-/* Difficulty Option Medium */
-"difficulty.option.medium" = "Medium";
+/* Difficulty Option Moderate */
+"difficulty.option.moderate" = "Moderate";
 
 /* Difficulty Option Hard */
 "difficulty.option.hard" = "Hard";

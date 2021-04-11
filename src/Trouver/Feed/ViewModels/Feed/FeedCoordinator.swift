@@ -154,7 +154,10 @@ class FeedCoordinator: ObservableObject {
                     strongSelf.canLoadMorePages = favoritesResult.hasNextPage
                     strongSelf.currentPage += 1
                 })
-                .map { favoritesResult in favoritesResult.favorites.compactMap({ HikeInfo(hike: $0) })}
+                .map { favoritesResult in
+                    // Remove results without images
+                    favoritesResult.favorites.compactMap({ $0.images.isEmpty ? nil : HikeInfo(hike: $0) })
+                }
                 .eraseToAnyPublisher()
         }
     }

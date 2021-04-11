@@ -33,10 +33,9 @@ extension HikingNetworkService: NetworkService {
     }
 
     func fetchHikes(hikeParams: HikeParams) -> AnyPublisher<HikeResult, Error> {
-        let params: [(String, String?)] = [
+        var params: [(String, String?)] = [
             ("lat", hikeParams.latitude.description),
             ("long", hikeParams.longitude.description),
-            ("difficulty", hikeParams.difficulty.map { $0.name }.joined(separator: ",")),
             ("elevation", "gte:\(hikeParams.elevationMin.description)"),
             ("elevation", "lte:\(hikeParams.elevationMax.description)"),
             ("length", "gte:\(hikeParams.lengthMin.description)"),
@@ -45,6 +44,10 @@ extension HikingNetworkService: NetworkService {
             ("page", hikeParams.page.description),
             ("trouverId", accountHandle.user.trouverId)
         ]
+        
+        params.append(contentsOf: hikeParams.difficulty.map {
+            ("difficulty", $0.name)
+        })
 
         return request(path: APIPath.feed.rawValue, params: params)
     }

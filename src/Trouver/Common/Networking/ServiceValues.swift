@@ -8,11 +8,12 @@
 import Foundation
 
 enum APIPath: String {
-    case login = "/login"
-    case feed = "/feeds"
-    case hikeDetail = "/hikes"
-    case users = "/users"
-    case refresh = "/refreshToken"
+
+    case login = "/v1/login"
+    case feed = "/v1/feeds"
+    case hikeDetail = "/v1/hikes"
+    case users = "/v1/users"
+    case refresh = "/v1/refreshToken"
 
     func addHikeId(_ id: String) -> String {
         "\(rawValue)/\(id)"
@@ -35,10 +36,11 @@ enum NetworkError: Error {
 }
 
 enum Difficulty: Int {
-    case easy
-    case medium
-    case hard
-    case unknown
+    case unknown = 0
+    case easy = 1
+    case moderate = 3
+    case hard = 5
+    case advanced = 7
     
     var name: String {
         return String(describing: self)
