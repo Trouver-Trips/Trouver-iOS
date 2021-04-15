@@ -22,7 +22,6 @@ class FavoritesCoordinator {
     }
 
     func updateFavorite(newHike: HikeInfo) {
-        favoriteHike = nil
         favoriteHike = newHike
         save(hikeId: newHike.id, addHike: newHike.isFavorite)
     }
@@ -39,5 +38,6 @@ class FavoritesCoordinator {
                 Logger.logInfo("Successfully \(addHike ? "Added" : "Deleted") Favorite")
             })
             .store(in: &bag)
+        
     }
 }

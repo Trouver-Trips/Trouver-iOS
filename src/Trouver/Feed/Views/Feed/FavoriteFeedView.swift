@@ -18,12 +18,12 @@ struct FavoriteFeedView: View {
     var body: some View {
         NavigationView {
             FeedView(viewModel: viewModel)
-            .navigationBarTitle("favorites_title")
+            .navigationBarTitle("favorites.title")
             .navigationBarItems(trailing:
                 Button (action: {
                     loginService.logOut()
                 }, label: {
-                    Text("log_out_button_title")
+                    Text("log.out.button.title")
                 })
             )
         }

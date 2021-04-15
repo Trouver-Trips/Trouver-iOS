@@ -28,7 +28,7 @@ struct SignInView: View {
                         .edgesIgnoringSafeArea(.vertical)
                     GeometryReader { geometry in
                         VStack {
-                            Text("trouver_title")
+                            Text("trouver.title")
                                 .foregroundColor(.white)
                                 .fontWeight(.bold)
                                 .font(.system(.largeTitle, design: .rounded))
@@ -39,7 +39,7 @@ struct SignInView: View {
                     }
                 }
             case .tryingSilentSignIn: ProgressView()
-            case .error: Text("generic_error")
+            case .error: Text("generic.error")
             }
         }
     }

@@ -24,46 +24,52 @@ struct HikingNetworkService {
 }
 
 extension HikingNetworkService: NetworkService {
-
     func login(idToken: String) -> AnyPublisher<WebResult<UserResult>, Error> {
         let headers = [
             "Authorization": idToken
         ]
         
-        return request(httpMethod: .post, path: APIPath.login.rawValue, headers: headers)
+        return request(httpMethod: .post, path: APIPath.login, headers: headers)
     }
 
-    func fetchHikes(latitude: Double,
-                    longitude: Double,
-                    page: Int) -> AnyPublisher<HikeResult, Error> {
-        let params = [
-            "lat": latitude.description,
-            "long": longitude.description,
-            "page": page.description,
-            "trouverId": accountHandle.user.trouverId
+    func fetchHikes(hikeParams: HikeParams) -> AnyPublisher<HikeResult, Error> {
+        var params: [(String, String?)] = [
+            ("lat", hikeParams.latitude.description),
+            ("long", hikeParams.longitude.description),
+            ("elevation", "gte:\(hikeParams.elevationMin.description)"),
+            ("elevation", "lte:\(hikeParams.elevationMax.description)"),
+            ("length", "gte:\(hikeParams.lengthMin.description)"),
+            ("length", "lte:\(hikeParams.lengthMax.description)"),
+            ("sort", hikeParams.sortType.rawValue),
+            ("page", hikeParams.page.description),
+            ("trouverId", accountHandle.user.trouverId)
         ]
+        
+        params.append(contentsOf: hikeParams.difficulty.map {
+            ("difficulty", $0.name)
+        })
 
-        return request(path: APIPath.feed.rawValue, params: params)
+        return request(path: APIPath.feeds, params: params)
     }
 
     func getHikeDetail(hikeId: String) -> AnyPublisher<HikeDetailResult, Error> {
-        request(path: APIPath.hikeDetail.addHikeId(hikeId))
+        request(path: APIPath.hikes(hikeId))
     }
     
     func updateFavorite(hikeId: String, addHike: Bool) -> AnyPublisher<FavoriteActionResult, Error> {
         let httpMethod: HTTPMethod = addHike ? .post : .delete
-        let path = APIPath.users.addFavoriteId(accountHandle.user.trouverId)
+        let path = APIPath.users(accountHandle.user.trouverId)
         let params = [
-            "hikeId": hikeId
+            ("hikeId", hikeId)
         ]
         
         return request(httpMethod: httpMethod, path: path, params: params)
     }
     
     func fetchFavorites(page: Int) -> AnyPublisher<FavoritesResult, Error> {
-        let path = APIPath.users.addFavoriteId(accountHandle.user.trouverId)
+        let path = APIPath.users(accountHandle.user.trouverId)
         let params = [
-            "page": page.description
+            ("page", page.description)
         ]
         
         return request(path: path, params: params)
@@ -75,21 +81,21 @@ extension HikingNetworkService: NetworkService {
             "x-Refresh-Token": accountHandle.user.refreshToken
         ]
         let params = [
-            "trouverId": accountHandle.user.trouverId
+            ("trouverId", accountHandle.user.trouverId)
         ]
         print(headers.debugDescription)
         print(params.debugDescription)
-        return request(path: APIPath.refresh.rawValue, headers: headers, params: params)
+        return request(path: APIPath.refreshToken, headers: headers, params: params)
     }
     
     private func request<T: Decodable>(httpMethod: HTTPMethod = .get,
-                                       path: String,
+                                       path: APIPath,
                                        headers: [String: String]? = nil,
-                                       params: [String: String?] = [:]) -> AnyPublisher<WebResult<T>, Error> {
+                                       params: [(String, String?)] = []) -> AnyPublisher<WebResult<T>, Error> {
         var components = URLComponents()
         components.scheme = "https"
         components.host = host
-        components.path = path
+        components.path = path.path
         components.queryItems = params.map { URLQueryItem(name: $0, value: $1) }
         guard let url = components.url else {
             return Fail(error: NetworkError.invalidUrl).eraseToAnyPublisher()
@@ -100,7 +106,7 @@ extension HikingNetworkService: NetworkService {
         allHeaders.forEach { request.addValue($1, forHTTPHeaderField: $0) }
         
         // Do not refresh for itself or login
-        if accountHandle.hasExpired && !path.contains("refresh") && !path.contains("login") {
+        if accountHandle.hasExpired && path == .refreshToken  && path == .login {
             return refreshToken()
                 .handleEvents(
                     receiveOutput: {
@@ -119,13 +125,13 @@ extension HikingNetworkService: NetworkService {
     }
     
     private func request<T: Decodable>(httpMethod: HTTPMethod = .get,
-                                       path: String,
+                                       path: APIPath,
                                        headers: [String: String]? = nil,
-                                       params: [String: String?] = [:]) -> AnyPublisher<T, Error> {
+                                       params: [(String, String?)] = []) -> AnyPublisher<T, Error> {
         let publisher: AnyPublisher<WebResult<T>, Error> = request(httpMethod: httpMethod,
-                                                                        path: path,
-                                                                        headers: headers,
-                                                                        params: params)
+                                                                   path: path,
+                                                                   headers: headers,
+                                                                   params: params)
         return publisher
             .map { $0.data }
             .eraseToAnyPublisher()
