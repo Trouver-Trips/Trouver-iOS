@@ -70,6 +70,7 @@
 		5FCFC89A259704F700D38AE4 /* DataFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FCFC899259704F700D38AE4 /* DataFactory.swift */; };
 		5FD8F80725C3B5CB0025652E /* StarsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FD8F80625C3B5CB0025652E /* StarsView.swift */; };
 		5FD8F81C25C631EC0025652E /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FD8F81B25C631EC0025652E /* SearchView.swift */; };
+		5FE216782628004200D3D8B2 /* LocationProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FE216772628004200D3D8B2 /* LocationProvider.swift */; };
 		5FE72ACD25C2493C00E17321 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FE72ACC25C2493C00E17321 /* MainView.swift */; };
 		5FF40A0725C7831600158C3A /* SearchViewCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FF40A0625C7831600158C3A /* SearchViewCoordinator.swift */; };
 		5FF40A0C25CA3A8300158C3A /* ErrorResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FF40A0B25CA3A8200158C3A /* ErrorResult.swift */; };
@@ -170,6 +171,7 @@
 		5FCFC899259704F700D38AE4 /* DataFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataFactory.swift; sourceTree = "<group>"; };
 		5FD8F80625C3B5CB0025652E /* StarsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StarsView.swift; sourceTree = "<group>"; };
 		5FD8F81B25C631EC0025652E /* SearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
+		5FE216772628004200D3D8B2 /* LocationProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationProvider.swift; sourceTree = "<group>"; };
 		5FE72ACC25C2493C00E17321 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		5FF40A0625C7831600158C3A /* SearchViewCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewCoordinator.swift; sourceTree = "<group>"; };
 		5FF40A0B25CA3A8200158C3A /* ErrorResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorResult.swift; sourceTree = "<group>"; };
@@ -331,6 +333,7 @@
 			children = (
 				5F76BFF02606DF8F00F09B8F /* FeedCoordinator.swift */,
 				5F76C0012608075C00F09B8F /* FavoritesCoordinator.swift */,
+				5FE216772628004200D3D8B2 /* LocationProvider.swift */,
 			);
 			path = Feed;
 			sourceTree = "<group>";
@@ -935,6 +938,7 @@
 				5F3B3EF325959C7200512B4C /* ImageCache.swift in Sources */,
 				5F57B48E25A141FD00741A5A /* SignInView.swift in Sources */,
 				5F6E32F5259305CF00E70AE2 /* HikeDetailInfoView.swift in Sources */,
+				5FE216782628004200D3D8B2 /* LocationProvider.swift in Sources */,
 				5FF40A8725CF0BDF00158C3A /* FavoriteFeedView.swift in Sources */,
 				5FF40A1E25CCE87400158C3A /* UserResult.swift in Sources */,
 				5F6E3209258E8F3500E70AE2 /* TrouverApp.swift in Sources */,

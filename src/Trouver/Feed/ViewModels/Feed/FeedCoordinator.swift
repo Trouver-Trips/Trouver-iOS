@@ -17,6 +17,7 @@ class FeedCoordinator: ObservableObject {
         case favorites
     }
     
+    private let locationProvider = LocationProvider()
     private let feedType: FeedType
     private let favoritesCoordinator: FavoritesCoordinator
 
@@ -25,8 +26,7 @@ class FeedCoordinator: ObservableObject {
     private var bag = Set<AnyCancellable>()
     private var shouldUpdateFavorite: Bool = true
     
-    private var location = CLLocationCoordinate2D(latitude: 47.6062,
-                                                  longitude: -122.3321)
+    private var location = LocationProvider.defaultLocation
     
     private var filterOptions: FilterOptions {
         filterCoordinator.filterOptions
@@ -34,7 +34,7 @@ class FeedCoordinator: ObservableObject {
     
     // Update whenever hiking info changes
     @Published private var hikingFeed = HikingFeed()
-    @Published private(set) var isLoading = false
+    @Published private(set) var isLoading = true
     
     let filterCoordinator: FilterCoordinator
         
@@ -45,7 +45,8 @@ class FeedCoordinator: ObservableObject {
         self.feedType = feedType
         self.favoritesCoordinator = favoritesCoordinator
         self.filterCoordinator = FilterCoordinator(width: UIScreen.main.bounds.width - 50)
-        loadMoreContent()
+        
+        getCurrentLocation()
         favoritesUpdated()
         optionsUpdated()
     }
@@ -71,7 +72,7 @@ class FeedCoordinator: ObservableObject {
 
     // MARK: - Intents
     
-    func search(location: CLLocationCoordinate2D) {
+    func search(location: CLLocationCoordinate2D = LocationProvider.defaultLocation) {
         self.location = location
         refresh()
     }
@@ -95,6 +96,27 @@ class FeedCoordinator: ObservableObject {
     }
     
     // MARK: - Private functions
+    
+    private func getCurrentLocation() {
+        if feedType == .newsfeed {
+            locationProvider.$lastLocation.sink(receiveValue: { [weak self] loc in
+                if let coordinate = loc?.coordinate {
+                    self?.search(location: coordinate)
+                }
+            })
+            .store(in: &bag)
+            
+            locationProvider.$locationStatus.sink(receiveValue: { [weak self] status in
+                if let status = status,
+                    status == .denied ||
+                    status == .notDetermined ||
+                    status == .restricted {
+                    self?.search()
+                }
+            })
+            .store(in: &bag)
+        }
+    }
     
     private func refresh() {
         canLoadMorePages = true
@@ -145,7 +167,7 @@ class FeedCoordinator: ObservableObject {
                     strongSelf.canLoadMorePages = hikeResult.hikes.hasNextPage
                     strongSelf.currentPage += 1
                 })
-                .map { hikeResult in hikeResult.hikes.docs.compactMap({ HikeInfo(hike: $0) })}
+                .map { hikeResult in hikeResult.hikes.docs.compactMap({ $0.images.isEmpty ? nil : HikeInfo(hike: $0) })}
                 .eraseToAnyPublisher()
         case .favorites:
             return networkService.fetchFavorites(page: currentPage)

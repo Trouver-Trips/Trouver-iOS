@@ -7,20 +7,33 @@
 
 import Foundation
 
-enum APIPath: String {
+enum APIPath: Equatable {
+    private static let version = "v1"
 
-    case login = "/v1/login"
-    case feed = "/v1/feeds"
-    case hikeDetail = "/v1/hikes"
-    case users = "/v1/users"
-    case refresh = "/v1/refreshToken"
+    case login
+    case feeds
+    case hikes(String)
+    case users(String)
+    case refreshToken
 
-    func addHikeId(_ id: String) -> String {
-        "\(rawValue)/\(id)"
+    private var label: String {
+        let mirror = Mirror(reflecting: self)
+        if let label = mirror.children.first?.label {
+            return label
+        } else {
+            return String(describing: self)
+        }
     }
     
-    func addFavoriteId(_ id: String) -> String {
-        "\(rawValue)/\(id)/favorites"
+    var path: String {
+        let root = "/\(APIPath.version)/\(label)"
+        switch self {
+        case .login, .feeds, .refreshToken: return root
+        case .hikes(let id):
+            return "\(root)/\(id)"
+        case .users(let id):
+            return "\(root)/\(id)/favorites"
+        }
     }
 }
 
