@@ -17,6 +17,12 @@ class FeedCoordinator: ObservableObject {
         case favorites
     }
     
+    enum ViewState {
+        case loading
+        case loaded
+        case error
+    }
+    
     private let locationProvider = LocationProvider()
     private let feedType: FeedType
     private let favoritesCoordinator: FavoritesCoordinator
@@ -34,7 +40,7 @@ class FeedCoordinator: ObservableObject {
     
     // Update whenever hiking info changes
     @Published private var hikingFeed = HikingFeed()
-    @Published private(set) var isLoading = true
+    @Published private(set) var viewState = ViewState.loading
     
     let filterCoordinator: FilterCoordinator
         
@@ -78,7 +84,7 @@ class FeedCoordinator: ObservableObject {
     }
     
     func loadMoreContentIfNeeded(item: HikeInfo) {
-        let thresholdIndex = hikes.index(hikes.endIndex, offsetBy: -5)
+        let thresholdIndex = hikes.index(hikes.endIndex, offsetBy: -3)
         if hikes.firstIndex(where: { $0.id == item.id }) == thresholdIndex {
             loadMoreContent()
         }
@@ -102,15 +108,7 @@ class FeedCoordinator: ObservableObject {
             locationProvider.$lastLocation.sink(receiveValue: { [weak self] loc in
                 if let coordinate = loc?.coordinate {
                     self?.search(location: coordinate)
-                }
-            })
-            .store(in: &bag)
-            
-            locationProvider.$locationStatus.sink(receiveValue: { [weak self] status in
-                if let status = status,
-                    status == .denied ||
-                    status == .notDetermined ||
-                    status == .restricted {
+                } else {
                     self?.search()
                 }
             })
@@ -120,17 +118,17 @@ class FeedCoordinator: ObservableObject {
     
     private func refresh() {
         canLoadMorePages = true
-        isLoading = false
+        viewState = .loaded
         hikingFeed = HikingFeed()
         loadMoreContent()
     }
     
     private func loadMoreContent() {
-        guard !isLoading && canLoadMorePages else {
+        guard viewState != .loading && canLoadMorePages else {
             return
         }
         
-        isLoading = true
+        viewState = .loading
 
         publisher()
             .receive(on: DispatchQueue.main)
@@ -138,13 +136,13 @@ class FeedCoordinator: ObservableObject {
                 guard let strongSelf = self else { return }
                 Logger.logInfo("Recieved \($0.count) hikes for \(strongSelf.feedType)")
             })
-            .catch({ error -> Just<[HikeInfo]> in
+            .catch({ [weak self] error -> Just<[HikeInfo]> in
                 Logger.logError("Failed to get hikes", error: error)
+                self?.viewState = .error
                 return Just([])
             })
-            .sink(receiveCompletion: { [weak self] _ in
-                    self?.isLoading = false },
-                  receiveValue: { [weak self] in
+            .sink(receiveValue: { [weak self] in
+                    self?.viewState = .loaded
                     self?.hikingFeed.addHikes($0) })
             .store(in: &bag)
     }

@@ -48,15 +48,19 @@ enum NetworkError: Error {
     case badOutput
 }
 
-enum Difficulty: Int {
-    case unknown = 0
-    case easy = 1
-    case moderate = 3
-    case hard = 5
-    case advanced = 7
+enum Difficulty: String {
+    case unknown
+    case easy
+    case moderate
+    case hard
     
-    var name: String {
-        return String(describing: self)
+    init(from value: Int) {
+        switch value {
+        case 1: self = .easy
+        case 3, 5: self = .moderate
+        case 7: self = .hard
+        default: self = .unknown
+        }
     }
 }
 
