@@ -59,3 +59,9 @@
 
 /* Units in miles */
 "units.miles" = "mi";
+
+/* Hike option menu title */
+"hike.option.menu.title" = "More Options";
+
+/* Delete hike option */
+"hike.option.delete.title" = "Remove Favorite";

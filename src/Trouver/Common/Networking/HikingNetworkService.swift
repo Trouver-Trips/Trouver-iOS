@@ -12,6 +12,7 @@ struct HikingNetworkService {
     private let host = EnvironmentProvider.host
     private let webClient: WebClient
     private let accountHandle: AccountHandle
+    private let pageLimit = 50
     
     private var defaultHeaders: [String: String] {
         ["Authorization": accountHandle.user.accessToken]
@@ -36,6 +37,7 @@ extension HikingNetworkService: NetworkService {
         var params: [(String, String?)] = [
             ("lat", hikeParams.latitude.description),
             ("long", hikeParams.longitude.description),
+            ("limit", pageLimit.description),
             ("elevation", "gte:\(hikeParams.elevationMin.description)"),
             ("elevation", "lte:\(hikeParams.elevationMax.description)"),
             ("length", "gte:\(hikeParams.lengthMin.description)"),
@@ -46,7 +48,7 @@ extension HikingNetworkService: NetworkService {
         ]
         
         params.append(contentsOf: hikeParams.difficulty.map {
-            ("difficulty", $0.name)
+            ("difficulty", $0.rawValue)
         })
 
         return request(path: APIPath.feeds, params: params)
@@ -69,7 +71,8 @@ extension HikingNetworkService: NetworkService {
     func fetchFavorites(page: Int) -> AnyPublisher<FavoritesResult, Error> {
         let path = APIPath.users(accountHandle.user.trouverId)
         let params = [
-            ("page", page.description)
+            ("page", page.description),
+            ("limit", pageLimit.description)
         ]
         
         return request(path: path, params: params)
@@ -83,8 +86,6 @@ extension HikingNetworkService: NetworkService {
         let params = [
             ("trouverId", accountHandle.user.trouverId)
         ]
-        print(headers.debugDescription)
-        print(params.debugDescription)
         return request(path: APIPath.refreshToken, headers: headers, params: params)
     }
     
@@ -106,7 +107,7 @@ extension HikingNetworkService: NetworkService {
         allHeaders.forEach { request.addValue($1, forHTTPHeaderField: $0) }
         
         // Do not refresh for itself or login
-        if accountHandle.hasExpired && path == .refreshToken  && path == .login {
+        if accountHandle.hasExpired && path != .refreshToken && path != .login {
             return refreshToken()
                 .handleEvents(
                     receiveOutput: {
@@ -120,7 +121,7 @@ extension HikingNetworkService: NetworkService {
                 }
                 .eraseToAnyPublisher()
         }
-        
+                
         return webClient.request(request)
     }
     

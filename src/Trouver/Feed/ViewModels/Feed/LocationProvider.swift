@@ -9,13 +9,22 @@ import Foundation
 import CoreLocation
 import Combine
 
+/// Only finds the location one time until it becomes nil
 class LocationProvider: NSObject, ObservableObject, CLLocationManagerDelegate {
     
     static let defaultLocation = CLLocationCoordinate2D(latitude: 47.6062,
                                                         longitude: -122.3321)
 
     private let locationManager = CLLocationManager()
-    @Published var locationStatus: CLAuthorizationStatus?
+    private var locationFound: Bool { lastLocation != nil }
+    private var locationStatus: CLAuthorizationStatus? {
+        didSet {
+            if let status = locationStatus, status == .denied || status == .restricted {
+                self.lastLocation = nil
+            }
+        }
+    }
+    
     @Published var lastLocation: CLLocation?
 
     override init() {
@@ -46,7 +55,7 @@ class LocationProvider: NSObject, ObservableObject, CLLocationManagerDelegate {
     }
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        guard let location = locations.last else { return }
+        guard let location = locations.last, !locationFound else { return }
         lastLocation = location
     }
 }

@@ -11,29 +11,31 @@ struct FeedView: View {
     @ObservedObject var viewModel: FeedCoordinator
     
     var body: some View {
-        List {
-            ForEach(viewModel.hikes) { hikeInfo in
-                NavigationLink(destination:
-                                HikeDetailInfoView(viewModel:
-                                                    HikeDetail(hikeInfo: hikeInfo,
-                                                               networkService: viewModel.networkService))) {
-                    FeedItemView(viewModel: viewModel, hikeInfo: hikeInfo)
-                        .listRowInsets(EdgeInsets())
-                        .padding(.vertical, 10)
-                        .onAppear {
-                            viewModel.loadMoreContentIfNeeded(item: hikeInfo)
-                        }
-                        .padding([.trailing], -34.0)
+        
+        switch viewModel.viewState {
+        case .loading: ProgressView()
+        case .error: Text("Error loading hikes")
+        case .loaded:
+            List {
+                ForEach(viewModel.hikes) { hikeInfo in
+                    NavigationLink(destination:
+                                    HikeDetailInfoView(viewModel:
+                                                        HikeDetail(hikeInfo: hikeInfo,
+                                                                   networkService: viewModel.networkService))) {
+                        FeedItemView(viewModel: viewModel, hikeInfo: hikeInfo)
+                            .listRowInsets(EdgeInsets())
+                            .padding(.vertical, 10)
+                            .onAppear {
+                                viewModel.loadMoreContentIfNeeded(item: hikeInfo)
+                            }
+                            .padding([.trailing], -34.0)
+                    }
+                    .buttonStyle(FlatLinkStyle())
+                    .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .leading)
+                    .listRowInsets(EdgeInsets())
+                    .background(Color(.systemBackground))
                 }
-                .buttonStyle(FlatLinkStyle())
-                .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .leading)
-                .listRowInsets(EdgeInsets())
-                .background(Color(.systemBackground))
             }
-        }
-
-        if viewModel.isLoading {
-          ProgressView()
         }
     }
 }

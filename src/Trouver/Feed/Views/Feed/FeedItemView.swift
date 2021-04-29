@@ -8,8 +8,8 @@
 import SwiftUI
 
 struct FeedItemView: View {
-    
     @ObservedObject var viewModel: FeedCoordinator
+    @State private var showingActionSheet = false
     
     private var hikeIndex: Int {
         viewModel.hikes.firstIndex(of: hikeInfo) ?? -1
@@ -50,6 +50,16 @@ struct FeedItemView: View {
                                 .foregroundColor(.pink)
                                 .padding()
                         })
+                    } else if !viewModel.showFavoriteToggle {
+                        Button(action: {
+                            self.showingActionSheet = true
+                        }, label: {
+                            Image(systemName: "ellipsis.circle")
+                                .resizable()
+                                .frame(width: 30, height: 30)
+                                .foregroundColor(.accentColor)
+                                .padding()
+                        })
                     }
                 }
                 .background(
@@ -61,6 +71,15 @@ struct FeedItemView: View {
         .clipShape(RoundedRectangle(cornerRadius: cornerRadius)) // clip corners
         .shadow(color: Color("BackgroundColor").opacity(0.15), radius: 8, x: 0, y: 0)
         .padding(.horizontal)
+        .actionSheet(isPresented: $showingActionSheet) {
+            ActionSheet(title: Text("hike.option.menu.title"),
+                        buttons: [
+                .default(Text("hike.option.delete.title")) {
+                    viewModel.toggleFavorite(hike: hikeInfo)
+                },
+                .cancel()
+            ])
+        }
     }
 }
 

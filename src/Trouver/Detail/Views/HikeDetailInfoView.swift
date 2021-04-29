@@ -32,7 +32,7 @@ struct HikeDetailInfoView: View {
                         StarsView(rating: hikeDetail.rating, maxRating: 5)
                             .frame(width: 150)
                             .padding(.vertical)
-                        Text("Difficulty: \(hikeDetail.difficulty.name)")
+                        Text("Difficulty: \(hikeDetail.difficulty.rawValue)")
                         GroupBox {
                             DisclosureGroup("more.photos.title") {
                                 PhotoGridView(images: hikeDetail.imageUrls)
