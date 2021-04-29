@@ -109,10 +109,12 @@ class FeedCoordinator: ObservableObject {
                 if let coordinate = loc?.coordinate {
                     self?.search(location: coordinate)
                 } else {
-                    self?.search()
+                    self?.refresh()
                 }
             })
             .store(in: &bag)
+        } else {
+            refresh()
         }
     }
     
@@ -165,6 +167,7 @@ class FeedCoordinator: ObservableObject {
                     strongSelf.canLoadMorePages = hikeResult.hikes.hasNextPage
                     strongSelf.currentPage += 1
                 })
+                // Remove results without images
                 .map { hikeResult in hikeResult.hikes.docs.compactMap({ $0.images.isEmpty ? nil : HikeInfo(hike: $0) })}
                 .eraseToAnyPublisher()
         case .favorites:

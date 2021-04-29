@@ -107,7 +107,7 @@ extension HikingNetworkService: NetworkService {
         allHeaders.forEach { request.addValue($1, forHTTPHeaderField: $0) }
         
         // Do not refresh for itself or login
-        if accountHandle.hasExpired && path == .refreshToken  && path == .login {
+        if accountHandle.hasExpired && path != .refreshToken && path != .login {
             return refreshToken()
                 .handleEvents(
                     receiveOutput: {
@@ -121,7 +121,7 @@ extension HikingNetworkService: NetworkService {
                 }
                 .eraseToAnyPublisher()
         }
-        
+                
         return webClient.request(request)
     }
     
