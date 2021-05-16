@@ -33,11 +33,13 @@ PODS:
     - BlueRSA (~> 1.0)
     - KituraContracts (~> 1.2)
     - LoggerAPI (~> 1.7)
+  - WaterfallGrid (1.0.1)
 
 DEPENDENCIES:
   - GooglePlaces
   - GoogleSignIn
   - SwiftJWT
+  - WaterfallGrid (= 1.0.1)
 
 SPEC REPOS:
   trunk:
@@ -54,6 +56,7 @@ SPEC REPOS:
     - LoggerAPI
     - Logging
     - SwiftJWT
+    - WaterfallGrid
 
 SPEC CHECKSUMS:
   AppAuth: 31bcec809a638d7bd2f86ea8a52bd45f6e81e7c7
@@ -69,7 +72,8 @@ SPEC CHECKSUMS:
   LoggerAPI: ad9c4a6f1e32f518fdb43a1347ac14d765ab5e3d
   Logging: beeb016c9c80cf77042d62e83495816847ef108b
   SwiftJWT: 88c412708f58c169d431d344c87bc79a87c830ae
+  WaterfallGrid: 0554a759d9a8aa136fc1769480ddb01bc6fb94b9
 
-PODFILE CHECKSUM: ac1e698d8074c917bd9bf371f14f05b42f25f2fa
+PODFILE CHECKSUM: 174e3db3fefc15f5be0996ab174d0a5a891acf91
 
 COCOAPODS: 1.10.0
