@@ -83,9 +83,13 @@ class FeedCoordinator: ObservableObject {
         refresh()
     }
     
-    func loadMoreContentIfNeeded(item: HikeInfo) {
-        let thresholdIndex = hikes.index(hikes.endIndex, offsetBy: -3)
-        if hikes.firstIndex(where: { $0.id == item.id }) == thresholdIndex {
+    func loadMoreContentIfNeeded(item: HikeInfo? = nil) {
+        if let item = item {
+            let thresholdIndex = hikes.index(hikes.endIndex, offsetBy: -3)
+            if hikes.firstIndex(where: { $0.id == item.id }) == thresholdIndex {
+                loadMoreContent()
+            }
+        } else {
             loadMoreContent()
         }
     }
@@ -108,7 +112,13 @@ class FeedCoordinator: ObservableObject {
             locationProvider.$lastLocation.sink(receiveValue: { [weak self] loc in
                 if let coordinate = loc?.coordinate {
                     self?.search(location: coordinate)
-                } else {
+                }
+            })
+            .store(in: &bag)
+            locationProvider.$locationStatus.sink(receiveValue: { [weak self] status in
+                if let status = status,
+                   status == .denied,
+                   status == .restricted {
                     self?.refresh()
                 }
             })

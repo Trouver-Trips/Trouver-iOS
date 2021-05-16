@@ -17,14 +17,8 @@ class LocationProvider: NSObject, ObservableObject, CLLocationManagerDelegate {
 
     private let locationManager = CLLocationManager()
     private var locationFound: Bool { lastLocation != nil }
-    private var locationStatus: CLAuthorizationStatus? {
-        didSet {
-            if let status = locationStatus, status == .denied || status == .restricted {
-                self.lastLocation = nil
-            }
-        }
-    }
     
+    @Published var locationStatus: CLAuthorizationStatus?
     @Published var lastLocation: CLLocation?
 
     override init() {

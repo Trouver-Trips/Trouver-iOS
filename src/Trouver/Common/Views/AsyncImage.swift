@@ -35,7 +35,6 @@ struct AsyncImage: View {
                     }
                 }
             }
-            .aspectRatio(contentMode: .fit)
         }
     }
 }
