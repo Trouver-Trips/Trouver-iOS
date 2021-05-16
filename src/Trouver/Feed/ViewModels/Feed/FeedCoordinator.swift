@@ -118,7 +118,6 @@ class FeedCoordinator: ObservableObject {
             locationProvider.$locationStatus.sink(receiveValue: { [weak self] status in
                 if let status = status,
                    status == .denied,
-                   status == .notDetermined,
                    status == .restricted {
                     self?.refresh()
                 }
