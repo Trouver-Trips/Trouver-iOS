@@ -8,8 +8,10 @@
 import SwiftUI
 
 struct TabsContainer <Content: View> : View {
-    var images: [String]
-    let content: Content
+    private let tabBarBottomMargin: CGFloat = 16
+    
+    private let images: [String]
+    private let content: Content
 
     init(images: [String], @ViewBuilder content: () -> Content) {
         self.images = images
@@ -55,7 +57,7 @@ struct TabsContainer <Content: View> : View {
                     .padding(.vertical)
                     .background(Color("TabBarBackground").shadow(radius: 2))
                     .clipShape(Capsule())
-                    .padding(.bottom, 80)
+                    .padding(.bottom, tabBarBottomMargin)
                 }
             }
         }

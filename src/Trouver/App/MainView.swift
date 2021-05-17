@@ -9,7 +9,7 @@ import SwiftUI
 
 struct MainView: View {
     @EnvironmentObject var loginViewModel: LoginService
-    @AppStorage("showNewUI") var showNewUI = false
+    @AppStorage("showNewUI") var showNewUI = true
     @State private var showFeatureFlags = false
     
     let favoritesCoordinator: FavoritesCoordinator
@@ -19,19 +19,7 @@ struct MainView: View {
     }
     
     var body: some View {
-        VStack(alignment: .leading) {
-            #if DEBUG
-            Button(action: {
-                showFeatureFlags = true
-            }, label: {
-                Image(systemName: "flag")
-                    .resizable()
-                    .aspectRatio(contentMode: .fit)
-                    .frame(width: 30, height: 30)
-                    .padding(.horizontal, 20)
-                    .foregroundColor(Color("TabBarHighlight"))
-            })
-            #endif
+        VStack(alignment: .center) {
             if showNewUI {
                 TabsContainer(images: ["homekit", "heart", "person.crop.circle"]) {
                     GridFeedView(viewModel: FeedCoordinator(networkService: networkService,
@@ -69,6 +57,18 @@ struct MainView: View {
                         }
                 }
             }
+            #if DEBUG
+            Button(action: {
+                showFeatureFlags = true
+            }, label: {
+                Image(systemName: "flag")
+                    .resizable()
+                    .aspectRatio(contentMode: .fit)
+                    .frame(width: 30, height: 30)
+                    .foregroundColor(Color("TabBarHighlight"))
+                    .padding()
+            })
+            #endif
         }
         .sheet(isPresented: $showFeatureFlags) {
             FeatureView()
