@@ -12,12 +12,13 @@ struct LazyGridFeedItemView: View {
         static let cornerRadius: CGFloat = 25
         static let opacity: Double = 0.15
         static let radius: CGFloat = 8
+        static let imageRatio: CGFloat = 9/16
     }
     
     let imageUrl: URL
     var body: some View {
         Color.accentColor
-            .aspectRatio(1, contentMode: .fill)
+            .aspectRatio(Constants.imageRatio, contentMode: .fill)
             .overlay(
                 AsyncImage(url: imageUrl)
                     .scaledToFill()
