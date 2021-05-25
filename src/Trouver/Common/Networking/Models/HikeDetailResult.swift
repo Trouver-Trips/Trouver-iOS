@@ -36,3 +36,16 @@ struct DetailDoc: Codable {
         case routeType = "route_type"
     }
 }
+
+extension HikeDetailResult: DataFactory {
+    static func sampleData() -> HikeDetailResult {
+        guard let data = HikeData.hikeDetailData.data(using: .utf8) else {
+           preconditionFailure("Could not convert string to data")
+        }
+        do {
+            return try JSONDecoder().decode(HikeDetailResult.self, from: data)
+        } catch let error {
+            preconditionFailure("Could not decode data: \(error)")
+        }
+    }
+}

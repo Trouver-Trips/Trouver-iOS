@@ -69,7 +69,7 @@ struct FeedItemView: View {
             }
         }
         .clipShape(RoundedRectangle(cornerRadius: cornerRadius)) // clip corners
-        .shadow(color: Color("BackgroundColor").opacity(0.15), radius: 8, x: 0, y: 0)
+        .shadow(color: Color.foregroundColor.opacity(0.15), radius: 8, x: 0, y: 0)
         .padding(.horizontal)
         .actionSheet(isPresented: $showingActionSheet) {
             ActionSheet(title: Text("hike.option.menu.title"),

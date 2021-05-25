@@ -11,6 +11,8 @@ struct MainView: View {
     @EnvironmentObject var loginViewModel: LoginService
     @AppStorage("showNewUI") var showNewUI = true
     @State private var showFeatureFlags = false
+    @State private var showLogOutMessage = false
+    @State private var shouldHideNavBar = false
     
     let favoritesCoordinator: FavoritesCoordinator
 
@@ -21,10 +23,11 @@ struct MainView: View {
     var body: some View {
         VStack(alignment: .center) {
             if showNewUI {
-                TabsContainer(images: ["homekit", "heart", "person.crop.circle"]) {
-                    GridFeedView(viewModel: FeedCoordinator(networkService: networkService,
-                                                              feedType: .newsfeed,
-                                                              favoritesCoordinator: favoritesCoordinator))
+                TabsContainer(images: ["homekit", "heart", "person.crop.circle"], shouldHideNavBar: $shouldHideNavBar) {
+                    GridFeedView(showingDetail: $shouldHideNavBar,
+                                 viewModel: FeedCoordinator(networkService: networkService,
+                                                            feedType: .newsfeed,
+                                                            favoritesCoordinator: favoritesCoordinator))
                     VStack {
                         Spacer()
                         Text("Favorites")
@@ -32,10 +35,16 @@ struct MainView: View {
                     }
                     VStack {
                         Button (action: {
-                            loginViewModel.logOut()
+                            self.showLogOutMessage = true
                         }, label: {
                             Text("log.out.button.title")
                         })
+                        .alert(isPresented: $showLogOutMessage) {
+                            Alert(title: Text("log.out.message"),
+                                  primaryButton: .default(Text("generic.okay.title"),
+                                                          action: { loginViewModel.logOut() }),
+                                  secondaryButton: .cancel())
+                        }
                     }
                     .padding()
                 }
@@ -65,7 +74,7 @@ struct MainView: View {
                     .resizable()
                     .aspectRatio(contentMode: .fit)
                     .frame(width: 30, height: 30)
-                    .foregroundColor(Color("TabBarHighlight"))
+                    .foregroundColor(Color.foregroundColor)
                     .padding()
             })
             #endif

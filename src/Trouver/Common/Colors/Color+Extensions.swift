@@ -8,6 +8,9 @@
 import SwiftUI
 
 extension Color {
+    // MARK: - Custom Colors
+    static let foregroundColor = Color("ForegroundColor")
+    static let themeColor = Color("ThemeColor")
      
     // MARK: - Text Colors
     static let lightText = Color(UIColor.lightText)

@@ -71,6 +71,10 @@
 		5F9B1EA725B53134000B3328 /* EnvironmentProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F9B1EA625B53134000B3328 /* EnvironmentProvider.swift */; };
 		5FCFC891259669D700D38AE4 /* FlatButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FCFC890259669D700D38AE4 /* FlatButtonStyle.swift */; };
 		5FCFC89A259704F700D38AE4 /* DataFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FCFC899259704F700D38AE4 /* DataFactory.swift */; };
+		5FD8E0A3265CBC7F0073DFC0 /* TabPagesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FD8E0A2265CBC7E0073DFC0 /* TabPagesView.swift */; };
+		5FD8E0A5265CBC9E0073DFC0 /* PreviewHikingService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FD8E0A4265CBC9E0073DFC0 /* PreviewHikingService.swift */; };
+		5FD8E0A8265CBCC10073DFC0 /* ImagePageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FD8E0A6265CBCC10073DFC0 /* ImagePageView.swift */; };
+		5FD8E0A9265CBCC10073DFC0 /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FD8E0A7265CBCC10073DFC0 /* DetailView.swift */; };
 		5FD8F80725C3B5CB0025652E /* StarsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FD8F80625C3B5CB0025652E /* StarsView.swift */; };
 		5FD8F81C25C631EC0025652E /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FD8F81B25C631EC0025652E /* SearchView.swift */; };
 		5FE216782628004200D3D8B2 /* LocationProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FE216772628004200D3D8B2 /* LocationProvider.swift */; };
@@ -179,6 +183,10 @@
 		5F9B1EA625B53134000B3328 /* EnvironmentProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnvironmentProvider.swift; sourceTree = "<group>"; };
 		5FCFC890259669D700D38AE4 /* FlatButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlatButtonStyle.swift; sourceTree = "<group>"; };
 		5FCFC899259704F700D38AE4 /* DataFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataFactory.swift; sourceTree = "<group>"; };
+		5FD8E0A2265CBC7E0073DFC0 /* TabPagesView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabPagesView.swift; sourceTree = "<group>"; };
+		5FD8E0A4265CBC9E0073DFC0 /* PreviewHikingService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreviewHikingService.swift; sourceTree = "<group>"; };
+		5FD8E0A6265CBCC10073DFC0 /* ImagePageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImagePageView.swift; sourceTree = "<group>"; };
+		5FD8E0A7265CBCC10073DFC0 /* DetailView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
 		5FD8F80625C3B5CB0025652E /* StarsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StarsView.swift; sourceTree = "<group>"; };
 		5FD8F81B25C631EC0025652E /* SearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
 		5FE216772628004200D3D8B2 /* LocationProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationProvider.swift; sourceTree = "<group>"; };
@@ -267,6 +275,7 @@
 		5F15C7B925B5537A00638851 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				5FC2757E2654C7E400BB4F59 /* DetailV2 */,
 				5F3B3EA12595592D00512B4C /* ImageCarouselView.swift */,
 				5F55880825B69AB200D1100A /* FullPhotoView.swift */,
 				5F5587FD25B67BAB00D1100A /* PhotoGridView.swift */,
@@ -559,6 +568,7 @@
 				5F3B3EFE2595A61200512B4C /* HttpWebClient.swift */,
 				5FF40A7B25CF095100158C3A /* NetworkService.swift */,
 				5F6E32CD259289C800E70AE2 /* HikingNetworkService.swift */,
+				5FD8E0A4265CBC9E0073DFC0 /* PreviewHikingService.swift */,
 				5F4791AA26101E4800DEA919 /* ServiceValues.swift */,
 			);
 			path = Networking;
@@ -616,6 +626,15 @@
 			path = Slider;
 			sourceTree = "<group>";
 		};
+		5FC2757E2654C7E400BB4F59 /* DetailV2 */ = {
+			isa = PBXGroup;
+			children = (
+				5FD8E0A7265CBCC10073DFC0 /* DetailView.swift */,
+				5FD8E0A6265CBCC10073DFC0 /* ImagePageView.swift */,
+			);
+			path = DetailV2;
+			sourceTree = "<group>";
+		};
 		5FCFC88F259669C000D38AE4 /* Styles */ = {
 			isa = PBXGroup;
 			children = (
@@ -638,6 +657,7 @@
 		5FE21691263BB21700D3D8B2 /* NavBar */ = {
 			isa = PBXGroup;
 			children = (
+				5FD8E0A2265CBC7E0073DFC0 /* TabPagesView.swift */,
 				5FE216A7263CA88300D3D8B2 /* TabsContainer.swift */,
 				5FE216AC263CAA9A00D3D8B2 /* TabBarItem.swift */,
 			);
@@ -961,6 +981,7 @@
 				5F6E32E125929BF700E70AE2 /* FeedItemView.swift in Sources */,
 				5F6E3251258EFBAF00E70AE2 /* HikingFeedView.swift in Sources */,
 				5FF40A7725CF091A00158C3A /* FavoriteActionResult.swift in Sources */,
+				5FD8E0A5265CBC9E0073DFC0 /* PreviewHikingService.swift in Sources */,
 				5F57B48925A141F100741A5A /* GoogleSignInButton.swift in Sources */,
 				5F4488D52651CAC900502C61 /* ScrollViewOffsetPreferenceKey.swift in Sources */,
 				5FD8F81C25C631EC0025652E /* SearchView.swift in Sources */,
@@ -992,6 +1013,7 @@
 				5FF40A4125CE67D100158C3A /* AccountHandle.swift in Sources */,
 				5F505A2D261A757400B4E53B /* FilterCoordinator.swift in Sources */,
 				5F3B3EC825956FF500512B4C /* ImageLoader.swift in Sources */,
+				5FD8E0A8265CBCC10073DFC0 /* ImagePageView.swift in Sources */,
 				5F3B3EA22595592D00512B4C /* ImageCarouselView.swift in Sources */,
 				5F55880925B69AB200D1100A /* FullPhotoView.swift in Sources */,
 				5F5587FE25B67BAB00D1100A /* PhotoGridView.swift in Sources */,
@@ -1007,7 +1029,9 @@
 				5F3B3EDF259573BB00512B4C /* AsyncImage.swift in Sources */,
 				5F505A32261A75B200B4E53B /* FilterOptions.swift in Sources */,
 				5F01BACF25A16CD9002330BC /* AccountType.swift in Sources */,
+				5FD8E0A9265CBCC10073DFC0 /* DetailView.swift in Sources */,
 				5F5587C625B6635900D1100A /* HikeDetailResult.swift in Sources */,
+				5FD8E0A3265CBC7F0073DFC0 /* TabPagesView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

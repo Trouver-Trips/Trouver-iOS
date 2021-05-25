@@ -17,7 +17,7 @@ struct GridFeedItemView: View {
             .frame(minHeight: minImageHeight)
             .aspectRatio(contentMode: .fit)
             .clipShape(RoundedRectangle(cornerRadius: cornerRadius))
-            .shadow(color: Color("BackgroundColor").opacity(0.15),
+            .shadow(color: Color.foregroundColor.opacity(0.15),
                     radius: 8, x: 0, y: 0)
     }
 }
