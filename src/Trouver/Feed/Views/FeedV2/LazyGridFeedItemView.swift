@@ -17,14 +17,14 @@ struct LazyGridFeedItemView: View {
     
     let imageUrl: URL
     var body: some View {
-        Color.accentColor
+        Color.foregroundColor
             .aspectRatio(Constants.imageRatio, contentMode: .fill)
             .overlay(
                 AsyncImage(url: imageUrl)
                     .scaledToFill()
             ).clipped()
             .clipShape(RoundedRectangle(cornerRadius: Constants.cornerRadius))
-            .shadow(color: Color("BackgroundColor").opacity(Constants.opacity),
+            .shadow(color: Color.foregroundColor.opacity(Constants.opacity),
                     radius: Constants.radius, x: 0, y: 0)
     }
 }

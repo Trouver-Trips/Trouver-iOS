@@ -9,11 +9,20 @@
 /* Title for trouver */
 "trouver.title" = "Trouver";
 
-/* Title for favorites */
-"favorites.title" = "Favorites";
-
 /* Title for log out button */
 "log.out.button.title" = "Log Out";
+
+/* Log out message */
+"log.out.message" = "Are you sure?";
+
+/* Generic okay */
+"generic.okay.title";
+
+/* Generic cancel */
+"generic.cancel.title";
+
+/* Title for favorites */
+"favorites.title" = "Favorites";
 
 /* Photos */
 "more.photos.title" = "More Photos";
@@ -65,3 +74,6 @@
 
 /* Delete hike option */
 "hike.option.delete.title" = "Remove Favorite";
+
+/* Description title */
+"description.title" = "Description";

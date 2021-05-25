@@ -8,8 +8,8 @@
 import SwiftUI
 
 struct FeatureView: View {
-    @AppStorage("showNewUI") var showNewUI = false
-    @AppStorage("useLazyGrid") var useLazyGrid = false
+    @AppStorage("showNewUI") var showNewUI = true
+    @AppStorage("useLazyGrid") var useLazyGrid = true
     
     var body: some View {
         List {

@@ -7,57 +7,47 @@
 
 import SwiftUI
 
-struct TabsContainer <Content: View> : View {
+// Inspired from here: https://betterprogramming.pub/custom-tab-views-in-swiftui-6ef06bf2db73
+struct TabsContainer<Content: View> : View {
     private let tabBarBottomMargin: CGFloat = 16
+    
+    @Binding private var shouldHideNavBar: Bool
     
     private let images: [String]
     private let content: Content
 
-    init(images: [String], @ViewBuilder content: () -> Content) {
+    init(images: [String], shouldHideNavBar: Binding<Bool>, @ViewBuilder content: @escaping () -> Content) {
         self.images = images
+        self._shouldHideNavBar = shouldHideNavBar
         self.content = content()
     }
 
-    @GestureState private var translation: CGFloat = 0
     @State private var index: Int = 0
 
     var body: some View {
-        GeometryReader { geometry in
+        GeometryReader { geo in
             ZStack {
-                HStack(spacing: 0) {
-                    self.content
-                    .frame(width: geometry.size.width)
-                }
-                .frame(width: geometry.size.width, alignment: .leading)
-                .offset(x: -CGFloat(self.index) * geometry.size.width)
-                .animation(.interactiveSpring())
-                .gesture(
-                    DragGesture()
-                    .updating(self.$translation) { gestureValue, gestureState, _ in
-                       gestureState = gestureValue.translation.width
-                    }
-                    .onEnded { value in
-                        let weakGesture: CGFloat = value.translation.width < 0 ? -100 : 100
-                        let offset = (value.translation.width + weakGesture) / geometry.size.width
-                        let newIndex = (CGFloat(self.index) - offset).rounded()
-                        self.index = min(max(Int(newIndex), 0), self.images.count - 1)
-                    }
-                )
-                VStack {
-                    Spacer()
-                    HStack {
-                        ForEach(0..<images.count) { index in
-                            Button(action: {
-                                self.index = index
-                            }, label: {
-                                TabBarItem(systemIconName: self.images[index], isHighlighted: self.index == index)
-                            })
+                TabPagesView(width: geo.size.width,
+                             index: $index,
+                             maxIndex: self.images.count - 1,
+                             content: content)
+                if !shouldHideNavBar {
+                    VStack {
+                        Spacer()
+                        HStack {
+                            ForEach(0..<images.count) { index in
+                                Button(action: {
+                                    self.index = index
+                                }, label: {
+                                    TabBarItem(systemIconName: self.images[index], isHighlighted: self.index == index)
+                                })
+                            }
                         }
+                        .padding(.vertical)
+                        .background(Color("TabBarBackground").shadow(radius: 2))
+                        .clipShape(Capsule())
+                        .padding(.bottom, tabBarBottomMargin)
                     }
-                    .padding(.vertical)
-                    .background(Color("TabBarBackground").shadow(radius: 2))
-                    .clipShape(Capsule())
-                    .padding(.bottom, tabBarBottomMargin)
                 }
             }
         }
@@ -74,7 +64,7 @@ struct TabsContainerPreviews: PreviewProvider {
     static var previews: some View {
         ZStack (alignment: .bottom) {
             Color.white
-            TabsContainer(images: images) {
+            TabsContainer(images: images, shouldHideNavBar: .constant(false)) {
                 RoundedRectangle(cornerRadius: 20)
                     .foregroundColor(Color.green.opacity(0.3))
                     .padding()

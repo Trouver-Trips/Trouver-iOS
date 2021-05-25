@@ -54,7 +54,6 @@ class FeedCoordinator: ObservableObject {
         
         getCurrentLocation()
         favoritesUpdated()
-        optionsUpdated()
     }
     
     deinit {

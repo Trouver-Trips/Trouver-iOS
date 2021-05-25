@@ -22,7 +22,7 @@ struct Logger {
         }
     }
 
-    static func logError(_ message: String, error: Error? = nil) {
+    static func logError(_ message: String, error: Error? = nil, level: Level = .debug) {
         if let error = error {
             print("Log Error: \(message), withError: \(error)")
         } else {

@@ -36,6 +36,7 @@ struct HttpWebClient: WebClient {
                    let jsonObject = try? JSONDecoder().decode(T.self, from: $0.data) {
                     return WebResult(data: jsonObject, headers: headers)
                 } else {
+                    Logger.logError(String(data: $0.data, encoding: .utf8) ?? "Could not decode error", level: .verbose)
                     throw NetworkError.badOutput
                 }
             }

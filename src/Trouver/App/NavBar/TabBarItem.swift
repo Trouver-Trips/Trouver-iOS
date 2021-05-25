@@ -8,16 +8,28 @@
 import SwiftUI
 
 struct TabBarItem: View {
-     
     let systemIconName: String
     let isHighlighted: Bool
+    let size: CGFloat
+    let padding: CGFloat
+    
+    init(systemIconName: String,
+         isHighlighted: Bool,
+         size: CGFloat = 30,
+         padding: CGFloat = 20) {
+        self.systemIconName = systemIconName
+        self.isHighlighted = isHighlighted
+        self.size = size
+        self.padding = padding
+    }
      
     var body: some View {
         Image(systemName: systemIconName)
             .resizable()
             .aspectRatio(contentMode: .fit)
-            .frame(width: 30, height: 30)
-            .padding(.horizontal, 20)
+            .frame(width: size,
+                   height: size)
+            .padding(.horizontal, padding)
             .foregroundColor(isHighlighted ?
                                 Color("TabBarHighlight") : Color("TabBarDisabled"))
     }

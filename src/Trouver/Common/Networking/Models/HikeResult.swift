@@ -52,7 +52,7 @@ struct Location: Codable, Hashable {
 // MARK: - Sample Data
 extension HikeResult: DataFactory {
     static func sampleData() -> HikeResult {
-        guard let data = HikeData.hikeInfo.data(using: .utf8) else {
+        guard let data = HikeData.hikeData.data(using: .utf8) else {
            preconditionFailure("Could not convert string to data")
         }
         do {

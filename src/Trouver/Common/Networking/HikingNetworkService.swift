@@ -109,13 +109,11 @@ extension HikingNetworkService: NetworkService {
         // Do not refresh for itself or login
         if accountHandle.hasExpired && path != .refreshToken && path != .login {
             return refreshToken()
-                .handleEvents(
-                    receiveOutput: {
-                        if let token = $0.token {
-                            self.accountHandle.updateToken(token)
-                        }
+                .map { tokenResult in
+                    if let token = tokenResult.token {
+                        self.accountHandle.updateToken(token)
                     }
-                )
+                }
                 .flatMap { _ -> AnyPublisher<WebResult<T>, Error> in
                     self.webClient.request(request).eraseToAnyPublisher()
                 }
