@@ -12,7 +12,6 @@ target 'Trouver' do
   pod 'GoogleSignIn'
   pod 'GooglePlaces'
   pod 'SwiftJWT'
-  pod 'WaterfallGrid', '1.0.1'
 
   target 'TrouverTests' do
     inherit! :search_paths

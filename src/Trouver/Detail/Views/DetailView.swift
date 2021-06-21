@@ -85,8 +85,7 @@ struct DetailView: View {
             viewModel.onAppear()
             isPresented = true
         }
-        .navigationBarTitle("")
-        .navigationBarHidden(true)
+        .hiddenNavigationBarStyle
         .ignoresSafeArea()
     }
 }

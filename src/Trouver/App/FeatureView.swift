@@ -8,16 +8,12 @@
 import SwiftUI
 
 struct FeatureView: View {
-    @AppStorage("showNewUI") var showNewUI = true
-    @AppStorage("useLazyGrid") var useLazyGrid = true
+    @State private var testFlag = true
     
     var body: some View {
         List {
-            Toggle(isOn: $showNewUI) {
-                Text("Show New UI")
-            }
-            Toggle(isOn: $useLazyGrid) {
-                Text("Use Lazy Grid")
+            Toggle(isOn: $testFlag) {
+                Text("Test Feature")
             }
         }
     }
