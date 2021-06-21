@@ -20,7 +20,8 @@ struct TabPagesView<Content: View>: View {
          index: Binding<Int>,
          maxIndex: Int,
          useWeakGesture: Bool = false,
-         @ViewBuilder content: () -> Content) {
+         @ViewBuilder
+         content: () -> Content) {
         self.init(width: width,
                   index: index,
                   maxIndex: maxIndex,

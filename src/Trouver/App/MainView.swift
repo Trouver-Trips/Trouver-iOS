@@ -24,14 +24,17 @@ struct MainView: View {
         VStack(alignment: .center) {
             if showNewUI {
                 TabsContainer(images: ["homekit", "heart", "person.crop.circle"], shouldHideNavBar: $shouldHideNavBar) {
-                    GridFeedView(showingDetail: $shouldHideNavBar,
-                                 viewModel: FeedCoordinator(networkService: networkService,
-                                                            feedType: .newsfeed,
-                                                            favoritesCoordinator: favoritesCoordinator))
+                    GridFeedView(viewModel:
+                                    FeedCoordinator(networkService: networkService,
+                                                    feedType: .newsfeed,
+                                                    favoritesCoordinator: favoritesCoordinator),
+                                                    showingDetail: $shouldHideNavBar)
                     VStack {
-                        Spacer()
-                        Text("Favorites")
-                        Spacer()
+                        GridFavoriteFeedView(viewModel:
+                                                FeedCoordinator(networkService: networkService,
+                                                                feedType: .favorites,
+                                                                favoritesCoordinator: favoritesCoordinator),
+                                             showingDetail: $shouldHideNavBar)
                     }
                     VStack {
                         Button (action: {

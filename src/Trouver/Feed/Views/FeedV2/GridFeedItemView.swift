@@ -8,15 +8,17 @@
 import SwiftUI
 
 struct GridFeedItemView: View {
-    private let cornerRadius: CGFloat = 25
-    private let minImageHeight: CGFloat = 150
+    private enum Constants {
+        static let cornerRadius: CGFloat = 25
+        static let minImageHeight: CGFloat = 150
+    }
     
     let imageUrl: URL
     var body: some View {
         AsyncImage(url: imageUrl, showPlaceHolder: true)
-            .frame(minHeight: minImageHeight)
+            .frame(minHeight: Constants.minImageHeight)
             .aspectRatio(contentMode: .fit)
-            .clipShape(RoundedRectangle(cornerRadius: cornerRadius))
+            .clipShape(RoundedRectangle(cornerRadius: Constants.cornerRadius))
             .shadow(color: Color.foregroundColor.opacity(0.15),
                     radius: 8, x: 0, y: 0)
     }

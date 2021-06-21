@@ -18,6 +18,16 @@ struct TrouverApp: App {
         WindowGroup {
             SignInView()
                 .environmentObject(appDelegate.viewModel)
+                .onAppear {
+                    clearNavBarStyle()
+                }
         }
+    }
+    
+    private func clearNavBarStyle() {
+        UINavigationBar.appearance().barTintColor = .clear
+        UINavigationBar.appearance().backgroundColor = .clear
+        UINavigationBar.appearance().setBackgroundImage(UIImage(), for: .default)
+        UINavigationBar.appearance().shadowImage = UIImage()
     }
 }

@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct LazyGridFeedItemView: View {
-    struct Constants {
+    private enum Constants {
         static let cornerRadius: CGFloat = 25
         static let opacity: Double = 0.15
         static let radius: CGFloat = 8

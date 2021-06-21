@@ -10,10 +10,10 @@ import WaterfallGrid
 
 struct GridFeedView: View {
     @ObservedObject var viewModel: FeedCoordinator
+    @Binding var showingDetail: Bool
     @AppStorage("useLazyGrid") private var useLazyGrid = true
-    @Binding private var showingDetail: Bool
 
-    private struct Constants {
+    private enum Constants {
         static let gridSpacing: CGFloat = 4
         static let minImageHeight: CGFloat = 150
         static let topMargin: CGFloat = -48
@@ -23,12 +23,6 @@ struct GridFeedView: View {
         GridItem(.flexible()),
         GridItem(.flexible())
     ]
-    
-    init(showingDetail: Binding<Bool>, viewModel: FeedCoordinator) {
-        self._showingDetail = showingDetail
-        self.viewModel = viewModel
-        clearNavBarStyle()
-    }
 
     var body: some View {
         switch viewModel.viewState {
@@ -83,7 +77,7 @@ struct GridFeedView: View {
                 }
                 .padding(.horizontal)
             }
-            //.padding(.top, Constants.topMargin)
+            .padding(.top, Constants.topMargin)
         }
     }
         
@@ -91,18 +85,13 @@ struct GridFeedView: View {
         HikeDetail(hikeInfo: hikeInfo,
                    networkService: viewModel.networkService)
     }
-    
-    private func clearNavBarStyle() {
-        UINavigationBar.appearance().barTintColor = .clear
-        UINavigationBar.appearance().backgroundColor = .clear
-        UINavigationBar.appearance().setBackgroundImage(UIImage(), for: .default)
-        UINavigationBar.appearance().shadowImage = UIImage()
-    }
 }
 
 struct GridFeedViewPreviews: PreviewProvider {
     static var previews: some View {
-        GridFeedView(showingDetail: .constant(false),
-                     viewModel: FeedCoordinator(feedType: .newsfeed, favoritesCoordinator: FavoritesCoordinator()))
+        GridFeedView(viewModel:
+                        FeedCoordinator(feedType: .newsfeed,
+                                        favoritesCoordinator: FavoritesCoordinator()),
+                     showingDetail: .constant(false))
     }
 }

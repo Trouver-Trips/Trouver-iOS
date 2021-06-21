@@ -13,7 +13,9 @@ struct DetailView: View {
     @Binding var isPresented: Bool
     @ObservedObject var viewModel: HikeDetail
     
-    private struct Constants {
+    var startingImageIndex: Int = 0
+    
+    private enum Constants {
         static let imageSize: CGFloat = 24
         static let topPadding: CGFloat = 32
         static let topMargin: CGFloat = 48
@@ -36,7 +38,9 @@ struct DetailView: View {
                         Spacer()
                     }
                 case .loaded(let hikeDetail):
-                    ImagePageView(width: screenWidth, images: hikeDetail.imageUrls)
+                    ImagePageView(width: screenWidth,
+                                  images: hikeDetail.imageUrls,
+                                  startingImageIndex: startingImageIndex)
                     Text("description.title")
                         .padding()
                     Text(hikeDetail.description)
@@ -91,7 +95,8 @@ struct DetailView: View {
 struct DetailViewPreviews: PreviewProvider {
     static var previews: some View {
         DetailView(isPresented: .constant(true),
-                   viewModel: HikeDetail(hikeInfo: HikeInfo.sampleData(), networkService: PreviewHikingService()))
+                   viewModel: HikeDetail(hikeInfo: HikeInfo.sampleData(),
+                                         networkService: PreviewHikingService()))
             .preferredColorScheme(.dark)
     }
 }
