@@ -1,5 +1,5 @@
 //
-//  LazyGridFeedItemView.swift
+//  FeedItemView.swift
 //  Trouver
 //
 //  Created by Sagar Punhani on 5/16/21.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct LazyGridFeedItemView: View {
+struct FeedItemView: View {
     private enum Constants {
         static let cornerRadius: CGFloat = 25
         static let opacity: Double = 0.15
@@ -32,7 +32,7 @@ struct LazyGridFeedItemView: View {
 #if DEBUG
 struct LazyGridFeedItemViewPreviews: PreviewProvider {
     static var previews: some View {
-        LazyGridFeedItemView(imageUrl: HikeInfo.sampleData().imageUrls[0])
+        FeedItemView(imageUrl: HikeInfo.sampleData().imageUrls[0])
     }
 }
 #endif

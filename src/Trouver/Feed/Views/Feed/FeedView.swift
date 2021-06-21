@@ -1,5 +1,5 @@
 //
-//  GridFeedView.swift
+//  FeedView.swift
 //  Trouver
 //
 //  Created by Sagar Punhani on 4/29/21.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct GridFeedView: View {
+struct FeedView: View {
     @ObservedObject var viewModel: FeedCoordinator
     @Binding var showingDetail: Bool
 
@@ -34,7 +34,7 @@ struct GridFeedView: View {
                                 NavigationLink(destination:
                                                 DetailView(isPresented: $showingDetail,
                                                            viewModel: viewModel(for: hikeInfo))) {
-                                    LazyGridFeedItemView(imageUrl: hikeInfo.imageUrls[0])
+                                    FeedItemView(imageUrl: hikeInfo.imageUrls[0])
                                         .padding(Constants.gridSpacing)
                                         .onAppear {
                                             viewModel.loadMoreContentIfNeeded(item: hikeInfo)
@@ -56,13 +56,14 @@ struct GridFeedView: View {
         
     private func viewModel(for hikeInfo: HikeInfo) -> HikeDetail {
         HikeDetail(hikeInfo: hikeInfo,
+                   favoritesCoordinator: viewModel.favoritesCoordinator,
                    networkService: viewModel.networkService)
     }
 }
 
 struct GridFeedViewPreviews: PreviewProvider {
     static var previews: some View {
-        GridFeedView(viewModel:
+        FeedView(viewModel:
                         FeedCoordinator(feedType: .newsfeed,
                                         favoritesCoordinator: FavoritesCoordinator()),
                      showingDetail: .constant(false))

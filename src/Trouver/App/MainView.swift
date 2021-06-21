@@ -26,17 +26,17 @@ struct MainView: View {
     var body: some View {
         VStack(alignment: .center) {
             TabsContainer(images: ["homekit", "heart", "person.crop.circle"], shouldHideNavBar: $shouldHideNavBar) {
-                GridFeedView(viewModel:
-                                FeedCoordinator(networkService: networkService,
-                                                feedType: .newsfeed,
-                                                favoritesCoordinator: favoritesCoordinator),
-                                                showingDetail: $shouldHideNavBar)
+                FeedView(viewModel:
+                            FeedCoordinator(networkService: networkService,
+                                            feedType: .newsfeed,
+                                            favoritesCoordinator: favoritesCoordinator),
+                                            showingDetail: $shouldHideNavBar)
                 VStack {
-                    GridFavoriteFeedView(viewModel:
-                                            FeedCoordinator(networkService: networkService,
-                                                            feedType: .favorites,
-                                                            favoritesCoordinator: favoritesCoordinator),
-                                         showingDetail: $shouldHideNavBar)
+                    FavoriteFeedView(viewModel:
+                                        FeedCoordinator(networkService: networkService,
+                                                        feedType: .favorites,
+                                                        favoritesCoordinator: favoritesCoordinator),
+                                     showingDetail: $shouldHideNavBar)
                 }
                 VStack {
                     #if DEBUG
