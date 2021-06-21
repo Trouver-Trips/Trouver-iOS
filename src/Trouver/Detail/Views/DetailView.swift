@@ -42,6 +42,8 @@ struct DetailView: View {
                     ImagePageView(width: screenWidth,
                                   images: hikeDetail.imageUrls,
                                   startingImageIndex: startingImageIndex)
+                    Text(hikeDetail.name)
+                        .padding()
                     Text("description.title")
                         .padding()
                     Text(hikeDetail.description)
