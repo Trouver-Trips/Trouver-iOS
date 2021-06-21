@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct ImagePageView: View {
-    struct Constants {
+    enum Constants {
         static let tabBarBottomMargin: CGFloat = 16
         static let imageRatio: CGFloat = 0.75
     }
@@ -19,6 +19,7 @@ struct ImagePageView: View {
 
     let width: CGFloat
     let images: [URL]
+    let startingImageIndex: Int
 
     @State private var index: Int = 0
 
@@ -33,6 +34,9 @@ struct ImagePageView: View {
                                 .scaledToFill()
                         ).clipped()
                 }
+            }
+            .onAppear {
+                index = startingImageIndex
             }
             VStack {
                 Spacer()
@@ -58,7 +62,7 @@ struct ImagePageView: View {
 struct ImagePageViewPreviews: PreviewProvider {
     static var previews: some View {
         GeometryReader { geo in
-            ImagePageView(width: geo.size.width, images: HikeData.hikeImages)
+            ImagePageView(width: geo.size.width, images: HikeData.hikeImages, startingImageIndex: 0)
         }
     }
 }

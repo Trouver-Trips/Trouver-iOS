@@ -15,7 +15,7 @@ struct HikeInfoSet: Hashable {
 struct HikingFeed {
     var hikes = [String: HikeInfoSet]()
     
-    mutating func addHikes(_ hike: HikeInfo, toFront: Bool = false) {
+    mutating func addHikes(_ hike: HikeInfo) {
         hikes[hike.id] = HikeInfoSet(hikeInfo: hike)
     }
     
@@ -25,10 +25,5 @@ struct HikingFeed {
     
     mutating func removeHike(_ hike: HikeInfo) {
         hikes.removeValue(forKey: hike.id)
-    }
-    
-    mutating func toggleFavorite(_ hike: HikeInfo) -> HikeInfo {
-        hikes[hike.id]?.hikeInfo.isFavorite.toggle()
-        return hikes[hike.id]?.hikeInfo ?? hike
     }
 }

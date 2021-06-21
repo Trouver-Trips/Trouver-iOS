@@ -25,7 +25,6 @@ class FeedCoordinator: ObservableObject {
     
     private let locationProvider = LocationProvider()
     private let feedType: FeedType
-    private let favoritesCoordinator: FavoritesCoordinator
 
     private var currentPage = 1
     private var canLoadMorePages = true
@@ -43,6 +42,7 @@ class FeedCoordinator: ObservableObject {
     @Published private(set) var viewState = ViewState.loading
     
     let filterCoordinator: FilterCoordinator
+    let favoritesCoordinator: FavoritesCoordinator
         
     init(networkService: NetworkService = HikingNetworkService(),
          feedType: FeedType,
@@ -73,8 +73,6 @@ class FeedCoordinator: ObservableObject {
         .map { $0.hikeInfo }
     }
     
-    var showFavoriteToggle: Bool { feedType == .newsfeed }
-
     // MARK: - Intents
     
     func search(location: CLLocationCoordinate2D = LocationProvider.defaultLocation) {
@@ -82,25 +80,10 @@ class FeedCoordinator: ObservableObject {
         refresh()
     }
     
-    func loadMoreContentIfNeeded(item: HikeInfo? = nil) {
-        if let item = item {
-            let thresholdIndex = hikes.index(hikes.endIndex, offsetBy: -3)
-            if hikes.firstIndex(where: { $0.id == item.id }) == thresholdIndex {
-                loadMoreContent()
-            }
-        } else {
+    func loadMoreContentIfNeeded(item: HikeInfo) {
+        let thresholdIndex = hikes.index(hikes.endIndex, offsetBy: -3)
+        if hikes.firstIndex(where: { $0.id == item.id }) == thresholdIndex {
             loadMoreContent()
-        }
-    }
-    
-    func toggleFavorite(hike: HikeInfo) {
-        if shouldUpdateFavorite {
-            shouldUpdateFavorite = false
-            let newHike = hikingFeed.toggleFavorite(hike)
-            favoritesCoordinator.updateFavorite(newHike: newHike)
-            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) { [weak self]  in
-                self?.shouldUpdateFavorite = true
-            }
         }
     }
     
@@ -201,7 +184,7 @@ class FeedCoordinator: ObservableObject {
                 .sink(receiveValue: { [weak self] in
                 if let updatedHike = $0 {
                     if updatedHike.isFavorite {
-                        self?.hikingFeed.addHikes(updatedHike, toFront: true)
+                        self?.hikingFeed.addHikes(updatedHike)
                     } else {
                         self?.hikingFeed.removeHike(updatedHike)
                     }

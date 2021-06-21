@@ -2,7 +2,7 @@
 //  FullPhotoView.swift
 //  Trouver
 //
-//  Created by Sagar Punhani on 1/18/21.
+//  Created by Sagar Punhani on 6/20/21.
 //
 
 import SwiftUI

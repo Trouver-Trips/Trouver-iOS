@@ -2,93 +2,37 @@
 //  FeedItemView.swift
 //  Trouver
 //
-//  Created by Sagar Punhani on 12/22/20.
+//  Created by Sagar Punhani on 5/16/21.
 //
 
 import SwiftUI
 
 struct FeedItemView: View {
-    @ObservedObject var viewModel: FeedCoordinator
-    @State private var showingActionSheet = false
-    
-    private var hikeIndex: Int {
-        viewModel.hikes.firstIndex(of: hikeInfo) ?? -1
+    private enum Constants {
+        static let cornerRadius: CGFloat = 25
+        static let opacity: Double = 0.15
+        static let radius: CGFloat = 8
+        static let imageRatio: CGFloat = 9/16
     }
     
-    private let cornerRadius: CGFloat = 25
-    let hikeInfo: HikeInfo
-
+    let imageUrl: URL
     var body: some View {
-        ZStack {
-            
-            // Fallback for no image
-            if hikeInfo.imageUrls.isEmpty {
-                Image("Rainier")
-                    .resizable()
-                    .aspectRatio(contentMode: .fit)
-            } else {
-                AsyncImage(url: hikeInfo.imageUrls[0], showPlaceHolder: true)
-                    .aspectRatio(contentMode: .fit)
-            }
-
-            VStack {
-                Spacer().frame(maxWidth: .infinity)
-                HStack {
-                    Text(hikeInfo.name)
-                        .fontWeight(.bold)
-                        .font(.headline)
-                        .foregroundColor(.white)
-                        .padding()
-                    Spacer()
-                    if viewModel.showFavoriteToggle && hikeIndex >= 0 {
-                        Button(action: {
-                            viewModel.toggleFavorite(hike: hikeInfo)
-                        }, label: {
-                            Image(systemName: viewModel.hikes[hikeIndex].isFavorite ? "heart.fill" : "heart")
-                                .resizable()
-                                .frame(width: 30, height: 30)
-                                .foregroundColor(.pink)
-                                .padding()
-                        })
-                    } else if !viewModel.showFavoriteToggle {
-                        Button(action: {
-                            self.showingActionSheet = true
-                        }, label: {
-                            Image(systemName: "ellipsis.circle")
-                                .resizable()
-                                .frame(width: 30, height: 30)
-                                .foregroundColor(.accentColor)
-                                .padding()
-                        })
-                    }
-                }
-                .background(
-                    Color.black
-                        .opacity(0.7)
-                )
-            }
-        }
-        .clipShape(RoundedRectangle(cornerRadius: cornerRadius)) // clip corners
-        .shadow(color: Color.foregroundColor.opacity(0.15), radius: 8, x: 0, y: 0)
-        .padding(.horizontal)
-        .actionSheet(isPresented: $showingActionSheet) {
-            ActionSheet(title: Text("hike.option.menu.title"),
-                        buttons: [
-                .default(Text("hike.option.delete.title")) {
-                    viewModel.toggleFavorite(hike: hikeInfo)
-                },
-                .cancel()
-            ])
-        }
+        Color.foregroundColor
+            .aspectRatio(Constants.imageRatio, contentMode: .fill)
+            .overlay(
+                AsyncImage(url: imageUrl)
+                    .scaledToFill()
+            ).clipped()
+            .clipShape(RoundedRectangle(cornerRadius: Constants.cornerRadius))
+            .shadow(color: Color.foregroundColor.opacity(Constants.opacity),
+                    radius: Constants.radius, x: 0, y: 0)
     }
 }
 
 #if DEBUG
-struct FeedItemViewPreviews: PreviewProvider {
+struct LazyGridFeedItemViewPreviews: PreviewProvider {
     static var previews: some View {
-        FeedItemView(viewModel: FeedCoordinator(feedType: .newsfeed,
-                                                favoritesCoordinator: FavoritesCoordinator()),
-                     hikeInfo: HikeInfo.sampleData())
+        FeedItemView(imageUrl: HikeInfo.sampleData().imageUrls[0])
     }
 }
 #endif

@@ -13,10 +13,13 @@ struct DetailView: View {
     @Binding var isPresented: Bool
     @ObservedObject var viewModel: HikeDetail
     
-    private struct Constants {
+    var startingImageIndex: Int = 0
+    
+    private enum Constants {
         static let imageSize: CGFloat = 24
-        static let topPadding: CGFloat = 32
-        static let topMargin: CGFloat = 48
+        static let sidePadding: CGFloat = 32
+        static let topPadding: CGFloat = 48
+        static let bottomPadding: CGFloat = 24
     }
     
     private var screenWidth: CGFloat {
@@ -36,7 +39,11 @@ struct DetailView: View {
                         Spacer()
                     }
                 case .loaded(let hikeDetail):
-                    ImagePageView(width: screenWidth, images: hikeDetail.imageUrls)
+                    ImagePageView(width: screenWidth,
+                                  images: hikeDetail.imageUrls,
+                                  startingImageIndex: startingImageIndex)
+                    Text(hikeDetail.name)
+                        .padding()
                     Text("description.title")
                         .padding()
                     Text(hikeDetail.description)
@@ -62,16 +69,27 @@ struct DetailView: View {
                         })
                         Spacer()
                         if case .loaded(_) = viewModel.state {
-                            Image(systemName: "suit.heart")
-                                .resizable()
-                                .aspectRatio(contentMode: .fit)
-                                .frame(width: Constants.imageSize,
-                                       height: Constants.imageSize)
-                                .foregroundColor(Color.foregroundColor)
+                            Button(action: {
+                                viewModel.toggleFavorite()
+                            }, label: {
+                                Image(systemName: viewModel.isFavorite ? "suit.heart.fill" : "suit.heart")
+                                    .resizable()
+                                    .aspectRatio(contentMode: .fit)
+                                    .frame(width: Constants.imageSize,
+                                           height: Constants.imageSize)
+                                    .foregroundColor(Color.foregroundColor)
+                            })
                         }
                     }
-                    .padding(.horizontal, Constants.topPadding)
-                    .padding(.top, Constants.topMargin)
+                    .padding(.horizontal, Constants.sidePadding)
+                    .padding(.top, Constants.topPadding)
+                    .padding(.bottom, Constants.bottomPadding)
+                    .background(
+                        LinearGradient(gradient:
+                                        Gradient(colors: [Color.black.opacity(0.8),
+                                                          Color.black.opacity(0)]),
+                                       startPoint: .top, endPoint: .bottom)
+                    )
                     Spacer()
                 }
             )
@@ -81,8 +99,10 @@ struct DetailView: View {
             viewModel.onAppear()
             isPresented = true
         }
-        .navigationBarTitle("")
-        .navigationBarHidden(true)
+        .onDisappear {
+            viewModel.onDisappear()
+        }
+        .hiddenNavigationBarStyle()
         .ignoresSafeArea()
     }
 }
@@ -91,7 +111,9 @@ struct DetailView: View {
 struct DetailViewPreviews: PreviewProvider {
     static var previews: some View {
         DetailView(isPresented: .constant(true),
-                   viewModel: HikeDetail(hikeInfo: HikeInfo.sampleData(), networkService: PreviewHikingService()))
+                   viewModel: HikeDetail(hikeInfo: HikeInfo.sampleData(),
+                                         favoritesCoordinator: FavoritesCoordinator(),
+                                         networkService: PreviewHikingService()))
             .preferredColorScheme(.dark)
     }
 }

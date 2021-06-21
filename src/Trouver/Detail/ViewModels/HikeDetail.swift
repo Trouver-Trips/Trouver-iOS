@@ -12,20 +12,36 @@ import Combine
  Detail page for hike
  */
 class HikeDetail: ObservableObject {
+    @Published private var hikeInfo: HikeInfo
     @Published var state: State = .idle
-    private let hikeInfo: HikeInfo
-
+    
+    private let favoritesCoordinator: FavoritesCoordinator
     private let networkService: NetworkService
 
-    init(hikeInfo: HikeInfo, networkService: NetworkService = HikingNetworkService()) {
+    init(hikeInfo: HikeInfo,
+         favoritesCoordinator: FavoritesCoordinator,
+         networkService: NetworkService = HikingNetworkService()) {
         self.hikeInfo = hikeInfo
+        self.favoritesCoordinator = favoritesCoordinator
         self.networkService = networkService
     }
+    
+    // MARK: - Access to the model
+    
+    var isFavorite: Bool { hikeInfo.isFavorite }
 
     // MARK: - Intents
 
     func onAppear() {
         loadContent()
+    }
+    
+    func onDisappear() {
+        favoritesCoordinator.publishFavoriteUpdate(hikeInfo: hikeInfo)
+    }
+    
+    func toggleFavorite() {
+        hikeInfo = favoritesCoordinator.toggleFavorite(hike: hikeInfo)
     }
 
     private func loadContent() {
