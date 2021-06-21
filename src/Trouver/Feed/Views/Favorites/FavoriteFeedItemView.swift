@@ -45,7 +45,7 @@ struct FavoriteFeedItemView: View {
                                                    startingImageIndex: idx)) {
                             FavoriteImageView(url: hikeInfo.imageUrls[idx],
                                               corners:
-                                                .allCorners.subtracting(removableCorners[idx - 1]))
+                                                UIRectCorner.allCorners.subtracting(removableCorners[idx - 1]))
                                 .overlay(
                                     idx == hikeInfo.imageUrls.count - 1 ?
                                     ZStack {

@@ -86,8 +86,8 @@ struct DetailView: View {
                     .padding(.bottom, Constants.bottomPadding)
                     .background(
                         LinearGradient(gradient:
-                                        Gradient(colors: [.black.opacity(0.8),
-                                                          .black.opacity(0)]),
+                                        Gradient(colors: [Color.black.opacity(0.8),
+                                                          Color.black.opacity(0)]),
                                        startPoint: .top, endPoint: .bottom)
                     )
                     Spacer()
