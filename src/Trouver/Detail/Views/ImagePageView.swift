@@ -11,10 +11,14 @@ struct ImagePageView: View {
     private enum Constants {
         static let tabBarBottomMargin: CGFloat = 16
         static let imageRatio: CGFloat = 0.75
+        static let iconSize: CGFloat = 24
     }
     
     private var imageCount: Int { min(images.count, 5) }
+    @State private var showFullPhoto: Bool = false
     @State private var index: Int = 0
+    
+    private var maxIndex: Int { imageCount - 1 }
 
     let width: CGFloat
     let images: [URL]
@@ -22,7 +26,7 @@ struct ImagePageView: View {
 
     var body: some View {
         ZStack {
-            TabPagesView(width: width, index: $index, maxIndex: imageCount - 1, useWeakGesture: true) {
+            TabPagesView(width: width, index: $index, maxIndex: maxIndex, useWeakGesture: true) {
                 ForEach(images.prefix(imageCount), id: \.self) { url in
                     Color.themeColor
                         .aspectRatio(Constants.imageRatio, contentMode: .fill)
@@ -37,20 +41,45 @@ struct ImagePageView: View {
             }
             VStack {
                 Spacer()
-                HStack {
-                    ForEach(0..<imageCount) { index in
+                ZStack {
+                    HStack {
+                        ForEach(0..<imageCount) { index in
+                            Button(action: {
+                                self.index = index
+                            }, label: {
+                                TabBarItem(systemIconName: "circle.fill",
+                                           isHighlighted: index == min(self.index, maxIndex),
+                                           size: 12,
+                                           padding: 3)
+                            })
+                        }
+                    }
+                    HStack {
+                        Spacer()
                         Button(action: {
-                            self.index = index
+                            self.showFullPhoto = true
                         }, label: {
-                            TabBarItem(systemIconName: "circle.fill",
-                                       isHighlighted: self.index == index,
-                                       size: 12,
-                                       padding: 3)
+                            Image(systemName: "arrow.up.left.and.arrow.down.right")
+                                .resizable()
+                                .aspectRatio(contentMode: .fit)
+                                .frame(width: Constants.iconSize,
+                                       height: Constants.iconSize)
+                                .foregroundColor(.foregroundColor)
                         })
+                        .padding()
                     }
                 }
                 .padding(.bottom, Constants.tabBarBottomMargin)
+                .background(
+                    LinearGradient(gradient:
+                                    Gradient(colors: [Color.black.opacity(0.8),
+                                                      Color.black.opacity(0)]),
+                                   startPoint: .bottom, endPoint: .top)
+                )
             }
+        }
+        .sheet(isPresented: $showFullPhoto) {
+            FullPhotoView(images: images, selectedTab: $index)
         }
     }
 }

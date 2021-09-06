@@ -12,17 +12,7 @@ struct SegmentView: View {
     let isSelected: Bool
     
     var body: some View {
-        HStack {
-            Spacer()
-            Text(text)
-                .foregroundColor(isSelected ? Color.accentColor : Color.systemGray3)
-                .padding(.vertical, 6)
-            Spacer()
-        }
-        .overlay(
-            RoundedRectangle(cornerRadius: 10)
-                .stroke(isSelected ? Color.accentColor : Color.systemGray3, lineWidth: 2)
-        )
+        CapsuleView(text: text, color: isSelected ? .accentColor : .systemGray3)
     }
 }
 

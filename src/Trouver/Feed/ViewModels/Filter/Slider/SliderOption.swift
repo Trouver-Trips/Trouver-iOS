@@ -54,11 +54,11 @@ class SliderOption: ObservableObject {
         let unitDescription = Bundle.main.localizedString(forKey: units.rawValue, value: nil, table: nil)
         switch units {
         case .feet:
-            low = Int(lowRange).description
-            high = Int(highRange).description
+            low = Int(lowRange.toFeet).description
+            high = Int(highRange.toFeet).description
         case .miles:
-            low = Int(lowRange / 5280).description
-            high = Int(highRange / 5280).description
+            low = Int(lowRange.toMiles).description
+            high = Int(highRange.toMiles).description
         }
         
         return "\(low) \(unitDescription) - \(high) \(unitDescription)"

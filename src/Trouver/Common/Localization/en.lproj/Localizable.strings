@@ -48,6 +48,9 @@
 /* Difficulty title */
 "difficulty.title" = "Difficulty";
 
+/* Difficulty Option Unknown */
+"difficulty.option.unknown" = "Unknown";
+
 /* Difficulty Option Easy */
 "difficulty.option.easy" = "Easy";
 
@@ -66,8 +69,17 @@
 /* Units in feet */
 "units.feet" = "ft";
 
+/* Units in feet with measurement */
+"units.feet.measurement %lld" = "%lld ft";
+
 /* Units in miles */
 "units.miles" = "mi";
+
+/* Units in miles with measurement */
+"units.miles.measurement %.1f" = "%.1f mi";
+
+/* No Hike title */
+"hike.unknown.title" = "Mystery Hike";
 
 /* Hike option menu title */
 "hike.option.menu.title" = "More Options";
@@ -77,3 +89,6 @@
 
 /* Description title */
 "description.title" = "Description";
+
+/* Description unknonw title */
+"description.unknown.title" = "No Description Found";

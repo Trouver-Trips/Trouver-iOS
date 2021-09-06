@@ -16,6 +16,8 @@ struct TabPagesView<Content: View>: View {
     private let maxIndex: Int
     private let content: Content
     private let useWeakGesture: Bool
+    
+    private var currIndex: Int { min(index, maxIndex) }
 
     init(width: CGFloat,
          index: Binding<Int>,
@@ -52,10 +54,9 @@ struct TabPagesView<Content: View>: View {
             .frame(width: width)
         }
         .frame(width: width, alignment: .leading)
-        .offset(x: -CGFloat(self.index) * width)
+        .offset(x: -CGFloat(currIndex) * width)
         .animation(.interactiveSpring())
         .gesture(
-            
             DragGesture()
                 .updating(self.$translation) { gestureValue, gestureState, _ in
                    gestureState = gestureValue.translation.width
@@ -64,8 +65,8 @@ struct TabPagesView<Content: View>: View {
                     if disableGesture { return }
                     let weakGesture: CGFloat = useWeakGesture ? (value.translation.width < 0 ? -100 : 100) : 0
                     let offset = (value.translation.width + weakGesture) / width
-                    let newIndex = (CGFloat(self.index) - offset).rounded()
-                    self.index = min(max(Int(newIndex), 0), self.maxIndex)
+                    let newIndex = (CGFloat(currIndex) - offset).rounded()
+                    self.index = min(max(Int(newIndex), 0), maxIndex)
                 }
         )
     }

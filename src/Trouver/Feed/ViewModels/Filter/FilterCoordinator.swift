@@ -47,7 +47,7 @@ class FilterCoordinator: ObservableObject {
         lengthSlider = SliderOption(title: "length.title",
                                     units: .miles,
                                     start: 0,
-                                    end: 5280 * 50,
+                                    end: Double.feetPerMile * 50,
                                     width: width)
         
         elevationSlider = SliderOption(title: "elevation.title",
