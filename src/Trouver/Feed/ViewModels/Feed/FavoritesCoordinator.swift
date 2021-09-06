@@ -8,8 +8,7 @@
 import Combine
 
 class FavoritesCoordinator {
-    @Published private(set) var favoriteHike: HikeInfo?
-
+    @Published private(set) var favoriteHike: Hike?
     private var bag = Set<AnyCancellable>()
 
     let networkService: NetworkService
@@ -22,15 +21,15 @@ class FavoritesCoordinator {
         bag.forEach { $0.cancel() }
     }
 
-    func toggleFavorite(hike: HikeInfo) -> HikeInfo {
+    func toggleFavorite(hike: Hike) -> Hike {
         var newHike = hike
         newHike.isFavorite.toggle()
         save(hikeId: newHike.id, addHike: newHike.isFavorite)
         return newHike
     }
     
-    func publishFavoriteUpdate(hikeInfo: HikeInfo) {
-        self.favoriteHike = hikeInfo
+    func publishFavoriteUpdate(hike: Hike) {
+        self.favoriteHike = hike
     }
     
     private func save(hikeId: String, addHike: Bool) {

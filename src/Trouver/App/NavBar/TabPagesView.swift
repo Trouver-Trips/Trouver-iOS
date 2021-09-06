@@ -10,6 +10,7 @@ import SwiftUI
 struct TabPagesView<Content: View>: View {
     @GestureState private var translation: CGFloat = 0
     @Binding private var index: Int
+    @Binding private var disableGesture: Bool
     
     private let width: CGFloat
     private let maxIndex: Int
@@ -20,12 +21,14 @@ struct TabPagesView<Content: View>: View {
          index: Binding<Int>,
          maxIndex: Int,
          useWeakGesture: Bool = false,
+         disableGesture: Binding<Bool> = .constant(false),
          @ViewBuilder
          content: () -> Content) {
         self.init(width: width,
                   index: index,
                   maxIndex: maxIndex,
                   useWeakGesture: useWeakGesture,
+                  disableGesture: disableGesture,
                   content: content())
     }
     
@@ -33,11 +36,13 @@ struct TabPagesView<Content: View>: View {
          index: Binding<Int>,
          maxIndex: Int,
          useWeakGesture: Bool = false,
+         disableGesture: Binding<Bool> = .constant(false),
          content: Content) {
         self.width = width
         self._index = index
         self.maxIndex = maxIndex
         self.useWeakGesture = useWeakGesture
+        self._disableGesture = disableGesture
         self.content = content
     }
     
@@ -50,16 +55,18 @@ struct TabPagesView<Content: View>: View {
         .offset(x: -CGFloat(self.index) * width)
         .animation(.interactiveSpring())
         .gesture(
+            
             DragGesture()
-            .updating(self.$translation) { gestureValue, gestureState, _ in
-               gestureState = gestureValue.translation.width
-            }
-            .onEnded { value in
-                let weakGesture: CGFloat = useWeakGesture ? (value.translation.width < 0 ? -100 : 100) : 0
-                let offset = (value.translation.width + weakGesture) / width
-                let newIndex = (CGFloat(self.index) - offset).rounded()
-                self.index = min(max(Int(newIndex), 0), self.maxIndex)
-            }
+                .updating(self.$translation) { gestureValue, gestureState, _ in
+                   gestureState = gestureValue.translation.width
+                }
+                .onEnded { value in
+                    if disableGesture { return }
+                    let weakGesture: CGFloat = useWeakGesture ? (value.translation.width < 0 ? -100 : 100) : 0
+                    let offset = (value.translation.width + weakGesture) / width
+                    let newIndex = (CGFloat(self.index) - offset).rounded()
+                    self.index = min(max(Int(newIndex), 0), self.maxIndex)
+                }
         )
     }
 }

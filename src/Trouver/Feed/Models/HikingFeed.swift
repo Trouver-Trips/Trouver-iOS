@@ -7,23 +7,23 @@
 
 import Foundation
 
-struct HikeInfoSet: Hashable {
-    var hikeInfo: HikeInfo
+struct HikeSet: Hashable {
+    var hike: Hike
     let timeAdded = Date()
 }
 
 struct HikingFeed {
-    var hikes = [String: HikeInfoSet]()
+    var hikes = [String: HikeSet]()
     
-    mutating func addHikes(_ hike: HikeInfo) {
-        hikes[hike.id] = HikeInfoSet(hikeInfo: hike)
+    mutating func addHikes(_ hike: Hike) {
+        hikes[hike.id] = HikeSet(hike: hike)
     }
     
-    mutating func addHikes(_ hikes: [HikeInfo]) {
+    mutating func addHikes(_ hikes: [Hike]) {
         hikes.forEach { addHikes($0) }
     }
     
-    mutating func removeHike(_ hike: HikeInfo) {
+    mutating func removeHike(_ hike: Hike) {
         hikes.removeValue(forKey: hike.id)
     }
 }

@@ -28,7 +28,11 @@ struct FavoriteImageView: View {
 #if DEBUG
 struct GridFavoriteImageViewPreviews: PreviewProvider {
     static var previews: some View {
-        FavoriteImageView(url: HikeData.hikeImages[0])
+        if let url = HikeData.hikeImages?[0] {
+            FavoriteImageView(url: url)
+        } else {
+            EmptyView()
+        }
     }
 }
 #endif

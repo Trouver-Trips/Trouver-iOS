@@ -30,6 +30,7 @@ struct TabsContainer<Content: View> : View {
                 TabPagesView(width: geo.size.width,
                              index: $index,
                              maxIndex: self.images.count - 1,
+                             disableGesture: $shouldHideNavBar,
                              content: content)
                 if !shouldHideNavBar {
                     VStack {

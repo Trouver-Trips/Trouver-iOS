@@ -8,25 +8,25 @@
 import Combine
 
 struct PreviewHikingService: NetworkService {
-    func login(idToken: String) -> AnyPublisher<WebResult<UserResult>, Error> {
+    func login(idToken: String) -> AnyPublisher<WebResult<UserDTO>, Error> {
         Empty().eraseToAnyPublisher()
     }
     
-    func fetchHikes(hikeParams: HikeParams) -> AnyPublisher<HikeResult, Error> {
-        CurrentValueSubject(HikeResult.sampleData())
+    func fetchHikes(hikeParams: HikeParams) -> AnyPublisher<HikesResultDTO, Error> {
+        CurrentValueSubject(HikesResultDTO.sampleData())
             .eraseToAnyPublisher()
     }
     
-    func getHikeDetail(hikeId: String) -> AnyPublisher<HikeDetailResult, Error> {
-        CurrentValueSubject(HikeDetailResult.sampleData())
+    func getHikeDetail(hikeId: String) -> AnyPublisher<HikeDetailResultDTO, Error> {
+        CurrentValueSubject(HikeDetailResultDTO.sampleData())
             .eraseToAnyPublisher()
     }
     
-    func updateFavorite(hikeId: String, addHike: Bool) -> AnyPublisher<FavoriteActionResult, Error> {
+    func updateFavorite(hikeId: String, addHike: Bool) -> AnyPublisher<FavoriteActionDTO, Error> {
         Empty().eraseToAnyPublisher()
     }
     
-    func fetchFavorites(page: Int) -> AnyPublisher<FavoritesResult, Error> {
+    func fetchFavorites(page: Int) -> AnyPublisher<FavoritesDTO, Error> {
         Empty().eraseToAnyPublisher()
     }
 }

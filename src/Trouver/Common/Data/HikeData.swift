@@ -11,7 +11,7 @@ import UIKit
 #if DEBUG
 struct HikeData {
 
-    static let hikeImages = HikeResult.sampleData().hikes.docs[0].images.compactMap { URL(string: $0) }
+    static let hikeImages = HikesResultDTO.sampleData().hikes?.docs?[0].images?.compactMap { URL(string: $0) }
 
     static let hikeData =
     """

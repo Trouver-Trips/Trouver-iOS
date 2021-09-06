@@ -8,7 +8,7 @@
 import Foundation
 
 // MARK: - FavoriteActionResult
-struct TokenRefreshResult: Codable {
-    let message: String
+struct TokenRefreshDTO: Codable {
+    let message: String?
     let token: String?
 }

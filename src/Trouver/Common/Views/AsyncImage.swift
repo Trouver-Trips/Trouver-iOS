@@ -42,7 +42,9 @@ struct AsyncImage: View {
 #if DEBUG
 struct AsyncImageViewPreviews: PreviewProvider {
     static var previews: some View {
-        AsyncImage(url: HikeData.hikeImages[0])
+        if let url = HikeData.hikeImages?[0] {
+            AsyncImage(url: url)
+        }
     }
 }
 #endif

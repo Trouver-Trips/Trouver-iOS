@@ -20,34 +20,34 @@ struct FavoriteFeedItemView: View {
         .topLeft
     ]
     
-    let hikeInfo: HikeInfo
+    let hike: Hike
     let favoritesCoordinator: FavoritesCoordinator
     let networkService: NetworkService
     @Binding var showingDetail: Bool
     
     var body: some View {
         VStack(alignment: .leading) {
-            Text(hikeInfo.name)
+            Text(hike.name)
                 .font(.title2)
                 .lineLimit(nil)
             HStack {
                 NavigationLink(destination:
                                 DetailView(isPresented: $showingDetail,
-                                           viewModel: viewModel(for: hikeInfo))) {
-                    FavoriteImageView(url: hikeInfo.imageUrls[0])
+                                           viewModel: viewModel(for: hike))) {
+                    FavoriteImageView(url: hike.imageUrls[0])
                 }
                 .buttonStyle(FlatLinkStyle())
                 LazyVGrid(columns: columns) {
-                    ForEach(1..<hikeInfo.imageUrls.count) { idx in
+                    ForEach(1..<hike.imageUrls.count) { idx in
                         NavigationLink(destination:
                                         DetailView(isPresented: $showingDetail,
-                                                   viewModel: viewModel(for: hikeInfo),
+                                                   viewModel: viewModel(for: hike),
                                                    startingImageIndex: idx)) {
-                            FavoriteImageView(url: hikeInfo.imageUrls[idx],
+                            FavoriteImageView(url: hike.imageUrls[idx],
                                               corners:
                                                 UIRectCorner.allCorners.subtracting(removableCorners[idx - 1]))
                                 .overlay(
-                                    idx == hikeInfo.imageUrls.count - 1 ?
+                                    idx == hike.imageUrls.count - 1 ?
                                     ZStack {
                                         Color.black.opacity(0.5)
                                         Text("+45")
@@ -62,17 +62,17 @@ struct FavoriteFeedItemView: View {
         }
     }
     
-    private func viewModel(for hikeInfo: HikeInfo) -> HikeDetail {
-        HikeDetail(hikeInfo: hikeInfo,
-                   favoritesCoordinator: favoritesCoordinator,
-                   networkService: networkService)
+    private func viewModel(for hike: Hike) -> HikeDetailProvider {
+        .init(hike: hike,
+              favoritesCoordinator: favoritesCoordinator,
+              networkService: networkService)
     }
 }
 
 #if DEBUG
 struct GridFavoriteFeedItemViewPreviews: PreviewProvider {
     static var previews: some View {
-        FavoriteFeedItemView(hikeInfo: HikeInfo.sampleData(),
+        FavoriteFeedItemView(hike: Hike.sampleData(),
                              favoritesCoordinator: FavoritesCoordinator(),
                              networkService: HikingNetworkService(),
                              showingDetail: .constant(false))
