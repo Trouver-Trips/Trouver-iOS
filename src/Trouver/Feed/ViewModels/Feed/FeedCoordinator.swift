@@ -63,14 +63,14 @@ class FeedCoordinator: ObservableObject {
     // MARK: - Access to the model
     
     let networkService: NetworkService
-    var hikes: [HikeInfo] {
+    var hikes: [Hike] {
         hikingFeed.hikes.values
         .sorted {
             feedType == .newsfeed ?
                 $0.timeAdded < $1.timeAdded :
                 $0.timeAdded > $0.timeAdded
         }
-        .map { $0.hikeInfo }
+        .map { $0.hike }
     }
     
     // MARK: - Intents
@@ -80,9 +80,9 @@ class FeedCoordinator: ObservableObject {
         refresh()
     }
     
-    func loadMoreContentIfNeeded(item: HikeInfo) {
+    func loadMoreContentIfNeeded(hike: Hike) {
         let thresholdIndex = hikes.index(hikes.endIndex, offsetBy: -3)
-        if hikes.firstIndex(where: { $0.id == item.id }) == thresholdIndex {
+        if hikes.firstIndex(where: { $0.id == hike.id }) == thresholdIndex {
             loadMoreContent()
         }
     }
@@ -130,7 +130,7 @@ class FeedCoordinator: ObservableObject {
                 guard let strongSelf = self else { return }
                 Logger.logInfo("Recieved \($0.count) hikes for \(strongSelf.feedType)")
             })
-            .catch({ [weak self] error -> Just<[HikeInfo]> in
+            .catch({ [weak self] error -> Just<[Hike]> in
                 Logger.logError("Failed to get hikes", error: error)
                 self?.viewState = .error
                 return Just([])
@@ -141,7 +141,7 @@ class FeedCoordinator: ObservableObject {
             .store(in: &bag)
     }
 
-    private func publisher() -> AnyPublisher<[HikeInfo], Error> {
+    private func publisher() -> AnyPublisher<[Hike], Error> {
         switch feedType {
         case .newsfeed:
             return networkService.fetchHikes(hikeParams:
@@ -156,22 +156,24 @@ class FeedCoordinator: ObservableObject {
                            page: currentPage))
                 .handleEvents(receiveOutput: { [weak self] hikeResult in
                     guard let strongSelf = self else { return }
-                    strongSelf.canLoadMorePages = hikeResult.hikes.hasNextPage
+                    strongSelf.canLoadMorePages = hikeResult.hikes?.hasNextPage ?? false
                     strongSelf.currentPage += 1
                 })
                 // Remove results without images
-                .map { hikeResult in hikeResult.hikes.docs.compactMap({ $0.images.isEmpty ? nil : HikeInfo(hike: $0) })}
+                .map { hikeResult in
+                    hikeResult.hikes?.docs?.compactMap({ $0.images?.isEmpty == true ? nil : Hike(dto: $0) }) ?? []
+                }
                 .eraseToAnyPublisher()
         case .favorites:
             return networkService.fetchFavorites(page: currentPage)
                 .handleEvents(receiveOutput: { [weak self] favoritesResult in
                     guard let strongSelf = self else { return }
-                    strongSelf.canLoadMorePages = favoritesResult.hasNextPage
+                    strongSelf.canLoadMorePages = favoritesResult.hasNextPage ?? false
                     strongSelf.currentPage += 1
                 })
                 .map { favoritesResult in
                     // Remove results without images
-                    favoritesResult.favorites.compactMap({ $0.images.isEmpty ? nil : HikeInfo(hike: $0) })
+                    favoritesResult.favorites?.compactMap({ $0.images?.isEmpty == true ? nil : Hike(dto: $0) }) ?? []
                 }
                 .eraseToAnyPublisher()
         }

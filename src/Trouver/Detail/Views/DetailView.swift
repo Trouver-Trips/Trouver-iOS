@@ -8,13 +8,6 @@
 import SwiftUI
 
 struct DetailView: View {
-    @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
-    @EnvironmentObject var loginViewModel: LoginService
-    @Binding var isPresented: Bool
-    @ObservedObject var viewModel: HikeDetail
-    
-    var startingImageIndex: Int = 0
-    
     private enum Constants {
         static let imageSize: CGFloat = 24
         static let sidePadding: CGFloat = 32
@@ -25,6 +18,12 @@ struct DetailView: View {
     private var screenWidth: CGFloat {
         UIScreen.main.bounds.size.width
     }
+    
+    @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
+    @EnvironmentObject var loginViewModel: LoginService
+    @Binding var isPresented: Bool
+    @ObservedObject var viewModel: HikeDetailProvider
+    var startingImageIndex: Int = 0
     
     var body: some View {
         ScrollView(.vertical, showsIndicators: false) {
@@ -49,7 +48,7 @@ struct DetailView: View {
                     Text(hikeDetail.description)
                 case .error:
                     HStack {
-                        Text("Error Loading Details")
+                        Text("generic.error")
                     }
                 }
             }
@@ -93,7 +92,7 @@ struct DetailView: View {
                     Spacer()
                 }
             )
-            .background(Color("ThemeColor"))
+            .background(Color.themeColor)
         }
         .onAppear {
             viewModel.onAppear()
@@ -111,9 +110,9 @@ struct DetailView: View {
 struct DetailViewPreviews: PreviewProvider {
     static var previews: some View {
         DetailView(isPresented: .constant(true),
-                   viewModel: HikeDetail(hikeInfo: HikeInfo.sampleData(),
-                                         favoritesCoordinator: FavoritesCoordinator(),
-                                         networkService: PreviewHikingService()))
+                   viewModel: .init(hike: Hike.sampleData(),
+                                    favoritesCoordinator: FavoritesCoordinator(),
+                                    networkService: PreviewHikingService()))
             .preferredColorScheme(.dark)
     }
 }

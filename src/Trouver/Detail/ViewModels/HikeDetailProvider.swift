@@ -1,5 +1,5 @@
 //
-//  HikeDetail.swift
+//  HikeDetailProvider.swift
 //  Trouver
 //
 //  Created by Sagar Punhani on 12/22/20.
@@ -11,24 +11,24 @@ import Combine
 /*
  Detail page for hike
  */
-class HikeDetail: ObservableObject {
-    @Published private var hikeInfo: HikeInfo
-    @Published var state: State = .idle
-    
+class HikeDetailProvider: ObservableObject {
     private let favoritesCoordinator: FavoritesCoordinator
     private let networkService: NetworkService
+    
+    @Published private var hike: Hike
+    @Published var state: State = .idle
 
-    init(hikeInfo: HikeInfo,
+    init(hike: Hike,
          favoritesCoordinator: FavoritesCoordinator,
          networkService: NetworkService = HikingNetworkService()) {
-        self.hikeInfo = hikeInfo
+        self.hike = hike
         self.favoritesCoordinator = favoritesCoordinator
         self.networkService = networkService
     }
     
     // MARK: - Access to the model
     
-    var isFavorite: Bool { hikeInfo.isFavorite }
+    var isFavorite: Bool { hike.isFavorite }
 
     // MARK: - Intents
 
@@ -37,31 +37,38 @@ class HikeDetail: ObservableObject {
     }
     
     func onDisappear() {
-        favoritesCoordinator.publishFavoriteUpdate(hikeInfo: hikeInfo)
+        favoritesCoordinator.publishFavoriteUpdate(hike: hike)
     }
     
     func toggleFavorite() {
-        hikeInfo = favoritesCoordinator.toggleFavorite(hike: hikeInfo)
+        hike = favoritesCoordinator.toggleFavorite(hike: hike)
     }
 
     private func loadContent() {
         state = .loading
-        networkService.getHikeDetail(hikeId: hikeInfo.id)
+        networkService.getHikeDetail(hikeId: hike.id)
             .receive(on: DispatchQueue.main)
-            .map { result in State.loaded(HikeDetailInfo(hikeDetail: result.hike)) }
+            .map { result in
+                if let dto = result.hike {
+                    return .loaded(.init(dto: dto))
+                } else {
+                    Logger.logError("hike detail is empty")
+                    return .error(NetworkError.badOutput)
+                }
+            }
             .catch({ error -> Just<State> in
                 Logger.logError("Failed to get hike detail", error: error)
-                return Just(State.error(error))
+                return Just(.error(error))
             })
             .assign(to: &$state)
     }
 }
 
-extension HikeDetail {
+extension HikeDetailProvider {
     enum State {
         case idle
         case loading
-        case loaded(HikeDetailInfo)
+        case loaded(HikeDetail)
         case error(Error)
     }
 }

@@ -8,18 +8,18 @@
 import SwiftUI
 
 struct SignInView: View {
-    @EnvironmentObject var userViewModel: LoginService
-    
     private var networkService: NetworkService {
         HikingNetworkService(accountHandle: userViewModel.accountHandle)
     }
+    
+    @EnvironmentObject var userViewModel: LoginService
 
     // To use if/else in our body, we need to wrap the view in a Group
     var body: some View {
         ZStack {
             switch userViewModel.signInState {
             case .signedIn:
-                MainView(favoritesCoordinator: FavoritesCoordinator(networkService: networkService))
+                MainView(favoritesCoordinator: .init(networkService: networkService))
             case .notSignedIn:
                 ZStack {
                     Image("Rainier")

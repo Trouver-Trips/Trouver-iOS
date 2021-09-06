@@ -8,34 +8,34 @@
 import SwiftUI
 
 struct MainView: View {
-    @EnvironmentObject var loginViewModel: LoginService
-    @State private var showFeatureFlags = false
-    @State private var showLogOutMessage = false
-    @State private var shouldHideNavBar = false
-    
     private enum Constants {
         static let iconSize: CGFloat = 30
     }
+    
+    @State private var showFeatureFlags = false
+    @State private var showLogOutMessage = false
+    @State private var shouldHideNavBar = false
     
     private var networkService: NetworkService {
         HikingNetworkService(accountHandle: loginViewModel.accountHandle)
     }
     
     let favoritesCoordinator: FavoritesCoordinator
+    @EnvironmentObject var loginViewModel: LoginService
     
     var body: some View {
         VStack(alignment: .center) {
             TabsContainer(images: ["homekit", "heart", "person.crop.circle"], shouldHideNavBar: $shouldHideNavBar) {
                 FeedView(viewModel:
-                            FeedCoordinator(networkService: networkService,
-                                            feedType: .newsfeed,
-                                            favoritesCoordinator: favoritesCoordinator),
-                                            showingDetail: $shouldHideNavBar)
+                            .init(networkService: networkService,
+                                  feedType: .newsfeed,
+                                  favoritesCoordinator: favoritesCoordinator),
+                                  showingDetail: $shouldHideNavBar)
                 VStack {
                     FavoriteFeedView(viewModel:
-                                        FeedCoordinator(networkService: networkService,
-                                                        feedType: .favorites,
-                                                        favoritesCoordinator: favoritesCoordinator),
+                                        .init(networkService: networkService,
+                                              feedType: .favorites,
+                                              favoritesCoordinator: favoritesCoordinator),
                                      showingDetail: $shouldHideNavBar)
                 }
                 VStack {
@@ -79,7 +79,7 @@ struct MainView: View {
 
 struct MainViewPreviews: PreviewProvider {
     static var previews: some View {
-        MainView(favoritesCoordinator: FavoritesCoordinator())
+        MainView(favoritesCoordinator: .init())
             .environmentObject(LoginService())
     }
 }

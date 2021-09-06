@@ -25,7 +25,7 @@ struct HikingNetworkService {
 }
 
 extension HikingNetworkService: NetworkService {
-    func login(idToken: String) -> AnyPublisher<WebResult<UserResult>, Error> {
+    func login(idToken: String) -> AnyPublisher<WebResult<UserDTO>, Error> {
         let headers = [
             "Authorization": idToken
         ]
@@ -33,7 +33,7 @@ extension HikingNetworkService: NetworkService {
         return request(httpMethod: .post, path: APIPath.login, headers: headers)
     }
 
-    func fetchHikes(hikeParams: HikeParams) -> AnyPublisher<HikeResult, Error> {
+    func fetchHikes(hikeParams: HikeParams) -> AnyPublisher<HikesResultDTO, Error> {
         var params: [(String, String?)] = [
             ("lat", hikeParams.latitude.description),
             ("long", hikeParams.longitude.description),
@@ -54,11 +54,11 @@ extension HikingNetworkService: NetworkService {
         return request(path: APIPath.feeds, params: params)
     }
 
-    func getHikeDetail(hikeId: String) -> AnyPublisher<HikeDetailResult, Error> {
+    func getHikeDetail(hikeId: String) -> AnyPublisher<HikeDetailResultDTO, Error> {
         request(path: APIPath.hikes(hikeId))
     }
     
-    func updateFavorite(hikeId: String, addHike: Bool) -> AnyPublisher<FavoriteActionResult, Error> {
+    func updateFavorite(hikeId: String, addHike: Bool) -> AnyPublisher<FavoriteActionDTO, Error> {
         let httpMethod: HTTPMethod = addHike ? .post : .delete
         let path = APIPath.users(accountHandle.user.trouverId)
         let params = [
@@ -68,7 +68,7 @@ extension HikingNetworkService: NetworkService {
         return request(httpMethod: httpMethod, path: path, params: params)
     }
     
-    func fetchFavorites(page: Int) -> AnyPublisher<FavoritesResult, Error> {
+    func fetchFavorites(page: Int) -> AnyPublisher<FavoritesDTO, Error> {
         let path = APIPath.users(accountHandle.user.trouverId)
         let params = [
             ("page", page.description),
@@ -78,7 +78,7 @@ extension HikingNetworkService: NetworkService {
         return request(path: path, params: params)
     }
     
-    private func refreshToken() -> AnyPublisher<TokenRefreshResult, Error> {
+    private func refreshToken() -> AnyPublisher<TokenRefreshDTO, Error> {
         let headers = [
             "Authorization": accountHandle.user.accessToken,
             "x-Refresh-Token": accountHandle.user.refreshToken

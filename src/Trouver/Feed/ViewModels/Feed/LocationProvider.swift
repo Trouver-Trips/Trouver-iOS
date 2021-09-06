@@ -11,7 +11,7 @@ import Combine
 
 /// Only finds the location one time until it becomes nil
 class LocationProvider: NSObject, ObservableObject, CLLocationManagerDelegate {
-    
+    // Default is Seattle
     static let defaultLocation = CLLocationCoordinate2D(latitude: 47.6062,
                                                         longitude: -122.3321)
 

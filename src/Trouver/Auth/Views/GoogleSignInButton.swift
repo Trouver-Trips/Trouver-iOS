@@ -9,7 +9,6 @@ import SwiftUI
 import GoogleSignIn
 
 struct GoogleSignInButton: UIViewRepresentable {
-
     func makeUIView(context: Context) -> GIDSignInButton {
         let googleManager = GIDSignIn.sharedInstance()
         if googleManager?.presentingViewController == nil {

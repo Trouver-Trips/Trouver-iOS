@@ -16,9 +16,9 @@ enum SignInState {
 }
 
 class LoginService: NSObject, ObservableObject {
-    @Published var signInState: SignInState = .notSignedIn
-    
     private let networkService: NetworkService
+    
+    @Published var signInState: SignInState = .notSignedIn
     
     init(networkService: NetworkService = HikingNetworkService()) {
         self.networkService = networkService
@@ -87,7 +87,7 @@ extension LoginService: GIDSignInDelegate {
             .assign(to: &$signInState)
     }
     
-    private static func createUser(userResult: WebResult<UserResult>,
+    private static func createUser(userResult: WebResult<UserDTO>,
                                    accountType: AccountType) -> AccountHandle {
         let refreshToken: String
         if let token = userResult.headers["Set-Cookie"] as? String {
@@ -96,9 +96,9 @@ extension LoginService: GIDSignInDelegate {
             refreshToken = ""
         }
                 
-        let user = TrouverUser(trouverId: userResult.data.trouverId,
+        let user = TrouverUser(trouverId: userResult.data.trouverId ?? "",
                                accountType: .google,
-                               accessToken: userResult.data.token,
+                               accessToken: userResult.data.token ?? "",
                                refreshToken: refreshToken)
         
         return AccountHandle(user: user)

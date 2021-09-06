@@ -32,7 +32,7 @@ struct FeedItemView: View {
 #if DEBUG
 struct LazyGridFeedItemViewPreviews: PreviewProvider {
     static var previews: some View {
-        FeedItemView(imageUrl: HikeInfo.sampleData().imageUrls[0])
+        FeedItemView(imageUrl: Hike.sampleData().imageUrls[0])
     }
 }
 #endif

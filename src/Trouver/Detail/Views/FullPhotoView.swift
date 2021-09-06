@@ -9,6 +9,7 @@ import SwiftUI
 
 struct FullPhotoView: View {
     let images: [URL]
+
     @Binding var selectedTab: Int
 
     var body: some View {
@@ -29,7 +30,7 @@ struct FullPhotoView: View {
 struct FullPhotoViewPreviews: PreviewProvider {
     @State static private var tab = 2
     static var previews: some View {
-        FullPhotoView(images: HikeData.hikeImages, selectedTab: $tab)
+        FullPhotoView(images: HikeData.hikeImages ?? [], selectedTab: $tab)
     }
 }
 #endif

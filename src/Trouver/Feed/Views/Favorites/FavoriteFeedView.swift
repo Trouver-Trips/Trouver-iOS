@@ -19,12 +19,12 @@ struct FavoriteFeedView: View {
                         .font(.largeTitle)
                         .padding()
                     ForEach(viewModel.hikes) { hike in
-                        FavoriteFeedItemView(hikeInfo: hike,
+                        FavoriteFeedItemView(hike: hike,
                                              favoritesCoordinator: viewModel.favoritesCoordinator,
                                              networkService: viewModel.networkService,
                                              showingDetail: $showingDetail)
                             .onAppear {
-                                viewModel.loadMoreContentIfNeeded(item: hike)
+                                viewModel.loadMoreContentIfNeeded(hike: hike)
                             }
                             .padding()
                     }
@@ -38,9 +38,7 @@ struct FavoriteFeedView: View {
 #if DEBUG
 struct GridFavoriteFeedViewPreviews: PreviewProvider {
     static var previews: some View {
-        FavoriteFeedView(viewModel:
-                            FeedCoordinator(feedType: .favorites,
-                                            favoritesCoordinator: FavoritesCoordinator()),
+        FavoriteFeedView(viewModel: .init(feedType: .favorites, favoritesCoordinator: FavoritesCoordinator()),
                          showingDetail: .constant(false))
     }
 }

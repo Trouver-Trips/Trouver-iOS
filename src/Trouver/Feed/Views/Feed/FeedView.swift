@@ -8,9 +8,6 @@
 import SwiftUI
 
 struct FeedView: View {
-    @ObservedObject var viewModel: FeedCoordinator
-    @Binding var showingDetail: Bool
-
     private enum Constants {
         static let gridSpacing: CGFloat = 4
         static let minImageHeight: CGFloat = 150
@@ -21,6 +18,9 @@ struct FeedView: View {
         GridItem(.flexible()),
         GridItem(.flexible())
     ]
+    
+    @ObservedObject var viewModel: FeedCoordinator
+    @Binding var showingDetail: Bool
 
     var body: some View {
         switch viewModel.viewState {
@@ -28,16 +28,16 @@ struct FeedView: View {
         case .loaded, .loading:
             NavigationView {
                 VStack {
-                    ScrollView {
+                    ScrollView(showsIndicators: false) {
                         LazyVGrid(columns: columns) {
-                            ForEach(viewModel.hikes) { hikeInfo in
+                            ForEach(viewModel.hikes) { hike in
                                 NavigationLink(destination:
                                                 DetailView(isPresented: $showingDetail,
-                                                           viewModel: viewModel(for: hikeInfo))) {
-                                    FeedItemView(imageUrl: hikeInfo.imageUrls[0])
+                                                           viewModel: viewModel(for: hike))) {
+                                    FeedItemView(imageUrl: hike.imageUrls[0])
                                         .padding(Constants.gridSpacing)
                                         .onAppear {
-                                            viewModel.loadMoreContentIfNeeded(item: hikeInfo)
+                                            viewModel.loadMoreContentIfNeeded(hike: hike)
                                         }
                                 }
                             }
@@ -54,18 +54,16 @@ struct FeedView: View {
         }
     }
         
-    private func viewModel(for hikeInfo: HikeInfo) -> HikeDetail {
-        HikeDetail(hikeInfo: hikeInfo,
-                   favoritesCoordinator: viewModel.favoritesCoordinator,
-                   networkService: viewModel.networkService)
+    private func viewModel(for hike: Hike) -> HikeDetailProvider {
+        .init(hike: hike,
+              favoritesCoordinator: viewModel.favoritesCoordinator,
+              networkService: viewModel.networkService)
     }
 }
 
 struct GridFeedViewPreviews: PreviewProvider {
     static var previews: some View {
-        FeedView(viewModel:
-                        FeedCoordinator(feedType: .newsfeed,
-                                        favoritesCoordinator: FavoritesCoordinator()),
-                     showingDetail: .constant(false))
+        FeedView(viewModel: .init(feedType: .newsfeed, favoritesCoordinator: FavoritesCoordinator()),
+                 showingDetail: .constant(false))
     }
 }

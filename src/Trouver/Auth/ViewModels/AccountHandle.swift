@@ -9,19 +9,16 @@ import Foundation
 import SwiftJWT
 
 class AccountHandle {
-    
     struct MyClaims: Claims {
         let iss: String
         let iat: Date
         let exp: Date
     }
     
-    var user: TrouverUser
     private var expiryDate = Date(timeIntervalSinceNow: TimeInterval(Int.max))
 
-    var hasExpired: Bool {
-        Date() > expiryDate
-    }
+    private(set) var user: TrouverUser
+    var hasExpired: Bool { Date() > expiryDate }
     
     init(user: TrouverUser) {
         self.user = user
