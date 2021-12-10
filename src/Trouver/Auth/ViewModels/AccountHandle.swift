@@ -6,15 +6,9 @@
 //
 
 import Foundation
-import SwiftJWT
+import JWTDecode
 
 class AccountHandle {
-    struct MyClaims: Claims {
-        let iss: String
-        let iat: Date
-        let exp: Date
-    }
-    
     private var expiryDate = Date(timeIntervalSinceNow: TimeInterval(Int.max))
 
     private(set) var user: TrouverUser
@@ -50,11 +44,10 @@ class AccountHandle {
         }
     }
     
-    private func decode(jwtToken jwt: String) -> Date? {
+    private func decode(jwtToken token: String) -> Date? {
         do {
-            let newJWT = try JWT<MyClaims>(jwtString: jwt)
-            let date = newJWT.claims.exp
-            return date
+            let jwt = try JWTDecode.decode(jwt: token)
+            return jwt.expiresAt
         } catch {
             Logger.logError("Could not decode JWT")
             return nil

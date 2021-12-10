@@ -3,27 +3,21 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 51;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
-		00403BF548F5A54D51647902 /* libPods-TrouverTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 22C73E33FA7FC62C46557372 /* libPods-TrouverTests.a */; };
-		13BE8450E7A87B2809672768 /* libPods-Trouver-TrouverUITests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C72252497044FDF918D0193A /* libPods-Trouver-TrouverUITests.a */; };
-		221B21E4D48EFE13734339BA /* libPods-Trouver.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6EB57E507CD8E25E24ADDDDF /* libPods-Trouver.a */; };
 		5F01BAA325A15FF8002330BC /* UIApplication+ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F01BAA225A15FF8002330BC /* UIApplication+ViewController.swift */; };
 		5F01BACF25A16CD9002330BC /* AccountType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F01BACE25A16CD9002330BC /* AccountType.swift */; };
+		5F127B942762DB2100647A15 /* Double+Metrics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F127B932762DB2100647A15 /* Double+Metrics.swift */; };
+		5F127B962762DCC500647A15 /* Localization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F127B952762DCC500647A15 /* Localization.swift */; };
+		5F127B982762DE3500647A15 /* CapsuleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F127B972762DE3500647A15 /* CapsuleView.swift */; };
 		5F395BCC25E2300F00AD618D /* APIKeys.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5F395BCB25E2300F00AD618D /* APIKeys.plist */; };
 		5F395BD125E2312400AD618D /* PlistReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F395BD025E2312400AD618D /* PlistReader.swift */; };
 		5F3B3EC825956FF500512B4C /* ImageLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F3B3EC725956FF400512B4C /* ImageLoader.swift */; };
-		5F3B3EDF259573BB00512B4C /* AsyncImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F3B3EDE259573BB00512B4C /* AsyncImage.swift */; };
 		5F3B3EF325959C7200512B4C /* ImageCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F3B3EF225959C7200512B4C /* ImageCache.swift */; };
 		5F3B3F002595A61200512B4C /* HttpWebClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F3B3EFE2595A61200512B4C /* HttpWebClient.swift */; };
 		5F3B3F0E2595B44700512B4C /* HikingFeed.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F3B3F0D2595B44700512B4C /* HikingFeed.swift */; };
-		5F42F11526E6A0D000C77837 /* DetailNavBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F42F11426E6A0D000C77837 /* DetailNavBar.swift */; };
-		5F42F11726E6AB8400C77837 /* Localization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F42F11626E6AB8400C77837 /* Localization.swift */; };
-		5F42F11E26E6C36F00C77837 /* IconLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F42F11D26E6C36F00C77837 /* IconLabel.swift */; };
-		5F42F12026E6C78200C77837 /* CapsuleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F42F11F26E6C78200C77837 /* CapsuleView.swift */; };
-		5F42F12226E6D27E00C77837 /* Double+Metric.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F42F12126E6D27E00C77837 /* Double+Metric.swift */; };
 		5F4488DA2651D58F00502C61 /* FeedItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F4488D92651D58F00502C61 /* FeedItemView.swift */; };
 		5F4488DF2651D90300502C61 /* FeatureView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F4488DE2651D90300502C61 /* FeatureView.swift */; };
 		5F4791AB26101E4800DEA919 /* ServiceValues.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F4791AA26101E4800DEA919 /* ServiceValues.swift */; };
@@ -46,9 +40,11 @@
 		5F5587CE25B6636900D1100A /* HikeDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F5587CD25B6636900D1100A /* HikeDetail.swift */; };
 		5F57B46225A10B8E00741A5A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F57B46125A10B8E00741A5A /* AppDelegate.swift */; };
 		5F57B47C25A141AB00741A5A /* LoginService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F57B47B25A141AB00741A5A /* LoginService.swift */; };
-		5F57B48925A141F100741A5A /* GoogleSignInButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F57B48825A141F100741A5A /* GoogleSignInButton.swift */; };
 		5F57B48E25A141FD00741A5A /* SignInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F57B48D25A141FD00741A5A /* SignInView.swift */; };
 		5F57B49725A1435C00741A5A /* TrouverUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F57B49625A1435C00741A5A /* TrouverUser.swift */; };
+		5F58A3FB2762F70E00232EBB /* GoogleSignIn in Frameworks */ = {isa = PBXBuildFile; productRef = 5F58A3FA2762F70E00232EBB /* GoogleSignIn */; };
+		5F58A3FE2762F71800232EBB /* JWTDecode in Frameworks */ = {isa = PBXBuildFile; productRef = 5F58A3FD2762F71800232EBB /* JWTDecode */; };
+		5F58A4002762F75800232EBB /* IconLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F58A3FF2762F75800232EBB /* IconLabel.swift */; };
 		5F6E3209258E8F3500E70AE2 /* TrouverApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F6E3208258E8F3500E70AE2 /* TrouverApp.swift */; };
 		5F6E320D258E8F3600E70AE2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5F6E320C258E8F3600E70AE2 /* Assets.xcassets */; };
 		5F6E3210258E8F3600E70AE2 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5F6E320F258E8F3600E70AE2 /* Preview Assets.xcassets */; };
@@ -64,6 +60,8 @@
 		5F76BFA32606B89A00F09B8F /* TokenRefreshDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F76BFA22606B89A00F09B8F /* TokenRefreshDTO.swift */; };
 		5F76BFF12606DF8F00F09B8F /* FeedCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F76BFF02606DF8F00F09B8F /* FeedCoordinator.swift */; };
 		5F76C0022608075C00F09B8F /* FavoritesCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F76C0012608075C00F09B8F /* FavoritesCoordinator.swift */; };
+		5F9489FD276307C800EC55F6 /* AsyncImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F9489FC276307C800EC55F6 /* AsyncImage.swift */; };
+		5F948A0327630ACE00EC55F6 /* GooglePlaces in Frameworks */ = {isa = PBXBuildFile; productRef = 5F948A0227630ACE00EC55F6 /* GooglePlaces */; };
 		5F9B1EA725B53134000B3328 /* EnvironmentProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F9B1EA625B53134000B3328 /* EnvironmentProvider.swift */; };
 		5FCA82B226804140006DB3B7 /* HiddenNavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FCA82B026804140006DB3B7 /* HiddenNavigationBar.swift */; };
 		5FCA82B326804140006DB3B7 /* RoundedCorners.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FCA82B126804140006DB3B7 /* RoundedCorners.swift */; };
@@ -110,24 +108,17 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		0EBBA1D6D92C3C387E988922 /* Pods-TrouverTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TrouverTests.debug.xcconfig"; path = "Target Support Files/Pods-TrouverTests/Pods-TrouverTests.debug.xcconfig"; sourceTree = "<group>"; };
-		22C73E33FA7FC62C46557372 /* libPods-TrouverTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-TrouverTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		3BB23F279F081CF4AC5B83CB /* Pods-TrouverTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TrouverTests.release.xcconfig"; path = "Target Support Files/Pods-TrouverTests/Pods-TrouverTests.release.xcconfig"; sourceTree = "<group>"; };
-		3E1D72EE7D4E56B1C0A41C4C /* Pods-Trouver.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Trouver.debug.xcconfig"; path = "Target Support Files/Pods-Trouver/Pods-Trouver.debug.xcconfig"; sourceTree = "<group>"; };
 		5F01BAA225A15FF8002330BC /* UIApplication+ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIApplication+ViewController.swift"; sourceTree = "<group>"; };
 		5F01BACE25A16CD9002330BC /* AccountType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountType.swift; sourceTree = "<group>"; };
+		5F127B932762DB2100647A15 /* Double+Metrics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Double+Metrics.swift"; sourceTree = "<group>"; };
+		5F127B952762DCC500647A15 /* Localization.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Localization.swift; sourceTree = "<group>"; };
+		5F127B972762DE3500647A15 /* CapsuleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CapsuleView.swift; sourceTree = "<group>"; };
 		5F395BCB25E2300F00AD618D /* APIKeys.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = APIKeys.plist; sourceTree = "<group>"; };
 		5F395BD025E2312400AD618D /* PlistReader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlistReader.swift; sourceTree = "<group>"; };
 		5F3B3EC725956FF400512B4C /* ImageLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageLoader.swift; sourceTree = "<group>"; };
-		5F3B3EDE259573BB00512B4C /* AsyncImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AsyncImage.swift; sourceTree = "<group>"; };
 		5F3B3EF225959C7200512B4C /* ImageCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCache.swift; sourceTree = "<group>"; };
 		5F3B3EFE2595A61200512B4C /* HttpWebClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HttpWebClient.swift; sourceTree = "<group>"; };
 		5F3B3F0D2595B44700512B4C /* HikingFeed.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HikingFeed.swift; sourceTree = "<group>"; };
-		5F42F11426E6A0D000C77837 /* DetailNavBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = DetailNavBar.swift; path = ../../../../../../../DetailNavBar.swift; sourceTree = "<group>"; };
-		5F42F11626E6AB8400C77837 /* Localization.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Localization.swift; path = ../../../../../../../Localization.swift; sourceTree = "<group>"; };
-		5F42F11D26E6C36F00C77837 /* IconLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconLabel.swift; sourceTree = "<group>"; };
-		5F42F11F26E6C78200C77837 /* CapsuleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CapsuleView.swift; path = ../../../../../../../CapsuleView.swift; sourceTree = "<group>"; };
-		5F42F12126E6D27E00C77837 /* Double+Metric.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Double+Metric.swift"; path = "../../../../../../../Double+Metric.swift"; sourceTree = "<group>"; };
 		5F4488D92651D58F00502C61 /* FeedItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedItemView.swift; sourceTree = "<group>"; };
 		5F4488DE2651D90300502C61 /* FeatureView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeatureView.swift; sourceTree = "<group>"; };
 		5F4791AA26101E4800DEA919 /* ServiceValues.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceValues.swift; sourceTree = "<group>"; };
@@ -150,9 +141,16 @@
 		5F5587CD25B6636900D1100A /* HikeDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HikeDetail.swift; sourceTree = "<group>"; };
 		5F57B46125A10B8E00741A5A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5F57B47B25A141AB00741A5A /* LoginService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginService.swift; sourceTree = "<group>"; };
-		5F57B48825A141F100741A5A /* GoogleSignInButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleSignInButton.swift; sourceTree = "<group>"; };
 		5F57B48D25A141FD00741A5A /* SignInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInView.swift; sourceTree = "<group>"; };
 		5F57B49625A1435C00741A5A /* TrouverUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrouverUser.swift; sourceTree = "<group>"; };
+		5F58A3FF2762F75800232EBB /* IconLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconLabel.swift; sourceTree = "<group>"; };
+		5F58A4022762F97200232EBB /* GooglePlaces.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = GooglePlaces.xcframework; path = ../frameworks/GooglePlaces.xcframework; sourceTree = "<group>"; };
+		5F58A4082763012500232EBB /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		5F58A40A2763012B00232EBB /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		5F58A40C2763013300232EBB /* libc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.tbd"; path = "usr/lib/libc++.tbd"; sourceTree = SDKROOT; };
+		5F58A40E2763013B00232EBB /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
+		5F58A4102763014200232EBB /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		5F58A4122763014700232EBB /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		5F6E3205258E8F3500E70AE2 /* Trouver.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Trouver.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5F6E3208258E8F3500E70AE2 /* TrouverApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrouverApp.swift; sourceTree = "<group>"; };
 		5F6E320C258E8F3600E70AE2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -174,6 +172,7 @@
 		5F76BFA22606B89A00F09B8F /* TokenRefreshDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenRefreshDTO.swift; sourceTree = "<group>"; };
 		5F76BFF02606DF8F00F09B8F /* FeedCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedCoordinator.swift; sourceTree = "<group>"; };
 		5F76C0012608075C00F09B8F /* FavoritesCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesCoordinator.swift; sourceTree = "<group>"; };
+		5F9489FC276307C800EC55F6 /* AsyncImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AsyncImage.swift; sourceTree = "<group>"; };
 		5F9B1EA625B53134000B3328 /* EnvironmentProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnvironmentProvider.swift; sourceTree = "<group>"; };
 		5FCA82B026804140006DB3B7 /* HiddenNavigationBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HiddenNavigationBar.swift; sourceTree = "<group>"; };
 		5FCA82B126804140006DB3B7 /* RoundedCorners.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoundedCorners.swift; sourceTree = "<group>"; };
@@ -200,11 +199,6 @@
 		5FF40A5F25CF08AD00158C3A /* FavoritesDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesDTO.swift; sourceTree = "<group>"; };
 		5FF40A7625CF091A00158C3A /* FavoriteActionDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteActionDTO.swift; sourceTree = "<group>"; };
 		5FF40A7B25CF095100158C3A /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
-		6EB57E507CD8E25E24ADDDDF /* libPods-Trouver.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Trouver.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		79B77CF453AEBCE8AD231CA2 /* Pods-Trouver-TrouverUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Trouver-TrouverUITests.debug.xcconfig"; path = "Target Support Files/Pods-Trouver-TrouverUITests/Pods-Trouver-TrouverUITests.debug.xcconfig"; sourceTree = "<group>"; };
-		8C3CFEDC3BC9E56A537A5E66 /* Pods-Trouver-TrouverUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Trouver-TrouverUITests.release.xcconfig"; path = "Target Support Files/Pods-Trouver-TrouverUITests/Pods-Trouver-TrouverUITests.release.xcconfig"; sourceTree = "<group>"; };
-		C72252497044FDF918D0193A /* libPods-Trouver-TrouverUITests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Trouver-TrouverUITests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		DC6E2CB79FF36043EF22C087 /* Pods-Trouver.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Trouver.release.xcconfig"; path = "Target Support Files/Pods-Trouver/Pods-Trouver.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -212,7 +206,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				221B21E4D48EFE13734339BA /* libPods-Trouver.a in Frameworks */,
+				5F948A0327630ACE00EC55F6 /* GooglePlaces in Frameworks */,
+				5F58A3FE2762F71800232EBB /* JWTDecode in Frameworks */,
+				5F58A3FB2762F70E00232EBB /* GoogleSignIn in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -220,7 +216,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				00403BF548F5A54D51647902 /* libPods-TrouverTests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -228,36 +223,12 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				13BE8450E7A87B2809672768 /* libPods-Trouver-TrouverUITests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		2686D032E91E4A93A39810CB /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				6EB57E507CD8E25E24ADDDDF /* libPods-Trouver.a */,
-				C72252497044FDF918D0193A /* libPods-Trouver-TrouverUITests.a */,
-				22C73E33FA7FC62C46557372 /* libPods-TrouverTests.a */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		5C81178147C80C497A4ED5ED /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				3E1D72EE7D4E56B1C0A41C4C /* Pods-Trouver.debug.xcconfig */,
-				DC6E2CB79FF36043EF22C087 /* Pods-Trouver.release.xcconfig */,
-				79B77CF453AEBCE8AD231CA2 /* Pods-Trouver-TrouverUITests.debug.xcconfig */,
-				8C3CFEDC3BC9E56A537A5E66 /* Pods-Trouver-TrouverUITests.release.xcconfig */,
-				0EBBA1D6D92C3C387E988922 /* Pods-TrouverTests.debug.xcconfig */,
-				3BB23F279F081CF4AC5B83CB /* Pods-TrouverTests.release.xcconfig */,
-			);
-			path = Pods;
-			sourceTree = "<group>";
-		};
 		5F15C7B825B5537200638851 /* Detail */ = {
 			isa = PBXGroup;
 			children = (
@@ -274,7 +245,6 @@
 				5FCA82BA26804179006DB3B7 /* FullPhotoView.swift */,
 				5FD8E0A7265CBCC10073DFC0 /* DetailView.swift */,
 				5FD8E0A6265CBCC10073DFC0 /* ImagePageView.swift */,
-				5F42F11426E6A0D000C77837 /* DetailNavBar.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -291,9 +261,9 @@
 			isa = PBXGroup;
 			children = (
 				5FCA82AF26804140006DB3B7 /* View Modifiers */,
-				5F3B3EDE259573BB00512B4C /* AsyncImage.swift */,
-				5F42F11D26E6C36F00C77837 /* IconLabel.swift */,
-				5F42F11F26E6C78200C77837 /* CapsuleView.swift */,
+				5F9489FC276307C800EC55F6 /* AsyncImage.swift */,
+				5F127B972762DE3500647A15 /* CapsuleView.swift */,
+				5F58A3FF2762F75800232EBB /* IconLabel.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -403,7 +373,6 @@
 		5F57B47725A1412900741A5A /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				5F57B48825A141F100741A5A /* GoogleSignInButton.swift */,
 				5F57B48D25A141FD00741A5A /* SignInView.swift */,
 			);
 			path = Views;
@@ -427,6 +396,20 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		5F58A4012762F97200232EBB /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				5F58A4122763014700232EBB /* UIKit.framework */,
+				5F58A4102763014200232EBB /* QuartzCore.framework */,
+				5F58A40E2763013B00232EBB /* libz.tbd */,
+				5F58A40C2763013300232EBB /* libc++.tbd */,
+				5F58A40A2763012B00232EBB /* CoreLocation.framework */,
+				5F58A4082763012500232EBB /* CoreGraphics.framework */,
+				5F58A4022762F97200232EBB /* GooglePlaces.xcframework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		5F6E31FC258E8F3500E70AE2 = {
 			isa = PBXGroup;
 			children = (
@@ -434,8 +417,7 @@
 				5F6E3219258E8F3700E70AE2 /* TrouverTests */,
 				5F6E3224258E8F3700E70AE2 /* TrouverUITests */,
 				5F6E3206258E8F3500E70AE2 /* Products */,
-				5C81178147C80C497A4ED5ED /* Pods */,
-				2686D032E91E4A93A39810CB /* Frameworks */,
+				5F58A4012762F97200232EBB /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -587,7 +569,7 @@
 			children = (
 				5F6E32B82592867C00E70AE2 /* HikeData.swift */,
 				5FCFC899259704F700D38AE4 /* DataFactory.swift */,
-				5F42F12126E6D27E00C77837 /* Double+Metric.swift */,
+				5F127B932762DB2100647A15 /* Double+Metrics.swift */,
 			);
 			path = Foundation;
 			sourceTree = "<group>";
@@ -605,7 +587,7 @@
 			children = (
 				5F6E330D25930BD100E70AE2 /* Localizable.strings */,
 				5F505A11261A6D1000B4E53B /* LocalizedStringKey+Identifiable.swift */,
-				5F42F11626E6AB8400C77837 /* Localization.swift */,
+				5F127B952762DCC500647A15 /* Localization.swift */,
 			);
 			path = Localization;
 			sourceTree = "<group>";
@@ -687,19 +669,22 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 5F6E322A258E8F3700E70AE2 /* Build configuration list for PBXNativeTarget "Trouver" */;
 			buildPhases = (
-				39C96C64D9BA17E7A3F838FD /* [CP] Check Pods Manifest.lock */,
 				5F6E3236258EFA4400E70AE2 /* SwiftLint */,
 				5F6E3201258E8F3500E70AE2 /* Sources */,
 				5F6E3202258E8F3500E70AE2 /* Frameworks */,
 				5F6E3203258E8F3500E70AE2 /* Resources */,
 				5FCFC8AA2597C7EB00D38AE4 /* Version Number */,
-				0743677E8F2C8CDE5AE6FD21 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
 			name = Trouver;
+			packageProductDependencies = (
+				5F58A3FA2762F70E00232EBB /* GoogleSignIn */,
+				5F58A3FD2762F71800232EBB /* JWTDecode */,
+				5F948A0227630ACE00EC55F6 /* GooglePlaces */,
+			);
 			productName = Trouver;
 			productReference = 5F6E3205258E8F3500E70AE2 /* Trouver.app */;
 			productType = "com.apple.product-type.application";
@@ -708,7 +693,6 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 5F6E322D258E8F3700E70AE2 /* Build configuration list for PBXNativeTarget "TrouverTests" */;
 			buildPhases = (
-				1F6551DBB851CE3B9B6E4FC1 /* [CP] Check Pods Manifest.lock */,
 				5F6E3212258E8F3700E70AE2 /* Sources */,
 				5F6E3213258E8F3700E70AE2 /* Frameworks */,
 				5F6E3214258E8F3700E70AE2 /* Resources */,
@@ -727,11 +711,9 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 5F6E3230258E8F3700E70AE2 /* Build configuration list for PBXNativeTarget "TrouverUITests" */;
 			buildPhases = (
-				D2B06AE3947FBD97BD253261 /* [CP] Check Pods Manifest.lock */,
 				5F6E321D258E8F3700E70AE2 /* Sources */,
 				5F6E321E258E8F3700E70AE2 /* Frameworks */,
 				5F6E321F258E8F3700E70AE2 /* Resources */,
-				1E7D892D28DFBEAF2D5C7313 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -774,6 +756,11 @@
 				Base,
 			);
 			mainGroup = 5F6E31FC258E8F3500E70AE2;
+			packageReferences = (
+				5F58A3F92762F70E00232EBB /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */,
+				5F58A3FC2762F71800232EBB /* XCRemoteSwiftPackageReference "JWTDecode.swift" */,
+				5F948A0127630ACE00EC55F6 /* XCRemoteSwiftPackageReference "GoogleMaps-SP" */,
+			);
 			productRefGroup = 5F6E3206258E8F3500E70AE2 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -814,84 +801,6 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		0743677E8F2C8CDE5AE6FD21 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Trouver/Pods-Trouver-resources-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Copy Pods Resources";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Trouver/Pods-Trouver-resources-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Trouver/Pods-Trouver-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		1E7D892D28DFBEAF2D5C7313 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Trouver-TrouverUITests/Pods-Trouver-TrouverUITests-resources-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Copy Pods Resources";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Trouver-TrouverUITests/Pods-Trouver-TrouverUITests-resources-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Trouver-TrouverUITests/Pods-Trouver-TrouverUITests-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		1F6551DBB851CE3B9B6E4FC1 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-TrouverTests-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		39C96C64D9BA17E7A3F838FD /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-Trouver-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
 		5F6E3236258EFA4400E70AE2 /* SwiftLint */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -908,7 +817,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\nif which swiftlint >/dev/null; then\n  swiftlint\nelse\n  echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
+			shellScript = "if test -d \"/opt/homebrew/bin/\"; then\n  PATH=\"/opt/homebrew/bin/:${PATH}\"\nfi\n\nexport PATH\n\nif which swiftlint >/dev/null; then\n  swiftlint\nelse\n  echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
 		};
 		5FCFC8AA2597C7EB00D38AE4 /* Version Number */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -929,28 +838,6 @@
 			shellPath = /bin/sh;
 			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n$SRCROOT/build-scripts/set_build_number.sh\n";
 		};
-		D2B06AE3947FBD97BD253261 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-Trouver-TrouverUITests-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -958,20 +845,21 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5F42F11E26E6C36F00C77837 /* IconLabel.swift in Sources */,
+				5F58A4002762F75800232EBB /* IconLabel.swift in Sources */,
 				5F505A3A261A7E8D00B4E53B /* SelectorOption.swift in Sources */,
 				5F76BFF12606DF8F00F09B8F /* FeedCoordinator.swift in Sources */,
 				5FF40A0725C7831600158C3A /* SearchViewCoordinator.swift in Sources */,
 				5F505A1F261A6D8E00B4E53B /* SegmentView.swift in Sources */,
-				5F42F11526E6A0D000C77837 /* DetailNavBar.swift in Sources */,
 				5FE72ACD25C2493C00E17321 /* MainView.swift in Sources */,
 				5F6E32D425928DB400E70AE2 /* Logger.swift in Sources */,
 				5F505A63261A9E9600B4E53B /* SliderOptionView.swift in Sources */,
 				5FCA82BB26804179006DB3B7 /* FullPhotoView.swift in Sources */,
 				5FCA82B726804156006DB3B7 /* FavoriteFeedItemView.swift in Sources */,
+				5F127B942762DB2100647A15 /* Double+Metrics.swift in Sources */,
 				5F505A5E261A9AEF00B4E53B /* SliderHandle.swift in Sources */,
 				5F4488DA2651D58F00502C61 /* FeedItemView.swift in Sources */,
 				5FF40A7C25CF095100158C3A /* NetworkService.swift in Sources */,
+				5F127B962762DCC500647A15 /* Localization.swift in Sources */,
 				5F505A46261A971500B4E53B /* SliderView.swift in Sources */,
 				5F9B1EA725B53134000B3328 /* EnvironmentProvider.swift in Sources */,
 				5F5587CE25B6636900D1100A /* HikeDetail.swift in Sources */,
@@ -982,10 +870,10 @@
 				5F01BAA325A15FF8002330BC /* UIApplication+ViewController.swift in Sources */,
 				5FF40A7725CF091A00158C3A /* FavoriteActionDTO.swift in Sources */,
 				5FD8E0A5265CBC9E0073DFC0 /* PreviewHikingService.swift in Sources */,
-				5F57B48925A141F100741A5A /* GoogleSignInButton.swift in Sources */,
 				5FD8F81C25C631EC0025652E /* SearchView.swift in Sources */,
 				5FF40A6025CF08AD00158C3A /* FavoritesDTO.swift in Sources */,
 				5F505A6E261A9EED00B4E53B /* SliderOption.swift in Sources */,
+				5F9489FD276307C800EC55F6 /* AsyncImage.swift in Sources */,
 				5F76BFA32606B89A00F09B8F /* TokenRefreshDTO.swift in Sources */,
 				5F6E32B92592867C00E70AE2 /* HikeData.swift in Sources */,
 				5F57B46225A10B8E00741A5A /* AppDelegate.swift in Sources */,
@@ -996,7 +884,6 @@
 				5F57B49725A1435C00741A5A /* TrouverUser.swift in Sources */,
 				5F3B3EF325959C7200512B4C /* ImageCache.swift in Sources */,
 				5F57B48E25A141FD00741A5A /* SignInView.swift in Sources */,
-				5F42F12226E6D27E00C77837 /* Double+Metric.swift in Sources */,
 				5FE216A8263CA88300D3D8B2 /* TabsContainer.swift in Sources */,
 				5FCA82B326804140006DB3B7 /* RoundedCorners.swift in Sources */,
 				5FE216782628004200D3D8B2 /* LocationProvider.swift in Sources */,
@@ -1020,13 +907,11 @@
 				5FE21688263B9B3300D3D8B2 /* FeedView.swift in Sources */,
 				5F6E32E82592FF5600E70AE2 /* HikeDetailProvider.swift in Sources */,
 				5F505A12261A6D1000B4E53B /* LocalizedStringKey+Identifiable.swift in Sources */,
+				5F127B982762DE3500647A15 /* CapsuleView.swift in Sources */,
 				5FCFC89A259704F700D38AE4 /* DataFactory.swift in Sources */,
-				5F42F12026E6C78200C77837 /* CapsuleView.swift in Sources */,
 				5FCFC891259669D700D38AE4 /* FlatButtonStyle.swift in Sources */,
 				5FCA82B926804156006DB3B7 /* FavoriteImageView.swift in Sources */,
-				5F42F11726E6AB8400C77837 /* Localization.swift in Sources */,
 				5F505A59261A9AAF00B4E53B /* SliderPathBetweenView.swift in Sources */,
-				5F3B3EDF259573BB00512B4C /* AsyncImage.swift in Sources */,
 				5F505A32261A75B200B4E53B /* FilterOptions.swift in Sources */,
 				5F01BACF25A16CD9002330BC /* AccountType.swift in Sources */,
 				5FD8E0A9265CBCC10073DFC0 /* DetailView.swift in Sources */,
@@ -1133,6 +1018,7 @@
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
+				OTHER_LDFLAGS = "-ObjC";
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -1187,6 +1073,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 14.2;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
+				OTHER_LDFLAGS = "-ObjC";
 				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
@@ -1196,7 +1083,6 @@
 		};
 		5F6E322B258E8F3700E70AE2 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 3E1D72EE7D4E56B1C0A41C4C /* Pods-Trouver.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -1206,7 +1092,7 @@
 				DEVELOPMENT_TEAM = F5W4L78R3F;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = Trouver/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1221,7 +1107,6 @@
 		};
 		5F6E322C258E8F3700E70AE2 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = DC6E2CB79FF36043EF22C087 /* Pods-Trouver.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -1231,7 +1116,7 @@
 				DEVELOPMENT_TEAM = F5W4L78R3F;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = Trouver/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1246,14 +1131,13 @@
 		};
 		5F6E322E258E8F3700E70AE2 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 0EBBA1D6D92C3C387E988922 /* Pods-TrouverTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = F5W4L78R3F;
 				INFOPLIST_FILE = TrouverTests/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1269,14 +1153,13 @@
 		};
 		5F6E322F258E8F3700E70AE2 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 3BB23F279F081CF4AC5B83CB /* Pods-TrouverTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = F5W4L78R3F;
 				INFOPLIST_FILE = TrouverTests/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1292,7 +1175,6 @@
 		};
 		5F6E3231258E8F3700E70AE2 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 79B77CF453AEBCE8AD231CA2 /* Pods-Trouver-TrouverUITests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -1313,7 +1195,6 @@
 		};
 		5F6E3232258E8F3700E70AE2 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 8C3CFEDC3BC9E56A537A5E66 /* Pods-Trouver-TrouverUITests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -1372,6 +1253,51 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		5F58A3F92762F70E00232EBB /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/google/GoogleSignIn-iOS";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 6.0.0;
+			};
+		};
+		5F58A3FC2762F71800232EBB /* XCRemoteSwiftPackageReference "JWTDecode.swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/auth0/JWTDecode.swift.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.0.0;
+			};
+		};
+		5F948A0127630ACE00EC55F6 /* XCRemoteSwiftPackageReference "GoogleMaps-SP" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/vfn/GoogleMaps-SP";
+			requirement = {
+				kind = exactVersion;
+				version = "5.0.0-M1";
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		5F58A3FA2762F70E00232EBB /* GoogleSignIn */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 5F58A3F92762F70E00232EBB /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */;
+			productName = GoogleSignIn;
+		};
+		5F58A3FD2762F71800232EBB /* JWTDecode */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 5F58A3FC2762F71800232EBB /* XCRemoteSwiftPackageReference "JWTDecode.swift" */;
+			productName = JWTDecode;
+		};
+		5F948A0227630ACE00EC55F6 /* GooglePlaces */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 5F948A0127630ACE00EC55F6 /* XCRemoteSwiftPackageReference "GoogleMaps-SP" */;
+			productName = GooglePlaces;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 5F6E31FD258E8F3500E70AE2 /* Project object */;
 }

@@ -16,14 +16,14 @@ struct SliderView: View {
             .frame(width: slider.width, height: slider.lineWidth)
             .overlay(
                 ZStack {
-                    //Path between both handles
+                    // Path between both handles
                     SliderPathBetweenView(slider: slider)
                     
-                    //Low Handle
+                    // Low Handle
                     SliderHandleView(handle: slider.lowHandle)
                         .highPriorityGesture(slider.lowHandle.sliderDragGesture)
                     
-                    //High Handle
+                    // High Handle
                     SliderHandleView(handle: slider.highHandle)
                         .highPriorityGesture(slider.highHandle.sliderDragGesture)
                 }

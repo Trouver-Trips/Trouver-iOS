@@ -2,7 +2,7 @@
 
 set -eo pipefail
 
-xcodebuild -workspace ./../Trouver.xcworkspace \
-            -scheme Trouver \
-            -destination platform=iOS\ Simulator,OS=14.3,name=iPhone\ 12 \
-            clean test | xcpretty
+xcodebuild -project ./../Trouver.xcodeproj \
+           -scheme Trouver \
+           -destination platform=iOS\ Simulator,OS=15.0,name=iPhone\ 13 \
+           clean test | xcpretty

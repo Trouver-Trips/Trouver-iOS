@@ -10,19 +10,19 @@ import Combine
 
 class SliderHandle: ObservableObject {
     
-    //Slider Size
+    // Slider Size
     let sliderWidth: CGFloat
     let sliderHeight: CGFloat
     
-    //Slider Range
+    // Slider Range
     let sliderValueStart: Double
     let sliderValueRange: Double
     
-    //Slider Handle
+    // Slider Handle
     var diameter: CGFloat = 20
     var startLocation: CGPoint
     
-    //Current Value
+    // Current Value
     @Published var currentValue: Double
     @Published var currentPercentage: SliderValue {
         didSet {
@@ -30,7 +30,7 @@ class SliderHandle: ObservableObject {
         }
     }
 
-    //Slider Button Location
+    // Slider Button Location
     @Published var onDrag: Bool
     @Published var currentLocation: CGPoint
         
@@ -61,10 +61,10 @@ class SliderHandle: ObservableObject {
             
             let dragLocation = value.location
             
-            //Restrict possible drag area
+            // Restrict possible drag area
             self.restrictSliderBtnLocation(dragLocation)
             
-            //Get current value
+            // Get current value
             self.currentPercentage.wrappedValue = Double(self.currentLocation.x / self.sliderWidth)
             
         }.onEnded { _ in
@@ -72,7 +72,7 @@ class SliderHandle: ObservableObject {
         }
     
     private func restrictSliderBtnLocation(_ dragLocation: CGPoint) {
-        //On Slider Width
+        // On Slider Width
 
         let xOffset = min(max(0, dragLocation.x), sliderWidth)
         calcSliderBtnLocation(CGPoint(x: xOffset, y: dragLocation.y))

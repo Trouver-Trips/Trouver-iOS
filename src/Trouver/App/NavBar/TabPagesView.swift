@@ -55,7 +55,7 @@ struct TabPagesView<Content: View>: View {
         }
         .frame(width: width, alignment: .leading)
         .offset(x: -CGFloat(currIndex) * width)
-        .animation(.interactiveSpring())
+        .animation(.interactiveSpring(), value: self.index)
         .gesture(
             DragGesture()
                 .updating(self.$translation) { gestureValue, gestureState, _ in

@@ -83,11 +83,11 @@ struct DetailView: View {
                     }
                 }
             }
-            .overlay(
-                DetailNavBar(isPresented: $isPresented, isFavorite: viewModel.isFavorite) {
-                    viewModel.toggleFavorite()
-                }
-            )
+//            .overlay(
+//                DetailNavBar(isPresented: $isPresented, isFavorite: viewModel.isFavorite) {
+//                    viewModel.toggleFavorite()
+//                }
+//            )
             .background(Color.themeColor)
         }
         .onAppear {

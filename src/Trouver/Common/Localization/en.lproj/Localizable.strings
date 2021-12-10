@@ -9,11 +9,14 @@
 /* Title for trouver */
 "trouver.title" = "Trouver";
 
+/* Title for sign in button*/
+"sign.in.button.title" = "Sign In";
+
 /* Title for log out button */
-"log.out.button.title" = "Log Out";
+"sign.out.button.title" = "Sign Out";
 
 /* Log out message */
-"log.out.message" = "Are you sure?";
+"sign.out.message" = "Are you sure?";
 
 /* Generic okay */
 "generic.okay.title";

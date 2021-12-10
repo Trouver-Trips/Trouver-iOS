@@ -8,7 +8,7 @@
 import SwiftUI
 
 // Inspired from here: https://betterprogramming.pub/custom-tab-views-in-swiftui-6ef06bf2db73
-struct TabsContainer<Content: View> : View {
+struct TabsContainer<Content: View>: View {
     private let tabBarBottomMargin: CGFloat = 16
     
     @Binding private var shouldHideNavBar: Bool
@@ -63,7 +63,7 @@ struct TabsContainerPreviews: PreviewProvider {
                          "person.circle.fill"]
     
     static var previews: some View {
-        ZStack (alignment: .bottom) {
+        ZStack(alignment: .bottom) {
             Color.white
             TabsContainer(images: images, shouldHideNavBar: .constant(false)) {
                 RoundedRectangle(cornerRadius: 20)

@@ -13,7 +13,7 @@ struct MainView: View {
     }
     
     @State private var showFeatureFlags = false
-    @State private var showLogOutMessage = false
+    @State private var showSignOutMessage = false
     @State private var shouldHideNavBar = false
     
     private var networkService: NetworkService {
@@ -56,13 +56,13 @@ struct MainView: View {
                     .padding()
                     #endif
                     Spacer()
-                    Button (action: {
-                        self.showLogOutMessage = true
+                    Button(action: {
+                        self.showSignOutMessage = true
                     }, label: {
-                        Text("log.out.button.title")
+                        Text("sign.out.button.title")
                     })
-                    .alert(isPresented: $showLogOutMessage) {
-                        Alert(title: Text("log.out.message"),
+                    .alert(isPresented: $showSignOutMessage) {
+                        Alert(title: Text("sign.out.message"),
                               primaryButton: .default(Text("generic.okay.title"),
                                                       action: { loginViewModel.logOut() }),
                               secondaryButton: .cancel())
@@ -77,9 +77,11 @@ struct MainView: View {
     }
 }
 
+#if DEBUG
 struct MainViewPreviews: PreviewProvider {
     static var previews: some View {
         MainView(favoritesCoordinator: .init())
             .environmentObject(LoginService())
     }
 }
+#endif
