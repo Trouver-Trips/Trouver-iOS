@@ -47,7 +47,6 @@
 		5F58A4002762F75800232EBB /* IconLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F58A3FF2762F75800232EBB /* IconLabel.swift */; };
 		5F6E3209258E8F3500E70AE2 /* TrouverApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F6E3208258E8F3500E70AE2 /* TrouverApp.swift */; };
 		5F6E320D258E8F3600E70AE2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5F6E320C258E8F3600E70AE2 /* Assets.xcassets */; };
-		5F6E3210258E8F3600E70AE2 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5F6E320F258E8F3600E70AE2 /* Preview Assets.xcassets */; };
 		5F6E321B258E8F3700E70AE2 /* TrouverTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F6E321A258E8F3700E70AE2 /* TrouverTests.swift */; };
 		5F6E3226258E8F3700E70AE2 /* TrouverUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F6E3225258E8F3700E70AE2 /* TrouverUITests.swift */; };
 		5F6E32B025927DA700E70AE2 /* HikesResultDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F6E32AF25927DA700E70AE2 /* HikesResultDTO.swift */; };
@@ -62,6 +61,7 @@
 		5F76C0022608075C00F09B8F /* FavoritesCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F76C0012608075C00F09B8F /* FavoritesCoordinator.swift */; };
 		5F9489FD276307C800EC55F6 /* AsyncImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F9489FC276307C800EC55F6 /* AsyncImage.swift */; };
 		5F948A0327630ACE00EC55F6 /* GooglePlaces in Frameworks */ = {isa = PBXBuildFile; productRef = 5F948A0227630ACE00EC55F6 /* GooglePlaces */; };
+		5F948A062763120F00EC55F6 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5F948A052763120F00EC55F6 /* Preview Assets.xcassets */; };
 		5F9B1EA725B53134000B3328 /* EnvironmentProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F9B1EA625B53134000B3328 /* EnvironmentProvider.swift */; };
 		5FCA82B226804140006DB3B7 /* HiddenNavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FCA82B026804140006DB3B7 /* HiddenNavigationBar.swift */; };
 		5FCA82B326804140006DB3B7 /* RoundedCorners.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FCA82B126804140006DB3B7 /* RoundedCorners.swift */; };
@@ -154,7 +154,6 @@
 		5F6E3205258E8F3500E70AE2 /* Trouver.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Trouver.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5F6E3208258E8F3500E70AE2 /* TrouverApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrouverApp.swift; sourceTree = "<group>"; };
 		5F6E320C258E8F3600E70AE2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		5F6E320F258E8F3600E70AE2 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		5F6E3211258E8F3600E70AE2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5F6E3216258E8F3700E70AE2 /* TrouverTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TrouverTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		5F6E321A258E8F3700E70AE2 /* TrouverTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrouverTests.swift; sourceTree = "<group>"; };
@@ -173,6 +172,7 @@
 		5F76BFF02606DF8F00F09B8F /* FeedCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedCoordinator.swift; sourceTree = "<group>"; };
 		5F76C0012608075C00F09B8F /* FavoritesCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesCoordinator.swift; sourceTree = "<group>"; };
 		5F9489FC276307C800EC55F6 /* AsyncImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AsyncImage.swift; sourceTree = "<group>"; };
+		5F948A052763120F00EC55F6 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		5F9B1EA625B53134000B3328 /* EnvironmentProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnvironmentProvider.swift; sourceTree = "<group>"; };
 		5FCA82B026804140006DB3B7 /* HiddenNavigationBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HiddenNavigationBar.swift; sourceTree = "<group>"; };
 		5FCA82B126804140006DB3B7 /* RoundedCorners.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoundedCorners.swift; sourceTree = "<group>"; };
@@ -446,14 +446,6 @@
 			path = Trouver;
 			sourceTree = "<group>";
 		};
-		5F6E320E258E8F3600E70AE2 /* Preview Content */ = {
-			isa = PBXGroup;
-			children = (
-				5F6E320F258E8F3600E70AE2 /* Preview Assets.xcassets */,
-			);
-			path = "Preview Content";
-			sourceTree = "<group>";
-		};
 		5F6E3219258E8F3700E70AE2 /* TrouverTests */ = {
 			isa = PBXGroup;
 			children = (
@@ -498,7 +490,7 @@
 			isa = PBXGroup;
 			children = (
 				5F6E320C258E8F3600E70AE2 /* Assets.xcassets */,
-				5F6E320E258E8F3600E70AE2 /* Preview Content */,
+				5F948A042763120300EC55F6 /* Preview Content */,
 			);
 			path = Assets;
 			sourceTree = "<group>";
@@ -600,6 +592,14 @@
 				5F505A6D261A9EED00B4E53B /* SliderOption.swift */,
 			);
 			path = Slider;
+			sourceTree = "<group>";
+		};
+		5F948A042763120300EC55F6 /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				5F948A052763120F00EC55F6 /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
 			sourceTree = "<group>";
 		};
 		5FCA82A2267FEA0B006DB3B7 /* Favorites */ = {
@@ -777,7 +777,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5F6E3210258E8F3600E70AE2 /* Preview Assets.xcassets in Resources */,
+				5F948A062763120F00EC55F6 /* Preview Assets.xcassets in Resources */,
 				5F395BCC25E2300F00AD618D /* APIKeys.plist in Resources */,
 				5F6E330B25930BD100E70AE2 /* Localizable.strings in Resources */,
 				5F6E320D258E8F3600E70AE2 /* Assets.xcassets in Resources */,
