@@ -10,14 +10,11 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v1
-      - name: Force Xcode 12.3
-        run: sudo xcode-select -switch /Applications/Xcode_12.3.app
+      - name: Force Xcode 13.1
+        run: sudo xcode-select -switch /Applications/Xcode_13.1.app
       - name: Touch APIKeys.plist
         working-directory: ./src/Trouver
         run: echo $'<?xml version="1.0" encoding="UTF-8"?>\n<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/ PropertyList-1.0.dtd">\n<plist version=“1.0”>\n<dict/>\n</plist>\n' >APIKeys.plist
-      - name: Install Cocoapods
-        working-directory: ./src
-        run: pod install
       - name: Testing iOS app
         working-directory: ./src/build-scripts
         run: sh test_app.sh

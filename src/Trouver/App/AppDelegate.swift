@@ -10,15 +10,14 @@ import GoogleSignIn
 import GooglePlaces
 
 class AppDelegate: NSObject, UIApplicationDelegate {
-    let viewModel = LoginService()
+    private(set) var viewModel: LoginService!
 
     func application(_ application: UIApplication,
                      didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]? = nil)
     -> Bool {
         // Initialize sign-in
-        GIDSignIn.sharedInstance().clientID = "14106003132-6e5p3gnulc32uall0qn9hdumh1jpvgbf.apps.googleusercontent.com"
-        GIDSignIn.sharedInstance().delegate = viewModel
-        viewModel.silentSignIn()
+        self.viewModel = LoginService()
+        self.viewModel.silentSignIn()
         
         // Initialize Places
         
@@ -29,6 +28,6 @@ class AppDelegate: NSObject, UIApplicationDelegate {
     func application(_ app: UIApplication,
                      open url: URL,
                      options: [UIApplication.OpenURLOptionsKey: Any] = [:]) -> Bool {
-        return GIDSignIn.sharedInstance().handle(url)
+        return GIDSignIn.sharedInstance.handle(url)
     }
 }

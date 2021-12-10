@@ -15,14 +15,15 @@ enum SignInState {
     case signedIn(AccountHandle)
 }
 
-class LoginService: NSObject, ObservableObject {
+class LoginService: ObservableObject {
+    private let signInConfig: GIDConfiguration
     private let networkService: NetworkService
     
     @Published var signInState: SignInState = .notSignedIn
     
     init(networkService: NetworkService = HikingNetworkService()) {
+        self.signInConfig = .init(clientID: "14106003132-6e5p3gnulc32uall0qn9hdumh1jpvgbf.apps.googleusercontent.com")
         self.networkService = networkService
-        super.init()
     }
     
     // Access to model
@@ -35,11 +36,17 @@ class LoginService: NSObject, ObservableObject {
     }
 
     // Intents
+    
+    func signIn() {
+        GIDSignIn.sharedInstance.signIn(with: self.signInConfig,
+                                        presenting: UIApplication.currentViewController,
+                                        callback: self.handleCallback)
+    }
 
     func silentSignIn() {
         // Automatically sign in the user.
         signInState = .tryingSilentSignIn
-        GIDSignIn.sharedInstance()?.restorePreviousSignIn()
+        GIDSignIn.sharedInstance.restorePreviousSignIn(callback: self.handleCallback)
     }
 
     func logOut() {
@@ -47,7 +54,7 @@ class LoginService: NSObject, ObservableObject {
         case .signedIn(let accountHandle):
             switch accountHandle.user.accountType {
             case .google:
-                GIDSignIn.sharedInstance().signOut()
+                GIDSignIn.sharedInstance.signOut()
             case .guest: break
             }
         default: break
@@ -58,25 +65,25 @@ class LoginService: NSObject, ObservableObject {
 }
 
 // Google
-extension LoginService: GIDSignInDelegate {
-
-    func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error!) {
+extension LoginService {
+    private func handleCallback(user: GIDGoogleUser?, error: Error?) {
         if let error = error as NSError? {
             signInState = .notSignedIn
-            if error.code == GIDSignInErrorCode.hasNoAuthInKeychain.rawValue {
+            if error.code == GIDSignInError.hasNoAuthInKeychain.rawValue {
                 Logger.logInfo("The user has not signed in before or they have since signed out.")
-            } else if error.code == GIDSignInErrorCode.canceled.rawValue {
+            } else if error.code == GIDSignInError.canceled.rawValue {
                 Logger.logInfo("Google Sign In cancelled")
             } else {
                 Logger.logError("Google Sign In errored", error: error)
             }
+            
             return
         }
 
         // If the previous `error` is null, then the sign-in was succesful
         Logger.logInfo("Successful Google sign-in!")
                 
-        networkService.login(idToken: user.authentication.idToken)
+        networkService.login(idToken: user?.authentication.idToken ?? "")
             .receive(on: DispatchQueue.main)
             .handleEvents(receiveOutput: { _ in Logger.logInfo("Successfuly got trouver user") })
             .map { SignInState.signedIn(LoginService.createUser(userResult: $0, accountType: .google)) }

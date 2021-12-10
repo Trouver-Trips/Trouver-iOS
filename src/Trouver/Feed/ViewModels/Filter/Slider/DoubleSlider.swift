@@ -8,7 +8,7 @@
 import Combine
 import CoreGraphics
 
-//SliderValue to restrict double range: 0.0 to 1.0
+// SliderValue to restrict double range: 0.0 to 1.0
 @propertyWrapper
 struct SliderValue {
     var value: Double
@@ -25,19 +25,19 @@ struct SliderValue {
 
 class DoubleSlider: ObservableObject {
     
-    //Slider Size
+    // Slider Size
     final let width: CGFloat
     final let lineWidth: CGFloat = 8
     
-    //Slider value range from valueStart to valueEnd
+    // Slider value range from valueStart to valueEnd
     final let valueStart: Double
     final let valueEnd: Double
     
-    //Slider Handle
+    // Slider Handle
     @Published var highHandle: SliderHandle
     @Published var lowHandle: SliderHandle
     
-    //Handle start percentage (also for starting point)
+    // Handle start percentage (also for starting point)
     @SliderValue var highHandleStartPercentage = 1.0
     @SliderValue var lowHandleStartPercentage = 0.0
 
